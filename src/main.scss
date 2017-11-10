@@ -1,0 +1,148 @@
+$main-blue: #007cd9;
+$gray-bg: #f4f4f4;
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: $gray-bg;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+
+
+// // tablets and desktop
+// @media only screen and (min-width: 768px) {
+//   html {  font-size: 20px; }
+// }
+
+// // phone
+// @media only screen and (max-width: 767px) {
+//   html {  font-size: 12px; }   
+// }
+
+// // portrait phones
+// @media only screen and (max-width: 767px) and (orientation: portrait) {
+//   html {  font-size: 12px; }
+// }
+
+
+@mixin mq {
+  @media only screen and (min-width: 666px) {
+    @content;
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+
+  .profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 20px;
+    background-color: $gray-bg;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  
+    li {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      margin: 0 6px;
+      cursor: pointer;
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: gray;
+      width: 60px;
+
+      &:after {
+        margin-top: 5px;
+        content: "";
+        display: block;
+        width: 0;
+        height: 3px;
+        background: $main-blue;
+      }
+
+      &.active:after {
+        animation: line-anim .4s forwards;
+      }
+
+      @keyframes line-anim {
+        0% { width: 0; }
+        100% { width: 100%; }
+      }
+    }
+  }
+
+  .search-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 20px;
+    background-color: $gray-bg;
+  }
+}
+
+
+.library {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  margin-top: 75px;
+  margin-bottom: 30px;
+
+  .library-card {
+    width: 200px;
+    height: 300px;
+    margin: 30px 30px 0 30px;
+    background-color: darkGray;
+  }
+}
+
+// TODO: make mixin for this
+.discover {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  margin-top: 75px;
+  margin-bottom: 30px;
+
+  .discover-card {
+    width: 200px;
+    height: 300px;
+    margin: 30px 30px 0 30px;
+    background-color: peru;
+  }
+}
+
+.not-found {
+  margin-top: 100px;
+}
+
+
+
+
+
