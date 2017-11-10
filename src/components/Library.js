@@ -1,6 +1,5 @@
 import React from 'react';
 import LibraryCard from './LibraryCard';
-import Header from './Header';
 
 const Library = () => (
     <div className="library">

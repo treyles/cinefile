@@ -1,5 +1,6 @@
 $main-blue: #007cd9;
 $gray-bg: #f4f4f4;
+$light-text: #828282;
 
 body {
   margin: 0;
@@ -11,6 +12,11 @@ body {
 html {
   font-family: sans-serif;
   font-size: 14px;
+}
+
+@font-face {
+  font-family: 'calibre-semibold';
+  src: url('fonts/calibre-semibold.woff') format('woff');
 }
 
 
@@ -65,14 +71,20 @@ html {
       position: relative;
       display: inline-block;
       text-align: center;
-      margin: 0 6px;
+      margin-top: 10px;
       cursor: pointer;
     }
 
+    li:nth-child(1) {
+        margin-right: 10px;
+    }
+
     a {
+      font-family: 'calibre-semibold', sans-serif;
       display: inline-block;
       text-decoration: none;
-      color: gray;
+      color: lighten($light-text, 20%);
+      font-size: 16px;
       width: 60px;
 
       &:after {
@@ -82,16 +94,16 @@ html {
         width: 0;
         height: 3px;
         background: $main-blue;
+        transition: width .4s ease;
       }
 
-      &.active:after {
-        animation: line-anim .4s forwards;
+      &.active-nav:after {
+        width: 100%;
       }
+    }
 
-      @keyframes line-anim {
-        0% { width: 0; }
-        100% { width: 100%; }
-      }
+    .active-nav {
+      color: $light-text;
     }
   }
 
@@ -134,12 +146,55 @@ html {
     width: 200px;
     height: 300px;
     margin: 30px 30px 0 30px;
-    background-color: peru;
+    background-color: $main-blue;
   }
 }
 
 .not-found {
   margin-top: 100px;
+}
+
+.search {
+  margin-top: 85px;
+  display: flex;
+  justify-content: center;
+  
+  * {
+    outline: none;
+  }
+
+  input {
+    background-color: #eee;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    font-family: 'calibre-semibold', sans-serif;
+    line-height: 0px;
+    font-size: 50px;
+    caret-color: gray;
+    color: #262626;
+    margin: 5px 25px;
+    padding: 7px 7px 0 7px;
+  }
+
+  // autoprefixer doesnt support placeholder selectors
+  ::-webkit-input-placeholder {
+      color: lighten($light-text, 12%);
+  }
+  :-moz-placeholder {
+     color: lighten($light-text, 12%);
+     opacity: 1;
+  }
+  ::-moz-placeholder { 
+     color: lighten($light-text, 12%);
+     opacity: 1;
+  }
+  :-ms-input-placeholder { 
+     color: lighten($light-text, 12%);
+  }
+  ::-ms-input-placeholder { 
+     color: lighten($light-text, 12%);
+  }
 }
 
 

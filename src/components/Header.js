@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 class Header extends React.Component {
   render() {
@@ -8,17 +8,19 @@ class Header extends React.Component {
         <div className="profile-img" />
         <ul>
           <li>
-            <NavLink to="/discover" activeClassName="active">
+            <NavLink to="/discover" activeClassName="active-nav">
               Discover
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/" activeClassName="active">
+            <NavLink exact to="/" activeClassName="active-nav">
               Library
             </NavLink>
           </li>
         </ul>
-        <div className="search-icon" />
+        <NavLink to="/search" activeClassName="active-search">
+          <div className="search-icon" />
+        </NavLink>
       </header>
     );
   }
