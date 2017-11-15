@@ -18,9 +18,9 @@ class Header extends React.Component {
             </NavLink>
           </li>
         </ul>
-        <NavLink to="/search" activeClassName="active-search">
+        <Link to="/search">
           <div className="search-icon" />
-        </NavLink>
+        </Link>
       </header>
     );
   }

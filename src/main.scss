@@ -103,7 +103,8 @@ html {
     }
 
     .active-nav {
-      color: $light-text;
+      // color: $light-text;
+      color: darken($light-text, 10%);
     }
   }
 
@@ -158,6 +159,7 @@ html {
   margin-top: 85px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   
   * {
     outline: none;
@@ -167,7 +169,7 @@ html {
     background-color: #eee;
     width: 100%;
     border: none;
-    border-radius: 3px;
+    // border-bottom: 5px solid $main-blue;
     font-family: 'calibre-semibold', sans-serif;
     line-height: 0px;
     font-size: 50px;
@@ -177,24 +179,41 @@ html {
     padding: 7px 7px 0 7px;
   }
 
-  // autoprefixer doesnt support placeholder selectors
-  ::-webkit-input-placeholder {
-      color: lighten($light-text, 12%);
+  input::placeholder {
+    color: lighten($light-text, 12%);
   }
-  :-moz-placeholder {
-     color: lighten($light-text, 12%);
-     opacity: 1;
+}
+
+.search-results {
+  margin-top: 20px;
+  width: 90%;
+  background-color: white;
+
+    // TODO: mixin
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
-  ::-moz-placeholder { 
-     color: lighten($light-text, 12%);
-     opacity: 1;
+
+  li {
+    display: flex;
+    background-color: yellow;
+    padding: 15px;
+    margin-bottom: 10px;
   }
-  :-ms-input-placeholder { 
-     color: lighten($light-text, 12%);
+
+  .search-poster {
+    height: 130px;
+    margin-right: 7%;
   }
-  ::-ms-input-placeholder { 
-     color: lighten($light-text, 12%);
+
+  .search-info {
+    display: flex;
+    align-items: center;
+    background-color: gray;
   }
+  
 }
 
 

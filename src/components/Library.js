@@ -1,8 +1,14 @@
 import React from 'react';
 import LibraryCard from './LibraryCard';
 
-const Library = () => (
-    <div className="library">
+class Library extends React.Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
+  render() {
+    return (
+      <div className="library">
         <LibraryCard />
         <LibraryCard />
         <LibraryCard />
@@ -10,7 +16,9 @@ const Library = () => (
         <LibraryCard />
         <LibraryCard />
         <LibraryCard />
-    </div>
-);
+      </div>
+    );
+  }
+}
 
 export default Library;
