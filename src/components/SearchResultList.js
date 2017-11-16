@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // change 'movies' to 'media' maps
-
 class SearchResultList extends React.Component {
-  isTelevisionName(movie) {
-    return movie.title ? movie.title : movie.name;
+  isShowName(title) {
+    return title.title ? title.title : title.name;
+  }
+
+  isShowDate(title) {
+    return title.release_date || title.release_date === ''
+      ? title.release_date.substring(0, 4)
+      : title.first_air_date.substring(0, 4);
   }
 
   render() {
@@ -14,21 +19,25 @@ class SearchResultList extends React.Component {
     return (
       <div className="search-results">
         <ul>
-          {this.props.movies.map(movie => (
-            <li key={movie.id}>
-              <img
-                className="search-poster"
-                src={`${basePosterPath}${movie.poster_path}`}
-                alt={`poster for ${this.isTelevisionName(movie)}`}
-              />
-              <div className="search-info">
-                <span>
-                  <p>{this.isTelevisionName(movie)}</p>
-                  <p>{movie.first_air_date}</p>
-                </span>
-              </div>
-            </li>
-          ))}
+          {this.props.media
+            .filter(title => title.poster_path !== null)
+            .map(title => (
+              <li key={title.id}>
+                <img
+                  className="search-poster"
+                  src={`${basePosterPath}${title.poster_path}`}
+                  alt={`poster for ${this.isShowName(title)}`}
+                />
+                <div className="search-info">
+                  <h2>{this.isShowName(title)}</h2>
+                  <h3>{this.isShowDate(title)}</h3>
+                </div>
+                <div className="search-add">
+                  <button className="search-add-btn">+</button>
+                  <h3>Add to Library</h3>
+                </div>
+              </li>
+            ))}
         </ul>
       </div>
     );
@@ -36,7 +45,7 @@ class SearchResultList extends React.Component {
 }
 
 SearchResultList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object)
+  media: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default SearchResultList;

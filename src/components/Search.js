@@ -1,5 +1,5 @@
 import React from 'react';
-import fetchMovieSearch from '../utils/Api';
+import fetchMediaSearch from '../utils/Api';
 import SearchResultList from './SearchResultList';
 
 class Search extends React.Component {
@@ -18,16 +18,13 @@ class Search extends React.Component {
 
   handleSubmit(event) {
     if (event.key === 'Enter') {
-      fetchMovieSearch(event.target.value).then(results =>
+      fetchMediaSearch(event.target.value).then(results =>
         this.setState({
-          searchResults: results
+          // filter to return movies and tv shows only
+          searchResults: results.filter(media => media.media_type !== 'person')
         }));
       this.searchInput.blur();
     }
-  }
-
-  componentDidUpdate() {
-    console.log(this.state.searchResults);
   }
 
   render() {
@@ -42,7 +39,7 @@ class Search extends React.Component {
           }}
         />
         {this.state.searchResults
-          ? <SearchResultList movies={this.state.searchResults} />
+          ? <SearchResultList media={this.state.searchResults} />
           : null}
       </div>
     );

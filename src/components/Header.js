@@ -9,12 +9,12 @@ class Header extends React.Component {
         <ul>
           <li>
             <NavLink to="/discover" activeClassName="active-nav">
-              Discover
+              <h1>Discover</h1>
             </NavLink>
           </li>
           <li>
             <NavLink exact to="/" activeClassName="active-nav">
-              Library
+              <h1>Library</h1>
             </NavLink>
           </li>
         </ul>
