@@ -13,9 +13,12 @@ class SearchResultList extends React.Component {
       : title.first_air_date.substring(0, 4);
   }
 
+  handleClick(data) {
+    this.props.updateLibrary(data);
+  }
+
   render() {
     const basePosterPath = 'https://image.tmdb.org/t/p/w500';
-
     return (
       <div className="search-results">
         <ul>
@@ -33,8 +36,17 @@ class SearchResultList extends React.Component {
                   <h3>{this.isShowDate(title)}</h3>
                 </div>
                 <div className="search-add">
-                  <button className="search-add-btn">+</button>
-                  <h3>Add to Library</h3>
+                  <button
+                    className="search-add-btn"
+                    onClick={() => {
+                      this.handleClick(title);
+                    }}
+                  >
+                    +
+                  </button>
+                  <h3>
+                    Add to Library
+                  </h3>
                 </div>
               </li>
             ))}
@@ -44,6 +56,7 @@ class SearchResultList extends React.Component {
   }
 }
 
+// use shape?
 SearchResultList.propTypes = {
   media: PropTypes.arrayOf(PropTypes.object)
 };

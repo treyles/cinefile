@@ -3,10 +3,10 @@ import fetchMediaSearch from '../utils/Api';
 import SearchResultList from './SearchResultList';
 
 class Search extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      searchResults: null
+      matches: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,15 +16,31 @@ class Search extends React.Component {
     this.searchInput.focus();
   }
 
-  handleSubmit(event) {
-    if (event.key === 'Enter') {
-      fetchMediaSearch(event.target.value).then(results =>
+  handleSubmit(e) {
+    if (e.key === 'Enter') {
+      fetchMediaSearch(e.target.value).then(results =>
         this.setState({
           // filter to return movies and tv shows only
-          searchResults: results.filter(media => media.media_type !== 'person')
+          matches: results.filter(media => media.media_type !== 'person')
         }));
       this.searchInput.blur();
     }
+  }
+
+  renderSearchResults() {
+    const { matches } = this.state;
+    if (matches && matches.length > 0) {
+      return (
+        <SearchResultList
+          media={matches}
+          updateLibrary={this.props.updateLibrary}
+        />
+      );
+    }
+    if (!matches) {
+      return;
+    }
+    return <h1 className="zero-results">Your search returned zero results</h1>;
   }
 
   render() {
@@ -38,9 +54,7 @@ class Search extends React.Component {
             this.searchInput = input;
           }}
         />
-        {this.state.searchResults
-          ? <SearchResultList media={this.state.searchResults} />
-          : null}
+        {this.renderSearchResults()}
       </div>
     );
   }

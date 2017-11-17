@@ -176,6 +176,7 @@ h1,h2,h3 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  font-family: 'calibre-semibold', sans-serif;
   
   * {
     outline: none;
@@ -185,8 +186,8 @@ h1,h2,h3 {
     background-color: #eee;
     width: 90%;
     border: none;
+    font-family: inherit;
     border-radius: 3px;
-    font-family: 'calibre-semibold', sans-serif;
     line-height: 0px;
     font-size: 50px;
     caret-color: gray;
@@ -197,6 +198,11 @@ h1,h2,h3 {
 
   input::placeholder {
     color: lighten($light-text, 12%);
+  }
+
+  .zero-results {
+    margin-top: 10%;
+    color: $light-text;
   }
 }
 
