@@ -1,64 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// change 'movies' to 'media' maps
-class SearchResultList extends React.Component {
-  isShowName(title) {
-    return title.title ? title.title : title.name;
-  }
-
-  isShowDate(title) {
-    return title.release_date || title.release_date === ''
-      ? title.release_date.substring(0, 4)
-      : title.first_air_date.substring(0, 4);
-  }
-
-  handleClick(data) {
-    this.props.updateLibrary(data);
-  }
-
-  render() {
-    const basePosterPath = 'https://image.tmdb.org/t/p/w500';
-    return (
-      <div className="search-results">
-        <ul>
-          {this.props.media
-            .filter(title => title.poster_path !== null)
-            .map(title => (
-              <li key={title.id}>
-                <img
-                  className="search-poster"
-                  src={`${basePosterPath}${title.poster_path}`}
-                  alt={`poster for ${this.isShowName(title)}`}
-                />
-                <div className="search-info">
-                  <h2>{this.isShowName(title)}</h2>
-                  <h3>{this.isShowDate(title)}</h3>
-                </div>
-                <div className="search-add">
-                  <button
-                    className="search-add-btn"
-                    onClick={() => {
-                      this.handleClick(title);
-                    }}
-                  >
-                    +
-                  </button>
-                  <h3>
-                    Add to Library
-                  </h3>
-                </div>
-              </li>
-            ))}
-        </ul>
-      </div>
-    );
-  }
+function SearchResultList({ updateLibrary, matches }) {
+  return (
+    <div className="search-results">
+      <ul>
+        {matches.map(media => (
+          <li key={media.id}>
+            <img
+              className="search-poster"
+              src={`https://image.tmdb.org/t/p/w92${media.poster_path}`}
+              alt={`${media.title ? media.title : media.name} poster`}
+            />
+            <div className="search-info">
+              <h2>{media.title ? media.title : media.name}</h2>
+              <h3>
+                {typeof media.release_date === 'string'
+                  ? media.release_date.substring(0, 4)
+                  : media.first_air_date.substring(0, 4)}
+              </h3>
+            </div>
+            <div className="search-add">
+              <button
+                className="search-add-btn"
+                onClick={() => {
+                  updateLibrary(media);
+                }}
+              >
+                +
+              </button>
+              <h3>
+                Add to Library
+              </h3>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 // use shape?
 SearchResultList.propTypes = {
-  media: PropTypes.arrayOf(PropTypes.object)
+  matches: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updateLibrary: PropTypes.func.isRequired
 };
 
 export default SearchResultList;
+
+// const mediaDate = media => {
+//   if (media.release_date || media.release_date === '') {
+//     return media.release_date.substring(0, 4);
+//   }
+//   return media.first_air_date.substring(0, 4);
+// };

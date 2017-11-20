@@ -6,8 +6,8 @@ import Discover from './Discover';
 import Search from './Search';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       library: []
     };

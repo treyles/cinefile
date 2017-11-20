@@ -216,6 +216,7 @@ h1,h2,h3 {
 }
 
 .search-results {
+  // background-color: white;
   margin-top: 20px;
   width: 90%;
 
@@ -230,7 +231,7 @@ h1,h2,h3 {
     display: flex;
     background-color: white;
     padding: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
     // border-radius: 3px;
     // border: 1px solid lighten(lightgray, 7%);
     // box-shadow: 0 2px 3px 1px rgba(0, 0, 0, .03);
@@ -238,8 +239,8 @@ h1,h2,h3 {
 
   .search-poster {
     flex-shrink: 0;
-    height: 80px;
-    // width: 66.6px;
+    height: 85px;
+    width: 56.6px;
     object-fit: cover;
   }
 
