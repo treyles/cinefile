@@ -5,7 +5,7 @@ import Library from './Library';
 import Discover from './Discover';
 import Search from './Search';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,18 +27,27 @@ class App extends React.Component {
         <div className="app">
           <Header />
           <Switch>
-            <Route exact path="/" component={Library} />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Library
+                  library={this.state.library}
+                  updateLibrary={this.updateLibrary}
+                />
+              )}
+            />
             <Route path="/discover" component={Discover} />
             <Route
               path="/search"
               render={() => <Search updateLibrary={this.updateLibrary} />}
             />
-            <Route render={() => <p className="not-found">Not Found!</p>} />
+            <Route
+              render={() => <p className="not-found">Not Found!</p>}
+            />
           </Switch>
         </div>
       </BrowserRouter>
     );
   }
 }
-
-export default App;

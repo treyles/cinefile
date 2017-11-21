@@ -31,7 +31,7 @@ Results.defaultProps = {
   matches: []
 };
 
-class Search extends React.Component {
+export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,6 +60,7 @@ class Search extends React.Component {
 
   filterMatches(data) {
     return data.filter(
+      // filter matches to return only movies and tv shows with posters
       media => media.poster_path !== null && media.media_type !== 'person'
     );
   }
@@ -87,5 +88,3 @@ class Search extends React.Component {
 Search.propTypes = {
   updateLibrary: PropTypes.func.isRequired
 };
-
-export default Search;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function SearchResultList({ updateLibrary, matches }) {
+export default function SearchResultList({ updateLibrary, matches }) {
   return (
     <div className="search-results">
       <ul>
@@ -45,8 +45,6 @@ SearchResultList.propTypes = {
   matches: PropTypes.arrayOf(PropTypes.object).isRequired,
   updateLibrary: PropTypes.func.isRequired
 };
-
-export default SearchResultList;
 
 // const mediaDate = media => {
 //   if (media.release_date || media.release_date === '') {

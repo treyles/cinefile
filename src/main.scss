@@ -21,9 +21,10 @@ h3 { font-size: 11px; }
 
 h1,h2,h3 {
   margin: 0;
-  padding: 2px; 
+  padding: 0; 
   font-weight: normal;
   font-style: normal;
+  // line-height: 0.5;
 }
 
 @font-face {
@@ -64,6 +65,7 @@ h1,h2,h3 {
 }
 
 .header {
+  z-index: 1;
   position: fixed;
   top: 0;
   width: 100%;
@@ -145,18 +147,97 @@ h1,h2,h3 {
 .library {
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
+  align-items: center;
   justify-content: center;
-  margin-top: 75px;
+  margin-top: 80px;
   margin-bottom: 30px;
 
+  .media-wrapper {
+    width: 185px;
+    height: 316px; 
+  }
+
   .library-card {
-    width: 200px;
-    height: 300px;
-    margin: 30px 30px 0 30px;
-    background-color: darkGray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 185px;
+    height: 316px;
+    // width: 219.5px;
+    // height: 372px;
+    // margin: 30px 30px 0 30px;
+    margin: 10px 5px;
+    // background-color: darkGray;
+
+    .img-container {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      // margin-bottom: 20px;
+
+      img {
+        flex-shrink: 0;
+        width: 154px;
+        height: 231px;
+        object-fit: cover;
+        image-rendering: pixelated;
+        box-shadow: 8px 8px 20px 0px rgba(0,0,0,0.25);
+      }
+
+      //   "w154",
+      //   "w185",
+
+      .rating-tag {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: -15px;
+        background-color: $main-blue;
+        width: 28px;
+        height: 28px;
+        color: white;
+        font-family: 'faktpro-normal', sans-serif;
+        line-height: 0;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 50%;
+      }
+    }
+
+    .library-info {
+      width: 154px;
+
+      h2 { 
+        overflow: hidden;
+        white-space: nowrap;
+        // background-color: yellow;
+        font-family: 'faktpro-semibold', sans-serif;
+        color: lighten($dark-text, 7%);
+        margin-top: 28px;
+        text-overflow: ellipsis;
+      }
+
+      h3 { 
+        // background-color: yellow;
+        margin-top: 5px;
+        font-family: 'faktpro-semibold', sans-serif;
+        color: lighten($light-text, 7%);
+      }
+    }
   }
 }
+
+// "poster_sizes": [
+//   "w92",
+//   "w154",
+//   "w185",
+//   "w342",
+//   "w500",
+//   "w780",
+//   "original"
+// ],
 
 // TODO: make mixin for this
 .discover {
@@ -196,7 +277,6 @@ h1,h2,h3 {
     border: none;
     font-family: inherit;
     border-radius: 3px;
-    line-height: 0px;
     font-size: 50px;
     caret-color: gray;
     // color: #262626;
@@ -254,13 +334,16 @@ h1,h2,h3 {
 
     h2 { 
       font-family: 'faktpro-semibold', sans-serif;
-      // color: darken($light-text, 15%)
       color: $dark-text;
     }
 
     h3 { 
       font-family: 'faktpro-semibold', sans-serif;
       color: $light-text
+    }
+
+    h2, h3 {
+      padding: 3px;
     }
   }
 
