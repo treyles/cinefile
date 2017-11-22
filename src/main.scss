@@ -6,8 +6,11 @@ $dark-text: #3f3f3f;
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   background-color: $gray-bg;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
 }
 
 html {
@@ -152,40 +155,27 @@ h1,h2,h3 {
   margin-top: 80px;
   margin-bottom: 30px;
 
-  .media-wrapper {
-    width: 185px;
-    height: 316px; 
-  }
-
   .library-card {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 185px;
     height: 316px;
-    // width: 219.5px;
-    // height: 372px;
-    // margin: 30px 30px 0 30px;
     margin: 10px 5px;
-    // background-color: darkGray;
 
     .img-container {
       display: flex;
       justify-content: center;
       position: relative;
-      // margin-bottom: 20px;
 
       img {
         flex-shrink: 0;
-        width: 154px;
+        width: 154px; // "w154", "w185",
         height: 231px;
         object-fit: cover;
         image-rendering: pixelated;
-        box-shadow: 8px 8px 20px 0px rgba(0,0,0,0.25);
+        box-shadow: 8px 8px 20px 0px rgba(0,0,0,0.3);
       }
-
-      //   "w154",
-      //   "w185",
 
       .rating-tag {
         flex-shrink: 0;
@@ -212,18 +202,62 @@ h1,h2,h3 {
       h2 { 
         overflow: hidden;
         white-space: nowrap;
-        // background-color: yellow;
         font-family: 'faktpro-semibold', sans-serif;
         color: lighten($dark-text, 7%);
         margin-top: 28px;
         text-overflow: ellipsis;
       }
 
-      h3 { 
-        // background-color: yellow;
+      h3 {
         margin-top: 5px;
         font-family: 'faktpro-semibold', sans-serif;
         color: lighten($light-text, 7%);
+      }
+    }
+
+    .card-back {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 185px;
+      height: 316px;
+      background-color: white;
+      padding: 18px 13px;
+
+      .title {
+        flex-grow: 0;
+        // background-color: lightgray;
+
+        h2 {
+          font-family: 'faktpro-semibold', sans-serif;
+          color: lighten($dark-text, 7%);
+        }
+
+        h3 {
+          margin-top: 3px;
+          font-family: 'faktpro-semibold', sans-serif;
+          color: lighten($light-text, 7%);
+        }
+      }
+
+      .synopsis {
+        flex-grow: 2;
+        // max-height: 50%;
+        overflow: hidden;
+        // background-color: yellow;
+
+        p {
+          margin-top: 10px;
+          font-family: 'faktpro-normal', sans-serif;
+          font-size: 12px;
+          line-height: 1.5;
+          color: $light-text;
+        }
+      }
+
+      .buttons {
+        flex-grow: 1;
+        // background-color: blue;
       }
     }
   }
