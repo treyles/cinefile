@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function LibraryCard({ media }) {
+function LibraryCardFront({ media }) {
   return (
     <div className="library-card">
       <span>
@@ -27,7 +27,7 @@ function LibraryCard({ media }) {
   );
 }
 
-LibraryCard.propTypes = {
+LibraryCardFront.propTypes = {
   media: PropTypes.shape({
     title: PropTypes.string,
     name: PropTypes.string,
@@ -36,30 +36,6 @@ LibraryCard.propTypes = {
     vote_average: PropTypes.number
   }).isRequired
 };
-
-function LibraryCardFlip({ media }) {
-  return (
-    <div className="library-card">
-      <span>
-        <div className="img-container">
-          <img
-            src={`https://image.tmdb.org/t/p/w154${media.poster_path}`}
-            alt={`${media.title ? media.title : media.name} poster`}
-          />
-          <span className="rating-tag">
-            69
-          </span>
-        </div>
-        <div className="library-info">
-          <h2>Flipped</h2>
-          <h3>
-            1999
-          </h3>
-        </div>
-      </span>
-    </div>
-  );
-}
 
 export default class Library extends React.Component {
   constructor(props) {
@@ -83,21 +59,10 @@ export default class Library extends React.Component {
 
   render() {
     const { library, updateLibrary } = this.props;
-    const { clicked } = this.state;
 
     return (
       <div className="library">
-        {library.map(media => (
-          <div
-            className="media-wrapper"
-            key={media.id}
-            onClick={this.handleClick}
-          >
-            {clicked
-              ? <LibraryCardFlip media={media} />
-              : <LibraryCard media={media} />}
-          </div>
-        ))}
+        {library.map(media => <LibraryCardFront media={media} />)}
       </div>
     );
   }
