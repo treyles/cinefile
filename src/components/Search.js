@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import fetchMediaSearch from '../utils/Api';
+import { fetchMediaSearch } from '../utils/Api';
 import SearchResultList from './SearchResultList';
 
 function Results({ matches, updateLibrary }) {

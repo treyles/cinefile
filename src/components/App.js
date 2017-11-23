@@ -15,10 +15,17 @@ export default class App extends React.Component {
     this.updateLibrary = this.updateLibrary.bind(this);
   }
 
-  updateLibrary(media) {
-    this.setState({
-      library: this.state.library.concat(media)
-    });
+  updateLibrary(media, remove) {
+    const newState = this.state.library;
+
+    if (remove) {
+      if (newState.indexOf(media) > -1) {
+        newState.splice(newState.indexOf(media), 1);
+        this.setState({ library: newState });
+      }
+    } else {
+      this.setState({ library: newState.concat(media) });
+    }
   }
 
   render() {
