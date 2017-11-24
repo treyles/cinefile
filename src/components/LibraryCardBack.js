@@ -20,7 +20,7 @@ export default class LibraryCardBack extends React.Component {
   }
 
   render() {
-    const { media, imdbLink } = this.props;
+    const { media, imdbLink, trailerLink } = this.props;
 
     return (
       <div className="card-back">
@@ -53,8 +53,9 @@ export default class LibraryCardBack extends React.Component {
           </a>
           <a
             className="trailer"
-            href="http://www.google.com"
+            href={trailerLink}
             target="blank"
+            onClick={this.handleClick}
           >
             b
           </a>

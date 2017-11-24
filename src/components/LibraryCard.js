@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { fetchImdbId } from '../utils/Api';
+import { fetchImdbId, fetchTrailer } from '../utils/Api';
 import LibraryCardFront from './LibraryCardFront';
 import LibraryCardBack from './LibraryCardBack';
 
@@ -9,16 +9,24 @@ export default class LibraryCard extends React.Component {
     super(props);
     this.state = {
       clicked: false,
-      imdbLink: ''
+      imdbLink: null,
+      trailerLink: null
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    fetchImdbId(this.props.media).then(result =>
+    const { media } = this.props;
+
+    fetchImdbId(media).then(result =>
       this.setState({
-        imdbLink: `http://www.imdb.com/title/${result}`
+        imdbLink: result
+      }));
+
+    fetchTrailer(media).then(result =>
+      this.setState({
+        trailerLink: result
       }));
   }
 
@@ -30,7 +38,7 @@ export default class LibraryCard extends React.Component {
 
   render() {
     const { media, removeFromLibrary } = this.props;
-    const { clicked, imdbLink } = this.state;
+    const { clicked, imdbLink, trailerLink } = this.state;
 
     return (
       <div className="library-card" onClick={this.handleClick}>
@@ -39,6 +47,7 @@ export default class LibraryCard extends React.Component {
               media={media}
               removeFromLibrary={removeFromLibrary}
               imdbLink={imdbLink}
+              trailerLink={trailerLink}
             />
           : <LibraryCardFront media={media} />}
       </div>

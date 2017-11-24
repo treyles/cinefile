@@ -102,7 +102,8 @@ h1,h2,h3 {
 
       .counter {
         position: absolute;
-        background-color: lighten(#dd2628, 5%);
+        // background-color: lighten(#dd2628, 5%);
+        background-color: $main-blue;
         width: 21px;
         height: 16px;
         top: -6px;
@@ -179,10 +180,9 @@ h1,h2,h3 {
     width: 185px;
     height: 316px;
     margin: 10px 5px;
+    cursor: pointer;
 
     .img-container {
-      // display: flex;
-      // justify-content: center;
       position: relative;
 
       img {
@@ -295,6 +295,10 @@ h1,h2,h3 {
           margin: 6px;
           border: none;
           outline: none;
+        }
+
+        .delete {
+          background-color: lighten(#dd2628, 5%);
         }
       }
     }
@@ -457,6 +461,29 @@ h1,h2,h3 {
       color: lighten($light-text, 5%);
     }
   }
+}
+
+.test-modal {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: yellow;
+  outline: none;
+}
+
+.test-modal-overlay {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rebeccapurple;
 }
 
 
