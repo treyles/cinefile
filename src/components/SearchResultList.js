@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function SearchResultList({ updateLibrary, matches }) {
+export default function SearchResultList({ addToLibrary, matches }) {
   return (
     <div className="search-results">
       <ul>
@@ -24,7 +24,7 @@ export default function SearchResultList({ updateLibrary, matches }) {
               <button
                 className="search-add-btn"
                 onClick={() => {
-                  updateLibrary(media);
+                  addToLibrary(media);
                 }}
               >
                 +
@@ -43,7 +43,7 @@ export default function SearchResultList({ updateLibrary, matches }) {
 // use shape?
 SearchResultList.propTypes = {
   matches: PropTypes.arrayOf(PropTypes.object).isRequired,
-  updateLibrary: PropTypes.func.isRequired
+  addToLibrary: PropTypes.func.isRequired
 };
 
 // const mediaDate = media => {

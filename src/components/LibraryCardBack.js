@@ -12,10 +12,10 @@ export default class LibraryCardBack extends React.Component {
 
   handleClick(e) {
     e.stopPropagation();
-    const { media, updateLibrary } = this.props;
+    const { media, removeFromLibrary } = this.props;
 
     if (e.target.className === 'delete') {
-      updateLibrary(media, true);
+      removeFromLibrary(media);
     }
   }
 
@@ -76,6 +76,6 @@ LibraryCardBack.propTypes = {
     first_air_date: PropTypes.string,
     overview: PropTypes.string.isRequired
   }).isRequired,
-  updateLibrary: PropTypes.func.isRequired,
+  removeFromLibrary: PropTypes.func.isRequired,
   imdbLink: PropTypes.string.isRequired
 };

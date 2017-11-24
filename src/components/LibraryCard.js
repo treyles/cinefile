@@ -29,7 +29,7 @@ export default class LibraryCard extends React.Component {
   }
 
   render() {
-    const { media, updateLibrary } = this.props;
+    const { media, removeFromLibrary } = this.props;
     const { clicked, imdbLink } = this.state;
 
     return (
@@ -37,7 +37,7 @@ export default class LibraryCard extends React.Component {
         {clicked
           ? <LibraryCardBack
               media={media}
-              updateLibrary={updateLibrary}
+              removeFromLibrary={removeFromLibrary}
               imdbLink={imdbLink}
             />
           : <LibraryCardFront media={media} />}
@@ -48,5 +48,5 @@ export default class LibraryCard extends React.Component {
 
 LibraryCard.propTypes = {
   media: PropTypes.object.isRequired,
-  updateLibrary: PropTypes.func.isRequired
+  removeFromLibrary: PropTypes.func.isRequired
 };

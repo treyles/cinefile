@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import { fetchMediaSearch } from '../utils/Api';
 import SearchResultList from './SearchResultList';
 
-function Results({ matches, updateLibrary }) {
+function Results({ matches, addToLibrary }) {
   if (matches) {
     if (matches.length) {
       return (
-        <SearchResultList
-          matches={matches}
-          updateLibrary={updateLibrary}
-        />
+        <SearchResultList matches={matches} addToLibrary={addToLibrary} />
       );
     }
     return (
@@ -24,7 +21,7 @@ function Results({ matches, updateLibrary }) {
 
 Results.propTypes = {
   matches: PropTypes.arrayOf(PropTypes.object),
-  updateLibrary: PropTypes.func.isRequired
+  addToLibrary: PropTypes.func.isRequired
 };
 
 Results.defaultProps = {
@@ -67,7 +64,7 @@ export default class Search extends React.Component {
 
   render() {
     const { matches } = this.state;
-    const { updateLibrary } = this.props;
+    const { addToLibrary } = this.props;
 
     return (
       <div className="search">
@@ -79,12 +76,12 @@ export default class Search extends React.Component {
             this.searchInput = input;
           }}
         />
-        <Results matches={matches} updateLibrary={updateLibrary} />
+        <Results matches={matches} addToLibrary={addToLibrary} />
       </div>
     );
   }
 }
 
 Search.propTypes = {
-  updateLibrary: PropTypes.func.isRequired
+  addToLibrary: PropTypes.func.isRequired
 };

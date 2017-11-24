@@ -8,7 +8,7 @@ export default class Library extends React.Component {
   }
 
   render() {
-    const { library, updateLibrary } = this.props;
+    const { library, removeFromLibrary } = this.props;
 
     return (
       <div className="library">
@@ -16,7 +16,7 @@ export default class Library extends React.Component {
           <LibraryCard
             key={media.id}
             media={media}
-            updateLibrary={updateLibrary}
+            removeFromLibrary={removeFromLibrary}
           />
         ))}
       </div>
@@ -26,7 +26,7 @@ export default class Library extends React.Component {
 
 Library.propTypes = {
   library: PropTypes.arrayOf(PropTypes.object),
-  updateLibrary: PropTypes.func.isRequired
+  removeFromLibrary: PropTypes.func.isRequired
 };
 
 Library.defaultProps = {

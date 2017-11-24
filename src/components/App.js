@@ -12,42 +12,53 @@ export default class App extends React.Component {
       library: []
     };
 
-    this.updateLibrary = this.updateLibrary.bind(this);
+    this.addToLibrary = this.addToLibrary.bind(this);
+    this.removeFromLibrary = this.removeFromLibrary.bind(this);
   }
 
-  updateLibrary(media, remove) {
-    const newState = this.state.library;
+  addToLibrary(media) {
+    const newLibrary = this.state.library;
 
-    if (remove) {
-      if (newState.indexOf(media) > -1) {
-        newState.splice(newState.indexOf(media), 1);
-        this.setState({ library: newState });
-      }
-    } else {
-      this.setState({ library: newState.concat(media) });
+    this.setState({
+      library: newLibrary.concat(media)
+    });
+  }
+
+  removeFromLibrary(media) {
+    const newlibrary = this.state.library;
+    const mediaIndex = newlibrary.indexOf(media);
+
+    if (mediaIndex > -1) {
+      this.setState({
+        library: newlibrary
+          .slice(0, mediaIndex)
+          .concat(newlibrary.slice(mediaIndex + 1))
+      });
     }
   }
 
   render() {
+    const { library } = this.state;
+
     return (
       <BrowserRouter>
         <div className="app">
-          <Header />
+          <Header count={library.length} />
           <Switch>
             <Route
               exact
               path="/"
               render={() => (
                 <Library
-                  library={this.state.library}
-                  updateLibrary={this.updateLibrary}
+                  library={library}
+                  removeFromLibrary={this.removeFromLibrary}
                 />
               )}
             />
             <Route path="/discover" component={Discover} />
             <Route
               path="/search"
-              render={() => <Search updateLibrary={this.updateLibrary} />}
+              render={() => <Search addToLibrary={this.addToLibrary} />}
             />
             <Route
               render={() => <p className="not-found">Not Found!</p>}
