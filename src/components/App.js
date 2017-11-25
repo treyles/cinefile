@@ -16,6 +16,7 @@ export default class App extends React.Component {
     this.removeFromLibrary = this.removeFromLibrary.bind(this);
   }
 
+  // TODO: rename 'handle'
   addToLibrary(media) {
     const newLibrary = this.state.library;
 

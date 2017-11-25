@@ -12,15 +12,19 @@ export default class LibraryCardBack extends React.Component {
 
   handleClick(e) {
     e.stopPropagation();
-    const { media, removeFromLibrary } = this.props;
+    const { media, removeFromLibrary, handleTrailerModal } = this.props;
 
     if (e.target.className === 'delete') {
       removeFromLibrary(media);
     }
+
+    if (e.target.className === 'trailer') {
+      handleTrailerModal();
+    }
   }
 
   render() {
-    const { media, imdbLink, trailerLink } = this.props;
+    const { media, imdbLink } = this.props;
 
     return (
       <div className="card-back">
@@ -51,14 +55,9 @@ export default class LibraryCardBack extends React.Component {
           >
             a
           </a>
-          <a
-            className="trailer"
-            href={trailerLink}
-            target="blank"
-            onClick={this.handleClick}
-          >
+          <button className="trailer" onClick={this.handleClick}>
             b
-          </a>
+          </button>
           <button className="delete" onClick={this.handleClick}>
             c
           </button>
@@ -78,5 +77,6 @@ LibraryCardBack.propTypes = {
     overview: PropTypes.string.isRequired
   }).isRequired,
   removeFromLibrary: PropTypes.func.isRequired,
+  handleTrailerModal: PropTypes.func.isRequired,
   imdbLink: PropTypes.string.isRequired
 };
