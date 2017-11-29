@@ -332,6 +332,7 @@ h1,h2,h3 {
           // background-color: $gray-bg;
 
           svg {
+            fill: lighten($main-blue, 10%);
             transition: fill 0.3s;
           }
 

@@ -13,7 +13,7 @@ export default class Icon extends React.Component {
           height={height}
           viewBox="0 0 92 92"
           pointerEvents="none"
-          fill={color}
+          // fill={color}
         >
           <path d="M78.4,30.4l-3.1,57.8c-0.1,2.1-1.9,3.8-4,3.8H20.7c-2.1,0-3.9-1.7-4-3.8l-3.1-57.8
   c-0.1-2.2,1.6-4.1,3.8-4.2c2.2-0.1,4.1,1.6,4.2,3.8l2.9,54h43.1l2.9-54c0.1-2.2,2-3.9,4.2-3.8C76.8,26.3,78.5,28.2,78.4,30.4z
@@ -31,7 +31,7 @@ export default class Icon extends React.Component {
           height={height}
           viewBox="0 0 92 92"
           pointerEvents="none"
-          fill={color}
+          // fill={color}
         >
           <path d="M76,2H16c-2.2,0-4,1.8-4,4v80c0,2.2,1.8,4,4,4h60c2.2,0,4-1.8,4-4V6C80,3.8,78.2,2,76,2z M72,82H20V10h52
   V82z M29.5,55.5c0-1.9,1.6-3.5,3.5-3.5h11.8c1.9,0,3.5,1.6,3.5,3.5S46.7,59,44.8,59H33C31,59,29.5,57.4,29.5,55.5z M30,39.5
@@ -48,7 +48,7 @@ export default class Icon extends React.Component {
           height={height}
           viewBox="0 0 92 92"
           pointerEvents="none"
-          fill={color}
+          // fill={color}
         >
           <path d="M46,21.9c-0.7-0.7-1.6-0.9-2.5-0.9H13.6c-2,0-4.6,1.2-4.6,3.1v63.3c0,2,2.6,4.5,4.6,4.5H61
   c2,0,3-2.6,3-4.5V41.8c0-0.9-0.1-1.7-0.8-2.4L46,21.9z M55.9,42H43V29.1L55.9,42z M17,84V28h19v17.2c0,2,1.8,3.8,3.8,3.8H57v35H17z
@@ -65,7 +65,7 @@ export default class Icon extends React.Component {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 92 92"
           pointerEvents="none"
-          fill={color}
+          // fill={color}
         >
           <path d="M84.4,7H7.6C3.4,7,0,10.4,0,14.6v44.3C0,63.1,3.4,67,7.6,67H33v4.1l-7.6,6.1C24,78.3,23.4,80.4,24,82
   c0.6,1.6,2.1,3,3.8,3h36c1.7,0,3.3-1.4,3.9-3c0.6-1.6,0.1-3.6-1.2-4.7L59,71.1V67h25.4c4.2,0,7.6-3.9,7.6-8.1V14.6
@@ -79,7 +79,7 @@ export default class Icon extends React.Component {
           width={width}
           height={height}
           viewBox="0 0 24 24"
-          stroke={color}
+          // stroke={color}
           strokeWidth="2"
           fill="none"
           strokeLinecap="round"
@@ -99,6 +99,6 @@ export default class Icon extends React.Component {
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
-  height: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired
+  height: PropTypes.string.isRequired
+  // color: PropTypes.string.isRequired
 };

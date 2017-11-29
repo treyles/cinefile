@@ -55,22 +55,17 @@ export default class LibraryCardBack extends React.Component {
             target="blank"
             onClick={this.handleClick}
           >
-            <Icon icon="text" width="18" height="18" color="#007cd9" />
+            <Icon icon="text" width="18" height="18" />
             <span className="imdb-tooltip">Imdb</span>
           </a>
           {trailerLink !== null
             ? <div className="trailer" onClick={this.handleClick}>
-                <Icon
-                  icon="trailer"
-                  width="18"
-                  height="18"
-                  color="#007cd9"
-                />
+                <Icon icon="trailer" width="18" height="18" />
                 <span className="trailer-tooltip">Trailer</span>
               </div>
             : null}
           <div className="delete" onClick={this.handleClick}>
-            <Icon icon="trash" width="18" height="18" color="#007cd9" />
+            <Icon icon="trash" width="18" height="18" />
             <span className="delete-tooltip">Delete</span>
           </div>
         </div>
