@@ -68,6 +68,40 @@ h1,h2,h3 {
   }
 }
 
+@mixin tooltip($bottom, $left, $margin) {
+  visibility: hidden;
+  // background-color: darken($gray-bg, 5%);
+  // background-color: $gray-bg;
+  background-color: $dark-text;
+  // color: $dark-text;
+  // color: $light-text;
+  color: white;
+  text-align: center;
+  padding: 7px 10px;
+  position: absolute;
+  border-radius: 2px;
+  font-family: 'faktpro-normal', sans-serif;
+  font-size: 12px;
+  line-height: normal;
+  z-index: 1;
+  bottom: $bottom;
+  left: $left;
+  margin-left: $margin;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    // border-color: darken($gray-bg, 5%) transparent transparent transparent;
+    // border-color: $gray-bg transparent transparent transparent;
+    border-color: $dark-text transparent transparent transparent;
+  }
+}
+
 .header {
   z-index: 1;
   position: fixed;
@@ -242,7 +276,7 @@ h1,h2,h3 {
       width: 185px;
       height: 316px;
       background-color: white;
-      padding: 18px 13px;
+      padding: 22px 13px 12px 13px;
 
       .title {
         flex-grow: 0;
@@ -282,9 +316,10 @@ h1,h2,h3 {
         align-items: center;
         // background-color: blue;
 
-        .wiki,
+        .imdb,
         .delete,
         .trailer {
+          position: relative;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -294,20 +329,47 @@ h1,h2,h3 {
           margin: 6px;
           border: none;
           outline: none;
+          // background-color: $gray-bg;
 
           svg {
-            fill: $main-blue;
-            transition: fill 0.4s;
+            transition: fill 0.3s;
           }
 
           &:hover > svg {
             fill: lighten($light-text, 20%); 
+            // fill: $main-blue; 
           }
         }
 
-        // .delete {
-        //   background-color: lighten(#dd2628, 5%);
-        // }
+        .delete {
+          .delete-tooltip {
+            @include tooltip(100%, 50%, -25px)
+          }
+
+          &:hover .delete-tooltip {
+            visibility: visible;
+          }  
+        }
+
+        .trailer {
+          .trailer-tooltip {
+            @include tooltip(100%, 50%, -25px)
+          }
+
+          &:hover .trailer-tooltip {
+            visibility: visible;
+          }  
+        }
+
+        .imdb {
+          .imdb-tooltip {
+            @include tooltip(100%, 50%, -25px)
+          }
+
+          &:hover .imdb-tooltip {
+            visibility: visible;
+          }  
+        }
       }
     }
   }

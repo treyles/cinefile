@@ -51,16 +51,18 @@ export default class LibraryCard extends React.Component {
     const { clicked, imdbLink, trailerLink, showModal } = this.state;
 
     return (
-      <div className="library-card" onClick={this.handleClick}>
-        {clicked
-          ? <LibraryCardBack
-              media={media}
-              removeFromLibrary={removeFromLibrary}
-              imdbLink={imdbLink}
-              handleTrailerModal={this.handleTrailerModal}
-              trailerLink={trailerLink}
-            />
-          : <LibraryCardFront media={media} />}
+      <div>
+        <div className="library-card" onClick={this.handleClick}>
+          {clicked
+            ? <LibraryCardBack
+                media={media}
+                removeFromLibrary={removeFromLibrary}
+                imdbLink={imdbLink}
+                handleTrailerModal={this.handleTrailerModal}
+                trailerLink={trailerLink}
+              />
+            : <LibraryCardFront media={media} />}
+        </div>
         <ReactModal
           isOpen={showModal}
           onRequestClose={this.handleTrailerModal}

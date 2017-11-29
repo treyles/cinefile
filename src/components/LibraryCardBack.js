@@ -45,17 +45,18 @@ export default class LibraryCardBack extends React.Component {
         </div>
         <div className="synopsis">
           <p>
-            {truncate(media.overview, { length: 235, separator: ' ' })}
+            {truncate(media.overview, { length: 240, separator: ' ' })}
           </p>
         </div>
         <div className="buttons">
           <a
-            className="wiki"
+            className="imdb"
             href={imdbLink}
             target="blank"
             onClick={this.handleClick}
           >
             <Icon icon="text" width="18" height="18" color="#007cd9" />
+            <span className="imdb-tooltip">Imdb</span>
           </a>
           {trailerLink !== null
             ? <div className="trailer" onClick={this.handleClick}>
@@ -65,10 +66,12 @@ export default class LibraryCardBack extends React.Component {
                   height="18"
                   color="#007cd9"
                 />
+                <span className="trailer-tooltip">Trailer</span>
               </div>
             : null}
           <div className="delete" onClick={this.handleClick}>
             <Icon icon="trash" width="18" height="18" color="#007cd9" />
+            <span className="delete-tooltip">Delete</span>
           </div>
         </div>
 
