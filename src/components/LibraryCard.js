@@ -58,15 +58,18 @@ export default class LibraryCard extends React.Component {
               removeFromLibrary={removeFromLibrary}
               imdbLink={imdbLink}
               handleTrailerModal={this.handleTrailerModal}
+              trailerLink={trailerLink}
             />
           : <LibraryCardFront media={media} />}
         <ReactModal
           isOpen={showModal}
+          onRequestClose={this.handleTrailerModal}
           className="test-modal"
           overlayClassName="test-modal-overlay"
         >
-          <button onClick={this.handleTrailerModal}>close modal</button>
-          <TrailerModal trailerLink={trailerLink} />
+          <div className="video-wrapper">
+            <TrailerModal trailerLink={trailerLink} />
+          </div>
         </ReactModal>
       </div>
     );

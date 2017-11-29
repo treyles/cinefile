@@ -8,10 +8,11 @@ export default function TrailerModal({ trailerLink }) {
         ? <iframe
             title="trailer"
             src={trailerLink}
+            style={{ height: '100%' }}
             frameBorder="0"
             allowFullScreen
           />
-        : <p>sorry no trailer</p>}
+        : <p>Trailer Not Available</p>}
     </div>
   );
 }

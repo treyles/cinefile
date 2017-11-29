@@ -16,6 +16,7 @@ body {
 html {
   font-family: sans-serif;
   font-size: 13px;
+  overflow-y: scroll;
 }
 
 h1 { font-size: 17px; }
@@ -90,8 +91,8 @@ h1,h2,h3 {
 
   ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
+    // margin: 0;
+    // padding: 0;
   
     li {
       position: relative;
@@ -102,8 +103,8 @@ h1,h2,h3 {
 
       .counter {
         position: absolute;
-        // background-color: lighten(#dd2628, 5%);
         background-color: $main-blue;
+        text-align: center;
         width: 21px;
         height: 16px;
         top: -6px;
@@ -112,7 +113,6 @@ h1,h2,h3 {
         color: white;
         font-size: 10px;
         line-height: 1;
-        text-align: center;
         padding-top: 4px;
         margin-left: 7px;
         cursor: default;
@@ -288,18 +288,26 @@ h1,h2,h3 {
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 33px;
-          height: 33px;
+          width: 38px;
+          height: 38px;
           border-radius: 50%;
-          background-color: lighten(lightgray, 10%);
           margin: 6px;
           border: none;
           outline: none;
+
+          svg {
+            fill: $main-blue;
+            transition: fill 0.4s;
+          }
+
+          &:hover > svg {
+            fill: lighten($light-text, 20%); 
+          }
         }
 
-        .delete {
-          background-color: lighten(#dd2628, 5%);
-        }
+        // .delete {
+        //   background-color: lighten(#dd2628, 5%);
+        // }
       }
     }
   }
@@ -465,15 +473,16 @@ h1,h2,h3 {
 
 .test-modal {
   position: absolute;
-  width: 500px;
-  height: 500px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  background-color: yellow;
   outline: none;
+  width: 80%;
+  text-align: center;
+  font-family: 'faktpro-semibold', sans-serif;
+  font-size: 12;
+  color: red;
+  // responsive centering
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 
 .test-modal-overlay {
@@ -483,10 +492,22 @@ h1,h2,h3 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rebeccapurple;
+  background-color: rgba(0,0,0, 0.7);
 }
 
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; // 16:9 ratio
+  padding-top: 25px;
+  height: 0;
+}
 
-
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 

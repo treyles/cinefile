@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import truncate from 'lodash/truncate';
+import Icon from '../utils/Icon';
 // import { fetchImdbId } from '../utils/Api';
 
 export default class LibraryCardBack extends React.Component {
@@ -14,6 +15,7 @@ export default class LibraryCardBack extends React.Component {
     e.stopPropagation();
     const { media, removeFromLibrary, handleTrailerModal } = this.props;
 
+    // TODO: no dom selectors?
     if (e.target.className === 'delete') {
       removeFromLibrary(media);
     }
@@ -24,7 +26,7 @@ export default class LibraryCardBack extends React.Component {
   }
 
   render() {
-    const { media, imdbLink } = this.props;
+    const { media, imdbLink, trailerLink } = this.props;
 
     return (
       <div className="card-back">
@@ -53,14 +55,21 @@ export default class LibraryCardBack extends React.Component {
             target="blank"
             onClick={this.handleClick}
           >
-            a
+            <Icon icon="text" width="18" height="18" color="#007cd9" />
           </a>
-          <button className="trailer" onClick={this.handleClick}>
-            b
-          </button>
-          <button className="delete" onClick={this.handleClick}>
-            c
-          </button>
+          {trailerLink !== null
+            ? <div className="trailer" onClick={this.handleClick}>
+                <Icon
+                  icon="trailer"
+                  width="18"
+                  height="18"
+                  color="#007cd9"
+                />
+              </div>
+            : null}
+          <div className="delete" onClick={this.handleClick}>
+            <Icon icon="trash" width="18" height="18" color="#007cd9" />
+          </div>
         </div>
 
       </div>

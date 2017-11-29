@@ -16,7 +16,11 @@ export default function Header({ count }) {
           <NavLink exact to="/" activeClassName="active-nav">
             <h1>Library</h1>
           </NavLink>
-          {count > 0 ? <span className="counter">{count}</span> : null}
+          {count > 0
+            ? <span className="counter">
+                {count}
+              </span>
+            : null}
         </li>
       </ul>
       <Link to="/search">
