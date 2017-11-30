@@ -1,8 +1,8 @@
 import React from 'react';
 
-const DiscoverCard = () => (
+const DiscoverCard = ({ media }) => (
   <div className="discover-card">
-    Discover Card.
+    {media.title}
   </div>
 );
 

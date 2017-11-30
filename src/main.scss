@@ -315,6 +315,7 @@ h1,h2,h3 {
         justify-content: center;
         align-items: center;
         // background-color: blue;
+        border-top: 1px solid darken($gray-bg, 5%);
 
         .imdb,
         .delete,
@@ -326,7 +327,7 @@ h1,h2,h3 {
           width: 38px;
           height: 38px;
           border-radius: 50%;
-          margin: 6px;
+          margin: 4px;
           border: none;
           outline: none;
           // background-color: $gray-bg;
@@ -387,21 +388,37 @@ h1,h2,h3 {
 // ],
 
 // TODO: make mixin for this
-.discover {
+.discover-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  margin-top: 75px;
-  margin-bottom: 30px;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: column;
 
-  .discover-card {
-    width: 200px;
-    height: 300px;
-    margin: 30px 30px 0 30px;
-    background-color: $main-blue;
+  .discover {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 75px;
+    margin-bottom: 30px;
+
+    .discover-card {
+      width: 200px;
+      height: 300px;
+      margin: 30px 30px 0 30px;
+      background-color: $main-blue;
+    }
+  }
+  
+  .load-more {
+    background-color: lightgray;
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    margin: 0 0 30px 0;
   }
 }
+
 
 .not-found {
   margin-top: 100px;

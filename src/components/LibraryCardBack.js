@@ -60,7 +60,7 @@ export default class LibraryCardBack extends React.Component {
           </a>
           {trailerLink !== null
             ? <div className="trailer" onClick={this.handleClick}>
-                <Icon icon="trailer" width="18" height="18" />
+                <Icon icon="preview" width="21" height="21" />
                 <span className="trailer-tooltip">Trailer</span>
               </div>
             : null}
