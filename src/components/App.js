@@ -56,7 +56,10 @@ export default class App extends React.Component {
                 />
               )}
             />
-            <Route path="/discover" component={Discover} />
+            <Route
+              path="/discover"
+              render={() => <Discover library={library} />}
+            />
             <Route
               path="/search"
               render={() => <Search addToLibrary={this.addToLibrary} />}

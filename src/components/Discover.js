@@ -1,12 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import ReactModal from 'react-modal';
 import DiscoverCard from './DiscoverCard';
+import OptionsModal from './OptionsModal';
 import { fetchDiscover } from '../utils/Api';
+// import Icon from '../utils/Icon';
 
-class Discover extends React.Component {
+export default class Discover extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       matches: [],
+      pages: null,
+      showModal: false,
       query: {
         mediaType: 'movie',
         page: 1,
@@ -15,55 +21,91 @@ class Discover extends React.Component {
         releaseTo: 2017,
         score: 8,
         genre: '878'
-      },
-      pages: null
+      }
     };
 
-    this.handleShow = this.handleShow.bind(this);
+    this.handleShowMore = this.handleShowMore.bind(this);
+    this.handleOptionsModal = this.handleOptionsModal.bind(this);
   }
 
   componentDidMount() {
+    // scroll to top of page on mount
     window.scrollTo(0, 0);
 
     const { query } = this.state;
-    fetchDiscover(query).then(response =>
+    fetchDiscover(query).then(response => {
+      const matches = this.handleResultFilter(response.results);
+
       this.setState({
-        matches: response.results,
+        matches,
         pages: response.total_pages
-      }));
+      });
+    });
   }
 
-  handleShow() {
+  // filter to return media not already in library
+  handleResultFilter(results) {
+    const { library } = this.props;
+    return results.filter(
+      result => library.findIndex(el => el.id === result.id) === -1
+    );
+  }
+
+  handleShowMore() {
     const { matches, query } = this.state;
 
     const newQuery = Object.assign({}, query);
     newQuery.page = query.page + 1;
 
-    fetchDiscover(newQuery).then(response =>
+    fetchDiscover(newQuery).then(response => {
+      const newMatches = this.handleResultFilter(response.results);
+
       this.setState({
-        matches: matches.concat(response.results),
+        matches: matches.concat(newMatches),
         query: newQuery
-      }));
+      });
+    });
+  }
+
+  handleOptionsModal() {
+    this.setState({
+      showModal: !this.state.showModal
+    });
   }
 
   render() {
-    const { matches, query, pages } = this.state;
+    const { matches, query, pages, showModal } = this.state;
 
     return (
-      <div className="discover-wrapper">
-        <div className="discover">
-          {matches.map(media => (
-            <DiscoverCard key={media.id} media={media} />
-          ))}
+      <div className="discover">
+        <div className="options" onClick={this.handleOptionsModal}>
+          Options
         </div>
+        {matches.map(media => (
+          <DiscoverCard key={media.id} media={media} />
+        ))}
         {query.page !== pages && matches.length !== 0
-          ? <button className="load-more" onClick={this.handleShow}>
-              show
+          ? <button className="load-more" onClick={this.handleShowMore}>
+              Show More
             </button>
           : null}
+        <ReactModal
+          isOpen={showModal}
+          onRequestClose={this.handleOptionsModal}
+          className="options-modal"
+          overlayClassName="options-modal-overlay"
+        >
+          <OptionsModal />
+        </ReactModal>
       </div>
     );
   }
 }
 
-export default Discover;
+Discover.propTypes = {
+  library: PropTypes.arrayOf(PropTypes.object)
+};
+
+Discover.defaultProps = {
+  library: []
+};
