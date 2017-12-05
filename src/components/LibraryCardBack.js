@@ -16,6 +16,7 @@ export default class LibraryCardBack extends React.Component {
     const { media, removeFromLibrary, handleTrailerModal } = this.props;
 
     // TODO: no dom selectors?
+    // use currentTarget?
     if (e.target.className === 'delete') {
       removeFromLibrary(media);
     }

@@ -18,22 +18,20 @@ export default class App extends React.Component {
 
   // TODO: rename 'handle'
   addToLibrary(media) {
-    const newLibrary = this.state.library;
-
     this.setState({
-      library: newLibrary.concat(media)
+      library: [media].concat(this.state.library)
     });
   }
 
   removeFromLibrary(media) {
-    const newlibrary = this.state.library;
-    const mediaIndex = newlibrary.indexOf(media);
+    const { library } = this.state;
+    const mediaIndex = library.indexOf(media);
 
     if (mediaIndex > -1) {
       this.setState({
-        library: newlibrary
+        library: library
           .slice(0, mediaIndex)
-          .concat(newlibrary.slice(mediaIndex + 1))
+          .concat(library.slice(mediaIndex + 1))
       });
     }
   }

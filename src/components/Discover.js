@@ -4,7 +4,8 @@ import ReactModal from 'react-modal';
 import DiscoverCard from './DiscoverCard';
 import OptionsModal from './OptionsModal';
 import { fetchDiscover } from '../utils/Api';
-// import Icon from '../utils/Icon';
+import Icon from '../utils/Icon';
+import Slider from 'rc-slider';
 
 export default class Discover extends React.Component {
   constructor(props) {
@@ -54,8 +55,10 @@ export default class Discover extends React.Component {
   handleShowMore() {
     const { matches, query } = this.state;
 
-    const newQuery = Object.assign({}, query);
-    newQuery.page = query.page + 1;
+    // copy object without mutating
+    const newQuery = Object.assign({}, query, {
+      page: query.page + 1
+    });
 
     fetchDiscover(newQuery).then(response => {
       const newMatches = this.handleResultFilter(response.results);
@@ -79,7 +82,7 @@ export default class Discover extends React.Component {
     return (
       <div className="discover">
         <div className="options" onClick={this.handleOptionsModal}>
-          Options
+          <Icon icon="menu2" width="25" height="25" />
         </div>
         {matches.map(media => (
           <DiscoverCard key={media.id} media={media} />
