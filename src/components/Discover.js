@@ -5,7 +5,6 @@ import DiscoverCard from './DiscoverCard';
 import OptionsModal from './OptionsModal';
 import { fetchDiscover } from '../utils/Api';
 import Icon from '../utils/Icon';
-import Slider from 'rc-slider';
 
 export default class Discover extends React.Component {
   constructor(props) {
@@ -71,6 +70,7 @@ export default class Discover extends React.Component {
   }
 
   handleOptionsModal() {
+    console.log('clicked cancel');
     this.setState({
       showModal: !this.state.showModal
     });
@@ -98,7 +98,7 @@ export default class Discover extends React.Component {
           className="options-modal"
           overlayClassName="options-modal-overlay"
         >
-          <OptionsModal />
+          <OptionsModal handleOptionsModal={this.handleOptionsModal} />
         </ReactModal>
       </div>
     );

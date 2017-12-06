@@ -429,17 +429,9 @@ h1,h2,h3 {
     position: fixed;
     bottom: 40px;
     right: 25px;
-    // top: 83px;
-    // left: 50%;
-    // background-color: darken(#7CD3C8, 10%);
-    // background-color: lighten(#FC6180, 5%);
-    // background-color: lighten($main-blue, 10%);
     background-color: $main-blue;
-    // width: 70px;
-    // height: 28px;
     width: 54px;
     height: 54px;
-    // margin-left: -35px;
     border-radius: 50%;
     border: none;
     outline: none;
@@ -682,6 +674,7 @@ h1,h2,h3 {
   min-width: 280px;
   border-radius: 3px;
   font-family: 'faktpro-semibold', sans-serif;
+  line-height: normal;
   color: $dark-text;
   font-size: 12;
   background-color: #fff;
@@ -689,19 +682,18 @@ h1,h2,h3 {
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
-  padding: 60px 0;
+  padding: 40px 0;
   // box-shadow: 0px 0px 40px 20px rgba(0,0,0, 0.1);
 
   button {
     font-family: inherit;
     color: $dark-text;
-    line-height: normal;
     background-color: #fff;
     font-size: 13px;
     // background-color: gray;
     width: 100px;
     height: 30px;
-    padding-top: 4px;
+    padding-top: 3px;
     border-radius: 0;
     outline: none;
     border: 1px solid lighten(#DBDBDB, 5%);
@@ -725,23 +717,66 @@ h1,h2,h3 {
   // }
 
   .slider-container {
-    // background-color: lightgray;
     width: 200px;
-    margin: 50px 0;
+    margin-top: 40px;
 
     .slider-text {
       display: flex;
       justify-content: space-between;
       margin-bottom: 10px;
-      color: $dark-text;
+      // color: $dark-text;
 
       h2 {
-        font-family: 'faktpro-semibold', sans-serif;
         display: inline-block;
-      }
 
-      h2:nth-child(2) {
-        color: lighten($light-text, 10%);
+        &:nth-child(2) {
+          color: lighten($light-text, 10%);
+        }
+      }
+    }
+  }
+
+  .select-container {
+    width: 200px;
+    margin-top: 32px;
+
+    .select-text {
+      margin-bottom: 10px;
+    }
+  }
+
+  .submit-container {
+    width: 200px;
+    margin-top: 32px;
+    
+    .submit {
+      width: 120px;
+      height: 40px;
+      border-radius: 500px;
+      border: none;
+      background-color: $main-blue;
+      color: white;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+      transition: background-color .3s, box-shadow .2s;
+      
+      &:hover {
+        background-color: lighten($main-blue, 10%);
+        box-shadow: none;
+      }
+    }
+
+    .cancel {
+      width: 70px;
+      height: 40px;
+      border-radius: 500px;
+      border: 1px solid lighten(#DBDBDB, 5%);
+      margin-right: 10px;
+      color: #828282;
+      transition: background-color .3s, color .2s;
+
+      &:hover {
+        background-color: lighten(lightgray, 12%);
+        color: lighten($dark-text, 50%);
       }
     }
   }
