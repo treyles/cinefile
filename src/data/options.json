@@ -146,11 +146,11 @@
   "moviesSort": [
     {
       "value": "popularity.desc",
-      "label": "Populairty Descending"
+      "label": "Popularity Descending"
     },
     {
       "value": "popularity.asc",
-      "label": "Populairty Ascending"
+      "label": "Popularity Ascending"
     },
     {
       "value": "primary_release_date.desc",
@@ -180,11 +180,11 @@
   "tvSort": [
     {
       "value": "popularity.desc",
-      "label": "Popularty Descending"
+      "label": "Popularity Descending"
     },
     {
       "value": "popularity.asc",
-      "label": "Popularty Ascending"
+      "label": "Popularity Ascending"
     },
     {
       "value": "first_air_date.desc",

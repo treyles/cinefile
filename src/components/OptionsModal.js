@@ -4,7 +4,6 @@ import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-// import { fetchGenres } from '../utils/Api';
 import data from '../data/options.json';
 
 export default class OptionsModal extends React.Component {
@@ -14,7 +13,7 @@ export default class OptionsModal extends React.Component {
     this.state = {
       optionsData: data,
       active: 'movie',
-      rating: 60,
+      rating: 6,
       releaseDates: [1942, this.currentYear],
       genres: [],
       sort: ''
@@ -25,12 +24,9 @@ export default class OptionsModal extends React.Component {
     this.handleReleaseDateValue = this.handleReleaseDateValue.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleSortChange = this.handleSortChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.renderValue = this.renderValue.bind(this);
   }
-
-  // componentDidMount() {
-  //   fetchGenres().then(response => response);
-  // }
 
   handleActiveTab(e) {
     this.setState({
@@ -62,6 +58,26 @@ export default class OptionsModal extends React.Component {
         {option.label}
       </h2>
     );
+  }
+
+  handleSubmit() {
+    const { active, rating, releaseDates, genres, sort } = this.state;
+    const { handleQueryUpdate } = this.props;
+
+    const query = {
+      mediaType: active,
+      page: 1,
+      sort: sort.value,
+      releaseFrom: releaseDates[0],
+      releaseTo: releaseDates[1] === releaseDates[0]
+        ? releaseDates[1] + 1
+        : releaseDates[1],
+      score: rating,
+      genre: genres.map(genre => genre.value).toString()
+    };
+
+    handleQueryUpdate(query);
+    // console.log(query);
   }
 
   render() {
@@ -105,7 +121,7 @@ export default class OptionsModal extends React.Component {
           className={`tv${active === 'tv' ? ' active' : ''}`}
           onClick={this.handleActiveTab}
         >
-          Television
+          Shows
         </button>
         <div className="slider-container">
           <div className="slider-text">
@@ -114,8 +130,8 @@ export default class OptionsModal extends React.Component {
           </div>
           <Slider
             min={0}
-            max={100}
-            defaultValue={60}
+            max={10}
+            defaultValue={6}
             trackStyle={trackStyle}
             handleStyle={handleStyle}
             onChange={this.handleRatingValue}
@@ -170,7 +186,7 @@ export default class OptionsModal extends React.Component {
           >
             Cancel
           </button>
-          <button className="submit">
+          <button className="submit" onClick={this.handleSubmit}>
             Submit
           </button>
         </div>
@@ -180,7 +196,8 @@ export default class OptionsModal extends React.Component {
 }
 
 OptionsModal.propTypes = {
-  handleOptionsModal: PropTypes.func.isRequired
+  handleOptionsModal: PropTypes.func.isRequired,
+  handleQueryUpdate: PropTypes.func.isRequired
 };
 
 // OptionsModal.defaultProps = {

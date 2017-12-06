@@ -17,30 +17,21 @@ export default class Discover extends React.Component {
         mediaType: 'movie',
         page: 1,
         sort: 'popularity.desc',
-        releaseFrom: 2000,
+        releaseFrom: 1960,
         releaseTo: 2017,
-        score: 8,
+        score: 7,
         genre: '878'
       }
     };
 
     this.handleShowMore = this.handleShowMore.bind(this);
     this.handleOptionsModal = this.handleOptionsModal.bind(this);
+    this.handleQueryUpdate = this.handleQueryUpdate.bind(this);
   }
 
   componentDidMount() {
-    // scroll to top of page on mount
     window.scrollTo(0, 0);
-
-    const { query } = this.state;
-    fetchDiscover(query).then(response => {
-      const matches = this.handleResultFilter(response.results);
-
-      this.setState({
-        matches,
-        pages: response.total_pages
-      });
-    });
+    this.handleQueryUpdate(this.state.query);
   }
 
   // filter to return media not already in library
@@ -49,6 +40,18 @@ export default class Discover extends React.Component {
     return results.filter(
       result => library.findIndex(el => el.id === result.id) === -1
     );
+  }
+
+  handleQueryUpdate(query) {
+    fetchDiscover(query).then(response => {
+      const matches = this.handleResultFilter(response.results);
+
+      this.setState({
+        matches,
+        pages: response.total_pages,
+        query: query
+      });
+    });
   }
 
   handleShowMore() {
@@ -70,7 +73,6 @@ export default class Discover extends React.Component {
   }
 
   handleOptionsModal() {
-    console.log('clicked cancel');
     this.setState({
       showModal: !this.state.showModal
     });
@@ -98,7 +100,10 @@ export default class Discover extends React.Component {
           className="options-modal"
           overlayClassName="options-modal-overlay"
         >
-          <OptionsModal handleOptionsModal={this.handleOptionsModal} />
+          <OptionsModal
+            handleOptionsModal={this.handleOptionsModal}
+            handleQueryUpdate={this.handleQueryUpdate}
+          />
         </ReactModal>
       </div>
     );

@@ -68,6 +68,7 @@ export function fetchTrailer(media) {
   });
 }
 
+// TODO: make options variables that include '&sort_by=' etc.
 export function fetchDiscover(obj) {
   const key = '?api_key=529e1b3a6041a4b14bb6b7e328aad991';
   const tmdbAPI = 'https://api.themoviedb.org/3/';
@@ -84,17 +85,4 @@ export function fetchDiscover(obj) {
   }
 
   return axios.get(encodedURI).then(response => response.data);
-}
-
-export function fetchGenres() {
-  const genres = [];
-  const key = '?api_key=529e1b3a6041a4b14bb6b7e328aad991';
-  const tmdbAPI = 'https://api.themoviedb.org/3/';
-
-  const movieGenreURI = window.encodeURI(
-    `${tmdbAPI}genre/movie/list${key}`
-  );
-  const tvGenreURI = window.encodeURI(`${tmdbAPI}genre/tv/list${key}`);
-
-  return axios.get(movieGenreURI).then(response => console.log(response));
 }
