@@ -80,6 +80,7 @@ export default class Discover extends React.Component {
 
   render() {
     const { matches, query, pages, showModal } = this.state;
+    const { addToLibrary } = this.props;
 
     return (
       <div className="discover">
@@ -87,7 +88,11 @@ export default class Discover extends React.Component {
           <Icon icon="menu2" width="25" height="25" />
         </div>
         {matches.map(media => (
-          <DiscoverCard key={media.id} media={media} />
+          <DiscoverCard
+            key={media.id}
+            media={media}
+            addToLibrary={addToLibrary}
+          />
         ))}
         {query.page !== pages && matches.length !== 0
           ? <button className="load-more" onClick={this.handleShowMore}>
@@ -111,7 +116,8 @@ export default class Discover extends React.Component {
 }
 
 Discover.propTypes = {
-  library: PropTypes.arrayOf(PropTypes.object)
+  library: PropTypes.arrayOf(PropTypes.object),
+  addToLibrary: PropTypes.func.isRequired
 };
 
 Discover.defaultProps = {

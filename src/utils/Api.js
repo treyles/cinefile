@@ -76,11 +76,11 @@ export function fetchDiscover(obj) {
 
   if (obj.mediaType === 'movie') {
     encodedURI = window.encodeURI(
-      `${tmdbAPI}discover/movie${key}&sort_by=${obj.sort}&primary_release_date.gte=${obj.releaseFrom}&primary_release_date.lte=${obj.releaseTo}&vote_average.gte=${obj.score}&with_genres=${obj.genre}&page=${obj.page}&vote_count.gte=5`
+      `${tmdbAPI}discover/movie${key}&sort_by=${obj.sort}&primary_release_date.gte=${obj.releaseFrom}&primary_release_date.lte=${obj.releaseTo}&vote_average.gte=${obj.score}&with_genres=${obj.genre}&page=${obj.page}&vote_count.gte=20`
     );
   } else {
     encodedURI = window.encodeURI(
-      `${tmdbAPI}discover/tv${key}&sort_by=${obj.sort}&first_air_date.gte=${obj.releaseFrom}&first_air_date.lte=${obj.releaseTo}&vote_average.gte=${obj.score}&with_genres=${obj.genre}&page=${obj.page}&vote_count.gte=5`
+      `${tmdbAPI}discover/tv${key}&sort_by=${obj.sort}&first_air_date.gte=${obj.releaseFrom}&first_air_date.lte=${obj.releaseTo}&vote_average.gte=${obj.score}&with_genres=${obj.genre}&page=${obj.page}&vote_count.gte=20`
     );
   }
 

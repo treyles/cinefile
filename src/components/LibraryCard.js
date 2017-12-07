@@ -66,8 +66,8 @@ export default class LibraryCard extends React.Component {
         <ReactModal
           isOpen={showModal}
           onRequestClose={this.handleTrailerModal}
-          className="test-modal"
-          overlayClassName="test-modal-overlay"
+          className="trailer-modal"
+          overlayClassName="trailer-modal-overlay"
         >
           <div className="video-wrapper">
             <TrailerModal trailerLink={trailerLink} />
