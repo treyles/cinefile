@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default function TrailerModal({ trailerLink }) {
   return (
     <div>
-      {trailerLink !== null
+      {trailerLink !== 'no trailer'
         ? <iframe
             title="trailer"
             src={trailerLink}

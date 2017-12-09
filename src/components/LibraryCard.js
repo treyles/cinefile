@@ -12,7 +12,6 @@ export default class LibraryCard extends React.Component {
     this.state = {
       clicked: false,
       showModal: false,
-      imdbLink: null,
       trailerLink: null
     };
 
@@ -21,14 +20,7 @@ export default class LibraryCard extends React.Component {
   }
 
   componentDidMount() {
-    const { media } = this.props;
-
-    fetchImdbLink(media).then(result =>
-      this.setState({
-        imdbLink: result
-      }));
-
-    fetchTrailer(media).then(result =>
+    fetchTrailer(this.props.media).then(result =>
       this.setState({
         trailerLink: result
       }));
@@ -48,7 +40,7 @@ export default class LibraryCard extends React.Component {
 
   render() {
     const { media, removeFromLibrary } = this.props;
-    const { clicked, imdbLink, trailerLink, showModal } = this.state;
+    const { clicked, trailerLink, showModal } = this.state;
 
     return (
       <div>
@@ -57,7 +49,6 @@ export default class LibraryCard extends React.Component {
             ? <LibraryCardBack
                 media={media}
                 removeFromLibrary={removeFromLibrary}
-                imdbLink={imdbLink}
                 handleTrailerModal={this.handleTrailerModal}
                 trailerLink={trailerLink}
               />

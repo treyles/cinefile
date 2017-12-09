@@ -6,7 +6,7 @@ export default function LibraryCardFront({ media }) {
     <div>
       <div className="img-container">
         <img
-          src={`https://image.tmdb.org/t/p/w154${media.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
           alt={`${media.title ? media.title : media.name} poster`}
         />
         <span className="rating-tag">

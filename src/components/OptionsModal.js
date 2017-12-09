@@ -54,7 +54,7 @@ export default class OptionsModal extends React.Component {
 
   renderValue(option) {
     return (
-      <h2 style={{ color: '#828282', fontSize: '12px' }}>
+      <h2 style={{ color: '#3f3f3f', fontSize: '12px' }}>
         {option.label}
       </h2>
     );
@@ -99,12 +99,12 @@ export default class OptionsModal extends React.Component {
       ? optionsData.moviesSort
       : optionsData.tvSort;
 
-    const trackStyle = [{ backgroundColor: '#007cd9' }];
+    const trackStyle = [{ backgroundColor: '#0f96ea' }]; // #0f96ea #007cd9
     const handleStyle = {
-      border: '5px solid #007cd9',
+      border: '5px solid #0f96ea',
       height: 15,
       width: 15,
-      marginTop: -6,
+      marginTop: -5,
       backgroundColor: '#fff',
       boxShadow: 'none'
     };
@@ -153,27 +153,20 @@ export default class OptionsModal extends React.Component {
           />
         </div>
         <div className="select-container">
-          <div className="select-text">
-            <h2>Genres</h2>
-          </div>
           <Select
             multi
             options={mediaGenres}
             onChange={this.handleSelectChange}
-            placeholder="Select"
+            placeholder="Genres"
             value={genres}
           />
         </div>
         <div className="select-container">
-          <div className="select-text">
-            <h2>Sort by</h2>
-          </div>
           <Select
             options={mediaSort}
             onChange={this.handleSortChange}
-            placeholder="Select"
+            placeholder="Sort by"
             value={sort}
-            style={{ color: 'green' }}
             valueRenderer={this.renderValue}
           />
         </div>

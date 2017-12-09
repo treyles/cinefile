@@ -27,7 +27,11 @@ export default class LibraryCardBack extends React.Component {
   }
 
   render() {
-    const { media, imdbLink, trailerLink } = this.props;
+    const { media, trailerLink } = this.props;
+
+    const imdbId = media.imdb_id
+      ? media.imdb_id
+      : media.external_ids.imdb_id;
 
     return (
       <div className="card-back">
@@ -52,7 +56,7 @@ export default class LibraryCardBack extends React.Component {
         <div className="buttons">
           <a
             className="imdb"
-            href={imdbLink}
+            href={`http://www.imdb.com/title/${imdbId}`}
             target="blank"
             onClick={this.handleClick}
           >
@@ -85,6 +89,5 @@ LibraryCardBack.propTypes = {
     overview: PropTypes.string.isRequired
   }).isRequired,
   removeFromLibrary: PropTypes.func.isRequired,
-  handleTrailerModal: PropTypes.func.isRequired,
-  imdbLink: PropTypes.string.isRequired
+  handleTrailerModal: PropTypes.func.isRequired
 };

@@ -36,9 +36,9 @@ export default class Discover extends React.Component {
 
   // filter to return media not already in library
   handleResultFilter(results) {
-    const { library } = this.props;
     return results.filter(
-      result => library.findIndex(el => el.id === result.id) === -1
+      result =>
+        this.props.library.findIndex(el => el.id === result.id) === -1
     );
   }
 
@@ -92,6 +92,7 @@ export default class Discover extends React.Component {
             key={media.id}
             media={media}
             addToLibrary={addToLibrary}
+            currentPage={query.page}
           />
         ))}
         {query.page !== pages && matches.length !== 0

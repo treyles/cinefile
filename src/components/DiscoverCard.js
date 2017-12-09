@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import truncate from 'lodash/truncate';
-import { fetchImdbLink, fetchTrailer } from '../utils/Api';
+import {
+  fetchMediaDetails,
+  fetchImdbLink,
+  fetchTrailer
+} from '../utils/Api';
 import Icon from '../utils/Icon';
 import TrailerModal from './TrailerModal';
 
@@ -10,26 +14,48 @@ export default class DiscoverCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false,
-      imdbLink: null,
-      trailerLink: null
+      trailerLink: '',
+      showModal: false
     };
 
     this.handleTrailerModal = this.handleTrailerModal.bind(this);
+    this.handleAddToLibrary = this.handleAddToLibrary.bind(this);
+    this.handleTrailer = this.handleTrailer.bind(this);
+    this.handleImdbLink = this.handleImdbLink.bind(this);
   }
 
   componentDidMount() {
-    const { media } = this.props;
+    // scroll to top if new query (or if on first page)
+    if (this.props.currentPage === 1) {
+      window.scrollTo(0, 0);
+    }
+  }
 
-    fetchImdbLink(media).then(result =>
-      this.setState({
-        imdbLink: result
-      }));
+  handleAddToLibrary() {
+    const { media, addToLibrary } = this.props;
+    fetchMediaDetails(media).then(response => addToLibrary(response.data));
+  }
 
-    fetchTrailer(media).then(result =>
+  handleImdbLink(e) {
+    e.preventDefault();
+
+    // hack to avoid pop-up blockers when using window.onload.
+    // due to api limitations we need to generate link on click/ajax request.
+    // credit to pstenstrm: https://stackoverflow.com/questions/2587677/avoid-browser-popup-blockers
+    const win = window.open('about:blank', '_blank');
+    fetchImdbLink(this.props.media).then(response => {
+      setTimeout(() => win.location.href = response, 10);
+    });
+  }
+
+  handleTrailer() {
+    fetchTrailer(this.props.media).then(response => {
       this.setState({
-        trailerLink: result
-      }));
+        trailerLink: response
+      });
+
+      this.handleTrailerModal();
+    });
   }
 
   handleTrailerModal() {
@@ -39,8 +65,8 @@ export default class DiscoverCard extends React.Component {
   }
 
   render() {
-    const { showModal, imdbLink, trailerLink } = this.state;
-    const { media, addToLibrary } = this.props;
+    const { showModal, trailerLink } = this.state;
+    const { media } = this.props;
 
     return (
       <div className="discover-card">
@@ -77,25 +103,21 @@ export default class DiscoverCard extends React.Component {
             </p>
           </div>
         </div>
+        {/* TODO: make these divs buttons? */}
         <div className="discover-footer">
           <h3><span>Lead:</span> Leonardo DiCaprio</h3>
           <div className="buttons">
-            <a className="imdb" href={imdbLink} target="blank">
+            <div className="imdb" onClick={this.handleImdbLink}>
               <Icon icon="text" width="18" height="18" />
               <span className="imdb-tooltip">Imdb</span>
-            </a>
-
-            <div className="trailer" onClick={this.handleTrailerModal}>
-              <Icon icon="preview" width="21" height="21" />
-              <span className="trailer-tooltip">Trailer</span>
             </div>
-
-            <div
-              className="add"
-              onClick={() => {
-                addToLibrary(media);
-              }}
-            >
+            {trailerLink !== 'no trailer'
+              ? <div className="trailer" onClick={this.handleTrailer}>
+                  <Icon icon="preview" width="21" height="21" />
+                  <span className="trailer-tooltip">Trailer</span>
+                </div>
+              : null}
+            <div className="add" onClick={this.handleAddToLibrary}>
               <Icon icon="archive" width="18" height="18" />
               <span className="add-tooltip">Add to library</span>
             </div>
@@ -121,5 +143,6 @@ DiscoverCard.propTypes = {
     title: PropTypes.string,
     release_date: PropTypes.string
   }).isRequired,
-  addToLibrary: PropTypes.func.isRequired
+  addToLibrary: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired
 };
