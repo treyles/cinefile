@@ -104,3 +104,37 @@ export function fetchDiscover(obj) {
 
   return axios.get(encodedURI).then(response => response.data);
 }
+
+export function fetchMediaCredits(media) {
+  let encodedURI;
+
+  if (media.title) {
+    encodedURI = window.encodeURI(
+      `https://api.themoviedb.org/3/movie/${media.id}/credits?api_key=529e1b3a6041a4b14bb6b7e328aad991`
+    );
+
+    return axios.get(encodedURI).then(response => {
+      const data = response.data;
+      return {
+        header: data.crew.length
+          ? data.crew.filter(el => el.job === 'Director')[0].name
+          : 'n/a',
+        footer: data.cast.length
+          ? data.cast.filter(el => el.order < 3)[0].name
+          : 'n/a'
+      };
+    });
+  }
+
+  encodedURI = window.encodeURI(
+    `http://api.themoviedb.org/3/tv/${media.id}?api_key=529e1b3a6041a4b14bb6b7e328aad991&append_to_response=external_ids`
+  );
+
+  return axios.get(encodedURI).then(response => {
+    const data = response.data;
+    return {
+      header: data.created_by.length ? data.created_by[0].name : 'n/a',
+      footer: data.number_of_seasons
+    };
+  });
+}

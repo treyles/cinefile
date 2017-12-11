@@ -34,6 +34,10 @@ export default class Discover extends React.Component {
     this.handleQueryUpdate(this.state.query);
   }
 
+  componentDidUpdate() {
+    // turn off loader here
+  }
+
   // filter to return media not already in library
   handleResultFilter(results) {
     return results.filter(

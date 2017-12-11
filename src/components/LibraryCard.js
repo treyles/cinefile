@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
-import { fetchImdbLink, fetchTrailer } from '../utils/Api';
+import { fetchTrailer } from '../utils/Api';
 import LibraryCardFront from './LibraryCardFront';
 import LibraryCardBack from './LibraryCardBack';
 import TrailerModal from './TrailerModal';
@@ -12,23 +12,27 @@ export default class LibraryCard extends React.Component {
     this.state = {
       clicked: false,
       showModal: false,
-      trailerLink: null
+      trailerLink: ''
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleTrailerModal = this.handleTrailerModal.bind(this);
-  }
-
-  componentDidMount() {
-    fetchTrailer(this.props.media).then(result =>
-      this.setState({
-        trailerLink: result
-      }));
+    this.handleTrailer = this.handleTrailer.bind(this);
   }
 
   handleClick() {
     this.setState({
       clicked: !this.state.clicked
+    });
+  }
+
+  handleTrailer() {
+    fetchTrailer(this.props.media).then(response => {
+      this.setState({
+        trailerLink: response
+      });
+
+      this.handleTrailerModal();
     });
   }
 
@@ -49,7 +53,7 @@ export default class LibraryCard extends React.Component {
             ? <LibraryCardBack
                 media={media}
                 removeFromLibrary={removeFromLibrary}
-                handleTrailerModal={this.handleTrailerModal}
+                handleTrailer={this.handleTrailer}
                 trailerLink={trailerLink}
               />
             : <LibraryCardFront media={media} />}

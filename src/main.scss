@@ -428,6 +428,9 @@ h1,h2,h3 {
         width: 100px;
 
         .img-container {
+          background-color: #fff;
+          width: 100px;
+          height: 150px;
           position: absolute;
           // TODO: media query fill space
           top: -27px;

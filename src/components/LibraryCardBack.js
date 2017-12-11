@@ -13,7 +13,7 @@ export default class LibraryCardBack extends React.Component {
 
   handleClick(e) {
     e.stopPropagation();
-    const { media, removeFromLibrary, handleTrailerModal } = this.props;
+    const { media, removeFromLibrary, handleTrailer } = this.props;
 
     // TODO: no dom selectors?
     // use currentTarget?
@@ -22,7 +22,7 @@ export default class LibraryCardBack extends React.Component {
     }
 
     if (e.target.className === 'trailer') {
-      handleTrailerModal();
+      handleTrailer();
     }
   }
 
@@ -63,7 +63,7 @@ export default class LibraryCardBack extends React.Component {
             <Icon icon="text" width="18" height="18" />
             <span className="imdb-tooltip">Imdb</span>
           </a>
-          {trailerLink !== null
+          {trailerLink !== 'no trailer'
             ? <div className="trailer" onClick={this.handleClick}>
                 <Icon icon="preview" width="21" height="21" />
                 <span className="trailer-tooltip">Trailer</span>
@@ -89,5 +89,6 @@ LibraryCardBack.propTypes = {
     overview: PropTypes.string.isRequired
   }).isRequired,
   removeFromLibrary: PropTypes.func.isRequired,
-  handleTrailerModal: PropTypes.func.isRequired
+  handleTrailer: PropTypes.func.isRequired,
+  trailerLink: PropTypes.string.isRequired
 };

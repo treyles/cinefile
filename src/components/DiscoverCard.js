@@ -5,6 +5,7 @@ import truncate from 'lodash/truncate';
 import {
   fetchMediaDetails,
   fetchImdbLink,
+  fetchMediaCredits,
   fetchTrailer
 } from '../utils/Api';
 import Icon from '../utils/Icon';
@@ -14,8 +15,10 @@ export default class DiscoverCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      imdbId: '',
       trailerLink: '',
-      showModal: false
+      showModal: false,
+      credits: {}
     };
 
     this.handleTrailerModal = this.handleTrailerModal.bind(this);
@@ -29,6 +32,12 @@ export default class DiscoverCard extends React.Component {
     if (this.props.currentPage === 1) {
       window.scrollTo(0, 0);
     }
+
+    fetchMediaCredits(this.props.media).then(response => {
+      this.setState({
+        credits: response
+      });
+    });
   }
 
   handleAddToLibrary() {
@@ -65,7 +74,7 @@ export default class DiscoverCard extends React.Component {
   }
 
   render() {
-    const { showModal, trailerLink } = this.state;
+    const { showModal, trailerLink, credits } = this.state;
     const { media } = this.props;
 
     return (
@@ -90,7 +99,9 @@ export default class DiscoverCard extends React.Component {
               })}
             </h2>
             <h3>
-              <span>Director:</span> Christopher Nolan
+              <span>{media.title ? 'Director:' : 'Creator:'}</span>
+              {' '}
+              {credits.header}
             </h3>
             <h3>
               {typeof media.release_date === 'string'
@@ -105,7 +116,11 @@ export default class DiscoverCard extends React.Component {
         </div>
         {/* TODO: make these divs buttons? */}
         <div className="discover-footer">
-          <h3><span>Lead:</span> Leonardo DiCaprio</h3>
+          <h3>
+            <span>{media.title ? 'Lead:' : 'Seasons:'}</span>
+            {' '}
+            {credits.footer}
+          </h3>
           <div className="buttons">
             <div className="imdb" onClick={this.handleImdbLink}>
               <Icon icon="text" width="18" height="18" />

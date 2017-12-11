@@ -62,7 +62,10 @@ export default class OptionsModal extends React.Component {
 
   handleSubmit() {
     const { active, rating, releaseDates, genres, sort } = this.state;
-    const { handleQueryUpdate } = this.props;
+    const { handleQueryUpdate, handleOptionsModal } = this.props;
+
+    // close modal on submit
+    handleOptionsModal();
 
     const query = {
       mediaType: active,
