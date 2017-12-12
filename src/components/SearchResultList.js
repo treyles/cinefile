@@ -11,7 +11,7 @@ export default class SearchResultList extends React.Component {
 
   handleAddToLibrary(media) {
     fetchMediaDetails(media).then(response =>
-      this.props.addToLibrary(response.data));
+      this.props.addToLibrary(response));
   }
 
   render() {

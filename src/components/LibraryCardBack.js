@@ -7,13 +7,16 @@ import Icon from '../utils/Icon';
 export default class LibraryCardBack extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   trailerKey: this.props.trailerKeay
+    // }
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(e) {
     e.stopPropagation();
-    const { media, removeFromLibrary, handleTrailer } = this.props;
+    const { media, removeFromLibrary, handleTrailerModal } = this.props;
 
     // TODO: no dom selectors?
     // use currentTarget?
@@ -22,12 +25,12 @@ export default class LibraryCardBack extends React.Component {
     }
 
     if (e.target.className === 'trailer') {
-      handleTrailer();
+      handleTrailerModal();
     }
   }
 
   render() {
-    const { media, trailerLink } = this.props;
+    const { media, trailerKey } = this.props;
 
     const imdbId = media.imdb_id
       ? media.imdb_id
@@ -63,7 +66,7 @@ export default class LibraryCardBack extends React.Component {
             <Icon icon="text" width="18" height="18" />
             <span className="imdb-tooltip">Imdb</span>
           </a>
-          {trailerLink !== 'no trailer'
+          {trailerKey !== null
             ? <div className="trailer" onClick={this.handleClick}>
                 <Icon icon="preview" width="21" height="21" />
                 <span className="trailer-tooltip">Trailer</span>
@@ -89,6 +92,10 @@ LibraryCardBack.propTypes = {
     overview: PropTypes.string.isRequired
   }).isRequired,
   removeFromLibrary: PropTypes.func.isRequired,
-  handleTrailer: PropTypes.func.isRequired,
-  trailerLink: PropTypes.string.isRequired
+  handleTrailerModal: PropTypes.func.isRequired,
+  trailerKey: PropTypes.string
+};
+
+LibraryCardBack.defaultProps = {
+  trailerKey: null
 };

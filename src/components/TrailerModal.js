@@ -1,26 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function TrailerModal({ trailerLink }) {
+export default function TrailerModal({ trailerKey }) {
   return (
     <div>
-      {trailerLink !== 'no trailer'
-        ? <iframe
-            title="trailer"
-            src={trailerLink}
-            style={{ height: '100%' }}
-            frameBorder="0"
-            allowFullScreen
-          />
-        : <p>Trailer Not Available</p>}
+      <div className="video-wrapper">
+        <iframe
+          title="trailer"
+          src={
+            `http://www.youtube.com/embed/${trailerKey}?controls=1&showinfo=0&autoplay=1`
+          }
+          style={{ height: '100%' }}
+          frameBorder="0"
+          allowFullScreen
+        />
+      </div>
+
     </div>
   );
 }
 
 TrailerModal.propTypes = {
-  trailerLink: PropTypes.string
+  trailerKey: PropTypes.string
 };
 
 TrailerModal.defaultProps = {
-  trailerLink: null
+  trailerKey: null
 };

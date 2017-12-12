@@ -12,12 +12,20 @@ export default class LibraryCard extends React.Component {
     this.state = {
       clicked: false,
       showModal: false,
-      trailerLink: ''
+      trailerKey: null
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleTrailerModal = this.handleTrailerModal.bind(this);
-    this.handleTrailer = this.handleTrailer.bind(this);
+    // this.handleTrailer = this.handleTrailer.bind(this);
+  }
+
+  componentDidMount() {
+    const trailer = this.props.media.videos.results;
+
+    this.setState({
+      trailerKey: trailer.length ? trailer[0].key : null
+    });
   }
 
   handleClick() {
@@ -26,15 +34,16 @@ export default class LibraryCard extends React.Component {
     });
   }
 
-  handleTrailer() {
-    fetchTrailer(this.props.media).then(response => {
-      this.setState({
-        trailerLink: response
-      });
+  // handleTrailer() {
+  //   const trailer = this.props.media.vidoes.results;
 
-      this.handleTrailerModal();
-    });
-  }
+  //   this.setState({
+  //     trailerKey: trailer.length ? trailer[0].key : null
+  //   })
+
+  //     this.handleTrailerModal();
+  //   });
+  // }
 
   handleTrailerModal() {
     this.setState({
@@ -44,7 +53,7 @@ export default class LibraryCard extends React.Component {
 
   render() {
     const { media, removeFromLibrary } = this.props;
-    const { clicked, trailerLink, showModal } = this.state;
+    const { clicked, showModal, trailerKey } = this.state;
 
     return (
       <div>
@@ -53,8 +62,8 @@ export default class LibraryCard extends React.Component {
             ? <LibraryCardBack
                 media={media}
                 removeFromLibrary={removeFromLibrary}
-                handleTrailer={this.handleTrailer}
-                trailerLink={trailerLink}
+                trailerKey={trailerKey}
+                handleTrailerModal={this.handleTrailerModal}
               />
             : <LibraryCardFront media={media} />}
         </div>
@@ -65,7 +74,7 @@ export default class LibraryCard extends React.Component {
           overlayClassName="trailer-modal-overlay"
         >
           <div className="video-wrapper">
-            <TrailerModal trailerLink={trailerLink} />
+            <TrailerModal trailerKey={trailerKey} />
           </div>
         </ReactModal>
       </div>
@@ -76,4 +85,5 @@ export default class LibraryCard extends React.Component {
 LibraryCard.propTypes = {
   media: PropTypes.object.isRequired,
   removeFromLibrary: PropTypes.func.isRequired
+  // trailerKey: PropTypes.string.isRequired
 };
