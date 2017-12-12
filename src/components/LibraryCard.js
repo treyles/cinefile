@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
-import { fetchTrailer } from '../utils/Api';
 import LibraryCardFront from './LibraryCardFront';
 import LibraryCardBack from './LibraryCardBack';
 import TrailerModal from './TrailerModal';
@@ -17,7 +16,6 @@ export default class LibraryCard extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleTrailerModal = this.handleTrailerModal.bind(this);
-    // this.handleTrailer = this.handleTrailer.bind(this);
   }
 
   componentDidMount() {
@@ -33,17 +31,6 @@ export default class LibraryCard extends React.Component {
       clicked: !this.state.clicked
     });
   }
-
-  // handleTrailer() {
-  //   const trailer = this.props.media.vidoes.results;
-
-  //   this.setState({
-  //     trailerKey: trailer.length ? trailer[0].key : null
-  //   })
-
-  //     this.handleTrailerModal();
-  //   });
-  // }
 
   handleTrailerModal() {
     this.setState({
@@ -85,5 +72,4 @@ export default class LibraryCard extends React.Component {
 LibraryCard.propTypes = {
   media: PropTypes.object.isRequired,
   removeFromLibrary: PropTypes.func.isRequired
-  // trailerKey: PropTypes.string.isRequired
 };

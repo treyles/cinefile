@@ -2,14 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import truncate from 'lodash/truncate';
 import Icon from '../utils/Icon';
-// import { fetchImdbId } from '../utils/Api';
 
 export default class LibraryCardBack extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   trailerKey: this.props.trailerKeay
-    // }
 
     this.handleClick = this.handleClick.bind(this);
   }

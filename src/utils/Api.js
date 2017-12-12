@@ -11,32 +11,32 @@ export function fetchMediaSearch(title) {
   return axios.get(encodedURI).then(response => response.data.results);
 }
 
-export function fetchImdbLink(media) {
-  let encodedURI;
+// export function fetchImdbLink(media) {
+//   let encodedURI;
 
-  if (media.title) {
-    encodedURI = window.encodeURI(
-      `https://api.themoviedb.org/3/movie/${media.id}?api_key=529e1b3a6041a4b14bb6b7e328aad991`
-    );
+//   if (media.title) {
+//     encodedURI = window.encodeURI(
+//       `https://api.themoviedb.org/3/movie/${media.id}?api_key=529e1b3a6041a4b14bb6b7e328aad991`
+//     );
 
-    return axios
-      .get(encodedURI)
-      .then(
-        response => `http://www.imdb.com/title/${response.data.imdb_id}`
-      );
-  }
+//     return axios
+//       .get(encodedURI)
+//       .then(
+//         response => `http://www.imdb.com/title/${response.data.imdb_id}`
+//       );
+//   }
 
-  encodedURI = window.encodeURI(
-    `http://api.themoviedb.org/3/tv/${media.id}?api_key=529e1b3a6041a4b14bb6b7e328aad991&append_to_response=external_ids`
-  );
+//   encodedURI = window.encodeURI(
+//     `http://api.themoviedb.org/3/tv/${media.id}?api_key=529e1b3a6041a4b14bb6b7e328aad991&append_to_response=external_ids`
+//   );
 
-  return axios
-    .get(encodedURI)
-    .then(
-      response =>
-        `http://www.imdb.com/title/${response.data.external_ids.imdb_id}`
-    );
-}
+//   return axios
+//     .get(encodedURI)
+//     .then(
+//       response =>
+//         `http://www.imdb.com/title/${response.data.external_ids.imdb_id}`
+//     );
+// }
 
 export function fetchMediaDetails(media) {
   let encodedURI;
@@ -56,35 +56,35 @@ export function fetchMediaDetails(media) {
   return axios.get(encodedURI).then(response => response.data);
 }
 
-export function fetchTrailer(media) {
-  let encodedURI;
+// export function fetchTrailer(media) {
+//   let encodedURI;
 
-  if (media.title) {
-    encodedURI = window.encodeURI(
-      `https://api.themoviedb.org/3/movie/${media.id}/videos?api_key=529e1b3a6041a4b14bb6b7e328aad991&language=en-US`
-    );
+//   if (media.title) {
+//     encodedURI = window.encodeURI(
+//       `https://api.themoviedb.org/3/movie/${media.id}/videos?api_key=529e1b3a6041a4b14bb6b7e328aad991&language=en-US`
+//     );
 
-    return axios.get(encodedURI).then(response => {
-      if (response.data.results.length) {
-        return `http://www.youtube.com/embed/${response.data.results[0].key}?controls=1&showinfo=0&autoplay=1`;
-      }
+//     return axios.get(encodedURI).then(response => {
+//       if (response.data.results.length) {
+//         return `http://www.youtube.com/embed/${response.data.results[0].key}?controls=1&showinfo=0&autoplay=1`;
+//       }
 
-      return 'no trailer';
-    });
-  }
+//       return 'no trailer';
+//     });
+//   }
 
-  encodedURI = window.encodeURI(
-    `https://api.themoviedb.org/3/tv/${media.id}/videos?api_key=529e1b3a6041a4b14bb6b7e328aad991&language=en-US`
-  );
+//   encodedURI = window.encodeURI(
+//     `https://api.themoviedb.org/3/tv/${media.id}/videos?api_key=529e1b3a6041a4b14bb6b7e328aad991&language=en-US`
+//   );
 
-  return axios.get(encodedURI).then(response => {
-    if (response.data.results.length) {
-      return `http://www.youtube.com/embed/${response.data.results[0].key}?controls=1&showinfo=0&autoplay=1`;
-    }
+//   return axios.get(encodedURI).then(response => {
+//     if (response.data.results.length) {
+//       return `http://www.youtube.com/embed/${response.data.results[0].key}?controls=1&showinfo=0&autoplay=1`;
+//     }
 
-    return 'no trailer';
-  });
-}
+//     return 'no trailer';
+//   });
+// }
 
 // TODO: make options variables that include '&sort_by=' etc.
 export function fetchDiscover(obj) {

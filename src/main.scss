@@ -440,6 +440,7 @@ h1,h2,h3 {
             width: 100px; // "w154", "w185",
             height: 150px;
             object-fit: cover;
+            color: #fff;
             // image-rendering: pixelated;
             box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.3);
           }
@@ -589,13 +590,50 @@ h1,h2,h3 {
   .load-more {
     flex-shrink: 0;
     display: block;
-    background-color: lightgray;
+    background-color: #B2B2B2;
+    font-family: 'faktpro-semibold', sans-serif;
+    line-height: normal;
+    color: #fff;
     border: none;
     outline: none;
     width: 80%;
     height: 50px;
     border-radius: 5px;
     margin: 30px 150px 0 150px;
+    cursor: pointer;
+    transition: background-color .4s;
+
+    &:hover {
+      background-color: darken(#B2B2B2, 10%);
+    }
+
+    &.loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      cursor: default;
+
+      div {
+        background-color: lightgray;
+        height: 100%;
+        width: 6px;
+        height: 40px;
+        margin: 0 1px;
+        display: inline-block;
+        animation: sk-stretchdelay 1.2s infinite ease-in-out;
+      }
+
+      .rect2 { animation-delay: -1.1s; }
+      .rect3 { animation-delay: -1.0s; }
+      .rect4 { animation-delay: -0.9s; }
+      .rect5 { animation-delay: -0.8s; }
+
+      @keyframes sk-stretchdelay {
+        0%, 40%, 100% { transform: scaleY(0.4); }  
+        20% { transform: scaleY(1.0); }
+      }
+    }
   }
 
   .options {
@@ -951,5 +989,3 @@ h1,h2,h3 {
   background-color: rgba(0,0,0, 0.1);
   // background-color: none;
 }
-
-

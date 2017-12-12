@@ -6,6 +6,42 @@ import OptionsModal from './OptionsModal';
 import { fetchDiscover } from '../utils/Api';
 import Icon from '../utils/Icon';
 
+function ShowMoreButton({ query, pages, matches, handleShowMore }) {
+  if (query.page !== pages && matches.length !== 0) {
+    return (
+      <button className="load-more" onClick={() => handleShowMore()}>
+        <h2>Show More</h2>
+      </button>
+    );
+  }
+  return null;
+}
+
+ShowMoreButton.propTypes = {
+  query: PropTypes.shape({
+    page: PropTypes.number.isRequired
+  }).isRequired,
+  pages: PropTypes.number,
+  matches: PropTypes.array.isRequired,
+  handleShowMore: PropTypes.func.isRequired
+};
+
+ShowMoreButton.defaultProps = {
+  pages: 1
+};
+
+function Loader() {
+  return (
+    <div className="load-more loader">
+      <div className="rect1" />
+      <div className="rect2" />
+      <div className="rect3" />
+      <div className="rect4" />
+      <div className="rect5" />
+    </div>
+  );
+}
+
 export default class Discover extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +49,7 @@ export default class Discover extends React.Component {
       matches: [],
       pages: null,
       showModal: false,
+      showMoreButton: true,
       query: {
         mediaType: 'movie',
         page: 1,
@@ -32,10 +69,6 @@ export default class Discover extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     this.handleQueryUpdate(this.state.query);
-  }
-
-  componentDidUpdate() {
-    // turn off loader here
   }
 
   // filter to return media not already in library
@@ -61,6 +94,9 @@ export default class Discover extends React.Component {
   handleShowMore() {
     const { matches, query } = this.state;
 
+    // hide button and render loader
+    this.setState({ showMoreButton: false });
+
     // copy object without mutating
     const newQuery = Object.assign({}, query, {
       page: query.page + 1
@@ -68,11 +104,14 @@ export default class Discover extends React.Component {
 
     fetchDiscover(newQuery).then(response => {
       const newMatches = this.handleResultFilter(response.results);
-
       this.setState({
         matches: matches.concat(newMatches),
         query: newQuery
       });
+
+      // bring back button after 8 seconds
+      // due to ajax request limits we need to slow down consecutive calls
+      setTimeout(() => this.setState({ showMoreButton: true }), 8000);
     });
   }
 
@@ -83,7 +122,13 @@ export default class Discover extends React.Component {
   }
 
   render() {
-    const { matches, query, pages, showModal } = this.state;
+    const {
+      matches,
+      query,
+      pages,
+      showModal,
+      showMoreButton
+    } = this.state;
     const { addToLibrary } = this.props;
 
     return (
@@ -99,11 +144,14 @@ export default class Discover extends React.Component {
             currentPage={query.page}
           />
         ))}
-        {query.page !== pages && matches.length !== 0
-          ? <button className="load-more" onClick={this.handleShowMore}>
-              Show More
-            </button>
-          : null}
+        {showMoreButton
+          ? <ShowMoreButton
+              query={query}
+              pages={pages}
+              matches={matches}
+              handleShowMore={this.handleShowMore}
+            />
+          : <Loader />}
         <ReactModal
           isOpen={showModal}
           onRequestClose={this.handleOptionsModal}

@@ -30,6 +30,7 @@ export default class DiscoverCard extends React.Component {
     }
 
     fetchMediaDetails(this.props.media).then(response => {
+      // TODO: abstract out to new component above? return obj
       let mediaCredits;
       const credit = response.credits;
       const trailer = response.videos.results;
@@ -44,6 +45,7 @@ export default class DiscoverCard extends React.Component {
       if (response.title) {
         mediaCredits = {
           header: credit.crew.length ? getDirector[0].name : 'n/a',
+          // TODO: get smallest order #, cant rely on < 3
           footer: credit.cast.length ? getLead[0].name : 'n/a'
         };
       } else {
