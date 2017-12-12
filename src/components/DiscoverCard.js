@@ -77,6 +77,19 @@ export default class DiscoverCard extends React.Component {
     const { showModal, trailerLink, credits } = this.state;
     const { media } = this.props;
 
+    // conditional statements to differentiate movies and tv show details
+    // media.title is unique to movies
+    const title = media.title ? media.title : media.name;
+    const release = media.title
+      ? media.release_date.substring(0, 4)
+      : media.first_air_date.substring(0, 4);
+    const creditTypeHeader = media.title ? 'Director:' : 'Creator:';
+    const creditTypeFooter = media.title ? 'Lead:' : 'Seasons:';
+
+    const trailerModalStyle = trailerLink === 'no trailer'
+      ? 'trailer-modal unavailable'
+      : 'trailer-modal';
+
     return (
       <div className="discover-card">
         <div className="poster-info-container">
@@ -84,7 +97,7 @@ export default class DiscoverCard extends React.Component {
             <div className="img-container">
               <img
                 src={`https://image.tmdb.org/t/p/w154${media.poster_path}`}
-                alt={`${media.title ? media.title : media.name} poster`}
+                alt={`${title} poster`}
               />
               <span className="rating-tag">
                 <h3>{media.vote_average.toFixed(1)}</h3>
@@ -93,20 +106,16 @@ export default class DiscoverCard extends React.Component {
           </div>
           <div className="discover-info">
             <h2>
-              {truncate(media.title ? media.title : media.name, {
+              {truncate(title, {
                 length: 40,
                 separator: ' '
               })}
             </h2>
             <h3>
-              <span>{media.title ? 'Director:' : 'Creator:'}</span>
-              {' '}
-              {credits.header}
+              <span>{creditTypeHeader}</span> {credits.header}
             </h3>
             <h3>
-              {typeof media.release_date === 'string'
-                ? media.release_date.substring(0, 4)
-                : media.first_air_date.substring(0, 4)}
+              {release}
             </h3>
             <p>
               {truncate(media.overview, { length: 100, separator: ' ' })}
@@ -117,9 +126,7 @@ export default class DiscoverCard extends React.Component {
         {/* TODO: make these divs buttons? */}
         <div className="discover-footer">
           <h3>
-            <span>{media.title ? 'Lead:' : 'Seasons:'}</span>
-            {' '}
-            {credits.footer}
+            <span>{creditTypeFooter}</span> {credits.footer}
           </h3>
           <div className="buttons">
             <div className="imdb" onClick={this.handleImdbLink}>
@@ -141,7 +148,7 @@ export default class DiscoverCard extends React.Component {
         <ReactModal
           isOpen={showModal}
           onRequestClose={this.handleTrailerModal}
-          className="trailer-modal"
+          className={trailerModalStyle}
           overlayClassName="trailer-modal-overlay"
         >
           <div className="video-wrapper">

@@ -450,7 +450,7 @@ h1,h2,h3 {
             align-items: center;
             justify-content: center;
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             background-color: $main-blue;
             width: 28px;
             height: 28px;
@@ -793,6 +793,11 @@ h1,h2,h3 {
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
+
+  &.unavailable {
+    width: 200px;
+    background-color: green;
+  }
 }
 
 .trailer-modal-overlay {
