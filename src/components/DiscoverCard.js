@@ -25,9 +25,9 @@ export default class DiscoverCard extends React.Component {
 
   componentDidMount() {
     // scroll to top if new query (or if on first page)
-    if (this.props.currentPage === 1) {
-      window.scrollTo(0, 0);
-    }
+    // if (this.props.currentPage === 1) {
+    //   window.scrollTo(0, 0);
+    // }
 
     fetchMediaDetails(this.props.media).then(response => {
       // TODO: abstract out to new component above? return obj
@@ -156,6 +156,6 @@ DiscoverCard.propTypes = {
     title: PropTypes.string,
     release_date: PropTypes.string
   }).isRequired,
-  addToLibrary: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired
+  addToLibrary: PropTypes.func.isRequired
+  // currentPage: PropTypes.number.isRequired
 };

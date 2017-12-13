@@ -10,14 +10,14 @@ export default class OptionsModal extends React.Component {
   constructor(props) {
     super(props);
     this.currentYear = new Date().getFullYear();
-    this.state = {
-      optionsData: data,
-      active: 'movie',
-      rating: 7,
-      releaseDates: [1960, this.currentYear],
-      genres: [{ value: 878, label: 'Science Fiction' }],
-      sort: { value: 'popularity.desc', label: 'Popularity Descending' }
-    };
+    // this.state = {
+    //   active: 'movie',
+    //   rating: 7,
+    //   releaseDates: [1960, this.currentYear],
+    //   genres: [{ value: 878, label: 'Science Fiction' }],
+    //   sort: { value: 'popularity.desc', label: 'Popularity Descending' }
+    // };
+    this.state = JSON.parse(localStorage.getItem('discover-query'))
 
     this.handleActiveTab = this.handleActiveTab.bind(this);
     this.handleRatingValue = this.handleRatingValue.bind(this);
@@ -29,10 +29,15 @@ export default class OptionsModal extends React.Component {
   }
 
   handleActiveTab(e) {
+    // this.setState({
+    //   active: e.target.className,
+    //   genres: [],
+    //   sort: ''
+    // });
     this.setState({
-      active: e.target.className,
+      mediaType: e.target.className,
       genres: [],
-      sort: ''
+      sort: {}
     });
   }
 
@@ -60,12 +65,31 @@ export default class OptionsModal extends React.Component {
     );
   }
 
+        // mediaType: 'movie',
+        // page: 1,
+        // sort: 'popularity.desc',
+        // releaseFrom: 1960,
+        // releaseTo: 2017,
+        // score: 7,
+        // genre: '878'
+
   handleSubmit() {
-    const { active, rating, releaseDates, genres, sort } = this.state;
+    const { mediaType, score, releaseDates, genres, sort } = this.state;
     const { handleQueryUpdate, handleOptionsModal } = this.props;
 
     // close modal on submit
     handleOptionsModal();
+
+    const lsQuery = JSON.parse(localStorage.getItem('discover-query'));
+
+    const newQuery = Object.assign({}, lsQuery, {
+      mediaType: mediaType !== lsQuery.mediaType ? mediaType : lsQuery.mediaType,
+      page: 1,
+      sort: Object.keys(sort).length ? sort.value : lsQuery.sort,
+      releaseFrom: releaseDates.length ? releaseDates[0] : lsQuery.releaseFrom,
+      releaseTo: releaseDates.length ? releaseDates[1] : lsQuery.releaseTo,
+      score: 
+    });
 
     const query = {
       mediaType: active,
@@ -85,22 +109,24 @@ export default class OptionsModal extends React.Component {
 
   render() {
     const {
-      active,
+      mediaType,
       rating,
       releaseDates,
       genres,
-      optionsData,
+      // optionsData,
       sort
     } = this.state;
     const { handleOptionsModal } = this.props;
 
-    const mediaGenres = active === 'movie'
-      ? optionsData.moviesGenres
-      : optionsData.tvGenres;
+    // data for genre select
+    const mediaGenres = mediaType === 'movie'
+      ? data.moviesGenres
+      : data.tvGenres;
 
-    const mediaSort = active === 'movie'
-      ? optionsData.moviesSort
-      : optionsData.tvSort;
+    // data for sort by select
+    const mediaSort = mediaType === 'movie'
+      ? data.moviesSort
+      : data.tvSort;
 
     const trackStyle = [{ backgroundColor: '#0f96ea' }]; // #0f96ea #007cd9
     const handleStyle = {
@@ -115,13 +141,13 @@ export default class OptionsModal extends React.Component {
     return (
       <div>
         <button
-          className={`movie${active === 'movie' ? ' active' : ''}`}
+          className={`movie${mediaType === 'movie' ? ' active' : ''}`}
           onClick={this.handleActiveTab}
         >
           Movies
         </button>
         <button
-          className={`tv${active === 'tv' ? ' active' : ''}`}
+          className={`tv${mediaType === 'tv' ? ' active' : ''}`}
           onClick={this.handleActiveTab}
         >
           Shows

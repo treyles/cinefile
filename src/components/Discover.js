@@ -19,7 +19,7 @@ function ShowMoreButton({ query, pages, matches, handleShowMore }) {
 
 ShowMoreButton.propTypes = {
   query: PropTypes.shape({
-    page: PropTypes.number.isRequired
+    page: PropTypes.number
   }).isRequired,
   pages: PropTypes.number,
   matches: PropTypes.array.isRequired,
@@ -50,7 +50,7 @@ export default class Discover extends React.Component {
       pages: null,
       showModal: false,
       showMoreButton: true,
-      query: {
+      defaultQuery: {
         mediaType: 'movie',
         page: 1,
         sort: 'popularity.desc',
@@ -58,7 +58,8 @@ export default class Discover extends React.Component {
         releaseTo: 2017,
         score: 7,
         genre: '878'
-      }
+      },
+      query: {}
     };
 
     this.handleShowMore = this.handleShowMore.bind(this);
@@ -68,7 +69,22 @@ export default class Discover extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.handleQueryUpdate(this.state.query);
+
+    const lsQuery = JSON.parse(localStorage.getItem('discover-query'));
+
+    if (lsQuery) {
+      // render last page viewed
+      this.handleQueryUpdate(lsQuery);
+    } else {
+      this.handleQueryUpdate(this.state.defaultQuery);
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem(
+      'discover-query',
+      JSON.stringify(nextState.query)
+    );
   }
 
   // filter to return media not already in library
@@ -79,14 +95,14 @@ export default class Discover extends React.Component {
     );
   }
 
-  handleQueryUpdate(query) {
-    fetchDiscover(query).then(response => {
-      const matches = this.handleResultFilter(response.results);
+  handleQueryUpdate(newQuery) {
+    fetchDiscover(newQuery).then(response => {
+      const newMatches = this.handleResultFilter(response.results);
 
       this.setState({
-        matches,
+        matches: newMatches,
         pages: response.total_pages,
-        query: query
+        query: newQuery
       });
     });
   }
@@ -95,7 +111,7 @@ export default class Discover extends React.Component {
     const { matches, query } = this.state;
 
     // hide button and render loader
-    this.setState({ showMoreButton: false });
+    this.toggleShowMoreButton();
 
     // copy object without mutating
     const newQuery = Object.assign({}, query, {
@@ -111,7 +127,17 @@ export default class Discover extends React.Component {
 
       // bring back button after 8 seconds
       // due to ajax request limits we need to slow down consecutive calls
-      setTimeout(() => this.setState({ showMoreButton: true }), 8000);
+
+      // TODO: needs clear interval when unmounting. (error: can only
+      // update a mounted or mounting component)
+      // https://stackoverflow.com/questions/29526739/stopping-a-timeout-in-reactjs
+      setTimeout(() => this.toggleShowMoreButton(), 8000);
+    });
+  }
+
+  toggleShowMoreButton() {
+    this.setState({
+      showMoreButton: !this.state.showMoreButton
     });
   }
 
@@ -141,7 +167,7 @@ export default class Discover extends React.Component {
             key={media.id}
             media={media}
             addToLibrary={addToLibrary}
-            currentPage={query.page}
+            // currentPage={query.page}
           />
         ))}
         {showMoreButton
