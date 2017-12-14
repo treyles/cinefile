@@ -65,12 +65,10 @@ export default class OptionsModal extends React.Component {
 
     const newQuery = Object.assign({}, this.state, {
       page: 1,
-      // genre: genre.length ? this.lsQuery.genre
-      sort: sort === null ? this.lsQuery.sort : this.state.sort
+      sort: sort === null ? this.lsQuery.sort : sort
     });
 
     handleQueryUpdate(newQuery);
-    // console.log();
   }
 
   render() {

@@ -78,7 +78,7 @@ export default class Discover extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.ismounted = true;
+    this.mounted = true;
 
     const lsQuery = JSON.parse(localStorage.getItem('discover-query'));
 
@@ -98,7 +98,8 @@ export default class Discover extends React.Component {
   }
 
   componentWillUnmount() {
-    this.ismounted = false;
+    this.mounted = false;
+    clearTimeout(this.showMoreTimeout);
   }
 
   // filter to return media not already in library
@@ -140,12 +141,11 @@ export default class Discover extends React.Component {
       });
 
       // bring back button after 8 seconds
-      // due to ajax request limits we need to slow down consecutive calls
-
-      // TODO: needs clear interval when unmounting. (error: can only
-      // update a mounted or mounting component)
-      // https://stackoverflow.com/questions/29526739/stopping-a-timeout-in-reactjs
-      setTimeout(() => this.toggleShowMoreButton(), 8000);
+      // due to api request limits we need to slow down consecutive calls
+      this.showMoreTimeout = setTimeout(
+        () => this.toggleShowMoreButton(),
+        8000
+      );
     });
   }
 
@@ -176,7 +176,7 @@ export default class Discover extends React.Component {
         <div className="options" onClick={this.handleOptionsModal}>
           <Icon icon="menu2" width="25" height="25" />
         </div>
-        {this.ismounted && !matches.length
+        {this.mounted && !matches.length
           ? <h1>Your query returned zero results</h1>
           : matches.map(media => (
               <DiscoverCard

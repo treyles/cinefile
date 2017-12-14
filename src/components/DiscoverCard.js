@@ -30,7 +30,8 @@ export default class DiscoverCard extends React.Component {
     }
 
     fetchMediaDetails(this.props.media).then(response => {
-      // TODO: abstract out to new component above? return obj
+      // TODO: REFACTOR THIS MESS
+      // abstract out to new component above? (return obj)
       let mediaCredits;
       const credit = response.credits;
       const trailer = response.videos.results;
@@ -98,14 +99,13 @@ export default class DiscoverCard extends React.Component {
             </div>
           </div>
           <div className="discover-info">
-            <h2>{truncate(title, { length: 40, separator: ' ' })}</h2>
+            <h2>{truncate(title, { length: 50, separator: ' ' })}</h2>
             <h3>
               <span>{creditTypeHeader}</span> {credits.header}
             </h3>
             <h3>{release.substring(0, 4)}</h3>
             <p>
               {truncate(media.overview, { length: 100, separator: ' ' })}
-              {media.id}
             </p>
           </div>
         </div>

@@ -9,9 +9,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      alert: null,
       library: []
     };
 
+    this.timer = null;
     this.addToLibrary = this.addToLibrary.bind(this);
     this.removeFromLibrary = this.removeFromLibrary.bind(this);
   }
@@ -19,8 +21,11 @@ export default class App extends React.Component {
   // TODO: rename 'handle'
   addToLibrary(media) {
     this.setState({
-      library: [media].concat(this.state.library)
+      library: [media].concat(this.state.library),
+      alert: 'Added to'
     });
+
+    this.alertsOff();
   }
 
   removeFromLibrary(media) {
@@ -31,13 +36,21 @@ export default class App extends React.Component {
       this.setState({
         library: library
           .slice(0, mediaIndex)
-          .concat(library.slice(mediaIndex + 1))
+          .concat(library.slice(mediaIndex + 1)),
+        alert: 'Removed from'
       });
     }
+
+    this.alertsOff();
+  }
+
+  alertsOff() {
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => this.setState({ alert: false }), 4000);
   }
 
   render() {
-    const { library } = this.state;
+    const { library, alert } = this.state;
 
     return (
       <BrowserRouter>
@@ -71,6 +84,9 @@ export default class App extends React.Component {
               render={() => <p className="not-found">Not Found!</p>}
             />
           </Switch>
+          <div className={`alert${alert ? ' active' : ''}`}>
+            {alert && `${alert} library`}
+          </div>
         </div>
       </BrowserRouter>
     );
