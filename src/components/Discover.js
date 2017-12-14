@@ -45,19 +45,28 @@ function Loader() {
 export default class Discover extends React.Component {
   constructor(props) {
     super(props);
+    this.currentYear = new Date().getFullYear();
     this.state = {
       matches: [],
       pages: null,
       showModal: false,
       showMoreButton: true,
+      // defaultQuery: {
+      //   mediaType: 'movie',
+      //   page: 1,
+      //   sort: 'popularity.desc',
+      //   releaseFrom: 1960,
+      //   releaseTo: 2017,
+      //   score: 7,
+      //   genre: '878'
+      // },
       defaultQuery: {
         mediaType: 'movie',
         page: 1,
-        sort: 'popularity.desc',
-        releaseFrom: 1960,
-        releaseTo: 2017,
         score: 7,
-        genre: '878'
+        sort: { value: 'popularity.desc', label: 'Popularity Descending' },
+        releaseDates: [1960, this.currentYear],
+        genre: [{ value: 878, label: 'Science Fiction' }]
       },
       query: {}
     };
@@ -69,6 +78,7 @@ export default class Discover extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.ismounted = true;
 
     const lsQuery = JSON.parse(localStorage.getItem('discover-query'));
 
@@ -85,6 +95,10 @@ export default class Discover extends React.Component {
       'discover-query',
       JSON.stringify(nextState.query)
     );
+  }
+
+  componentWillUnmount() {
+    this.ismounted = false;
   }
 
   // filter to return media not already in library
@@ -162,14 +176,16 @@ export default class Discover extends React.Component {
         <div className="options" onClick={this.handleOptionsModal}>
           <Icon icon="menu2" width="25" height="25" />
         </div>
-        {matches.map(media => (
-          <DiscoverCard
-            key={media.id}
-            media={media}
-            addToLibrary={addToLibrary}
-            // currentPage={query.page}
-          />
-        ))}
+        {this.ismounted && !matches.length
+          ? <h1>Your query returned zero results</h1>
+          : matches.map(media => (
+              <DiscoverCard
+                key={media.id}
+                media={media}
+                addToLibrary={addToLibrary}
+                currentPage={query.page}
+              />
+            ))}
         {showMoreButton
           ? <ShowMoreButton
               query={query}

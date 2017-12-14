@@ -405,6 +405,12 @@ h1,h2,h3 {
   margin-top: 100px;
   margin-bottom: 30px;
 
+  h1 {
+    font-family: 'calibre-semibold', sans-serif;
+    margin-top: 100px;
+    color: lighten($dark-text, 7%);
+  }
+
   .discover-card {
     width: 350px;
     margin: 30px 20px;

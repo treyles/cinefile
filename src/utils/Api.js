@@ -92,13 +92,19 @@ export function fetchDiscover(obj) {
   const tmdbAPI = 'https://api.themoviedb.org/3/';
   let encodedURI;
 
+  const releaseFrom = obj.releaseDates[0];
+  const releaseTo = obj.releaseDates[1] === obj.releaseDates[0]
+    ? obj.releaseDates[1] + 1
+    : obj.releaseDates[1];
+  const genres = obj.genre.map(genre => genre.value).toString();
+
   if (obj.mediaType === 'movie') {
     encodedURI = window.encodeURI(
-      `${tmdbAPI}discover/movie${key}&sort_by=${obj.sort}&primary_release_date.gte=${obj.releaseFrom}&primary_release_date.lte=${obj.releaseTo}&vote_average.gte=${obj.score}&with_genres=${obj.genre}&page=${obj.page}&vote_count.gte=20`
+      `${tmdbAPI}discover/movie${key}&sort_by=${obj.sort.value}&primary_release_date.gte=${releaseFrom}&primary_release_date.lte=${releaseTo}&vote_average.gte=${obj.score}&with_genres=${genres}&page=${obj.page}&vote_count.gte=20`
     );
   } else {
     encodedURI = window.encodeURI(
-      `${tmdbAPI}discover/tv${key}&sort_by=${obj.sort}&first_air_date.gte=${obj.releaseFrom}&first_air_date.lte=${obj.releaseTo}&vote_average.gte=${obj.score}&with_genres=${obj.genre}&page=${obj.page}&vote_count.gte=20`
+      `${tmdbAPI}discover/tv${key}&sort_by=${obj.sort.value}&first_air_date.gte=${releaseFrom}&first_air_date.lte=${releaseTo}&vote_average.gte=${obj.score}&with_genres=${genres}&page=${obj.page}&vote_count.gte=20`
     );
   }
 
