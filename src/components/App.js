@@ -84,7 +84,7 @@ export default class App extends React.Component {
               render={() => <p className="not-found">Not Found!</p>}
             />
           </Switch>
-          <div className={`alert${alert ? ' active' : ''}`}>
+          <div className={`alert ${alert && 'active'}`}>
             {alert && `${alert} library`}
           </div>
         </div>

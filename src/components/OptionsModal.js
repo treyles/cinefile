@@ -103,6 +103,7 @@ export default class OptionsModal extends React.Component {
 
     return (
       <div>
+        {/* TODO: what's up with spacing in className here? */}
         <button
           className={`movie${mediaType === 'movie' ? ' active' : ''}`}
           onClick={this.handleActiveTab}

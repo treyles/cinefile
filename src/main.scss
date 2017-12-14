@@ -105,7 +105,7 @@ h1,h2,h3 {
 }
 
 .alert {
-  z-index: 99;
+  z-index: 1;
   visibility: hidden;
   display: flex;
   align-items: center;
@@ -121,6 +121,7 @@ h1,h2,h3 {
   padding: 10px 18px;
   opacity: 0;
   transition: opacity .5s ease;
+  pointer-events: none;
 
     &.active {
       visibility: visible;
