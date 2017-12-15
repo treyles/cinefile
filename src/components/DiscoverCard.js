@@ -21,6 +21,7 @@ export default class DiscoverCard extends React.Component {
     };
 
     this.handleTrailerModal = this.handleTrailerModal.bind(this);
+    this.handleAddToLibrary = this.handleAddToLibrary.bind(this);
   }
 
   componentDidMount() {
@@ -73,9 +74,16 @@ export default class DiscoverCard extends React.Component {
     });
   }
 
+  handleAddToLibrary() {
+    const { media, addToLibrary, handleRemoveMatch } = this.props;
+
+    addToLibrary(this.state.data);
+    handleRemoveMatch(media);
+  }
+
   render() {
-    const { showModal, trailerKey, data, credits, imdbId } = this.state;
-    const { media, addToLibrary } = this.props;
+    const { showModal, trailerKey, credits, imdbId } = this.state;
+    const { media } = this.props;
 
     const title = media.title ? media.title : media.name;
     const release = media.title
@@ -127,12 +135,7 @@ export default class DiscoverCard extends React.Component {
                   <span className="trailer-tooltip">Trailer</span>
                 </div>
               : null}
-            <div
-              className="add"
-              onClick={() => {
-                addToLibrary(data);
-              }}
-            >
+            <div className="add" onClick={this.handleAddToLibrary}>
               <Icon icon="archive" width="18" height="18" />
               <span className="add-tooltip">Add to library</span>
             </div>
@@ -157,5 +160,6 @@ DiscoverCard.propTypes = {
     release_date: PropTypes.string
   }).isRequired,
   addToLibrary: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired
+  currentPage: PropTypes.number.isRequired,
+  handleRemoveMatch: PropTypes.func.isRequired
 };

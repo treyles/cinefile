@@ -6,89 +6,48 @@ import OptionsModal from './OptionsModal';
 import { fetchDiscover } from '../utils/Api';
 import Icon from '../utils/Icon';
 
-function ShowMoreButton({ query, pages, matches, handleShowMore }) {
-  if (query.page !== pages && matches.length !== 0) {
-    return (
-      <button className="load-more" onClick={() => handleShowMore()}>
-        <h2>Show More</h2>
-      </button>
-    );
-  }
-  return null;
-}
-
-ShowMoreButton.propTypes = {
-  query: PropTypes.shape({
-    page: PropTypes.number
-  }).isRequired,
-  pages: PropTypes.number,
-  matches: PropTypes.array.isRequired,
-  handleShowMore: PropTypes.func.isRequired
+const defaultQuery = {
+  page: 1,
+  score: 7,
+  mediaType: 'movie',
+  sort: { value: 'popularity.desc', label: 'Popularity Descending' },
+  releaseDates: [1960, new Date().getFullYear()],
+  genre: [{ value: 878, label: 'Science Fiction' }]
 };
-
-ShowMoreButton.defaultProps = {
-  pages: 1
-};
-
-function Loader() {
-  return (
-    <div className="load-more loader">
-      <div className="rect1" />
-      <div className="rect2" />
-      <div className="rect3" />
-      <div className="rect4" />
-      <div className="rect5" />
-    </div>
-  );
-}
 
 export default class Discover extends React.Component {
   constructor(props) {
     super(props);
-    this.currentYear = new Date().getFullYear();
     this.state = {
       matches: [],
       pages: null,
       showModal: false,
       showMoreButton: true,
-      // defaultQuery: {
-      //   mediaType: 'movie',
-      //   page: 1,
-      //   sort: 'popularity.desc',
-      //   releaseFrom: 1960,
-      //   releaseTo: 2017,
-      //   score: 7,
-      //   genre: '878'
-      // },
-      defaultQuery: {
-        mediaType: 'movie',
-        page: 1,
-        score: 7,
-        sort: { value: 'popularity.desc', label: 'Popularity Descending' },
-        releaseDates: [1960, this.currentYear],
-        genre: [{ value: 878, label: 'Science Fiction' }]
-      },
       query: {}
     };
 
+    this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
     this.handleShowMore = this.handleShowMore.bind(this);
     this.handleOptionsModal = this.handleOptionsModal.bind(this);
     this.handleQueryUpdate = this.handleQueryUpdate.bind(this);
+    this.handleRemoveMatch = this.handleRemoveMatch.bind(this);
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
     this.mounted = true;
+    window.scrollTo(0, 0);
 
-    const lsQuery = JSON.parse(localStorage.getItem('discover-query'));
-
-    if (lsQuery) {
+    if (this.lsQuery) {
       // render last page viewed
-      this.handleQueryUpdate(lsQuery);
+      this.handleQueryUpdate(this.lsQuery);
     } else {
-      this.handleQueryUpdate(this.state.defaultQuery);
+      this.handleQueryUpdate(defaultQuery);
     }
   }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(nextState.matches);
+  // }
 
   componentWillUpdate(nextProps, nextState) {
     localStorage.setItem(
@@ -103,16 +62,29 @@ export default class Discover extends React.Component {
   }
 
   // filter to return media not already in library
-  handleResultFilter(results) {
+  filterMatches(results) {
     return results.filter(
       result =>
         this.props.library.findIndex(el => el.id === result.id) === -1
     );
   }
 
+  handleRemoveMatch(media) {
+    const { matches } = this.state;
+    const mediaIndex = matches.indexOf(media);
+
+    if (mediaIndex > -1) {
+      this.setState({
+        matches: matches
+          .slice(0, mediaIndex)
+          .concat(matches.slice(mediaIndex + 1))
+      });
+    }
+  }
+
   handleQueryUpdate(newQuery) {
     fetchDiscover(newQuery).then(response => {
-      const newMatches = this.handleResultFilter(response.results);
+      const newMatches = this.filterMatches(response.results);
 
       this.setState({
         matches: newMatches,
@@ -134,7 +106,7 @@ export default class Discover extends React.Component {
     });
 
     fetchDiscover(newQuery).then(response => {
-      const newMatches = this.handleResultFilter(response.results);
+      const newMatches = this.filterMatches(response.results);
       this.setState({
         matches: matches.concat(newMatches),
         query: newQuery
@@ -161,15 +133,41 @@ export default class Discover extends React.Component {
     });
   }
 
+  renderShowButton() {
+    const { query, pages, matches } = this.state;
+
+    if (matches.length) {
+      if (query.page === pages) {
+        return (
+          <div className="load-more end-list">
+            <h2>You have reached the end of the list</h2>
+          </div>
+        );
+      }
+
+      return (
+        <button className="load-more" onClick={this.handleShowMore}>
+          <h2>Show More</h2>
+        </button>
+      );
+    }
+
+    return null;
+  }
+
   render() {
-    const {
-      matches,
-      query,
-      pages,
-      showModal,
-      showMoreButton
-    } = this.state;
+    const { matches, query, showModal, showMoreButton } = this.state;
     const { addToLibrary } = this.props;
+
+    const loader = (
+      <div className="load-more loader">
+        <div className="rect1" />
+        <div className="rect2" />
+        <div className="rect3" />
+        <div className="rect4" />
+        <div className="rect5" />
+      </div>
+    );
 
     return (
       <div className="discover">
@@ -184,16 +182,10 @@ export default class Discover extends React.Component {
                 media={media}
                 addToLibrary={addToLibrary}
                 currentPage={query.page}
+                handleRemoveMatch={this.handleRemoveMatch}
               />
             ))}
-        {showMoreButton
-          ? <ShowMoreButton
-              query={query}
-              pages={pages}
-              matches={matches}
-              handleShowMore={this.handleShowMore}
-            />
-          : <Loader />}
+        {showMoreButton ? this.renderShowButton() : loader}
         <ReactModal
           isOpen={showModal}
           onRequestClose={this.handleOptionsModal}

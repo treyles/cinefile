@@ -9,7 +9,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      alert: null,
+      alert: false,
       library: []
     };
 
@@ -25,7 +25,7 @@ export default class App extends React.Component {
       alert: 'Added to'
     });
 
-    this.alertsOff();
+    this.startAlertTimer();
   }
 
   removeFromLibrary(media) {
@@ -41,10 +41,10 @@ export default class App extends React.Component {
       });
     }
 
-    this.alertsOff();
+    this.startAlertTimer();
   }
 
-  alertsOff() {
+  startAlertTimer() {
     clearTimeout(this.timer);
     this.timer = setTimeout(() => this.setState({ alert: false }), 4000);
   }

@@ -111,14 +111,14 @@ h1,h2,h3 {
   align-items: center;
   justify-content: center;
   position: fixed;
-  // width: 130px;
+  width: 180px;
   bottom: 20px;
   left: 20px;
   background-color: $dark-text;
   font-family: 'faktpro-normal', sans-serif;
   color: #fff;
   border-radius: 3px;
-  padding: 10px 18px;
+  padding: 10px 0px;
   opacity: 0;
   transition: opacity .5s ease;
   pointer-events: none;
@@ -695,6 +695,15 @@ h1,h2,h3 {
         0%, 40%, 100% { transform: scaleY(0.4); }  
         20% { transform: scaleY(1.0); }
       }
+    }
+
+    &.end-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      cursor: default;
+      color: lighten($light-text, 15%);
     }
   }
 

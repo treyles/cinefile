@@ -9,10 +9,8 @@ import data from '../data/options.json';
 export default class OptionsModal extends React.Component {
   constructor(props) {
     super(props);
-
     this.currentYear = new Date().getFullYear();
     this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
-
     this.state = this.lsQuery;
 
     this.handleActiveTab = this.handleActiveTab.bind(this);
@@ -25,6 +23,7 @@ export default class OptionsModal extends React.Component {
   }
 
   handleActiveTab(e) {
+    // reset drop down selectors
     this.setState({
       mediaType: e.target.className,
       genre: [],
@@ -59,13 +58,12 @@ export default class OptionsModal extends React.Component {
   handleSubmit() {
     const { sort } = this.state;
     const { handleQueryUpdate, handleOptionsModal } = this.props;
-
     // close modal on submit
     handleOptionsModal();
 
     const newQuery = Object.assign({}, this.state, {
-      page: 1,
-      sort: sort === null ? this.lsQuery.sort : sort
+      sort: sort === null ? this.lsQuery.sort : sort,
+      page: 1
     });
 
     handleQueryUpdate(newQuery);
@@ -81,16 +79,13 @@ export default class OptionsModal extends React.Component {
     } = this.state;
     const { handleOptionsModal } = this.props;
 
-    // data for genre select
-    const mediaGenres = mediaType === 'movie'
+    // data for select dropdowns
+    const genreData = mediaType === 'movie'
       ? data.moviesGenres
       : data.tvGenres;
+    const sortData = mediaType === 'movie' ? data.moviesSort : data.tvSort;
 
-    // data for sort by select
-    const mediaSort = mediaType === 'movie'
-      ? data.moviesSort
-      : data.tvSort;
-
+    // rc-slider styles
     const trackStyle = [{ backgroundColor: '#0f96ea' }]; // #0f96ea #007cd9
     const handleStyle = {
       border: '5px solid #0f96ea',
@@ -148,7 +143,7 @@ export default class OptionsModal extends React.Component {
         <div className="select-container">
           <Select
             multi
-            options={mediaGenres}
+            options={genreData}
             onChange={this.handleSelectChange}
             placeholder="Genres"
             value={genre}
@@ -156,7 +151,7 @@ export default class OptionsModal extends React.Component {
         </div>
         <div className="select-container">
           <Select
-            options={mediaSort}
+            options={sortData}
             onChange={this.handleSortChange}
             placeholder="Sort by"
             value={sort}
