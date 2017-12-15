@@ -45,10 +45,6 @@ export default class Discover extends React.Component {
     }
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log(nextState.matches);
-  // }
-
   componentWillUpdate(nextProps, nextState) {
     localStorage.setItem(
       'discover-query',
@@ -59,14 +55,6 @@ export default class Discover extends React.Component {
   componentWillUnmount() {
     this.mounted = false;
     clearTimeout(this.showMoreTimeout);
-  }
-
-  // filter to return media not already in library
-  filterMatches(results) {
-    return results.filter(
-      result =>
-        this.props.library.findIndex(el => el.id === result.id) === -1
-    );
   }
 
   handleRemoveMatch(media) {
@@ -121,38 +109,44 @@ export default class Discover extends React.Component {
     });
   }
 
-  toggleShowMoreButton() {
-    this.setState({
-      showMoreButton: !this.state.showMoreButton
-    });
-  }
-
   handleOptionsModal() {
     this.setState({
       showModal: !this.state.showModal
     });
   }
 
+  toggleShowMoreButton() {
+    this.setState({
+      showMoreButton: !this.state.showMoreButton
+    });
+  }
+
+  // filter to return media not already in library
+  filterMatches(results) {
+    return results.filter(
+      result =>
+        this.props.library.findIndex(el => el.id === result.id) === -1
+    );
+  }
+
   renderShowButton() {
     const { query, pages, matches } = this.state;
 
-    if (matches.length) {
-      if (query.page === pages) {
-        return (
-          <div className="load-more end-list">
-            <h2>You have reached the end of the list</h2>
-          </div>
-        );
-      }
+    if (query.page === pages) {
+      return (
+        <div className="load-more end-list">
+          <h2>You have reached the end of the list</h2>
+        </div>
+      );
+    }
 
+    if (matches.length) {
       return (
         <button className="load-more" onClick={this.handleShowMore}>
           <h2>Show More</h2>
         </button>
       );
     }
-
-    return null;
   }
 
   render() {
