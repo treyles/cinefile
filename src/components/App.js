@@ -64,6 +64,7 @@ export default class App extends React.Component {
                 <Library
                   library={library}
                   removeFromLibrary={this.removeFromLibrary}
+                  addToLibrary={this.addToLibrary}
                 />
               )}
             />
@@ -75,10 +76,6 @@ export default class App extends React.Component {
                   addToLibrary={this.addToLibrary}
                 />
               )}
-            />
-            <Route
-              path="/search"
-              render={() => <Search addToLibrary={this.addToLibrary} />}
             />
             <Route
               render={() => <p className="not-found">Not Found!</p>}

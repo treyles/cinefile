@@ -37,12 +37,8 @@ export default class Discover extends React.Component {
     this.mounted = true;
     window.scrollTo(0, 0);
 
-    if (this.lsQuery) {
-      // render last page viewed
-      this.handleQueryUpdate(this.lsQuery);
-    } else {
-      this.handleQueryUpdate(defaultQuery);
-    }
+    const query = this.lsQuery ? this.lsQuery : defaultQuery;
+    this.handleQueryUpdate(query);
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -168,6 +164,7 @@ export default class Discover extends React.Component {
         <div className="options" onClick={this.handleOptionsModal}>
           <Icon icon="menu2" width="25" height="25" />
         </div>
+        {/* logic here to fix 'returned zero results' when adding all movies on discover page. */}
         {this.mounted && !matches.length
           ? <h1>Your query returned zero results</h1>
           : matches.map(media => (

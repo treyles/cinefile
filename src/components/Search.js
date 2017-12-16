@@ -35,19 +35,29 @@ export default class Search extends React.Component {
       matches: null
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     this.searchInput.focus();
   }
 
-  handleSubmit(e) {
-    const { value } = e.target;
-    if (e.key === 'Enter' && value) {
-      this.searchApi(value);
-      this.searchInput.blur();
+  // handleSubmit(e) {
+  //   const { value } = e.target;
+  //   if (e.key === 'Enter' && value) {
+  //     this.searchApi(value);
+  //     this.searchInput.blur();
+  //   }
+  // }
+
+  handleChange(e) {
+    if (!e.target.value) {
+      this.setState({ matches: null });
+      return;
     }
+
+    this.searchApi(e.target.value);
   }
 
   searchApi(value) {
@@ -65,11 +75,14 @@ export default class Search extends React.Component {
   render() {
     const { matches } = this.state;
     const { addToLibrary } = this.props;
+    {
+      /* onKeyPress={this.handleSubmit} */
+    }
 
     return (
       <div className="search">
         <input
-          onKeyPress={this.handleSubmit}
+          onChange={this.handleChange}
           type="search"
           placeholder="Search"
           ref={input => {

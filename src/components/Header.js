@@ -23,7 +23,7 @@ export default function Header({ count }) {
             : null}
         </li>
       </ul>
-      <Link to="/search">
+      <Link to="/">
         <div className="search-icon" />
       </Link>
     </header>
