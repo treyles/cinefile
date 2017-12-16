@@ -21,7 +21,10 @@ export default class SearchResultList extends React.Component {
       <div className="search-results">
         <ul>
           {matches.map(media => (
-            <li key={media.id}>
+            <li
+              key={media.id}
+              onClick={() => this.handleAddToLibrary(media)}
+            >
               <img
                 className="search-poster"
                 src={`https://image.tmdb.org/t/p/w92${media.poster_path}`}
@@ -33,17 +36,6 @@ export default class SearchResultList extends React.Component {
                   {typeof media.release_date === 'string'
                     ? media.release_date.substring(0, 4)
                     : media.first_air_date.substring(0, 4)}
-                </h3>
-              </div>
-              <div className="search-add">
-                <button
-                  className="search-add-btn"
-                  onClick={() => this.handleAddToLibrary(media)}
-                >
-                  +
-                </button>
-                <h3>
-                  Add to Library
                 </h3>
               </div>
             </li>
@@ -66,3 +58,15 @@ SearchResultList.propTypes = {
 //   }
 //   return media.first_air_date.substring(0, 4);
 // };
+
+/*   <div className="search-add">
+                <button
+                  className="search-add-btn"
+                  onClick={() => this.handleAddToLibrary(media)}
+                >
+                  +
+                </button>
+                <h3>
+                  Add to Library
+                </h3>
+              </div>*/

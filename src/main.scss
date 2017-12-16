@@ -781,8 +781,9 @@ h1,h2,h3 {
   }
 
   input {
-    background-color: #eee;
-    width: 70%;
+    // background-color: #eee;
+    background-color: $gray-bg;
+    width: 95%;
     border: none;
     font-family: inherit;
     border-radius: 3px;
@@ -810,10 +811,11 @@ h1,h2,h3 {
   top: 80px;
   // background-color: white;
   // margin-top: 20px;
-  width: 70%;
+  width: 95%;
   max-height: 500px;
   overflow: auto;
-  // box-shadow: 8px 10px 20px 10px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  box-shadow: 0px 10px 50px 10px rgba(0,0,0,.1);
 
     // TODO: mixin
   ul {
@@ -826,17 +828,23 @@ h1,h2,h3 {
     display: flex;
     background-color: white;
     padding: 10px;
-    border-bottom: 1px solid lighten(lightgray, 10%);
+    border-bottom: 1px solid lighten(lightgray, 5%);
     // border-radius: 3px;
     // border: 1px solid lighten(lightgray, 7%);
-    // box-shadow: 0 2px 3px 1px rgba(0, 0, 0, .03);
   }
 
   .search-poster {
     flex-shrink: 0;
-    height: 85px;
-    width: 56.6px;
+    // height: 85px;
+    // width: 56.6px;
+    // height: 75px;
+    // width: 50px;
+    // height: 60px;
+    // width: 40px;
+    height: 67.5px;
+    width: 45px;
     object-fit: cover;
+    // image-rendering: pixelated;
   }
 
   .search-info {
@@ -848,18 +856,20 @@ h1,h2,h3 {
     padding-right: 5px;
 
     h2 { 
-      font-family: 'faktpro-semibold', sans-serif;
+      font-family: 'faktpro-normal', sans-serif;
       color: $dark-text;
+      font-size: 14px;
     }
 
     h3 { 
-      font-family: 'faktpro-semibold', sans-serif;
-      color: $light-text
+      font-family: 'faktpro-normal', sans-serif;
+      color: $light-text;
+      font-size: 12px;
     }
 
-    h2, h3 {
-      padding: 3px;
-    }
+    // h2, h3 {
+    //   padding: 3px;
+    // }
   }
 
   // TODO: mixin

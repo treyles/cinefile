@@ -62,7 +62,7 @@ export default class Search extends React.Component {
 
   searchApi(value) {
     fetchMediaSearch(value).then(result =>
-      this.setState({ matches: this.filterMatches(result) }));
+      this.setState({ matches: this.filterMatches(result).slice(0, 5) }));
   }
 
   filterMatches(data) {
