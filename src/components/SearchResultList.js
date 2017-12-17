@@ -38,6 +38,11 @@ export default class SearchResultList extends React.Component {
                     : media.first_air_date.substring(0, 4)}
                 </h3>
               </div>
+              <div className="mediatype-tag">
+                <h3>
+                  {media.media_type === 'tv' ? 'Television' : 'Movie'}
+                </h3>
+              </div>
             </li>
           ))}
         </ul>

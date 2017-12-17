@@ -32,7 +32,8 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      matches: null
+      matches: null,
+      inputActive: true
     };
 
     // this.handleSubmit = this.handleSubmit.bind(this);
@@ -53,10 +54,15 @@ export default class Search extends React.Component {
 
   handleChange(e) {
     if (!e.target.value) {
-      this.setState({ matches: null });
+      this.setState({
+        matches: null,
+        inputActive: true
+      });
+
       return;
     }
 
+    this.setState({ inputActive: false });
     this.searchApi(e.target.value);
   }
 
@@ -67,13 +73,13 @@ export default class Search extends React.Component {
 
   filterMatches(data) {
     return data.filter(
-      // filter matches to return only movies and tv shows with posters
+      // filter out people and media without posters
       media => media.poster_path !== null && media.media_type !== 'person'
     );
   }
 
   render() {
-    const { matches } = this.state;
+    const { matches, inputActive } = this.state;
     const { addToLibrary } = this.props;
     {
       /* onKeyPress={this.handleSubmit} */
@@ -82,6 +88,7 @@ export default class Search extends React.Component {
     return (
       <div className="search">
         <input
+          className={`search-input ${inputActive ? '' : 'active'}`}
           onChange={this.handleChange}
           type="search"
           placeholder="Search"
