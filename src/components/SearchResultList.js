@@ -39,9 +39,9 @@ export default class SearchResultList extends React.Component {
                 </h3>
               </div>
               <div className="mediatype-tag">
-                <h3>
+                <h2>
                   {media.media_type === 'tv' ? 'Television' : 'Movie'}
-                </h3>
+                </h2>
               </div>
             </li>
           ))}

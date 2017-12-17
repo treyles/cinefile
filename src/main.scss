@@ -328,7 +328,9 @@ h1,h2,h3 {
       h2 { 
         overflow: hidden;
         white-space: nowrap;
-        font-family: 'faktpro-semibold', sans-serif;
+        // font-family: 'faktpro-semibold', sans-serif;
+        font-family: 'faktpro-normal', sans-serif;
+        font-size: 14px;
         color: lighten($dark-text, 7%);
         margin-top: 28px;
         text-overflow: ellipsis;
@@ -469,6 +471,8 @@ h1,h2,h3 {
   margin-top: 100px;
   margin-bottom: 30px;
 
+
+  // what is this?
   h1 {
     font-family: 'calibre-semibold', sans-serif;
     margin-top: 100px;
@@ -503,7 +507,8 @@ h1,h2,h3 {
           height: 150px;
           position: absolute;
           // TODO: media query fill space
-          top: -25px;
+          // top: -25px;
+          bottom: 20px;
           // top: 5px;
 
           img {
@@ -543,12 +548,14 @@ h1,h2,h3 {
         flex-grow: 1;
         min-height: 140px;
         margin-left: 13px;
-        padding: 13px 0 5px 0;
+        padding: 10px 0 5px 0;
         font-family: 'faktpro-semibold', sans-serif;
         color: $light-text;
         // background-color: lightgray;
 
         h2 {
+          font-size: 14px; // not h2 size, make h4?
+          font-family: 'faktpro-normal', sans-serif;
           color: lighten($dark-text, 7%);
         }
 
@@ -563,8 +570,18 @@ h1,h2,h3 {
           }
         }
 
+        // .year {
+        //   display: inline-block;
+        //   font-family: 'faktpro-normal', sans-serif;
+        //   padding: 2px 8px;
+        //   border-radius: 3px;
+        //   font-size: 11px;
+        //   background-color: #EBF5FF;
+        //   color: lighten($main-blue, 10%);
+        // }
+
         p {
-          margin-top: 10px;
+          margin-top: 8px;
           font-family: 'faktpro-normal', sans-serif;
           font-size: 12px;
           line-height: 1.5;
@@ -778,6 +795,7 @@ h1,h2,h3 {
   justify-content: center;
   flex-wrap: wrap;
   font-family: 'calibre-semibold', sans-serif;
+  // font-family: 'faktpro-semibold', sans-serif;
   // position: relative;
   
   * {
@@ -943,8 +961,9 @@ h1,h2,h3 {
     border-radius: 3px;
     background-color: #EBF5FF;
     font-family: 'faktpro-normal', sans-serif;
+    // font-size: 15px;
     // border: 1px solid #86bfdb;
-    color: $main-blue;
+    color: lighten($main-blue, 10%);
     padding: 8px 15px;
     margin-left: 20px;
   }
