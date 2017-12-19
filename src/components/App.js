@@ -10,12 +10,14 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       alert: false,
-      library: []
+      library: [],
+      isSearchActive: false
     };
 
     this.timer = null;
     this.addToLibrary = this.addToLibrary.bind(this);
     this.removeFromLibrary = this.removeFromLibrary.bind(this);
+    this.toggleSearchButton = this.toggleSearchButton.bind(this);
   }
 
   // TODO: rename 'handle'
@@ -44,18 +46,27 @@ export default class App extends React.Component {
     this.startAlertTimer();
   }
 
+  toggleSearchButton(reset) {
+    const isSearchActive = reset ? false : !this.state.isSearchActive;
+    this.setState({ isSearchActive });
+  }
+
   startAlertTimer() {
     clearTimeout(this.timer);
     this.timer = setTimeout(() => this.setState({ alert: false }), 4000);
   }
 
   render() {
-    const { library, alert } = this.state;
+    const { library, alert, isSearchActive } = this.state;
 
     return (
       <BrowserRouter>
         <div className="app">
-          <Header count={library.length} />
+          <Header
+            count={library.length}
+            toggleSearchButton={this.toggleSearchButton}
+            isSearchActive={isSearchActive}
+          />
           <Switch>
             <Route
               exact
@@ -65,6 +76,7 @@ export default class App extends React.Component {
                   library={library}
                   removeFromLibrary={this.removeFromLibrary}
                   addToLibrary={this.addToLibrary}
+                  isSearchActive={isSearchActive}
                 />
               )}
             />

@@ -257,6 +257,11 @@ h1,h2,h3 {
     border-radius: 50%;
     margin: 20px;
     background-color: $gray-bg;
+    pointer-events: none;
+
+    &.active {
+      background-color: darken($gray-bg, 10%);
+    }
   }
 }
 
@@ -296,7 +301,7 @@ h1,h2,h3 {
         object-fit: cover;
         // border-radius: 3px;
         // image-rendering: pixelated;
-        box-shadow: 8px 8px 20px 0px rgba(0,0,0,0.3);
+        box-shadow: 8px 8px 30px 0px rgba(0,0,0,0.2);
         // box-shadow: 8px 8px 30px 0px rgba(0,0,0,0.3);
       }
 
@@ -315,7 +320,7 @@ h1,h2,h3 {
         line-height: 1;
         font-size: 12px;
         border-radius: 50%;
-        padding-top: 2px;
+        padding-top: 3px;
         margin: 0 auto;
         left: 0;
         right: 0;
@@ -332,7 +337,7 @@ h1,h2,h3 {
         font-family: 'faktpro-normal', sans-serif;
         font-size: 14px;
         color: lighten($dark-text, 7%);
-        margin-top: 28px;
+        margin-top: 20px;
         text-overflow: ellipsis;
       }
 

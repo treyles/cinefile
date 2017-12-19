@@ -9,11 +9,16 @@ export default class Library extends React.Component {
   }
 
   render() {
-    const { library, removeFromLibrary, addToLibrary } = this.props;
+    const {
+      library,
+      removeFromLibrary,
+      addToLibrary,
+      isSearchActive
+    } = this.props;
 
     return (
       <div className="library-container">
-        <Search addToLibrary={addToLibrary} />
+        {isSearchActive && <Search addToLibrary={addToLibrary} />}
         <div className="library">
           {library.map(media => (
             <LibraryCard
@@ -30,7 +35,9 @@ export default class Library extends React.Component {
 
 Library.propTypes = {
   library: PropTypes.arrayOf(PropTypes.object),
-  removeFromLibrary: PropTypes.func.isRequired
+  removeFromLibrary: PropTypes.func.isRequired,
+  addToLibrary: PropTypes.func.isRequired,
+  isSearchActive: PropTypes.bool.isRequired
 };
 
 Library.defaultProps = {

@@ -80,10 +80,7 @@ export default class Search extends React.Component {
 
   render() {
     const { matches, inputActive } = this.state;
-    const { addToLibrary } = this.props;
-    {
-      /* onKeyPress={this.handleSubmit} */
-    }
+    const { addToLibrary, searchClicked } = this.props;
 
     return (
       <div className="search">
