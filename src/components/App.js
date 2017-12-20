@@ -76,6 +76,7 @@ export default class App extends React.Component {
                   library={library}
                   removeFromLibrary={this.removeFromLibrary}
                   addToLibrary={this.addToLibrary}
+                  toggleSearchButton={this.toggleSearchButton}
                   isSearchActive={isSearchActive}
                 />
               )}
