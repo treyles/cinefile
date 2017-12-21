@@ -54,7 +54,6 @@ export default class Search extends React.Component {
         break;
       }
       case 'Enter': {
-        // debugger;
         const match = this.state.matches.find(mtch => mtch.selected);
         if (match) {
           this.handleSelect(match, match.inLibrary);
@@ -75,11 +74,12 @@ export default class Search extends React.Component {
     let { matchIndex, matches, value } = this.state;
 
     if (isDown) {
-      if (!matches.length || matchIndex >= matches.length - 1) {
+      // length undefined, length of null
+      if (!matches.length || matchIndex >= 4) {
         return;
       }
 
-      matchIndex++;
+      matchIndex += 1;
     }
 
     if (!isDown) {
@@ -87,9 +87,10 @@ export default class Search extends React.Component {
         return;
       }
 
-      matchIndex--;
+      matchIndex -= 1;
     }
 
+    /* eslint-disable no-param-reassign */
     matches = matches.map((match, i) => {
       if (i === matchIndex) {
         // select new match
@@ -102,6 +103,7 @@ export default class Search extends React.Component {
 
       return match;
     });
+    /* eslint-disable no-param-reassign */
 
     this.setState({ matchIndex, matches, value });
   }
@@ -114,15 +116,13 @@ export default class Search extends React.Component {
   filterMatches(data) {
     const { library } = this.props;
 
+    // filter out people and media without posters
     const filteredArray = data.filter(
-      // filter out people and media without posters
       media => media.poster_path !== null && media.media_type !== 'person'
     );
 
     return filteredArray.map(match => {
-      // const mediaIndex = library.indexOf(match);
       const inLibrary = library.findIndex(el => el.id === match.id) > -1;
-
       if (inLibrary) {
         match.inLibrary = true;
       }
@@ -131,16 +131,19 @@ export default class Search extends React.Component {
     });
   }
 
-  handleSelect(media, inLibrary) {
-    fetchMediaDetails(media).then(response => {
-      if (inLibrary) {
-        this.props.removeFromLibrary(response);
-        console.log('removed from library');
-      } else {
+  handleSelect(match, inLibrary) {
+    const { library } = this.props;
+
+    if (inLibrary) {
+      const mediaObj = library.find(media => media.id === match.id);
+      this.props.removeFromLibrary(mediaObj);
+    }
+
+    if (!inLibrary) {
+      fetchMediaDetails(match).then(response => {
         this.props.addToLibrary(response);
-        console.log('added to library');
-      }
-    });
+      });
+    }
 
     this.setState({
       value: '',
@@ -154,7 +157,6 @@ export default class Search extends React.Component {
 
   render() {
     const { matches, inputActive, value } = this.state;
-    // const { searchClicked } = this.props;
 
     return (
       <div className="search">
