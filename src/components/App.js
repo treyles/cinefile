@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Library from './Library';
 import Discover from './Discover';
-import Search from './Search';
+import base from '../utils/base';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -18,6 +18,14 @@ export default class App extends React.Component {
     this.addToLibrary = this.addToLibrary.bind(this);
     this.removeFromLibrary = this.removeFromLibrary.bind(this);
     this.toggleSearchButton = this.toggleSearchButton.bind(this);
+  }
+
+  componentDidMount() {
+    base.syncState('library', {
+      context: this,
+      state: 'library',
+      asArray: true
+    });
   }
 
   // TODO: rename 'handle'
