@@ -3,7 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Library from './Library';
 import Discover from './Discover';
-import base from '../utils/base';
+import Home from './Home';
+import rebase from '../utils/base';
+import firebase from 'firebase';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,21 +13,42 @@ export default class App extends React.Component {
     this.state = {
       alert: false,
       library: [],
-      isSearchActive: false
+      isSearchActive: false,
+      // delete?
+      header: true,
+      currentUser: null
     };
 
     this.timer = null;
     this.addToLibrary = this.addToLibrary.bind(this);
     this.removeFromLibrary = this.removeFromLibrary.bind(this);
     this.toggleSearchButton = this.toggleSearchButton.bind(this);
+    this.handleAuthorization = this.handleAuthorization.bind(this);
   }
 
-  componentDidMount() {
-    base.syncState('library', {
-      context: this,
-      state: 'library',
-      asArray: true
+  // componentDidMount() {
+  //   // firebase
+  //   rebase.syncState(this.state.currentUser.user.uid, {
+  //     context: this,
+  //     state: 'library',
+  //     asArray: true
+  //   });
+  // }
+
+  handleAuthorization() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().signInWithPopup(provider).then(response => {
+      this.setState({ currentUser: response });
+
+      rebase.syncState(this.state.currentUser.user.uid, {
+        context: this,
+        state: 'library',
+        asArray: true
+      });
     });
+
+    // response.user.email
   }
 
   // TODO: rename 'handle'
@@ -70,15 +93,22 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="app">
-          <Header
-            count={library.length}
-            toggleSearchButton={this.toggleSearchButton}
-            isSearchActive={isSearchActive}
-          />
+          {this.state.header &&
+            <Header
+              count={library.length}
+              toggleSearchButton={this.toggleSearchButton}
+              isSearchActive={isSearchActive}
+            />}
           <Switch>
             <Route
               exact
               path="/"
+              render={() => (
+                <Home handleAuthorization={this.handleAuthorization} />
+              )}
+            />
+            <Route
+              path="/library"
               render={() => (
                 <Library
                   library={library}

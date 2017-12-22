@@ -10,6 +10,7 @@ const app = firebase.initializeApp({
   messagingSenderId: '342757339995'
 });
 
-const base = Rebase.createClass(app.database());
+const db = firebase.database(app);
+const rebase = Rebase.createClass(db);
 
-export default base;
+export default rebase;

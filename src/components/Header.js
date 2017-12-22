@@ -1,13 +1,19 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import firebase from 'firebase';
 
+// TODO: clean up onClick
 export default function Header(
   { count, toggleSearchButton, isSearchActive }
 ) {
   return (
     <header className="header">
-      <div className="profile-img" />
+      <div
+        className="profile-img"
+        onClick={() =>
+          firebase.auth().signOut().then(() => console.log('signedout!!'))}
+      />
       <ul>
         <li>
           <NavLink
@@ -19,13 +25,14 @@ export default function Header(
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/" activeClassName="active-nav">
+          {/* need exact? */}
+          <NavLink exact to="/library" activeClassName="active-nav">
             <h1>Library</h1>
           </NavLink>
           {count > 0 && <span className="counter">{count}</span>}
         </li>
       </ul>
-      <Link to="/" onClick={() => toggleSearchButton()}>
+      <Link to="/library" onClick={() => toggleSearchButton()}>
         <div className={`search-icon ${isSearchActive ? 'active' : ''}`} />
       </Link>
     </header>
