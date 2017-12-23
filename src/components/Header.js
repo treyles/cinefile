@@ -21,18 +21,18 @@ export default function Header(
             activeClassName="active-nav"
             onClick={() => toggleSearchButton(true)}
           >
-            <h1>Discover</h1>
+            Discover
           </NavLink>
         </li>
         <li>
           {/* need exact? */}
-          <NavLink exact to="/library" activeClassName="active-nav">
-            <h1>Library</h1>
+          <NavLink exact to="/" activeClassName="active-nav">
+            Library
           </NavLink>
           {count > 0 && <span className="counter">{count}</span>}
         </li>
       </ul>
-      <Link to="/library" onClick={() => toggleSearchButton()}>
+      <Link to="/" onClick={() => toggleSearchButton()}>
         <div className={`search-icon ${isSearchActive ? 'active' : ''}`} />
       </Link>
     </header>

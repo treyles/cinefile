@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Header from './Header';
 import LibraryCard from './LibraryCard';
 import Search from './Search';
 
@@ -18,22 +19,29 @@ export default class Library extends React.Component {
     } = this.props;
 
     return (
-      <div className="library-container">
-        {isSearchActive &&
-          <Search
-            addToLibrary={addToLibrary}
-            toggleSearchButton={toggleSearchButton}
-            removeFromLibrary={removeFromLibrary}
-            library={library}
-          />}
-        <div className="library">
-          {library.map(media => (
-            <LibraryCard
-              key={media.id}
-              media={media}
+      <div>
+        <Header
+          count={library.length}
+          toggleSearchButton={toggleSearchButton}
+          isSearchActive={isSearchActive}
+        />
+        <div className="library-container">
+          {isSearchActive &&
+            <Search
+              addToLibrary={addToLibrary}
+              toggleSearchButton={toggleSearchButton}
               removeFromLibrary={removeFromLibrary}
-            />
-          ))}
+              library={library}
+            />}
+          <div className="library">
+            {library.map(media => (
+              <LibraryCard
+                key={media.id}
+                media={media}
+                removeFromLibrary={removeFromLibrary}
+              />
+            ))}
+          </div>
         </div>
       </div>
     );

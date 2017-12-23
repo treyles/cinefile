@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from './Header';
+// import Header from './Header';
 import Library from './Library';
 import Discover from './Discover';
 import Home from './Home';
@@ -14,8 +14,6 @@ export default class App extends React.Component {
       alert: false,
       library: [],
       isSearchActive: false,
-      // delete?
-      header: true,
       currentUser: null
     };
 
@@ -88,36 +86,26 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { library, alert, isSearchActive } = this.state;
+    const { library, alert, isSearchActive, currentUser } = this.state;
 
     return (
       <BrowserRouter>
         <div className="app">
-          {this.state.header &&
-            <Header
-              count={library.length}
-              toggleSearchButton={this.toggleSearchButton}
-              isSearchActive={isSearchActive}
-            />}
           <Switch>
             <Route
               exact
               path="/"
-              render={() => (
-                <Home handleAuthorization={this.handleAuthorization} />
-              )}
-            />
-            <Route
-              path="/library"
-              render={() => (
-                <Library
-                  library={library}
-                  removeFromLibrary={this.removeFromLibrary}
-                  addToLibrary={this.addToLibrary}
-                  toggleSearchButton={this.toggleSearchButton}
-                  isSearchActive={isSearchActive}
-                />
-              )}
+              render={() =>
+                !currentUser
+                  ? <Home handleAuthorization={this.handleAuthorization} />
+                  : <Library
+                      library={library}
+                      removeFromLibrary={this.removeFromLibrary}
+                      addToLibrary={this.addToLibrary}
+                      toggleSearchButton={this.toggleSearchButton}
+                      isSearchActive={isSearchActive}
+                      count={library.length}
+                    />}
             />
             <Route
               path="/discover"
@@ -125,6 +113,9 @@ export default class App extends React.Component {
                 <Discover
                   library={library}
                   addToLibrary={this.addToLibrary}
+                  count={library.length}
+                  toggleSearchButton={this.toggleSearchButton}
+                  isSearchActive={isSearchActive}
                 />
               )}
             />

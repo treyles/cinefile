@@ -8,11 +8,8 @@ export default class Home extends React.Component {
     const { handleAuthorization } = this.props;
     return (
       <div className="home">
-        <NavLink exact to="/library" activeClassName="active-nav">
-          <h1>Library</h1>
-        </NavLink>
         <button onClick={() => handleAuthorization()}>
-          Connect with Google
+          <h3>Connect with Google</h3>
         </button>
       </div>
     );

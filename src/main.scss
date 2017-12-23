@@ -154,14 +154,6 @@ h1,h2,h3 {
 // }
 
 
-.home {
-  margin-top: 90px;
-}
-
-
-
-
-
 .header {
   z-index: 2;
   position: fixed;
@@ -197,7 +189,8 @@ h1,h2,h3 {
 
       .counter {
         position: absolute;
-        background-color: $main-blue;
+        // background-color: $main-blue;
+        background-color: #DEF0FF;
         // background-color: lighten($main-blue, 10%); // light blue
         // background-color: lighten(#dc2628, 10%); // red
         // background-color: darken(lightgray, 10%); // gray
@@ -207,8 +200,10 @@ h1,h2,h3 {
         height: 16px;
         top: -6px;
         border-radius: 10px;
+        // border: 1px solid #C0E0FC;
         font-family: 'faktpro-semibold', sans-serif;
-        color: white;
+        // color: white;
+        color: lighten($main-blue, 10%);
         font-size: 10px;
         line-height: 1;
         padding-top: 3px;
@@ -222,24 +217,26 @@ h1,h2,h3 {
     }
 
     a {
-      font-family: 'calibre-semibold', sans-serif;
+      font-family: 'faktpro-normal', sans-serif;
+      font-size: 16px;
       display: inline-block;
       text-decoration: none;
       color: lighten($light-text, 20%);
-      width: 60px;
+      // width: 60px;
       transition: color .3s;
+      margin: 0 3px;
 
       &:after {
         content: "";
-        display: block;
-        width: 0;
-        height: 3px;
-        background: $main-blue;
-        transition: width .4s ease;
+        display: none;
+        width: 100%;
+        height: 2px;
+        background-color: lighten($main-blue, 10%);
+        // transition: width .4s ease;
       }
 
       &.active-nav:after {
-        width: 100%;
+        display: block;
       }
 
       &:hover {
@@ -249,6 +246,7 @@ h1,h2,h3 {
 
     .active-nav {
       // color: darken($light-text, 10%);
+      // font-family: 'faktpro-semibold', sans-serif;
       color: $dark-text;
     }
   }

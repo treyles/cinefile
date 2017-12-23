@@ -18,6 +18,7 @@ export default class LibraryCard extends React.Component {
     this.handleTrailerModal = this.handleTrailerModal.bind(this);
   }
 
+  // TODO: bug 'Party' movie, 'results' undefined? same as imdb etc.
   componentDidMount() {
     const trailer = this.props.media.videos.results;
 
