@@ -18,6 +18,16 @@ export default class Library extends React.Component {
       toggleSearchButton
     } = this.props;
 
+    const preloader = (
+      <div className="preloader">
+        <div className="rect1" />
+        <div className="rect2" />
+        <div className="rect3" />
+        <div className="rect4" />
+        <div className="rect5" />
+      </div>
+    );
+
     return (
       <div>
         <Header
@@ -34,6 +44,7 @@ export default class Library extends React.Component {
               library={library}
             />}
           <div className="library">
+            {!library.length && preloader}
             {library.map(media => (
               <LibraryCard
                 key={media.id}

@@ -46,7 +46,10 @@ h1,h2,h3 {
   src: url('fonts/faktpro-normal.woff') format('woff');
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+@font-face {
+  font-family: 'faktpro-medium';
+  src: url('fonts/faktpro-medium.woff') format('woff');
+}
 
 // // tablets and desktop
 // @media only screen and (min-width: 768px) {
@@ -104,6 +107,28 @@ h1,h2,h3 {
   }
 }
 
+@mixin preloader() {
+  div {
+    background-color: lightgray;
+    height: 100%;
+    width: 6px;
+    height: 40px;
+    margin: 0 1px;
+    display: inline-block;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  }
+
+  .rect2 { animation-delay: -1.1s; }
+  .rect3 { animation-delay: -1.0s; }
+  .rect4 { animation-delay: -0.9s; }
+  .rect5 { animation-delay: -0.8s; }
+
+  @keyframes sk-stretchdelay {
+    0%, 40%, 100% { transform: scaleY(0.4); }  
+    20% { transform: scaleY(1.0); }
+  }
+}
+
 .alert {
   z-index: 1;
   visibility: hidden;
@@ -127,6 +152,10 @@ h1,h2,h3 {
       visibility: visible;
       opacity: 1;
     }
+}
+
+.preloader {
+  @include preloader();
 }
 
 // .removed {
@@ -173,6 +202,7 @@ h1,h2,h3 {
     border-radius: 50%;
     margin: 20px;
     background-color: $gray-bg;
+    cursor: pointer;
   }
 
   ul {
@@ -217,8 +247,8 @@ h1,h2,h3 {
     }
 
     a {
-      font-family: 'faktpro-normal', sans-serif;
-      font-size: 16px;
+      font-family: 'faktpro-medium', sans-serif;
+      font-size: 15px;
       display: inline-block;
       text-decoration: none;
       color: lighten($light-text, 20%);
@@ -232,7 +262,7 @@ h1,h2,h3 {
         width: 100%;
         height: 2px;
         background-color: lighten($main-blue, 10%);
-        // transition: width .4s ease;
+         
       }
 
       &.active-nav:after {
@@ -246,7 +276,7 @@ h1,h2,h3 {
 
     .active-nav {
       // color: darken($light-text, 10%);
-      // font-family: 'faktpro-semibold', sans-serif;
+      font-family: 'faktpro-medium', sans-serif;
       color: $dark-text;
     }
   }
@@ -706,25 +736,7 @@ h1,h2,h3 {
       background-color: transparent;
       cursor: default;
 
-      div {
-        background-color: lightgray;
-        height: 100%;
-        width: 6px;
-        height: 40px;
-        margin: 0 1px;
-        display: inline-block;
-        animation: sk-stretchdelay 1.2s infinite ease-in-out;
-      }
-
-      .rect2 { animation-delay: -1.1s; }
-      .rect3 { animation-delay: -1.0s; }
-      .rect4 { animation-delay: -0.9s; }
-      .rect5 { animation-delay: -0.8s; }
-
-      @keyframes sk-stretchdelay {
-        0%, 40%, 100% { transform: scaleY(0.4); }  
-        20% { transform: scaleY(1.0); }
-      }
+      @include preloader();
     }
 
     &.end-list {

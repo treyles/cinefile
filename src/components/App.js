@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import Header from './Header';
 import Library from './Library';
 import Discover from './Discover';
 import Home from './Home';
@@ -24,14 +23,17 @@ export default class App extends React.Component {
     this.handleAuthorization = this.handleAuthorization.bind(this);
   }
 
-  // componentDidMount() {
-  //   // firebase
-  //   rebase.syncState(this.state.currentUser.user.uid, {
-  //     context: this,
-  //     state: 'library',
-  //     asArray: true
-  //   });
-  // }
+  componentDidMount() {
+    // firebase
+    // rebase.syncState(this.state.currentUser.user.uid, {
+    //   context: this,
+    //   state: 'library',
+    //   asArray: true
+    // });
+    firebase.auth().onAuthStateChanged(currentUser => {
+      this.setState({ currentUser });
+    });
+  }
 
   handleAuthorization() {
     const provider = new firebase.auth.GoogleAuthProvider();
