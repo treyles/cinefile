@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import firebase from 'firebase';
 import Library from './Library';
 import Discover from './Discover';
 import Home from './Home';
 import rebase from '../utils/base';
-import firebase from 'firebase';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -24,14 +24,13 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    // firebase
-    // rebase.syncState(this.state.currentUser.user.uid, {
-    //   context: this,
-    //   state: 'library',
-    //   asArray: true
-    // });
     firebase.auth().onAuthStateChanged(currentUser => {
       this.setState({ currentUser });
+
+      // re-sync firebase on refresh
+      if (currentUser) {
+        this.syncFirebase();
+      }
     });
   }
 
@@ -39,16 +38,22 @@ export default class App extends React.Component {
     const provider = new firebase.auth.GoogleAuthProvider();
 
     firebase.auth().signInWithPopup(provider).then(response => {
-      this.setState({ currentUser: response });
+      this.setState({ currentUser: response.user });
+      this.syncFirebase();
+    });
+  }
 
-      rebase.syncState(this.state.currentUser.user.uid, {
-        context: this,
-        state: 'library',
-        asArray: true
-      });
+  // TODO: rename?
+  syncFirebase() {
+    rebase.syncState(this.state.currentUser.uid, {
+      context: this,
+      state: 'library',
+      asArray: true
     });
 
-    // response.user.email
+    // TODO: put somehwere else?
+    // to check if user was logged in on refresh
+    localStorage.setItem('authenticated', true);
   }
 
   // TODO: rename 'handle'
@@ -89,6 +94,7 @@ export default class App extends React.Component {
 
   render() {
     const { library, alert, isSearchActive, currentUser } = this.state;
+    const hasLoggedIn = JSON.parse(localStorage.getItem('authenticated'));
 
     return (
       <BrowserRouter>
@@ -98,7 +104,7 @@ export default class App extends React.Component {
               exact
               path="/"
               render={() =>
-                !currentUser
+                !hasLoggedIn
                   ? <Home handleAuthorization={this.handleAuthorization} />
                   : <Library
                       library={library}
@@ -107,6 +113,7 @@ export default class App extends React.Component {
                       toggleSearchButton={this.toggleSearchButton}
                       isSearchActive={isSearchActive}
                       count={library.length}
+                      currentUser={currentUser}
                     />}
             />
             <Route
@@ -118,6 +125,7 @@ export default class App extends React.Component {
                   count={library.length}
                   toggleSearchButton={this.toggleSearchButton}
                   isSearchActive={isSearchActive}
+                  currentUser={currentUser}
                 />
               )}
             />

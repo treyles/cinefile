@@ -12,15 +12,28 @@ export default class Header extends React.Component {
   }
 
   handleClick() {
-    firebase.auth().signOut().then(() => console.log('signed out'));
+    firebase.auth().signOut().then(() => {
+      console.log('signed out');
+      localStorage.setItem('authenticated', false);
+    });
   }
 
   render() {
-    const { count, toggleSearchButton, isSearchActive } = this.props;
+    const {
+      count,
+      toggleSearchButton,
+      isSearchActive,
+      currentUser
+    } = this.props;
 
     return (
       <header className="header">
-        <div className="profile-img" onClick={this.handleClick} />
+        <NavLink exact to="/" onClick={this.handleClick}>
+          <img
+            src={currentUser && currentUser.photoURL}
+            className="profile-img"
+          />
+        </NavLink>
         <ul>
           <li>
             <NavLink

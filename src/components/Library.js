@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import LibraryCard from './LibraryCard';
 import Search from './Search';
+import rebase from '../utils/base';
 
 export default class Library extends React.Component {
   componentDidMount() {
@@ -15,7 +16,8 @@ export default class Library extends React.Component {
       removeFromLibrary,
       addToLibrary,
       isSearchActive,
-      toggleSearchButton
+      toggleSearchButton,
+      currentUser
     } = this.props;
 
     const preloader = (
@@ -34,6 +36,7 @@ export default class Library extends React.Component {
           count={library.length}
           toggleSearchButton={toggleSearchButton}
           isSearchActive={isSearchActive}
+          currentUser={currentUser}
         />
         <div className="library-container">
           {isSearchActive &&

@@ -147,12 +147,18 @@ export default class Discover extends React.Component {
   }
 
   render() {
-    const { matches, query, showModal, showMoreButton } = this.state;
+    const {
+      matches,
+      query,
+      showModal,
+      showMoreButton
+    } = this.state;
     const {
       library,
       addToLibrary,
       toggleSearchButton,
-      isSearchActive
+      isSearchActive,
+      currentUser
     } = this.props;
 
     const loader = (
@@ -171,6 +177,7 @@ export default class Discover extends React.Component {
           count={library.length}
           toggleSearchButton={toggleSearchButton}
           isSearchActive={isSearchActive}
+          currentUser={currentUser}
         />
         <div className="discover">
           <div className="options" onClick={this.handleOptionsModal}>
