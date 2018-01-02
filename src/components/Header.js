@@ -28,12 +28,19 @@ export default class Header extends React.Component {
 
     return (
       <header className="header">
-        <NavLink exact to="/" onClick={this.handleClick}>
-          <img
-            src={currentUser && currentUser.photoURL}
-            className="profile-img"
-          />
-        </NavLink>
+        <div className="logo">Cinefile</div>
+        <Link to="/" onClick={this.handleClick}>
+          {currentUser &&
+            <img
+              alt="logout"
+              src={currentUser.photoURL}
+              className="profile-img"
+            />}
+        </Link>
+        {currentUser &&
+          <div className="welcome">
+            {`Hi, ${currentUser.displayName.split(' ')[0]}!`}
+          </div>}
         <ul>
           <li>
             <NavLink
@@ -61,42 +68,6 @@ export default class Header extends React.Component {
     );
   }
 }
-
-// TODO: clean up onClick
-// export default function Header(
-//   { count, toggleSearchButton, isSearchActive }
-// ) {
-//   return (
-//     <header className="header">
-//       <div
-//         className="profile-img"
-//         onClick={() =>
-//           firebase.auth().signOut().then(() => console.log('signedout!!'))}
-//       />
-//       <ul>
-//         <li>
-//           <NavLink
-//             to="/discover"
-//             activeClassName="active-nav"
-//             onClick={() => toggleSearchButton(true)}
-//           >
-//             Discover
-//           </NavLink>
-//         </li>
-//         <li>
-//           {/* need exact? */}
-//           <NavLink exact to="/" activeClassName="active-nav">
-//             Library
-//           </NavLink>
-//           {count > 0 && <span className="counter">{count}</span>}
-//         </li>
-//       </ul>
-//       <Link to="/" onClick={() => toggleSearchButton()}>
-//         <div className={`search-icon ${isSearchActive ? 'active' : ''}`} />
-//       </Link>
-//     </header>
-//   );
-// }
 
 Header.propTypes = {
   count: PropTypes.number.isRequired,
