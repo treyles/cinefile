@@ -113,7 +113,7 @@ export default class DiscoverCard extends React.Component {
             </h3>
             <h3>{release.substring(0, 4)}</h3>
             <p>
-              {truncate(media.overview, { length: 100, separator: ' ' })}
+              {truncate(media.overview, { length: 130, separator: ' ' })}
             </p>
           </div>
         </div>

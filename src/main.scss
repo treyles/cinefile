@@ -272,6 +272,7 @@ h1,h2,h3 {
 
     a {
       font-family: 'faktpro-medium', sans-serif;
+      // line-height: 20px;
       font-size: 15px;
       display: inline-block;
       text-decoration: none;
@@ -301,7 +302,7 @@ h1,h2,h3 {
 
     .active-nav {
       // color: darken($light-text, 10%);
-      font-family: 'faktpro-medium', sans-serif;
+      // font-family: 'faktpro-semibold', sans-serif;
       color: $dark-text;
     }
   }
@@ -331,7 +332,7 @@ h1,h2,h3 {
     flex-direction: column;
     // align-items: space-between;
     justify-content: flex-start;
-    padding-top: 50px;
+    padding-top: 75px;
     box-shadow: 3px 0px 10px 0px rgba(0,0,0,0.08);
 
     .logo {
@@ -431,9 +432,13 @@ h1,h2,h3 {
       position: relative;
 
       img {
-        flex-shrink: 0;
-        width: 154px; // "w154", "w185",
-        height: 231px;
+        // flex-shrink: 0;
+        // width: 165px; // "w154", "w185",
+        // height: 247.5px;
+        width: 160px; // "w154", "w185",
+        height: 240px;
+        // width: 154px; // "w154", "w185",
+        // height: 231px;
         object-fit: cover;
         // border-radius: 3px;
         // image-rendering: pixelated;
@@ -601,6 +606,7 @@ h1,h2,h3 {
   .library {
     // justify-content: space-between;
     margin-right: 20px;
+    // justify-content: center;
     justify-content: flex-start;
     // justify-content: space-evenly;
   }
@@ -636,7 +642,9 @@ h1,h2,h3 {
   }
 
   .discover-card {
-    width: 350px;
+    flex-grow: 1;
+    max-width: 420px;
+    width: 330px;
     margin: 30px 20px;
     background-color: #fff;
     display: flex;
@@ -663,8 +671,8 @@ h1,h2,h3 {
           height: 150px;
           position: absolute;
           // TODO: media query fill space
-          // top: -25px;
-          bottom: 20px;
+          top: -25px;
+          // bottom: 20px;
           // top: 5px;
 
           img {
@@ -927,8 +935,8 @@ h1,h2,h3 {
     margin-top: 10px;
     margin-left: 200px;
     // justify-content: flex-start;
-    // justify-content: space-evenly;
-    justify-content: center;
+    justify-content: space-evenly;
+    // justify-content: center;
 
     
     .load-more {
