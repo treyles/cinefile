@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
+import Icon from '../utils/Icon';
 
 // TODO: clean up onClick
 export default class Header extends React.Component {
@@ -39,7 +40,7 @@ export default class Header extends React.Component {
         </Link>
         {currentUser &&
           <div className="welcome">
-            {`Hi, ${currentUser.displayName.split(' ')[0]}!`}
+            {`Hi, ${currentUser.displayName.split(' ')[0]}`}
           </div>}
         <ul>
           <li>
@@ -60,9 +61,9 @@ export default class Header extends React.Component {
           </li>
         </ul>
         <Link to="/" onClick={() => toggleSearchButton()}>
-          <div
-            className={`search-icon ${isSearchActive ? 'active' : ''}`}
-          />
+          <div className={`search-icon ${isSearchActive ? 'active' : ''}`}>
+            <Icon icon="search" width="16" height="16" />
+          </div>
         </Link>
       </header>
     );

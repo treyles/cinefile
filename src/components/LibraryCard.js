@@ -44,7 +44,7 @@ export default class LibraryCard extends React.Component {
     const { clicked, showModal, trailerKey } = this.state;
 
     return (
-      <div>
+      <div className="library-card-container">
         <div className="library-card" onClick={this.handleClick}>
           {clicked
             ? <LibraryCardBack
