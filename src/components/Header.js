@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import MediaQuery from 'react-responsive';
 import firebase from 'firebase';
 import Icon from '../utils/Icon';
 
@@ -62,7 +63,12 @@ export default class Header extends React.Component {
         </ul>
         <Link to="/" onClick={() => toggleSearchButton()}>
           <div className={`search-icon ${isSearchActive ? 'active' : ''}`}>
-            <Icon icon="plus" width="18" height="18" />
+            <MediaQuery minWidth={768}>
+              <Icon icon="plus" width="18" height="18" />
+            </MediaQuery>
+            <MediaQuery maxWidth={768}>
+              <Icon icon="search" width="22" height="22" />
+            </MediaQuery>
           </div>
         </Link>
       </header>

@@ -204,7 +204,7 @@ h1,h2,h3 {
   width: 100%;
   background-color: #fff;
   // background-color: blue;
-  height: 75px;
+  height: 65px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -219,8 +219,8 @@ h1,h2,h3 {
   }
 
   .profile-img {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background-color: #fff;
     border: none;
@@ -245,7 +245,7 @@ h1,h2,h3 {
       position: relative;
       display: inline-block;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 7px;
       cursor: pointer;
 
       .counter {
@@ -278,9 +278,10 @@ h1,h2,h3 {
     }
 
     a {
-      font-family: 'calibre-semibold', sans-serif;
+      // font-family: 'calibre-semibold', sans-serif;
+      font-family: 'faktpro-medium', sans-serif;
       // line-height: 20px;
-      font-size: 16px;
+      font-size: 15px;
       display: inline-block;
       text-decoration: none;
       color: lighten($light-text, 15%);
@@ -320,16 +321,18 @@ h1,h2,h3 {
     align-items: center;
     width: 40px;
     height: 40px;
-    border-radius: 100px;
-    margin: 20px;
+    margin-right: 10px;
+    margin-left: 20px;
+    // border-radius: 100px;
+    // margin: 20px;
     // background-color: #FC6E51; // orange
     // background-color: lighten(#FFCE54, 20%); //yellow
     // background-color: #DEF0FF;
-    background-color: $main-blue;
+    // background-color: $main-blue;
     // background-color: darken($gray-bg, 3%); // gray
     // pointer-events: none;
-    color: white;
-    font-size: 12px;
+    // color: white;
+    // font-size: 12px;
     text-decoration: none;
 
     &.active {
@@ -338,10 +341,11 @@ h1,h2,h3 {
     }
 
     svg {
-      // fill: lighten($main-blue, 10%);
+      fill: lighten($main-blue, 10%);
       // fill: darken(#F6BB42, 10%); // yellow
-      fill: #fff;
+      // fill: $main-blue;
       // fill: lighten($dark-text, 35%); // gray
+      // fill: #fff;
       // fill: gray;
     }
   }
@@ -399,8 +403,8 @@ h1,h2,h3 {
       }
 
       a {
-        font-size: 15px;
-        font-family: 'faktpro-medium', sans-serif;
+        // font-size: 15px;
+        // font-family: 'faktpro-medium', sans-serif;
         // font-family: 'calibre-semibold', sans-serif;
         // color: $dark-text;
         &:hover {
@@ -420,6 +424,7 @@ h1,h2,h3 {
     
     .search-icon {
       // display: none;
+      background-color: $main-blue;
       width: 44px;
       height: 44px;
       position: absolute;
@@ -436,6 +441,10 @@ h1,h2,h3 {
       &:hover {
         width: 48px;
         height: 48px;
+      }
+
+      svg {
+        fill: #fff;
       }
     }
 
@@ -467,7 +476,7 @@ h1,h2,h3 {
 // }
 
 .library-container {
-  margin-top: 90px;
+  margin-top: 80px;
   // display: flex;
   // justify-content: center;
   // flex-direction: column;
@@ -682,7 +691,7 @@ h1,h2,h3 {
 // 768
 @include desktop {
   .library-container { 
-    margin-top: 20px;
+    margin-top: 15px;
     margin-left: 210px;
 
     // .search-container {
@@ -737,7 +746,7 @@ h1,h2,h3 {
   align-items: center;
   justify-content: center;
   // margin-top: 75px;
-  margin-top: 100px;
+  margin-top: 80px;
   // margin-bottom: 30px;
 
 
@@ -1115,7 +1124,7 @@ h1,h2,h3 {
       .discover-card {
         justify-self: center;
         width: auto;
-        max-width: 450px;
+        max-width: 400px;
       }
     }
   }
@@ -1146,7 +1155,7 @@ h1,h2,h3 {
     border: none;
     font-family: inherit;
     border-radius: 3px;
-    font-size: 50px;
+    font-size: 35px;
     caret-color: gray;
     // color: #262626;
     color: $dark-text;
@@ -1176,6 +1185,7 @@ h1,h2,h3 {
     .search-input {
       width: 100%;
       margin-right: 20px;
+      font-size: 50px;
     }
   }
 }
