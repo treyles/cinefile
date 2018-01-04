@@ -62,7 +62,7 @@ export default class Header extends React.Component {
         </ul>
         <Link to="/" onClick={() => toggleSearchButton()}>
           <div className={`search-icon ${isSearchActive ? 'active' : ''}`}>
-            <Icon icon="search" width="16" height="16" />
+            <Icon icon="plus" width="18" height="18" />
           </div>
         </Link>
       </header>

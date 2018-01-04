@@ -213,8 +213,8 @@ h1,h2,h3 {
   }
 
   .profile-img {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: #fff;
     border: none;
@@ -277,7 +277,7 @@ h1,h2,h3 {
       font-size: 16px;
       display: inline-block;
       text-decoration: none;
-      color: lighten($light-text, 20%);
+      color: lighten($light-text, 15%);
       // width: 60px;
       transition: color .3s;
       margin: 0 3px;
@@ -312,15 +312,16 @@ h1,h2,h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 100px;
     margin: 20px;
     // background-color: #FC6E51; // orange
     // background-color: lighten(#FFCE54, 20%); //yellow
-    background-color: #DEF0FF;
+    // background-color: #DEF0FF;
+    background-color: $main-blue;
     // background-color: darken($gray-bg, 3%); // gray
-    pointer-events: none;
+    // pointer-events: none;
     color: white;
     font-size: 12px;
     text-decoration: none;
@@ -331,9 +332,9 @@ h1,h2,h3 {
     }
 
     svg {
-      fill: lighten($main-blue, 10%);
+      // fill: lighten($main-blue, 10%);
       // fill: darken(#F6BB42, 10%); // yellow
-      // fill: #fff;
+      fill: #fff;
       // fill: lighten($dark-text, 35%); // gray
       // fill: gray;
     }
@@ -344,7 +345,8 @@ h1,h2,h3 {
 // desktop version
 @include desktop {
   .header { 
-    position: fixed;
+    // position: fixed;
+    positon: relative;
     // float: left;
     width: 190px;
     height: 100%;
@@ -358,6 +360,11 @@ h1,h2,h3 {
       display: block;
     }
 
+    .profile-img {
+      width: 45px;
+      height: 45px;
+    }
+
     .welcome {
       display: block;
     }
@@ -365,15 +372,19 @@ h1,h2,h3 {
     ul {
       // margin-top: 140px;
       margin-top: 100px;
+      // width: 90px;
 
       li {
         display: block;
-        margin-bottom: 18px;
+        // margin-bottom: 18px;
+        // margin-bottom: 22px;
+        margin-bottom: 27px;
         // text-align: left;
 
         .counter {
           top: 0;
-          margin-left: 15px;
+          // margin-left: 15px;
+          margin-left: 20px;
         }
       }
 
@@ -382,8 +393,8 @@ h1,h2,h3 {
       }
 
       a {
-        // font-size: 16px;
-        // font-family: 'faktpro-normal', sans-serif;
+        font-size: 15px;
+        font-family: 'faktpro-medium', sans-serif;
         // font-family: 'calibre-semibold', sans-serif;
         // color: $dark-text;
         &:hover {
@@ -391,17 +402,31 @@ h1,h2,h3 {
         }
       }
 
-      .active-nav {
-        // font-family: 'faktpro-normal', sans-serif;
-        color: lighten($dark-text, 10%);
-      }
+      // .active-nav {
+      //   // font-family: 'faktpro-normal', sans-serif;
+      //   color: lighten($dark-text, 10%);
+      // }
     }
     
     .search-icon {
-      display: none;
-      margin: 30px;
-      // background-color: $main-blue;
-      pointer-events: none;
+      // display: none;
+      width: 44px;
+      height: 44px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      // margin: 30px;
+      margin: 0;
+      border-radius: 0 0 3px 0;
+      // border-bottom-right-radius: 3px;
+      box-shadow: 0px 3px 30px 0px rgba(6,124,217, .8);
+      // pointer-events: none;
+      transition: all .2s;
+
+      &:hover {
+        width: 48px;
+        height: 48px;
+      }
     }
 
     .profile-img {
@@ -1150,7 +1175,7 @@ h1,h2,h3 {
 
     .inLibraryColor {
       color: lighten($light-text, 20%);
-      text-decoration: line-through;
+      // text-decoration: line-through;
     }
     // h2, h3 {
     //   padding: 3px;
