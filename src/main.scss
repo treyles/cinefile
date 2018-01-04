@@ -80,6 +80,12 @@ h1,h2,h3 {
   }
 }
 
+@mixin grid-break($width, $columns) {
+  @media only screen and (min-width: $width) {
+    grid-template-columns: repeat($columns, 1fr);
+  }
+}
+
 @mixin tooltip($bottom, $left, $margin) {
   visibility: hidden;
   // background-color: darken($gray-bg, 5%);
@@ -378,7 +384,7 @@ h1,h2,h3 {
         display: block;
         // margin-bottom: 18px;
         // margin-bottom: 22px;
-        margin-bottom: 27px;
+        margin-bottom: 24px;
         // text-align: left;
 
         .counter {
@@ -400,6 +406,10 @@ h1,h2,h3 {
         &:hover {
           color: lighten($dark-text, 10%);
         }
+
+        &:after {
+          margin-top: 2px;   
+        }
       }
 
       // .active-nav {
@@ -419,7 +429,7 @@ h1,h2,h3 {
       margin: 0;
       border-radius: 0 0 3px 0;
       // border-bottom-right-radius: 3px;
-      box-shadow: 0px 3px 30px 0px rgba(6,124,217, .8);
+      box-shadow: 0px 3px 30px 0px rgba(6,124,217, .7);
       // pointer-events: none;
       transition: all .2s;
 
@@ -690,7 +700,11 @@ h1,h2,h3 {
   @supports (display: grid) {
     .library {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      @include grid-break(768px, 2)
+      @include grid-break(800px, 3)
+      @include grid-break(1000px, 4)
+      @include grid-break(1200px, 5)
+      @include grid-break(1400px, 6)
     }
 
     .library-card-container {
@@ -700,6 +714,11 @@ h1,h2,h3 {
   }
 }
 
+// @mixin grid-break($width, $columns) {
+//   @media only screen and (min-width: $width) {
+//     grid-template-columns: repeat($columns, 1fr);
+//   }
+// }
 
 // "poster_sizes": [
 //   "w92",
@@ -719,7 +738,7 @@ h1,h2,h3 {
   justify-content: center;
   // margin-top: 75px;
   margin-top: 100px;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
 
 
   // what is this?
@@ -926,45 +945,45 @@ h1,h2,h3 {
     }
   }
 
-  .load-more {
-    flex-shrink: 0;
-    display: block;
-    background-color: #B2B2B2;
-    font-family: 'faktpro-semibold', sans-serif;
-    line-height: normal;
-    color: #fff;
-    border: none;
-    outline: none;
-    width: 80%;
-    height: 50px;
-    border-radius: 5px;
-    margin: 30px 150px 0 150px;
-    cursor: pointer;
-    transition: background-color .4s;
+  // .load-more {
+  //   flex-shrink: 0;
+  //   display: block;
+  //   background-color: #B2B2B2;
+  //   font-family: 'faktpro-semibold', sans-serif;
+  //   line-height: normal;
+  //   color: #fff;
+  //   border: none;
+  //   outline: none;
+  //   width: 80%;
+  //   height: 50px;
+  //   border-radius: 5px;
+  //   margin: 30px 150px 0 150px;
+  //   cursor: pointer;
+  //   transition: background-color .4s;
 
-    &:hover {
-      background-color: darken(#B2B2B2, 10%);
-    }
+  //   &:hover {
+  //     background-color: darken(#B2B2B2, 10%);
+  //   }
 
-    &.loader {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: transparent;
-      cursor: default;
+  //   &.loader {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     background-color: transparent;
+  //     cursor: default;
 
-      @include preloader();
-    }
+  //     @include preloader();
+  //   }
 
-    &.end-list {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: transparent;
-      cursor: default;
-      color: lighten($light-text, 15%);
-    }
-  }
+  //   &.end-list {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     background-color: transparent;
+  //     cursor: default;
+  //     color: lighten($light-text, 15%);
+  //   }
+  // }
 
   .options {
     display: flex;
@@ -1018,6 +1037,53 @@ h1,h2,h3 {
   }
 }
 
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  .load-more {
+    // flex-shrink: 0;
+    // display: block;
+    background-color: #B2B2B2;
+    font-family: 'faktpro-semibold', sans-serif;
+    line-height: normal;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    // margin: 30px 20px 20px 220px;
+    cursor: pointer;
+    transition: background-color .4s;
+
+    &:hover {
+      background-color: darken(#B2B2B2, 10%);
+    }
+
+    &.loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      cursor: default;
+
+      @include preloader();
+    }
+
+    &.end-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      cursor: default;
+      color: lighten($light-text, 15%);
+    }
+  }
+}
+
 @include desktop {
   .discover { 
     margin-top: 10px;
@@ -1025,10 +1091,32 @@ h1,h2,h3 {
     // justify-content: flex-start;
     justify-content: space-evenly;
     // justify-content: center;
-
     
-    .load-more {
-      margin: 30px 0 0 0;
+    // .load-more {
+    //   margin: 30px 0 0 0;
+    // }
+  }
+
+  .load-more {
+    margin-left: 220px;
+    margin-right: 20px;
+    // width: 50%;
+  }
+
+  @supports (display: grid) {
+    .discover {
+      display: grid;
+      @include grid-break(768px, 1)
+      // @include grid-break(800px, 3)
+      @include grid-break(950px, 2)
+      @include grid-break(1320px, 3)
+      @include grid-break(1700px, 4)
+
+      .discover-card {
+        justify-self: center;
+        width: auto;
+        max-width: 450px;
+      }
     }
   }
 }

@@ -195,7 +195,6 @@ export default class Discover extends React.Component {
                   handleRemoveMatch={this.handleRemoveMatch}
                 />
               ))}
-          {showMoreButton ? this.renderShowButton() : loader}
           <ReactModal
             isOpen={showModal}
             onRequestClose={this.handleOptionsModal}
@@ -207,6 +206,9 @@ export default class Discover extends React.Component {
               handleQueryUpdate={this.handleQueryUpdate}
             />
           </ReactModal>
+        </div>
+        <div className="load-more-container">
+          {showMoreButton ? this.renderShowButton() : loader}
         </div>
       </div>
     );
