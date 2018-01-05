@@ -10,6 +10,14 @@ export default class Library extends React.Component {
     window.scrollTo(0, 0);
   }
 
+  // TODO: rename mounte to isCounterActive...?
+  componentWillMount() {
+    this.mounted = true;
+  }
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
   render() {
     const {
       library,
@@ -32,11 +40,17 @@ export default class Library extends React.Component {
 
     return (
       <div>
+        {/* TODO: better way to do this? */}
+        {!library.length &&
+          <div className="preloader-container">
+            {preloader}
+          </div>}
         <Header
           count={library.length}
           toggleSearchButton={toggleSearchButton}
           isSearchActive={isSearchActive}
           currentUser={currentUser}
+          isLibraryMounted={this.mounted}
         />
         <div className="library-container">
           {isSearchActive &&
@@ -47,7 +61,6 @@ export default class Library extends React.Component {
               library={library}
             />}
           <div className="library">
-            {!library.length && preloader}
             {library.map(media => (
               <LibraryCard
                 key={media.id}

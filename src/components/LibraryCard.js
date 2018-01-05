@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
+import MediaQuery from 'react-responsive';
 import LibraryCardFront from './LibraryCardFront';
 import LibraryCardBack from './LibraryCardBack';
 import TrailerModal from './TrailerModal';
@@ -45,16 +46,37 @@ export default class LibraryCard extends React.Component {
 
     return (
       <div className="library-card-container">
-        <div className="library-card" onClick={this.handleClick}>
-          {clicked
-            ? <LibraryCardBack
-                media={media}
-                removeFromLibrary={removeFromLibrary}
-                trailerKey={trailerKey}
-                handleTrailerModal={this.handleTrailerModal}
-              />
-            : <LibraryCardFront media={media} />}
-        </div>
+
+        {/* mobile -- view card back conditionally with click event */}
+        <MediaQuery maxWidth={768}>
+          <div className="library-card" onClick={this.handleClick}>
+            {clicked
+              ? <LibraryCardBack
+                  media={media}
+                  removeFromLibrary={removeFromLibrary}
+                  trailerKey={trailerKey}
+                  handleTrailerModal={this.handleTrailerModal}
+                />
+              : <LibraryCardFront media={media} />}
+          </div>
+        </MediaQuery>
+
+        {/* 
+          desktop - view card back with hover event using css.
+          why css? https://github.com/facebook/react/issues/6807
+        */}
+        <MediaQuery minWidth={768}>
+          <div className="library-card">
+            <LibraryCardBack
+              media={media}
+              removeFromLibrary={removeFromLibrary}
+              trailerKey={trailerKey}
+              handleTrailerModal={this.handleTrailerModal}
+            />
+            <LibraryCardFront media={media} />
+          </div>
+        </MediaQuery>
+
         <ReactModal
           isOpen={showModal}
           onRequestClose={this.handleTrailerModal}

@@ -25,6 +25,7 @@ export default class Header extends React.Component {
       count,
       toggleSearchButton,
       isSearchActive,
+      isLibraryMounted,
       currentUser
     } = this.props;
 
@@ -58,7 +59,14 @@ export default class Header extends React.Component {
             <NavLink exact to="/" activeClassName="active-nav">
               Library
             </NavLink>
-            {count > 0 && <span className="counter">{count}</span>}
+            {count > 0 &&
+              <span
+                className={
+                  `counter ${!isLibraryMounted ? 'inactive' : ''}`
+                }
+              >
+                {count}
+              </span>}
           </li>
         </ul>
         <Link to="/" onClick={() => toggleSearchButton()}>

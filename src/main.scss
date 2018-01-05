@@ -219,6 +219,8 @@ h1,h2,h3 {
   }
 
   .profile-img {
+    object-fit: cover;
+    // object-position: center;
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -267,9 +269,15 @@ h1,h2,h3 {
         color: lighten($main-blue, 10%);
         font-size: 10px;
         line-height: 1;
+        // TODO: delete when line height fixed
         padding-top: 3px;
         margin-left: 7px;
         cursor: default;
+
+        &.inactive {
+          background-color: darken($gray-bg, 2%);
+          color: lighten($light-text, 15%); // gray
+        }
       }
     }
 
@@ -284,7 +292,8 @@ h1,h2,h3 {
       font-size: 15px;
       display: inline-block;
       text-decoration: none;
-      color: lighten($light-text, 15%);
+      color: lighten($light-text, 5%);
+      // color: $dark-text;
       // width: 60px;
       transition: color .3s;
       margin: 0 3px;
@@ -293,20 +302,32 @@ h1,h2,h3 {
         content: "";
         display: block;
         visibility: hidden;
-        width: 100%;
+        width: 0;
         height: 2px;
-        background-color: lighten($main-blue, 10%);
-         
+        background-color: lighten($main-blue, 20%);  
+        // background-color: #48CFAD;
+        transition: width .2s; // a
       }
 
       &.active-nav:after {
         visibility: visible;
+        width: 100%; // a
       }
 
       &:hover {
         color: $dark-text;
+
+        &:after {               // a
+          visibility: visible;  // a
+          width: 100%;          // a
+        }                       // a
       }
     }
+
+    // underline color for discover
+    // li:nth-child(2) a:after {
+    //   background-color: #48CFAD;
+    // }
 
     .active-nav {
       // color: darken($light-text, 10%);
@@ -322,7 +343,7 @@ h1,h2,h3 {
     width: 40px;
     height: 40px;
     margin-right: 10px;
-    margin-left: 20px;
+    margin-left: 30px;
     // border-radius: 100px;
     // margin: 20px;
     // background-color: #FC6E51; // orange
@@ -388,13 +409,18 @@ h1,h2,h3 {
         display: block;
         // margin-bottom: 18px;
         // margin-bottom: 22px;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
         // text-align: left;
 
         .counter {
-          top: 0;
+          width: 25px;
+          height: 19px;
+          font-size: 11px;
+          // TODO: delete when line height fixed
+          padding-top: 5px;
+          // display: none;
           // margin-left: 15px;
-          margin-left: 20px;
+          margin-left: 10px;
         }
       }
 
@@ -403,12 +429,12 @@ h1,h2,h3 {
       }
 
       a {
-        // font-size: 15px;
+        font-size: 14px;
         // font-family: 'faktpro-medium', sans-serif;
         // font-family: 'calibre-semibold', sans-serif;
         // color: $dark-text;
         &:hover {
-          color: lighten($dark-text, 10%);
+          color: $dark-text;
         }
 
         &:after {
@@ -434,7 +460,7 @@ h1,h2,h3 {
       margin: 0;
       border-radius: 0 0 3px 0;
       // border-bottom-right-radius: 3px;
-      box-shadow: 0px 3px 30px 0px rgba(6,124,217, .7);
+      box-shadow: 0px 3px 30px 0px rgba(6,124,217, .5);
       // pointer-events: none;
       transition: all .2s;
 
@@ -475,10 +501,19 @@ h1,h2,h3 {
 //   }
 // }
 
+.preloader-container {
+  margin-left: 180px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 140px;
+}
+
 .library-container {
   margin-top: 80px;
   // display: flex;
   // justify-content: center;
+  // align-items: center;
   // flex-direction: column;
   // relative for search result absolute
   position: relative;
@@ -694,11 +729,34 @@ h1,h2,h3 {
     margin-top: 15px;
     margin-left: 210px;
 
-    // .search-container {
-    //   .desktop-search-icon {
-    //     display: block;
-    //   }
-    // }
+    // hover to show library card back
+    .library-card {
+      .card-back {
+        // hack using absolute positioning so that element doesn't occupy
+        // space using visibility. All for the sake of pretty fade in transitions.
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .6s;
+      }
+
+      .card-front {
+        transition: opacity .3s;
+      }
+
+      &:hover {
+        .card-front {
+          position: absolute;
+          visibility: hidden;
+          opacity: 0;
+        }
+        .card-back {
+          position: auto;
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
   }
 
   .library {
@@ -714,6 +772,7 @@ h1,h2,h3 {
       @include grid-break(1000px, 4)
       @include grid-break(1200px, 5)
       @include grid-break(1400px, 6)
+      @include grid-break(1675px, 7)
     }
 
     .library-card-container {
@@ -1124,7 +1183,7 @@ h1,h2,h3 {
       .discover-card {
         justify-self: center;
         width: auto;
-        max-width: 400px;
+        max-width: 420px;
       }
     }
   }

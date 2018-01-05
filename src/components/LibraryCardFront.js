@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function LibraryCardFront({ media }) {
   return (
-    <div>
+    <div className="card-front">
       <div className="img-container">
         <img
           src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
