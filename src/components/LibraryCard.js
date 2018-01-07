@@ -61,10 +61,7 @@ export default class LibraryCard extends React.Component {
           </div>
         </MediaQuery>
 
-        {/* 
-          desktop - view card back with hover event using css.
-          why css? https://github.com/facebook/react/issues/6807
-        */}
+        {/* desktop - view card back with hover event using css. */}
         <MediaQuery minWidth={768}>
           <div className="library-card">
             <LibraryCardBack

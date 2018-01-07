@@ -38,6 +38,11 @@ h1,h2,h3 {
 }
 
 @font-face {
+  font-family: 'calibre-medium';
+  src: url('fonts/calibre-medium.woff') format('woff');
+}
+
+@font-face {
   font-family: 'faktpro-semibold';
   src: url('fonts/faktpro-semibold.woff') format('woff');
 }
@@ -234,8 +239,9 @@ h1,h2,h3 {
   .welcome {
     display: none;
     font-family: 'faktpro-medium', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     color: lighten($light-text, 5%);
+    // color: $light-text;
   }
 
   ul {
@@ -286,10 +292,10 @@ h1,h2,h3 {
     }
 
     a {
-      // font-family: 'calibre-semibold', sans-serif;
-      font-family: 'faktpro-medium', sans-serif;
+      font-family: 'calibre-medium', sans-serif;
+      // font-family: 'faktpro-medium', sans-serif;
       // line-height: 20px;
-      font-size: 15px;
+      font-size: 17px;
       display: inline-block;
       text-decoration: none;
       color: lighten($light-text, 5%);
@@ -429,7 +435,8 @@ h1,h2,h3 {
       }
 
       a {
-        font-size: 14px;
+        // font-size: 14px;
+        font-size: 16px;
         // font-family: 'faktpro-medium', sans-serif;
         // font-family: 'calibre-semibold', sans-serif;
         // color: $dark-text;
@@ -437,9 +444,9 @@ h1,h2,h3 {
           color: $dark-text;
         }
 
-        &:after {
-          margin-top: 2px;   
-        }
+        // &:after {
+        //   margin-top: 2px;   
+        // }
       }
 
       // .active-nav {
@@ -552,7 +559,7 @@ h1,h2,h3 {
     margin: 10px 5px;
     // margin: 10px 0;
     // margin-right: 10px;
-    cursor: pointer;
+    // cursor: pointer;
 
     .img-container {
       position: relative;
@@ -626,7 +633,7 @@ h1,h2,h3 {
 
       .title {
         flex-grow: 0;
-        // background-color: lightgray;
+        cursor: default;
 
         h2 {
           font-family: 'faktpro-semibold', sans-serif;
@@ -652,6 +659,7 @@ h1,h2,h3 {
           font-size: 12px;
           line-height: 1.5;
           color: $light-text;
+          cursor: default;
         }
       }
 
@@ -676,6 +684,7 @@ h1,h2,h3 {
           margin: 4px;
           border: none;
           outline: none;
+          cursor: pointer;
           // background-color: $gray-bg;
 
           svg {
@@ -723,7 +732,7 @@ h1,h2,h3 {
   }
 }
 
-// 768
+// Media Queries 768px
 @include desktop {
   .library-container { 
     margin-top: 15px;
@@ -824,6 +833,7 @@ h1,h2,h3 {
     background-color: #fff;
     display: flex;
     flex-direction: column;
+    border-radius: 3px;
     // justify-content: center;
     // flex-wrap: wrap;
     padding: 13px 13px 0 13px;
@@ -855,6 +865,7 @@ h1,h2,h3 {
             height: 150px;
             object-fit: cover;
             color: #fff;
+            border-radius: 3px;
             // image-rendering: pixelated;
             box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.3);
           }
@@ -929,11 +940,13 @@ h1,h2,h3 {
     }
 
     .discover-footer {
+      // position: relative; // delete, for test-add
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      height: 47px;
+      // height: 47px;
+      height: 55px;
       border-top: 1px solid darken($gray-bg, 5%);
       color: $light-text;
       // background-color: peru;
@@ -947,6 +960,22 @@ h1,h2,h3 {
           font-family: 'faktpro-semibold', sans-serif;
         }
       }
+
+      // .test-add {
+      //   position: absolute;
+      //   display: flex;
+      //   justify-content: center;
+      //   align-items: center;
+      //   width: 47px;
+      //   height: 46px;
+      //   border-bottom-right-radius: 3px;
+      //   background-color: lightgray;
+      //   right: -13px;
+
+      //   svg {
+      //     fill: #fff;
+      //   }
+      // }
 
       .buttons {
         flex-grow: 0;
@@ -962,27 +991,29 @@ h1,h2,h3 {
           justify-content: center;
           align-items: center;
           height: 38px;
-          margin: 0 10px;
+          margin: 0 13px;
           border: none;
           outline: none;
           cursor: pointer;
           // background-color: $gray-bg;
 
           svg {
-            fill: lighten($light-text, 30%);
+            // fill: lighten($light-text, 30%);
+            fill: lighten($main-blue, 14%); 
             transition: fill 0.3s;
             shape-rendering: auto;
           }
 
           &:hover > svg {
-            fill: lighten($main-blue, 10%); 
+            fill: lighten($light-text, 30%);
+            // fill: lighten($main-blue, 10%); 
           }
         }
 
         .add {
           .add-tooltip {
             width: 95px;
-            @include tooltip(100%, 50%, -47px)
+            @include tooltip(110%, 50%, -47px)
           }
 
           &:hover .add-tooltip {
@@ -992,7 +1023,7 @@ h1,h2,h3 {
 
         .trailer {
           .trailer-tooltip {
-            @include tooltip(100%, 50%, -25px)
+            @include tooltip(110%, 50%, -25px)
           }
 
           &:hover .trailer-tooltip {
@@ -1002,7 +1033,7 @@ h1,h2,h3 {
 
         .imdb {
           .imdb-tooltip {
-            @include tooltip(100%, 50%, -23px)
+            @include tooltip(110%, 50%, -23px)
           }
 
           &:hover .imdb-tooltip {
@@ -1183,7 +1214,7 @@ h1,h2,h3 {
       .discover-card {
         justify-self: center;
         width: auto;
-        max-width: 420px;
+        max-width: 410px;
       }
     }
   }
