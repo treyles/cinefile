@@ -6,6 +6,18 @@ import Header from './Header';
 import OptionsModal from './OptionsModal';
 import { fetchDiscover } from '../utils/Api';
 import Icon from '../utils/Icon';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+// make helper
+const Fade = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={{ enter: 500, exit: 200 }}
+    classNames="fade"
+  >
+    {children}
+  </CSSTransition>
+);
 
 const defaultQuery = {
   page: 1,
@@ -179,7 +191,10 @@ export default class Discover extends React.Component {
           isSearchActive={isSearchActive}
           currentUser={currentUser}
         />
-        <div className="discover">
+        {/* transitiongroup shouldnt be wrapping all the things 
+            causes two errors?
+        */}
+        <TransitionGroup className="discover">
           <div className="options" onClick={this.handleOptionsModal}>
             <Icon icon="menu2" width="25" height="25" />
           </div>
@@ -187,13 +202,15 @@ export default class Discover extends React.Component {
           {this.mounted && !matches.length
             ? <h1>Your query returned zero results</h1>
             : matches.map(media => (
-                <DiscoverCard
-                  key={media.id}
-                  media={media}
-                  addToLibrary={addToLibrary}
-                  currentPage={query.page}
-                  handleRemoveMatch={this.handleRemoveMatch}
-                />
+                <Fade key={media.id}>
+                  <DiscoverCard
+                    key={media.id}
+                    media={media}
+                    addToLibrary={addToLibrary}
+                    currentPage={query.page}
+                    handleRemoveMatch={this.handleRemoveMatch}
+                  />
+                </Fade>
               ))}
           <ReactModal
             isOpen={showModal}
@@ -206,7 +223,7 @@ export default class Discover extends React.Component {
               handleQueryUpdate={this.handleQueryUpdate}
             />
           </ReactModal>
-        </div>
+        </TransitionGroup>
         <div className="load-more-container">
           {showMoreButton ? this.renderShowButton() : loader}
         </div>

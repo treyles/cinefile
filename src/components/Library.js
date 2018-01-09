@@ -4,6 +4,18 @@ import Header from './Header';
 import LibraryCard from './LibraryCard';
 import Search from './Search';
 import rebase from '../utils/base';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+// make helper
+const Fade = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={{ enter: 500, exit: 200 }}
+    classNames="fade"
+  >
+    {children}
+  </CSSTransition>
+);
 
 export default class Library extends React.Component {
   componentDidMount() {
@@ -60,15 +72,17 @@ export default class Library extends React.Component {
               removeFromLibrary={removeFromLibrary}
               library={library}
             />}
-          <div className="library">
+          <TransitionGroup className="library">
             {library.map(media => (
-              <LibraryCard
-                key={media.id}
-                media={media}
-                removeFromLibrary={removeFromLibrary}
-              />
+              <Fade key={media.id}>
+                <LibraryCard
+                  key={media.id}
+                  media={media}
+                  removeFromLibrary={removeFromLibrary}
+                />
+              </Fade>
             ))}
-          </div>
+          </TransitionGroup>
         </div>
       </div>
     );
