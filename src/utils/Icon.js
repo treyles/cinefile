@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// TODO: remove width and height, being set in CSS  //////
+// has been set in css (for mobile), but desktop needs to be explicitly set
+// after removing width/height below
+
 export default class Icon extends React.Component {
   render() {
     const { width, height, color } = this.props;
