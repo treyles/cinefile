@@ -4,6 +4,18 @@ $gray-bg: #f4f4f4;
 $light-text: #828282;
 $dark-text: #3f3f3f;
 
+@mixin desktop {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -21,10 +33,20 @@ html {
 }
 
 h1 { font-size: 17px; }
-h2 { font-size: 13px; }
-h3 { font-size: 11px; }
+h2 { font-size: 14px; }
+h3 { font-size: 12px; }
+h4 { font-size: 15px; }
+p { font-size: 12px}
 
-h1,h2,h3 {
+@include mobile {
+  h1 { font-size: 19px; }
+  h2 { font-size: 16px; }
+  h3 { font-size: 14px; }  
+  h4 { font-size: 17px; }
+  p { font-size: 14px}
+}
+
+h1,h2,h3,h4 {
   margin: 0;
   padding: 0; 
   font-weight: normal;
@@ -78,12 +100,6 @@ h1,h2,h3 {
 //     @content;
 //   }
 // }
-
-@mixin desktop {
-  @media only screen and (min-width: 768px) {
-    @content;
-  }
-}
 
 @mixin grid-break($width, $columns) {
   @media only screen and (min-width: $width) {
@@ -265,18 +281,18 @@ h1,h2,h3 {
         // background-color: darken(lightgray, 10%); // gray
         // background-color: darken(#7CD3C8, 10%); // seafoam
         text-align: center;
-        width: 21px;
-        height: 16px;
+        width: 25px;
+        height: 19px;
         top: -6px;
         border-radius: 10px;
         // border: 1px solid #C0E0FC;
         font-family: 'faktpro-semibold', sans-serif;
         // color: white;
         color: lighten($main-blue, 10%);
-        font-size: 10px;
+        font-size: 11px;
         line-height: 1;
         // TODO: delete when line height fixed
-        padding-top: 3px;
+        padding-top: 5px;
         margin-left: 7px;
         cursor: default;
 
@@ -293,14 +309,9 @@ h1,h2,h3 {
 
     a {
       font-family: 'calibre-medium', sans-serif;
-      // font-family: 'faktpro-medium', sans-serif;
-      // line-height: 20px;
-      font-size: 17px;
       display: inline-block;
       text-decoration: none;
       color: lighten($light-text, 5%);
-      // color: $dark-text;
-      // width: 60px;
       transition: color .3s;
       margin: 0 3px;
 
@@ -311,7 +322,6 @@ h1,h2,h3 {
         width: 0;
         height: 2px;
         background-color: lighten($main-blue, 20%);  
-        // background-color: #48CFAD;
         transition: width .2s; // a
       }
 
@@ -320,14 +330,14 @@ h1,h2,h3 {
         width: 100%; // a
       }
 
-      &:hover {
-        color: $dark-text;
+      // &:hover {
+      //   color: $dark-text;
 
-        &:after {               // a
-          visibility: visible;  // a
-          width: 100%;          // a
-        }                       // a
-      }
+      //   &:after {               // a
+      //     visibility: visible;  // a
+      //     width: 100%;          // a
+      //   }                       // a
+      // }
     }
 
     // underline color for discover
@@ -417,17 +427,6 @@ h1,h2,h3 {
         // margin-bottom: 22px;
         margin-bottom: 20px;
         // text-align: left;
-
-        .counter {
-          width: 25px;
-          height: 19px;
-          font-size: 11px;
-          // TODO: delete when line height fixed
-          padding-top: 5px;
-          // display: none;
-          // margin-left: 15px;
-          margin-left: 10px;
-        }
       }
 
       li:nth-child(1) {
@@ -435,8 +434,11 @@ h1,h2,h3 {
       }
 
       a {
+        h1 {
+          font-size: 16px;
+        }
         // font-size: 14px;
-        font-size: 16px;
+        // font-size: 16px;
         // font-family: 'faktpro-medium', sans-serif;
         // font-family: 'calibre-semibold', sans-serif;
         // color: $dark-text;
@@ -444,15 +446,24 @@ h1,h2,h3 {
           color: $dark-text;
         }
 
-        // &:after {
-        //   margin-top: 2px;   
-        // }
+        &:hover {
+        color: $dark-text;
+
+          &:after {               // a
+            visibility: visible;  // a
+            width: 100%;          // a
+          }                       // a
+        }
       }
 
       // .active-nav {
       //   // font-family: 'faktpro-normal', sans-serif;
       //   color: lighten($dark-text, 10%);
       // }
+    }
+
+    .counter {
+      margin-left: 10px;
     }
     
     .search-icon {
@@ -553,12 +564,17 @@ h1,h2,h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 185px;
-    height: 316px;
+    width: 200px;
+    height: 341.6px;
     margin: 10px 5px;
-    // margin: 10px 0;
-    // margin-right: 10px;
-    // cursor: pointer;
+
+  // .library-card {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   width: 185px;
+  //   height: 316px;
+  //   margin: 10px 5px;
 
     .img-container {
       position: relative;
@@ -567,8 +583,10 @@ h1,h2,h3 {
         // flex-shrink: 0;
         // width: 165px; // "w154", "w185",
         // height: 247.5px;
-        width: 160px; // "w154", "w185",
-        height: 240px;
+        // width: 160px; // "w154", "w185",
+        // height: 240px;
+        width: 175px;
+        height: 262.5px;
         // width: 154px; // "w154", "w185",
         // height: 231px;
         object-fit: cover;
@@ -586,17 +604,22 @@ h1,h2,h3 {
         position: absolute;
         bottom: -13px;
         background-color: $main-blue;
-        width: 28px;
-        height: 28px;
+        width: 33px;
+        height: 33px;
         color: white;
         font-family: 'faktpro-semibold', sans-serif;
         line-height: 1;
-        font-size: 12px;
         border-radius: 50%;
-        padding-top: 3px;
+        padding-top: 2px;
         margin: 0 auto;
         left: 0;
         right: 0;
+      }
+      @include desktop {
+        .rating-tag {
+          width: 28px;
+          height: 28px;
+        }
       }
     }
 
@@ -608,16 +631,15 @@ h1,h2,h3 {
         white-space: nowrap;
         // font-family: 'faktpro-semibold', sans-serif;
         font-family: 'faktpro-normal', sans-serif;
-        font-size: 14px;
         color: lighten($dark-text, 7%);
         margin-top: 20px;
         text-overflow: ellipsis;
       }
 
       h3 {
-        margin-top: 5px;
-        font-family: 'faktpro-semibold', sans-serif;
-        color: lighten($light-text, 7%);
+        margin-top: 2px;
+        font-family: 'faktpro-normal', sans-serif;
+        color: $light-text;
       }
     }
 
@@ -625,8 +647,8 @@ h1,h2,h3 {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 185px;
-      height: 316px;
+      width: 200px;
+      height: 341.6px;
       background-color: white;
       padding: 22px 13px 12px 13px;
 
@@ -641,8 +663,8 @@ h1,h2,h3 {
 
         h3 {
           margin-top: 3px;
-          font-family: 'faktpro-semibold', sans-serif;
-          color: lighten($light-text, 7%);
+          font-family: 'faktpro-normal', sans-serif;
+          color: $light-text;
         }
       }
 
@@ -655,7 +677,7 @@ h1,h2,h3 {
         p {
           margin-top: 10px;
           font-family: 'faktpro-normal', sans-serif;
-          font-size: 12px;
+          // font-size: 12px;
           line-height: 1.5;
           color: $light-text;
           cursor: default;
@@ -702,8 +724,10 @@ h1,h2,h3 {
             @include tooltip(100%, 50%, -25px)
           }
 
-          &:hover .delete-tooltip {
-            visibility: visible;
+          @include desktop {
+            &:hover .delete-tooltip {
+              visibility: visible;
+            }
           }  
         }
 
@@ -712,8 +736,10 @@ h1,h2,h3 {
             @include tooltip(100%, 50%, -25px)
           }
 
-          &:hover .trailer-tooltip {
-            visibility: visible;
+          @include desktop {
+            &:hover .trailer-tooltip {
+              visibility: visible;
+            }
           }  
         }
 
@@ -722,8 +748,10 @@ h1,h2,h3 {
             @include tooltip(100%, 50%, -25px)
           }
 
-          &:hover .imdb-tooltip {
-            visibility: visible;
+          @include desktop {
+            &:hover .imdb-tooltip {
+              visibility: visible;
+            }
           }  
         }
       }
@@ -743,7 +771,19 @@ h1,h2,h3 {
 
     // hover to show library card back
     .library-card {
+      width: 185px;
+      height: 316px;
+
+      .img-container {
+        img {
+          width: 160px; // "w154", "w185",
+          height: 240px;
+        }
+      }
+
       .card-back {
+        width: 185px;
+        height: 316px;
         // hack using absolute positioning so that element doesn't occupy
         // space using visibility. All for the sake of pretty fade in transitions.
         position: absolute;
@@ -862,7 +902,7 @@ h1,h2,h3 {
           position: absolute;
           // TODO: media query fill space
           top: -25px;
-          // bottom: 20px;
+          // bottom: 27px;
           // top: 5px;
 
           img {
@@ -883,8 +923,8 @@ h1,h2,h3 {
             position: absolute;
             bottom: -15px;
             background-color: $main-blue;
-            width: 28px;
-            height: 28px;
+            width: 33px;
+            height: 33px;
             color: white;
             font-family: 'faktpro-semibold', sans-serif;
             line-height: 1;
@@ -894,6 +934,13 @@ h1,h2,h3 {
             margin: 0 auto;
             left: 0;
             right: 0;
+          }
+
+          @include desktop {
+            .rating-tag {
+              width: 28px;
+              height: 28px;
+            }
           }
         }
       }
@@ -908,8 +955,7 @@ h1,h2,h3 {
         color: $light-text;
         // background-color: lightgray;
 
-        h2 {
-          font-size: 15px; // not h2 size, make h4?
+        h4 {
           font-family: 'faktpro-normal', sans-serif;
           color: lighten($dark-text, 7%);
         }
@@ -938,7 +984,7 @@ h1,h2,h3 {
         p {
           margin-top: 8px;
           font-family: 'faktpro-normal', sans-serif;
-          font-size: 12px;
+          // font-size: 12px;
           line-height: 1.5;
         }
       }
@@ -1021,8 +1067,10 @@ h1,h2,h3 {
             @include tooltip(110%, 50%, -47px)
           }
 
-          &:hover .add-tooltip {
-            visibility: visible;
+          @include desktop {
+            &:hover .add-tooltip {
+              visibility: visible;
+            }
           }  
         }
 
@@ -1031,8 +1079,10 @@ h1,h2,h3 {
             @include tooltip(110%, 50%, -25px)
           }
 
-          &:hover .trailer-tooltip {
-            visibility: visible;
+          @include desktop {
+            &:hover .trailer-tooltip {
+              visibility: visible;
+            }
           }  
         }
 
@@ -1041,8 +1091,10 @@ h1,h2,h3 {
             @include tooltip(110%, 50%, -23px)
           }
 
-          &:hover .imdb-tooltip {
-            visibility: visible;
+          @include desktop {
+            &:hover .imdb-tooltip {
+              visibility: visible;
+            }
           }  
         }
       }
@@ -1098,8 +1150,10 @@ h1,h2,h3 {
     bottom: 40px;
     right: 25px;
     background-color: $main-blue;
-    width: 54px;
-    height: 54px;
+    // width: 54px;
+    // height: 54px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     border: none;
     outline: none;
@@ -1195,10 +1249,6 @@ h1,h2,h3 {
     // justify-content: flex-start;
     justify-content: space-evenly;
     // justify-content: center;
-    
-    // .load-more {
-    //   margin: 30px 0 0 0;
-    // }
   }
 
   .load-more {
@@ -1244,6 +1294,7 @@ h1,h2,h3 {
   }
 
   .search-input {
+    appearance: none;
     background-color: #eaeaea;
     // background-color: #eee;
     width: 95%;
@@ -1289,13 +1340,14 @@ h1,h2,h3 {
   z-index: 1;
   position: absolute;
   top: 75px;
+  left: 0;
 
   // left: 0;
   // margin-left: 2.5%; 
 
   // width: 500px;
   // width: 300px;
-  width: 95%;
+  width: 100%;
   // min-width: 300px;
   // background-color: white;
   // margin-top: 20px;
@@ -1357,13 +1409,11 @@ h1,h2,h3 {
     h2 { 
       font-family: 'faktpro-normal', sans-serif;
       color: $dark-text;
-      font-size: 14px;
     }
 
     h3 { 
       font-family: 'faktpro-normal', sans-serif;
       color: $light-text;
-      font-size: 12px;
     }
 
     .inLibraryColor {
@@ -1462,8 +1512,13 @@ h1,h2,h3 {
     h2 {
       font-family: 'faktpro-normal', sans-serif;
       color: $dark-text;
-      font-size: 14px;
     }
+  }
+}
+
+@include desktop {
+  .search-results {
+    width: 95%;
   }
 }
 

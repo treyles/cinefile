@@ -107,13 +107,13 @@ export default class DiscoverCard extends React.Component {
             </div>
           </div>
           <div className="discover-info">
-            <h2>{truncate(title, { length: 50, separator: ' ' })}</h2>
+            <h4>{truncate(title, { length: 50, separator: ' ' })}</h4>
             <h3>
               <span>{creditTypeHeader}</span> {credits.header}
             </h3>
             <h3>{release.substring(0, 4)}</h3>
             <p>
-              {truncate(media.overview, { length: 130, separator: ' ' })}
+              {truncate(media.overview, { length: 125, separator: ' ' })}
             </p>
           </div>
         </div>

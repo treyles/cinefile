@@ -51,13 +51,13 @@ export default class Header extends React.Component {
               activeClassName="active-nav"
               onClick={() => toggleSearchButton(true)}
             >
-              Discover
+              <h1>Discover</h1>
             </NavLink>
           </li>
           <li>
             {/* need exact? */}
             <NavLink exact to="/" activeClassName="active-nav">
-              Library
+              <h1>Library</h1>
             </NavLink>
             {count > 0 &&
               <span

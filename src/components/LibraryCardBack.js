@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import truncate from 'lodash/truncate';
 import Icon from '../utils/Icon';
+import MediaQuery from 'react-responsive';
 
 export default class LibraryCardBack extends React.Component {
   constructor(props) {
@@ -49,7 +50,14 @@ export default class LibraryCardBack extends React.Component {
         </div>
         <div className="synopsis">
           <p>
-            {truncate(media.overview, { length: 240, separator: ' ' })}
+            {/* mobile */}
+            <MediaQuery maxWidth={768}>
+              {truncate(media.overview, { length: 200, separator: ' ' })}
+            </MediaQuery>
+            {/* desktop */}
+            <MediaQuery minWidth={768}>
+              {truncate(media.overview, { length: 240, separator: ' ' })}
+            </MediaQuery>
           </p>
         </div>
         <div className="buttons">

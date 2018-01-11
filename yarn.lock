@@ -4803,6 +4803,10 @@ react-dom@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-flip-move@^2.10.2:
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/react-flip-move/-/react-flip-move-2.10.2.tgz#efd70dafb11594deac1827d9cf26ea2e773810d6"
+
 react-input-autosize@^2.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-2.1.2.tgz#a3dc11a5517c434db25229925541309de3f7a8f5"

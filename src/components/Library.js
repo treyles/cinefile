@@ -4,18 +4,19 @@ import Header from './Header';
 import LibraryCard from './LibraryCard';
 import Search from './Search';
 import rebase from '../utils/base';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+// import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import FlipMove from 'react-flip-move';
 
 // make helper
-const Fade = ({ children, ...props }) => (
-  <CSSTransition
-    {...props}
-    timeout={{ enter: 500, exit: 200 }}
-    classNames="fade"
-  >
-    {children}
-  </CSSTransition>
-);
+// const Fade = ({ children, ...props }) => (
+//   <CSSTransition
+//     {...props}
+//     timeout={{ enter: 500, exit: 200 }}
+//     classNames="fade"
+//   >
+//     {children}
+//   </CSSTransition>
+// );
 
 export default class Library extends React.Component {
   componentDidMount() {
@@ -72,17 +73,15 @@ export default class Library extends React.Component {
               removeFromLibrary={removeFromLibrary}
               library={library}
             />}
-          <TransitionGroup className="library">
+          <FlipMove className="library">
             {library.map(media => (
-              <Fade key={media.id}>
-                <LibraryCard
-                  key={media.id}
-                  media={media}
-                  removeFromLibrary={removeFromLibrary}
-                />
-              </Fade>
+              <LibraryCard
+                key={media.id}
+                media={media}
+                removeFromLibrary={removeFromLibrary}
+              />
             ))}
-          </TransitionGroup>
+          </FlipMove>
         </div>
       </div>
     );
