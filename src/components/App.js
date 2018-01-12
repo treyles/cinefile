@@ -36,7 +36,10 @@ export default class App extends React.Component {
 
   handleAuthorization() {
     const provider = new firebase.auth.GoogleAuthProvider();
+    // firebase.auth().signInWithRedirect(provider);
+    // firebase.auth().signInWithPopup(provider);
 
+    // TODO: should catch errors
     firebase.auth().signInWithPopup(provider).then(response => {
       this.setState({ currentUser: response.user });
       this.syncFirebase();
@@ -52,7 +55,7 @@ export default class App extends React.Component {
     });
 
     // TODO: put somehwere else?
-    // to check if user was logged in on refresh
+    // to check if user was logged in on refresh (prevent conditional flash)
     localStorage.setItem('authenticated', true);
   }
 
@@ -118,23 +121,24 @@ export default class App extends React.Component {
             />
             <Route
               path="/discover"
-              render={() => (
-                <Discover
-                  library={library}
-                  addToLibrary={this.addToLibrary}
-                  count={library.length}
-                  toggleSearchButton={this.toggleSearchButton}
-                  isSearchActive={isSearchActive}
-                  currentUser={currentUser}
-                />
-              )}
+              render={() =>
+                !hasLoggedIn
+                  ? <Home handleAuthorization={this.handleAuthorization} />
+                  : <Discover
+                      library={library}
+                      addToLibrary={this.addToLibrary}
+                      count={library.length}
+                      toggleSearchButton={this.toggleSearchButton}
+                      isSearchActive={isSearchActive}
+                      currentUser={currentUser}
+                    />}
             />
             <Route
               render={() => <p className="not-found">Not Found!</p>}
             />
           </Switch>
           <div className={`alert ${alert && 'active'}`}>
-            {alert && `${alert} library`}
+            <h2>{alert && `${alert} library`}</h2>
           </div>
         </div>
       </BrowserRouter>

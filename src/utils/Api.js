@@ -50,7 +50,7 @@ export function fetchMediaDetails(media) {
   }
 
   encodedURI = window.encodeURI(
-    `http://api.themoviedb.org/3/tv/${media.id}?api_key=529e1b3a6041a4b14bb6b7e328aad991&append_to_response=external_ids,videos,credits`
+    `https://api.themoviedb.org/3/tv/${media.id}?api_key=529e1b3a6041a4b14bb6b7e328aad991&append_to_response=external_ids,videos,credits`
   );
 
   return axios.get(encodedURI).then(response => response.data);
