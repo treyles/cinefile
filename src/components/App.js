@@ -17,10 +17,18 @@ export default class App extends React.Component {
     };
 
     this.timer = null;
+    this.refresh = JSON.parse(localStorage.getItem('authenticated'));
     this.addToLibrary = this.addToLibrary.bind(this);
     this.removeFromLibrary = this.removeFromLibrary.bind(this);
     this.toggleSearchButton = this.toggleSearchButton.bind(this);
     this.handleAuthorization = this.handleAuthorization.bind(this);
+  }
+
+  // prevent homepage from momentarily appearing on refresh after login
+  componentWillMount() {
+    if (this.refresh) {
+      this.setState({ currentUser: true });
+    }
   }
 
   componentDidMount() {
@@ -29,34 +37,30 @@ export default class App extends React.Component {
 
       // re-sync firebase on refresh
       if (currentUser) {
-        this.syncFirebase();
+        this.syncRebase();
+        localStorage.setItem('authenticated', true);
       }
     });
   }
 
   handleAuthorization() {
     const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider);
     // firebase.auth().signInWithRedirect(provider);
-    // firebase.auth().signInWithPopup(provider);
 
     // TODO: should catch errors
-    firebase.auth().signInWithPopup(provider).then(response => {
-      this.setState({ currentUser: response.user });
-      this.syncFirebase();
-    });
+    // firebase.auth().signInWithPopup(provider).then(response => {
+    //   this.setState({ currentUser: response.user });
+    //   this.syncRebase();
+    // });
   }
 
-  // TODO: rename?
-  syncFirebase() {
+  syncRebase() {
     rebase.syncState(this.state.currentUser.uid, {
       context: this,
       state: 'library',
       asArray: true
     });
-
-    // TODO: put somehwere else?
-    // to check if user was logged in on refresh (prevent conditional flash)
-    localStorage.setItem('authenticated', true);
   }
 
   // TODO: rename 'handle'
@@ -97,7 +101,6 @@ export default class App extends React.Component {
 
   render() {
     const { library, alert, isSearchActive, currentUser } = this.state;
-    const hasLoggedIn = JSON.parse(localStorage.getItem('authenticated'));
 
     return (
       <BrowserRouter>
@@ -107,7 +110,7 @@ export default class App extends React.Component {
               exact
               path="/"
               render={() =>
-                !hasLoggedIn
+                !currentUser
                   ? <Home handleAuthorization={this.handleAuthorization} />
                   : <Library
                       library={library}
@@ -122,7 +125,7 @@ export default class App extends React.Component {
             <Route
               path="/discover"
               render={() =>
-                !hasLoggedIn
+                !currentUser
                   ? <Home handleAuthorization={this.handleAuthorization} />
                   : <Discover
                       library={library}

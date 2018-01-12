@@ -4,19 +4,7 @@ import Header from './Header';
 import LibraryCard from './LibraryCard';
 import Search from './Search';
 import rebase from '../utils/base';
-// import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import FlipMove from 'react-flip-move';
-
-// make helper
-// const Fade = ({ children, ...props }) => (
-//   <CSSTransition
-//     {...props}
-//     timeout={{ enter: 500, exit: 200 }}
-//     classNames="fade"
-//   >
-//     {children}
-//   </CSSTransition>
-// );
 
 export default class Library extends React.Component {
   componentDidMount() {

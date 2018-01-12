@@ -33,14 +33,14 @@ export default class Header extends React.Component {
       <header className="header">
         <div className="logo">Cinefile</div>
         <Link to="/" onClick={this.handleClick}>
-          {currentUser &&
+          {currentUser.photoURL &&
             <img
               alt="logout"
               src={currentUser.photoURL}
               className="profile-img"
             />}
         </Link>
-        {currentUser &&
+        {currentUser.displayName &&
           <div className="welcome">
             {`Hi, ${currentUser.displayName.split(' ')[0]}`}
           </div>}
