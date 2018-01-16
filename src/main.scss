@@ -245,11 +245,14 @@ h1,h2,h3,h4 {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background-color: #fff;
     border: none;
     outline: 0;
     margin: 20px;
     cursor: pointer;
+
+    &.placeholder {
+      background-color: lightGray;
+    }
   }
 
   .welcome {
@@ -519,11 +522,14 @@ h1,h2,h3,h4 {
 //   }
 // }
 
-.preloader-container {
-  height: 100%;
+.library-lobby {
+  // height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 140px;
+  padding-top: 140px;
+  box-sizing: border-box;
+  position: absolute;
 }
 
 .library-container {
@@ -786,8 +792,8 @@ h1,h2,h3,h4 {
 
 // Media Queries 768px
 @include desktop {
-  .preloader-container {
-    margin-left: 180px;
+  .library-lobby {
+    padding-left: 200px;
   }
 
   .library-container { 
@@ -1778,5 +1784,3 @@ h1,h2,h3,h4 {
   opacity: 0;
   transition: opacity 400ms, height 400ms;
 }
-
-

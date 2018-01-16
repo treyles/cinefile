@@ -12,6 +12,7 @@ export default class App extends React.Component {
     this.state = {
       alert: false,
       library: [],
+      loading: true,
       isSearchActive: false,
       currentUser: null
     };
@@ -24,7 +25,7 @@ export default class App extends React.Component {
     this.handleAuthorization = this.handleAuthorization.bind(this);
   }
 
-  // prevent homepage from momentarily appearing on refresh after login
+  // if previously logged in, prevent homepage from momentarily appearing on refresh
   componentWillMount() {
     if (this.refresh) {
       this.setState({ currentUser: true });
@@ -35,7 +36,7 @@ export default class App extends React.Component {
     firebase.auth().onAuthStateChanged(currentUser => {
       this.setState({ currentUser });
 
-      // re-sync firebase on refresh
+      // if logged in
       if (currentUser) {
         this.syncRebase();
         localStorage.setItem('authenticated', true);
@@ -43,23 +44,20 @@ export default class App extends React.Component {
     });
   }
 
+  // TODO: handle in base.js and set directly onClick
   handleAuthorization() {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider);
-    // firebase.auth().signInWithRedirect(provider);
-
-    // TODO: should catch errors
-    // firebase.auth().signInWithPopup(provider).then(response => {
-    //   this.setState({ currentUser: response.user });
-    //   this.syncRebase();
-    // });
   }
 
   syncRebase() {
     rebase.syncState(this.state.currentUser.uid, {
       context: this,
       state: 'library',
-      asArray: true
+      asArray: true,
+      then() {
+        this.setState({ loading: false });
+      }
     });
   }
 
@@ -91,6 +89,7 @@ export default class App extends React.Component {
 
   toggleSearchButton(reset) {
     const isSearchActive = reset ? false : !this.state.isSearchActive;
+    // TODO: disable search when loading
     this.setState({ isSearchActive });
   }
 
@@ -100,7 +99,13 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { library, alert, isSearchActive, currentUser } = this.state;
+    const {
+      library,
+      alert,
+      isSearchActive,
+      currentUser,
+      loading
+    } = this.state;
 
     return (
       <BrowserRouter>
@@ -120,6 +125,7 @@ export default class App extends React.Component {
                       isSearchActive={isSearchActive}
                       count={library.length}
                       currentUser={currentUser}
+                      loading={loading}
                     />}
             />
             <Route

@@ -180,6 +180,11 @@ export default class Discover extends React.Component {
           isSearchActive={isSearchActive}
           currentUser={currentUser}
         />
+        {this.mounted &&
+          !matches.length &&
+          <div className="library-lobby">
+            <h1>Your query returned zero results</h1>
+          </div>}
         {/* FlipMove shouldnt be wrapping all the things 
             causes two errors?
         */}
@@ -188,17 +193,15 @@ export default class Discover extends React.Component {
             <Icon icon="menu2" width="25" height="25" />
           </div>
           {/* logic here to fix 'returned zero results' when adding all movies on discover page. */}
-          {this.mounted && !matches.length
-            ? <h1>Your query returned zero results</h1>
-            : matches.map(media => (
-                <DiscoverCard
-                  key={media.id}
-                  media={media}
-                  addToLibrary={addToLibrary}
-                  currentPage={query.page}
-                  handleRemoveMatch={this.handleRemoveMatch}
-                />
-              ))}
+          {matches.map(media => (
+            <DiscoverCard
+              key={media.id}
+              media={media}
+              addToLibrary={addToLibrary}
+              currentPage={query.page}
+              handleRemoveMatch={this.handleRemoveMatch}
+            />
+          ))}
           <ReactModal
             isOpen={showModal}
             onRequestClose={this.handleOptionsModal}

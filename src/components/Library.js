@@ -11,12 +11,20 @@ export default class Library extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  // TODO: rename mounte to isCounterActive...?
   componentWillMount() {
+    // TODO: rename mount to isCounterActive...?
     this.mounted = true;
   }
   componentWillUnmount() {
     this.mounted = false;
+  }
+
+  renderLobby(content) {
+    return (
+      <div className="library-lobby">
+        {content}
+      </div>
+    );
   }
 
   render() {
@@ -26,7 +34,8 @@ export default class Library extends React.Component {
       addToLibrary,
       isSearchActive,
       toggleSearchButton,
-      currentUser
+      currentUser,
+      loading
     } = this.props;
 
     const preloader = (
@@ -38,14 +47,12 @@ export default class Library extends React.Component {
         <div className="rect5" />
       </div>
     );
+    const isEmpty = <h1 className="stuffs">your shit is empty</h1>;
 
     return (
       <div>
-        {/* TODO: better way to do this? */}
-        {!library.length &&
-          <div className="preloader-container">
-            {preloader}
-          </div>}
+        {loading && this.renderLobby(preloader)}
+        {!loading && !library.length && this.renderLobby(isEmpty)}
         <Header
           count={library.length}
           toggleSearchButton={toggleSearchButton}
