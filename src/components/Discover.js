@@ -25,7 +25,8 @@ export default class Discover extends React.Component {
       pages: null,
       showModal: false,
       showMoreButton: true,
-      query: {}
+      query: {},
+      preloader: true
     };
 
     this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
@@ -36,7 +37,7 @@ export default class Discover extends React.Component {
   }
 
   componentDidMount() {
-    this.mounted = true;
+    // this.mounted = true;
     window.scrollTo(0, 0);
 
     const query = this.lsQuery ? this.lsQuery : defaultQuery;
@@ -51,7 +52,7 @@ export default class Discover extends React.Component {
   }
 
   componentWillUnmount() {
-    this.mounted = false;
+    // this.mounted = false;
     clearTimeout(this.showMoreTimeout);
   }
 
@@ -75,7 +76,8 @@ export default class Discover extends React.Component {
       this.setState({
         matches: newMatches,
         pages: response.total_pages,
-        query: newQuery
+        query: newQuery,
+        preloader: false
       });
     });
   }
@@ -83,7 +85,7 @@ export default class Discover extends React.Component {
   handleShowMore() {
     const { matches, query } = this.state;
 
-    // hide button and render loader
+    // hide button and render preloader
     this.toggleShowMoreButton();
 
     // copy object without mutating
@@ -130,7 +132,7 @@ export default class Discover extends React.Component {
   renderShowButton() {
     const { query, pages, matches } = this.state;
 
-    if (query.page === pages) {
+    if (query.page === pages && matches.length) {
       return (
         <div className="load-more end-list">
           <h2>You have reached the end of the list</h2>
@@ -147,12 +149,25 @@ export default class Discover extends React.Component {
     }
   }
 
+  renderLoader(showMoreButton) {
+    return (
+      <div className={`${showMoreButton ? 'load-more ' : ''}preloader`}>
+        <div className="rect1" />
+        <div className="rect2" />
+        <div className="rect3" />
+        <div className="rect4" />
+        <div className="rect5" />
+      </div>
+    );
+  }
+
   render() {
     const {
       matches,
       query,
       showModal,
-      showMoreButton
+      showMoreButton,
+      preloader
     } = this.state;
     const {
       library,
@@ -162,15 +177,15 @@ export default class Discover extends React.Component {
       currentUser
     } = this.props;
 
-    const loader = (
-      <div className="load-more loader">
-        <div className="rect1" />
-        <div className="rect2" />
-        <div className="rect3" />
-        <div className="rect4" />
-        <div className="rect5" />
-      </div>
-    );
+    // const preloader = (
+    //   <div className="load-more preloader">
+    //     <div className="rect1" />
+    //     <div className="rect2" />
+    //     <div className="rect3" />
+    //     <div className="rect4" />
+    //     <div className="rect5" />
+    //   </div>
+    // );
 
     return (
       <div>
@@ -180,11 +195,12 @@ export default class Discover extends React.Component {
           isSearchActive={isSearchActive}
           currentUser={currentUser}
         />
-        {this.mounted &&
-          !matches.length &&
-          <div className="library-lobby">
-            <h1>Your query returned zero results</h1>
-          </div>}
+        <div className="lobby">
+          {preloader && this.renderLoader()}
+          {!preloader &&
+            !matches.length &&
+            <h1>Your query returned zero results</h1>}
+        </div>
         {/* FlipMove shouldnt be wrapping all the things 
             causes two errors?
         */}
@@ -215,7 +231,9 @@ export default class Discover extends React.Component {
           </ReactModal>
         </FlipMove>
         <div className="load-more-container">
-          {showMoreButton ? this.renderShowButton() : loader}
+          {showMoreButton
+            ? this.renderShowButton()
+            : this.renderLoader(true)}
         </div>
       </div>
     );

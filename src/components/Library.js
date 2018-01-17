@@ -21,7 +21,7 @@ export default class Library extends React.Component {
 
   renderLobby(content) {
     return (
-      <div className="library-lobby">
+      <div className="lobby">
         {content}
       </div>
     );

@@ -193,6 +193,16 @@ h1,h2,h3,h4 {
   @include preloader();
 }
 
+.lobby {
+  // height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 140px;
+  box-sizing: border-box;
+  position: absolute;
+}
+
 // .removed {
 //   z-index: 99;
 //   visibility: hidden;
@@ -522,15 +532,6 @@ h1,h2,h3,h4 {
 //   }
 // }
 
-.library-lobby {
-  // height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: 140px;
-  box-sizing: border-box;
-  position: absolute;
-}
 
 .library-container {
   margin-top: 80px;
@@ -792,7 +793,7 @@ h1,h2,h3,h4 {
 
 // Media Queries 768px
 @include desktop {
-  .library-lobby {
+  .lobby {
     padding-left: 200px;
   }
 
@@ -888,7 +889,15 @@ h1,h2,h3,h4 {
 //   "w780",
 //   "original"
 // ],
-
+// .discover-lobby {
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   padding-top: 140px;
+//   box-sizing: border-box;
+//   position: absolute;
+//   padding-left: 200px;
+// }
 
 .discover {
   display: flex;
@@ -1291,7 +1300,7 @@ h1,h2,h3,h4 {
       background-color: darken(#B2B2B2, 10%);
     }
 
-    &.loader {
+    &.preloader {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1313,6 +1322,10 @@ h1,h2,h3,h4 {
 }
 
 @include desktop {
+  .lobby {
+    padding-left: 200px;
+  }
+  
   .discover { 
     margin-top: 10px;
     margin-left: 200px;
