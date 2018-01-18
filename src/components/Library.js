@@ -5,6 +5,8 @@ import LibraryCard from './LibraryCard';
 import Search from './Search';
 import rebase from '../utils/base';
 import FlipMove from 'react-flip-move';
+import Icon from '../utils/Icon';
+import MediaQuery from 'react-responsive';
 
 export default class Library extends React.Component {
   componentDidMount() {
@@ -47,12 +49,42 @@ export default class Library extends React.Component {
         <div className="rect5" />
       </div>
     );
-    const isEmpty = <h1 className="stuffs">your shit is empty</h1>;
+    const isEmpty = (
+      <div className="empty-message">
+        <div className="empty-bg">
+          <Icon icon="empty" width="130" height="100%" />
+        </div>
+        <h1>
+          {
+            `Let's get started ${currentUser.displayName && currentUser.displayName.split(' ')[0]}!`
+          }
+        </h1>
+        <MediaQuery minWidth={768}>
+          <h2>
+            Browse Discover or click "+" to add movies and TV shows.
+          </h2>
+        </MediaQuery>
+        <MediaQuery maxWidth={768}>
+          <h2>
+            Browse Discover, or search to add movies and TV shows.
+          </h2>
+        </MediaQuery>
+        <button
+          className="load-samples"
+          onClick={() => this.props.addRecommended()}
+        >
+          <h2>Add Recommendations</h2>
+        </button>
+      </div>
+    );
 
     return (
       <div>
         {loading && this.renderLobby(preloader)}
-        {!loading && !library.length && this.renderLobby(isEmpty)}
+        {!loading &&
+          !library.length &&
+          !isSearchActive &&
+          this.renderLobby(isEmpty)}
         <Header
           count={library.length}
           toggleSearchButton={toggleSearchButton}

@@ -5,6 +5,7 @@ import Library from './Library';
 import Discover from './Discover';
 import Home from './Home';
 import rebase from '../utils/base';
+import data from '../data/recommendations.json';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ export default class App extends React.Component {
     this.removeFromLibrary = this.removeFromLibrary.bind(this);
     this.toggleSearchButton = this.toggleSearchButton.bind(this);
     this.handleAuthorization = this.handleAuthorization.bind(this);
+    this.addRecommended = this.addRecommended.bind(this);
   }
 
   // if previously logged in, prevent homepage from momentarily appearing on refresh
@@ -58,6 +60,12 @@ export default class App extends React.Component {
       then() {
         this.setState({ loading: false });
       }
+    });
+  }
+
+  addRecommended() {
+    this.setState({
+      library: data.recs
     });
   }
 
@@ -126,6 +134,7 @@ export default class App extends React.Component {
                       count={library.length}
                       currentUser={currentUser}
                       loading={loading}
+                      addRecommended={this.addRecommended}
                     />}
             />
             <Route
