@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import Library from './Library';
 import Discover from './Discover';
 import Home from './Home';
+import NotFound from './NotFound';
 import rebase from '../utils/base';
 import data from '../data/recommendations.json';
 
@@ -151,9 +152,7 @@ export default class App extends React.Component {
                       currentUser={currentUser}
                     />}
             />
-            <Route
-              render={() => <p className="not-found">Not Found!</p>}
-            />
+            <Route render={() => <NotFound />} />
           </Switch>
           <div className={`alert ${alert && 'active'}`}>
             <h2>{alert && `${alert} library`}</h2>

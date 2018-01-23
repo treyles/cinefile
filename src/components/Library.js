@@ -49,31 +49,40 @@ export default class Library extends React.Component {
         <div className="rect5" />
       </div>
     );
+
+    /* abstract out to component */
     const isEmpty = (
       <div className="empty-message">
-        <div className="empty-bg">
-          <Icon icon="empty" width="130" height="100%" />
+        <div className="illustration">
+          <MediaQuery minWidth={768}>
+            <Icon icon="empty" width="229" height="100%" />
+          </MediaQuery>
+          <MediaQuery maxWidth={768}>
+            <Icon icon="emptyMobile" width="138" height="100%" />
+          </MediaQuery>
         </div>
         <h1>
           {
-            `Let's get started ${currentUser.displayName && currentUser.displayName.split(' ')[0]}!`
+            `Let's Get Started, ${currentUser.displayName && currentUser.displayName.split(' ')[0]}!`
           }
         </h1>
+
         <MediaQuery minWidth={768}>
           <h2>
-            Browse Discover or click "+" to add movies and TV shows.
+            Add movies or TV shows to your library by browsing Discover or by clicking the
+            <span><Icon icon="hint" width="18" height="18" /></span>
+            button at the top left corner
           </h2>
         </MediaQuery>
+
         <MediaQuery maxWidth={768}>
           <h2>
             Browse Discover, or search to add movies and TV shows.
           </h2>
         </MediaQuery>
-        <button
-          className="load-samples"
-          onClick={() => this.props.addRecommended()}
-        >
-          <h2>Add Recommendations</h2>
+
+        <button onClick={() => this.props.addRecommended()}>
+          <h2>I&apos;m Feeling Lazy</h2>
         </button>
       </div>
     );

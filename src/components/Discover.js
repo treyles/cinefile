@@ -7,6 +7,7 @@ import OptionsModal from './OptionsModal';
 import { fetchDiscover } from '../utils/Api';
 import Icon from '../utils/Icon';
 import FlipMove from 'react-flip-move';
+import MediaQuery from 'react-responsive';
 
 const defaultQuery = {
   page: 1,
@@ -177,15 +178,20 @@ export default class Discover extends React.Component {
       currentUser
     } = this.props;
 
-    // const preloader = (
-    //   <div className="load-more preloader">
-    //     <div className="rect1" />
-    //     <div className="rect2" />
-    //     <div className="rect3" />
-    //     <div className="rect4" />
-    //     <div className="rect5" />
-    //   </div>
-    // );
+    const noResults = (
+      <div className="empty-message">
+        <div className="illustration">
+          <MediaQuery minWidth={768}>
+            <Icon icon="sad" width="218" height="100%" />
+          </MediaQuery>
+          <MediaQuery maxWidth={768}>
+            <Icon icon="sadMobile" width="137" height="100%" />
+          </MediaQuery>
+        </div>
+        <h1>No Results Found!</h1>
+        <h2>We can't find media matching your query</h2>
+      </div>
+    );
 
     return (
       <div>
@@ -197,9 +203,7 @@ export default class Discover extends React.Component {
         />
         <div className="lobby">
           {preloader && this.renderLoader()}
-          {!preloader &&
-            !matches.length &&
-            <h1>Your query returned zero results</h1>}
+          {!preloader && !matches.length && noResults}
         </div>
         {/* FlipMove shouldnt be wrapping all the things 
             causes two errors?

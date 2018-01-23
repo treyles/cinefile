@@ -32,6 +32,7 @@ html {
   overflow-y: scroll;
 }
 
+// TODO: fix order
 h1 { font-size: 17px; }
 h2 { font-size: 14px; }
 h3 { font-size: 12px; }
@@ -198,9 +199,13 @@ h1,h2,h3,h4 {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 85px;
+  padding-top: 40px;
   box-sizing: border-box;
   position: absolute;
+
+  @include desktop {
+    padding-top: 100px;
+  }
 }
 
 // .removed {
@@ -270,6 +275,7 @@ h1,h2,h3,h4 {
     font-family: 'faktpro-medium', sans-serif;
     font-size: 14px;
     color: lighten($light-text, 5%);
+    // color: #748791; // blue tint
     // color: $light-text;
   }
 
@@ -324,7 +330,8 @@ h1,h2,h3,h4 {
       font-family: 'calibre-medium', sans-serif;
       display: inline-block;
       text-decoration: none;
-      color: lighten($light-text, 5%);
+      color: $light-text;
+      // color: #748791; //blue tint
       transition: color .3s;
       margin: 0 3px;
 
@@ -482,8 +489,8 @@ h1,h2,h3,h4 {
     .search-icon {
       // display: none;
       background-color: $main-blue;
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       position: absolute;
       top: 0;
       left: 0;
@@ -496,8 +503,8 @@ h1,h2,h3,h4 {
       transition: all .2s;
 
       &:hover {
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
       }
 
       svg {
@@ -795,6 +802,10 @@ h1,h2,h3,h4 {
 @include desktop {
   .lobby {
     padding-left: 200px;
+
+    &.not-found {
+      padding-left: 0;
+    }
   }
 
   .library-container { 
@@ -1284,7 +1295,7 @@ h1,h2,h3,h4 {
     // flex-shrink: 0;
     // display: block;
     background-color: #B2B2B2;
-    font-family: 'faktpro-semibold', sans-serif;
+    font-family: 'faktpro-medium', sans-serif;
     line-height: normal;
     color: #fff;
     border: none;
@@ -1316,7 +1327,8 @@ h1,h2,h3,h4 {
       align-items: center;
       background-color: transparent;
       cursor: default;
-      color: lighten($light-text, 15%);
+      // color: lighten($light-text, 15%);
+      color: #919fa3;
     }
   }
 }
@@ -1358,10 +1370,6 @@ h1,h2,h3,h4 {
   }
 }
 
-.not-found {
-  margin-top: 100px;
-}
-
 .search {
   // margin-top: 85px;
   // display: none;
@@ -1398,7 +1406,10 @@ h1,h2,h3,h4 {
   }
 
   input::placeholder {
-    color: lighten($light-text, 8%);
+    color: lighten($light-text, 15%);
+    // color: lighten(#748791, 10%);
+    // for firefox
+    opacity: 1;
   }
 
   // .zero-results {
@@ -1777,9 +1788,6 @@ h1,h2,h3,h4 {
 }
 
 
-
-
-
 .fade-enter {
   opacity: 0;
 }
@@ -1798,63 +1806,89 @@ h1,h2,h3,h4 {
   transition: opacity 400ms, height 400ms;
 }
 
+
+
+
+
+
 .empty-message {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: 'faktpro-medium', sans-serif;
 
-  .empty-bg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 230px;
-    height: 230px;
-    background-color: #fff;
-    border-radius: 50%; 
+  .illustration {
+    .empty-mobile {
+      width: 138px;
+      margin-right: 10px;
+    }
 
-    svg {
-      width: 130px;
-      height: 100%; 
+    .sad-mobile {
+      width: 137px;
+    }
+
+    .empty {
+      width: 229px;
+      margin-right: 18px;
+    }
+
+    .sad {
+      width: 218px;
+      margin-right: 5px;
     }
   }
 
   h1 {
-    margin-top: 30px;
-    font-family: 'faktpro-semibold', sans-serif;
-    color: $light-text;
-    // font-size: 20px;;
+    margin-top: 20px;
+    color: #5e6c77;
+
+    @include desktop {
+      margin-top: 40px;
+    }
   }
 
   h2 {
-    // padding: 0 10%;
     margin-top: 15px;
-    font-family: 'faktpro-medium', sans-serif;
-    color: lighten($light-text, 10%);
+    color: lighten(#5e6c77, 20%); // blue tint
     text-align: center;
-    max-width: 270px;
-    line-height: 25px;
-    // font-size: 20px;
+    max-width: 300px;
+    // max-width: 400px;
+    line-height: 30px;
+
+    span {
+      vertical-align: -5px;
+      margin: 0 7px;
+    }
+
+    @include desktop {
+      max-width: 400px;
+    }
   }
 
-  .load-samples {
-    margin-top: 30px;
+  button {
+    margin-top: 20px;
     background-color: $main-blue;
+    height: 40px;
     border-radius: 3px;
     border: none;
     cursor: pointer;
     transition: background-color .2s;
-    // box-shadow: 0px 3px 30px 0px rgba(6,124,217, .5);
     // outline: 0;
     &:hover {
       background-color: darken($main-blue, 5%);
     }
 
     h2 {
+      // line-height: 0;
       margin: 0;
-      padding: 10px 15px 7px 15px;
-      // font-family: 'faktpro-medium', sans-serif;
+      padding: 5px 15px 0 15px;
+      font-family: 'faktpro-medium', sans-serif;
       color: #fff;
+    }
+
+    @include desktop {
+      margin-top: 30px;
     }
   }
 }
