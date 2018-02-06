@@ -37,6 +37,10 @@ module.exports = {
         options: {
           name: './fonts/[name].[ext]'
         }
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        loader: 'url-loader'
       }
     ]
   },
