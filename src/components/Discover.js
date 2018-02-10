@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactModal from 'react-modal';
+// import ReactModal from 'react-modal';
 import DiscoverCard from './DiscoverCard';
 import Header from './Header';
 import OptionsModal from './OptionsModal';
@@ -222,7 +222,28 @@ export default class Discover extends React.Component {
               handleRemoveMatch={this.handleRemoveMatch}
             />
           ))}
-          <ReactModal
+        </FlipMove>
+        <div className="load-more-container">
+          {showMoreButton
+            ? this.renderShowButton()
+            : this.renderLoader(true)}
+        </div>
+        <div
+          className="test-options"
+          style={{ display: `${showModal ? 'flex' : 'none'}` }}
+        >
+          <OptionsModal
+            handleOptionsModal={this.handleOptionsModal}
+            handleQueryUpdate={this.handleQueryUpdate}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+/*
+<ReactModal
             isOpen={showModal}
             onRequestClose={this.handleOptionsModal}
             className="options-modal"
@@ -233,16 +254,7 @@ export default class Discover extends React.Component {
               handleQueryUpdate={this.handleQueryUpdate}
             />
           </ReactModal>
-        </FlipMove>
-        <div className="load-more-container">
-          {showMoreButton
-            ? this.renderShowButton()
-            : this.renderLoader(true)}
-        </div>
-      </div>
-    );
-  }
-}
+*/
 
 Discover.propTypes = {
   library: PropTypes.arrayOf(PropTypes.object),

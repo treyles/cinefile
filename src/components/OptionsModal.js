@@ -49,7 +49,7 @@ export default class OptionsModal extends React.Component {
 
   renderValue(option) {
     return (
-      <h2 style={{ color: '#3f3f3f', fontSize: '12px' }}>
+      <h2 style={{ color: '#3f3f3f', fontSize: '17px' }}>
         {option.label}
       </h2>
     );
@@ -79,74 +79,83 @@ export default class OptionsModal extends React.Component {
     const sortData = mediaType === 'movie' ? data.moviesSort : data.tvSort;
 
     // rc-slider styles
-    const trackStyle = [{ backgroundColor: '#0f96ea' }]; // #0f96ea #007cd9
+    const trackStyle = [
+      {
+        backgroundColor: '#0f96ea',
+        height: 6
+      }
+    ]; // #0f96ea #007cd9
+    const railStyle = {
+      backgroundColor: '#eee',
+      height: 6
+    };
+
     const handleStyle = {
       border: '5px solid #0f96ea',
-      height: 15,
-      width: 15,
-      marginTop: -5,
+      height: 20,
+      width: 20,
+      marginTop: -7,
       backgroundColor: '#fff',
       boxShadow: 'none'
     };
 
     return (
-      <div>
+      <div className="options-modal">
         {/* TODO: what's up with spacing in className here? */}
-        <button
-          className={`movie${mediaType === 'movie' ? ' active' : ''}`}
-          onClick={this.handleActiveTab}
-        >
-          Movies
-        </button>
-        <button
-          className={`tv${mediaType === 'tv' ? ' active' : ''}`}
-          onClick={this.handleActiveTab}
-        >
-          Shows
-        </button>
+
         <div className="slider-container">
           <div className="slider-text">
-            <h2>Rating higher than</h2>
-            <h2>{score}</h2>
+            <h1>Rating</h1>
+            <h1 className="numbers">{score}</h1>
           </div>
+          <h2>Minimum rating</h2>
           <Slider
             min={0}
             max={10}
             defaultValue={score}
             trackStyle={trackStyle}
+            railStyle={railStyle}
             handleStyle={handleStyle}
             onChange={this.handleRatingValue}
           />
         </div>
         <div className="slider-container">
           <div className="slider-text">
-            <h2>Release date</h2>
-            <h2>{`${releaseDates[0]} - ${releaseDates[1]}`}</h2>
+            <h1>Release</h1>
+            <h1 className="numbers">{`${releaseDates[0]} - ${
+              releaseDates[1]
+            }`}</h1>
           </div>
+          <h2>Find a movie within a certain era</h2>
           <Range
             allowCross={false}
             min={1900}
             max={this.currentYear}
             defaultValue={releaseDates}
             trackStyle={trackStyle}
+            railStyle={railStyle}
             handleStyle={[handleStyle, handleStyle]}
             onChange={this.handleReleaseDateValue}
           />
         </div>
         <div className="select-container">
+          <h1>Genre</h1>
+          <h2>Select one or multiple genres</h2>
           <Select
             multi
             options={genreData}
             onChange={this.handleSelectChange}
-            placeholder="Genres"
+            placeholder="Select"
             value={genre}
           />
         </div>
         <div className="select-container">
+          <h1>Sort</h1>
+          <h2>Return results with custom sorting</h2>
           <Select
             options={sortData}
             onChange={this.handleSortChange}
-            placeholder="Sort by"
+            placeholder="Select"
             value={sort}
             valueRenderer={this.renderValue}
           />
@@ -173,6 +182,22 @@ OptionsModal.propTypes = {
   handleOptionsModal: PropTypes.func.isRequired,
   handleQueryUpdate: PropTypes.func.isRequired
 };
+
+/*
+
+        <button
+          className={`movie${mediaType === 'movie' ? ' active' : ''}`}
+          onClick={this.handleActiveTab}
+        >
+          Movies
+        </button>
+        <button
+          className={`tv${mediaType === 'tv' ? ' active' : ''}`}
+          onClick={this.handleActiveTab}
+        >
+          Shows
+        </button>
+*/
 
 // OptionsModal.defaultProps = {
 //   trailerLink: null
