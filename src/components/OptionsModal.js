@@ -70,19 +70,12 @@ export default class OptionsModal extends React.Component {
   }
 
   render() {
-    const {
-      mediaType,
-      score,
-      releaseDates,
-      genre,
-      sort
-    } = this.state;
+    const { mediaType, score, releaseDates, genre, sort } = this.state;
     const { handleOptionsModal } = this.props;
 
     // data for select dropdowns
-    const genreData = mediaType === 'movie'
-      ? data.moviesGenres
-      : data.tvGenres;
+    const genreData =
+      mediaType === 'movie' ? data.moviesGenres : data.tvGenres;
     const sortData = mediaType === 'movie' ? data.moviesSort : data.tvSort;
 
     // rc-slider styles

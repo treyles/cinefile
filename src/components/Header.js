@@ -14,10 +14,13 @@ export default class Header extends React.Component {
   }
 
   handleClick() {
-    firebase.auth().signOut().then(() => {
-      console.log('signed out');
-      localStorage.setItem('authenticated', false);
-    });
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        console.log('signed out');
+        localStorage.setItem('authenticated', false);
+      });
   }
 
   render() {
@@ -33,18 +36,21 @@ export default class Header extends React.Component {
       <header className="header">
         <div className="logo">Cinefile</div>
         <Link to="/" onClick={this.handleClick}>
-          {currentUser.photoURL
-            ? <img
-                alt="logout"
-                src={currentUser.photoURL}
-                className="profile-img"
-              />
-            : <div className="profile-img placeholder" />}
+          {currentUser.photoURL ? (
+            <img
+              alt="logout"
+              src={currentUser.photoURL}
+              className="profile-img"
+            />
+          ) : (
+            <div className="profile-img placeholder" />
+          )}
         </Link>
-        {currentUser.displayName &&
+        {currentUser.displayName && (
           <div className="welcome">
             {`Hi, ${currentUser.displayName.split(' ')[0]}`}
-          </div>}
+          </div>
+        )}
         <ul>
           <li>
             <NavLink
@@ -60,14 +66,15 @@ export default class Header extends React.Component {
             <NavLink exact to="/" activeClassName="active-nav">
               <h1>Library</h1>
             </NavLink>
-            {count > 0 &&
+            {count > 0 && (
               <span
-                className={
-                  `counter ${!isLibraryMounted ? 'inactive' : ''}`
-                }
+                className={`counter ${
+                  !isLibraryMounted ? 'inactive' : ''
+                }`}
               >
                 {count}
-              </span>}
+              </span>
+            )}
           </li>
         </ul>
         <Link to="/" onClick={() => toggleSearchButton()}>

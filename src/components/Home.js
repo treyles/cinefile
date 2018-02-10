@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import base from '../utils/base';
 import firebase from 'firebase';
-import tester from '../assets/testvid.png';
+import heroPreview from '../assets/hero-preview.mp4';
+import heroPoster from '../assets/hero-preview-poster.jpg';
 import mobile from '../assets/mobile.png';
 // import { Link } from 'react-router-dom';
 
@@ -37,12 +38,25 @@ export default class Home extends React.Component {
               your radar with Cinefile — a minimal bookmarking and
               discovery app
             </p>
-            <button className="get-started-btn">
+            <button
+              className="get-started-btn"
+              onClick={() => handleAuthorization()}
+            >
               Get Started, It's Free!
             </button>
           </div>
           <div className="hero-video-container">
-            <img className="hero-video-content" src={tester} />
+            <div className="video-window" />
+            <div className="video-content-container">
+              <video
+                className="hero-preview"
+                poster={heroPoster}
+                autoPlay
+                loop
+              >
+                <source src={heroPreview} type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
         <div className="mobile-section">
