@@ -124,33 +124,39 @@ export default class App extends React.Component {
               exact
               path="/"
               render={() =>
-                !currentUser
-                  ? <Home handleAuthorization={this.handleAuthorization} />
-                  : <Library
-                      library={library}
-                      removeFromLibrary={this.removeFromLibrary}
-                      addToLibrary={this.addToLibrary}
-                      toggleSearchButton={this.toggleSearchButton}
-                      isSearchActive={isSearchActive}
-                      count={library.length}
-                      currentUser={currentUser}
-                      loading={loading}
-                      addRecommended={this.addRecommended}
-                    />}
+                !currentUser ? (
+                  <Home handleAuthorization={this.handleAuthorization} />
+                ) : (
+                  <Library
+                    library={library}
+                    removeFromLibrary={this.removeFromLibrary}
+                    addToLibrary={this.addToLibrary}
+                    toggleSearchButton={this.toggleSearchButton}
+                    isSearchActive={isSearchActive}
+                    count={library.length}
+                    currentUser={currentUser}
+                    loading={loading}
+                    addRecommended={this.addRecommended}
+                  />
+                )
+              }
             />
             <Route
               path="/discover"
               render={() =>
-                !currentUser
-                  ? <Home handleAuthorization={this.handleAuthorization} />
-                  : <Discover
-                      library={library}
-                      addToLibrary={this.addToLibrary}
-                      count={library.length}
-                      toggleSearchButton={this.toggleSearchButton}
-                      isSearchActive={isSearchActive}
-                      currentUser={currentUser}
-                    />}
+                !currentUser ? (
+                  <Home handleAuthorization={this.handleAuthorization} />
+                ) : (
+                  <Discover
+                    library={library}
+                    addToLibrary={this.addToLibrary}
+                    count={library.length}
+                    toggleSearchButton={this.toggleSearchButton}
+                    isSearchActive={isSearchActive}
+                    currentUser={currentUser}
+                  />
+                )
+              }
             />
             <Route render={() => <NotFound />} />
           </Switch>

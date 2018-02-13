@@ -38,6 +38,7 @@ export default class Discover extends React.Component {
   }
 
   componentDidMount() {
+    // debugger;
     // this.mounted = true;
     window.scrollTo(0, 0);
 

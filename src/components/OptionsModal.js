@@ -13,7 +13,7 @@ export default class OptionsModal extends React.Component {
     this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
     this.state = this.lsQuery;
 
-    this.handleActiveTab = this.handleActiveTab.bind(this);
+    this.handleActiveMedia = this.handleActiveMedia.bind(this);
     this.handleRatingValue = this.handleRatingValue.bind(this);
     this.handleReleaseDateValue = this.handleReleaseDateValue.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
@@ -22,13 +22,14 @@ export default class OptionsModal extends React.Component {
     this.renderValue = this.renderValue.bind(this);
   }
 
-  handleActiveTab(e) {
+  handleActiveMedia(e) {
     // reset drop down selectors
     this.setState({
-      mediaType: e.target.className,
+      mediaType: e.target.value,
       genre: [],
       sort: { value: 'popularity.desc', label: 'Popularity Descending' }
     });
+    // console.log(e.target.value);
   }
 
   handleRatingValue(value) {
@@ -49,7 +50,7 @@ export default class OptionsModal extends React.Component {
 
   renderValue(option) {
     return (
-      <h2 style={{ color: '#3f3f3f', fontSize: '17px' }}>
+      <h2 style={{ color: '#828282', fontSize: '17px' }}>
         {option.label}
       </h2>
     );
@@ -101,14 +102,42 @@ export default class OptionsModal extends React.Component {
 
     return (
       <div className="options-modal">
-        {/* TODO: what's up with spacing in className here? */}
-
+        {/* TODO: what's up with spacing in className here?  (dont know what this refers to)*/}
+        {/* change name of slider-container, not only used by slider*/}
+        <div className="media-container">
+          <h1>Media</h1>
+          <h2>Search movies or series</h2>
+          <ul>
+            <li>
+              <label>
+                <input
+                  type="radio"
+                  value="movie"
+                  checked={this.state.mediaType === 'movie'}
+                  onChange={this.handleActiveMedia}
+                />
+                Movies
+              </label>
+            </li>
+            <li>
+              <label>
+                <input
+                  type="radio"
+                  value="tv"
+                  checked={this.state.mediaType === 'tv'}
+                  onChange={this.handleActiveMedia}
+                />
+                Television
+              </label>
+            </li>
+          </ul>
+        </div>
         <div className="slider-container">
           <div className="slider-text">
             <h1>Rating</h1>
             <h1 className="numbers">{score}</h1>
           </div>
-          <h2>Minimum rating</h2>
+          <h2>Find media with at least this rating</h2>
           <Slider
             min={0}
             max={10}
@@ -126,7 +155,7 @@ export default class OptionsModal extends React.Component {
               releaseDates[1]
             }`}</h1>
           </div>
-          <h2>Find a movie within a certain era</h2>
+          <h2>Find media within a certain era</h2>
           <Range
             allowCross={false}
             min={1900}
@@ -151,7 +180,7 @@ export default class OptionsModal extends React.Component {
         </div>
         <div className="select-container">
           <h1>Sort</h1>
-          <h2>Return results with custom sorting</h2>
+          <h2>Show results with custom sorting</h2>
           <Select
             options={sortData}
             onChange={this.handleSortChange}
@@ -187,13 +216,13 @@ OptionsModal.propTypes = {
 
         <button
           className={`movie${mediaType === 'movie' ? ' active' : ''}`}
-          onClick={this.handleActiveTab}
+          onClick={this.handleActiveMedia}
         >
           Movies
         </button>
         <button
           className={`tv${mediaType === 'tv' ? ' active' : ''}`}
-          onClick={this.handleActiveTab}
+          onClick={this.handleActiveMedia}
         >
           Shows
         </button>
