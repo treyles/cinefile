@@ -37,11 +37,15 @@ export default class Discover extends React.Component {
     this.handleRemoveMatch = this.handleRemoveMatch.bind(this);
   }
 
+  // componentWillMount() {
+  //   const query = this.lsQuery ? this.lsQuery : defaultQuery;
+  //   this.handleQueryUpdate(query);
+  // }
+
   componentDidMount() {
     // debugger;
     // this.mounted = true;
     window.scrollTo(0, 0);
-
     const query = this.lsQuery ? this.lsQuery : defaultQuery;
     this.handleQueryUpdate(query);
   }
@@ -229,15 +233,12 @@ export default class Discover extends React.Component {
             ? this.renderShowButton()
             : this.renderLoader(true)}
         </div>
-        <div
-          className="test-options"
-          style={{ display: `${showModal ? 'flex' : 'none'}` }}
-        >
+        {showModal && (
           <OptionsModal
             handleOptionsModal={this.handleOptionsModal}
             handleQueryUpdate={this.handleQueryUpdate}
           />
-        </div>
+        )}
       </div>
     );
   }

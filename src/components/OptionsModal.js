@@ -101,106 +101,116 @@ export default class OptionsModal extends React.Component {
     };
 
     return (
-      <div className="options-modal">
-        {/* TODO: what's up with spacing in className here?  (dont know what this refers to)*/}
-        {/* change name of slider-container, not only used by slider*/}
-        <div className="media-container">
-          <h1>Media</h1>
-          <h2>Search movies or series</h2>
-          <ul>
-            <li>
-              <label>
-                <input
-                  type="radio"
-                  value="movie"
-                  checked={this.state.mediaType === 'movie'}
-                  onChange={this.handleActiveMedia}
-                />
-                Movies
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="radio"
-                  value="tv"
-                  checked={this.state.mediaType === 'tv'}
-                  onChange={this.handleActiveMedia}
-                />
-                Television
-              </label>
-            </li>
-          </ul>
-        </div>
-        <div className="slider-container">
-          <div className="slider-text">
-            <h1>Rating</h1>
-            <h1 className="numbers">{score}</h1>
+      <div className="test-options">
+        <div className="options-modal">
+          {/* TODO: what's up with spacing in className here?  (dont know what this refers to)*/}
+          {/* change name of slider-container, not only used by slider*/}
+          <div className="media-container">
+            <h1>Media</h1>
+            <h2>Search movies or series</h2>
+            <ul>
+              <li>
+                <label
+                  className={
+                    this.state.mediaType === 'movie' ? 'selected' : ''
+                  }
+                >
+                  <input
+                    type="radio"
+                    value="movie"
+                    checked={this.state.mediaType === 'movie'}
+                    onChange={this.handleActiveMedia}
+                  />
+                  Movies
+                </label>
+              </li>
+              <li>
+                <label
+                  className={
+                    this.state.mediaType === 'tv' ? 'selected' : ''
+                  }
+                >
+                  <input
+                    type="radio"
+                    value="tv"
+                    checked={this.state.mediaType === 'tv'}
+                    onChange={this.handleActiveMedia}
+                  />
+                  Television
+                </label>
+              </li>
+            </ul>
           </div>
-          <h2>Find media with at least this rating</h2>
-          <Slider
-            min={0}
-            max={10}
-            defaultValue={score}
-            trackStyle={trackStyle}
-            railStyle={railStyle}
-            handleStyle={handleStyle}
-            onChange={this.handleRatingValue}
-          />
-        </div>
-        <div className="slider-container">
-          <div className="slider-text">
-            <h1>Release</h1>
-            <h1 className="numbers">{`${releaseDates[0]} - ${
-              releaseDates[1]
-            }`}</h1>
+          <div className="slider-container">
+            <div className="slider-text">
+              <h1>Rating</h1>
+              <h1 className="numbers">{score}</h1>
+            </div>
+            <h2>Find media with at least this rating</h2>
+            <Slider
+              min={0}
+              max={10}
+              defaultValue={score}
+              trackStyle={trackStyle}
+              railStyle={railStyle}
+              handleStyle={handleStyle}
+              onChange={this.handleRatingValue}
+            />
           </div>
-          <h2>Find media within a certain era</h2>
-          <Range
-            allowCross={false}
-            min={1900}
-            max={this.currentYear}
-            defaultValue={releaseDates}
-            trackStyle={trackStyle}
-            railStyle={railStyle}
-            handleStyle={[handleStyle, handleStyle]}
-            onChange={this.handleReleaseDateValue}
-          />
-        </div>
-        <div className="select-container">
-          <h1>Genre</h1>
-          <h2>Select one or multiple genres</h2>
-          <Select
-            multi
-            options={genreData}
-            onChange={this.handleSelectChange}
-            placeholder="Select"
-            value={genre}
-          />
-        </div>
-        <div className="select-container">
-          <h1>Sort</h1>
-          <h2>Show results with custom sorting</h2>
-          <Select
-            options={sortData}
-            onChange={this.handleSortChange}
-            placeholder="Select"
-            value={sort}
-            valueRenderer={this.renderValue}
-          />
-        </div>
-        <div className="submit-container">
-          <button
-            className="cancel"
-            onClick={() => {
-              handleOptionsModal();
-            }}
-          >
-            Cancel
-          </button>
-          <button className="submit" onClick={this.handleSubmit}>
-            Submit
-          </button>
+          <div className="slider-container">
+            <div className="slider-text">
+              <h1>Release</h1>
+              <h1 className="numbers">{`${releaseDates[0]} - ${
+                releaseDates[1]
+              }`}</h1>
+            </div>
+            <h2>Find media within a certain era</h2>
+            <Range
+              allowCross={false}
+              min={1900}
+              max={this.currentYear}
+              defaultValue={releaseDates}
+              trackStyle={trackStyle}
+              railStyle={railStyle}
+              handleStyle={[handleStyle, handleStyle]}
+              onChange={this.handleReleaseDateValue}
+            />
+          </div>
+          <div className="select-container">
+            <h1>Genre</h1>
+            <h2>Select one or multiple genres</h2>
+            <Select
+              multi
+              options={genreData}
+              onChange={this.handleSelectChange}
+              placeholder="Select"
+              value={genre}
+            />
+          </div>
+          <div className="select-container">
+            <h1>Sort</h1>
+            <h2>Show results with custom sorting</h2>
+            <Select
+              options={sortData}
+              onChange={this.handleSortChange}
+              placeholder="Select"
+              value={sort}
+              valueRenderer={this.renderValue}
+            />
+          </div>
+          <div className="submit-container">
+            <button
+              className="cancel"
+              onClick={() => {
+                handleOptionsModal();
+              }}
+            >
+              Cancel
+            </button>
+            <button className="submit" onClick={this.handleSubmit}>
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     );
