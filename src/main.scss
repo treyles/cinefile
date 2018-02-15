@@ -20,6 +20,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: $gray-bg;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 *,
@@ -31,7 +33,7 @@ body {
 html {
   font-family: sans-serif;
   font-size: 13px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
 
   // remove bold text
   -moz-osx-font-smoothing: grayscale;
@@ -281,6 +283,7 @@ h4 {
   top: 0;
   width: 100%;
   background-color: #fff;
+  // background-color: $gray-bg;
   // background-color: blue;
   height: 65px;
   display: flex;
@@ -1227,104 +1230,64 @@ h4 {
       }
     }
   }
+}
 
-  // .load-more {
-  //   flex-shrink: 0;
-  //   display: block;
-  //   background-color: #B2B2B2;
-  //   font-family: 'faktpro-semibold', sans-serif;
-  //   line-height: normal;
-  //   color: #fff;
-  //   border: none;
-  //   outline: none;
-  //   width: 80%;
-  //   height: 50px;
-  //   border-radius: 5px;
-  //   margin: 30px 150px 0 150px;
-  //   cursor: pointer;
-  //   transition: background-color .4s;
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+  background-color: $main-blue;
+  // width: 54px;
+  // height: 54px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  padding-top: 2px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  animation-name: bounce;
+  transform-origin: center bottom;
+  animation-duration: 1s;
 
-  //   &:hover {
-  //     background-color: darken(#B2B2B2, 10%);
-  //   }
+  &:hover {
+    background-color: lighten($main-blue, 10%);
+    box-shadow: none;
+  }
 
-  //   &.loader {
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     background-color: transparent;
-  //     cursor: default;
-
-  //     @include preloader();
-  //   }
-
-  //   &.end-list {
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     background-color: transparent;
-  //     cursor: default;
-  //     color: lighten($light-text, 15%);
-  //   }
-  // }
-
-  .options {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    position: fixed;
-    bottom: 40px;
-    right: 25px;
-    background-color: $main-blue;
-    // width: 54px;
-    // height: 54px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    padding-top: 2px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    animation-name: bounce;
-    transform-origin: center bottom;
-    animation-duration: 1s;
-
-    &:hover {
-      background-color: lighten($main-blue, 10%);
-      box-shadow: none;
+  @keyframes bounce {
+    0%,
+    20%,
+    53%,
+    80%,
+    100% {
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform: translate3d(0, 0, 0);
     }
-
-    @keyframes bounce {
-      0%,
-      20%,
-      53%,
-      80%,
-      100% {
-        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-        transform: translate3d(0, 0, 0);
-      }
-      40%,
-      43% {
-        transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-        transform: translate3d(0, -30px, 0);
-      }
-      70% {
-        transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-        transform: translate3d(0, -15px, 0);
-      }
-      90% {
-        transform: translate3d(0, -5px, 0);
-      }
+    40%,
+    43% {
+      transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+      transform: translate3d(0, -30px, 0);
     }
-
-    svg {
-      padding: 0;
-      margin: 0;
-      stroke: white;
+    70% {
+      transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+      transform: translate3d(0, -15px, 0);
     }
+    90% {
+      transform: translate3d(0, -5px, 0);
+    }
+  }
+
+  svg {
+    padding: 0;
+    margin: 0;
+    stroke: white;
   }
 }
 
@@ -1692,7 +1655,7 @@ h4 {
 }
 
 .test-options {
-  z-index: 1;
+  z-index: 2;
   // display: none;
   // display: flex;
   // justify-content: center;
@@ -1702,36 +1665,46 @@ h4 {
   height: 100%;
   top: 0;
   left: 0;
-  padding-left: 190px;
   // background-color: #fff;
   background-color: rgba(255, 255, 255, 0.8);
   // background-color: $gray-bg;
+
+  @include desktop {
+    z-index: 1;
+    padding-left: 190px;
+  }
 }
 
 .options-modal {
   // border-top: 5px solid $main-blue;
   // border-bottom: 5px solid $main-blue;
   // border: 1px #dbdbdb solid;
-  display: flex;
-  flex-direction: column;
-  // justify-content: space-evenly;
-  align-items: center;
+
+  // display: flex;
+  // flex-direction: column;
   // align-items: center;
-  // position: absolute;
+
+  // justify-content: space-evenly;
+  // align-items: center;
+  // position: relative;
   outline: none;
   // min-width: 280px;
-  width: 480px;
+  width: 100%;
   // width: 50%;
   // padding-left: px;
   // height: 700px;
+  // height: 100%;
   height: 100%;
+  // min-height: 800px;
   // border-radius: 5px;
   font-family: 'faktpro-normal', sans-serif;
   line-height: normal;
   color: $dark-text;
   // font-size: 12;
   background-color: #fff;
-  padding: 50px;
+  padding: 50px 50px 0 50px;
+  overflow-y: auto;
+  // margin-bottom: 200px;
   // background-color: $main-blue;
   // responsive centering
   // left: 50%;
@@ -1772,6 +1745,11 @@ h4 {
   // .btn-wrapper {
   //   background-color: blue;
   // }
+
+  @include desktop {
+    width: 480px;
+  }
+
   h1 {
     font-family: 'faktpro-normal', sans-serif;
     font-size: 18px;
@@ -1784,10 +1762,8 @@ h4 {
   }
 
   .media-container,
-  .slider-container,
-  .select-container,
-  .submit-container {
-    margin-bottom: 55px;
+  .slider-container {
+    margin-bottom: 50px;
     // border-top: 1px solid #eee;
     // padding-top: 30px;
   }
@@ -1799,11 +1775,21 @@ h4 {
     ul {
       display: flex;
       flex-direction: row;
+      // align-items: space-between;
       // align-items: center;
-      // justify-content: space-evenly;
+      // justify-content: space-around;
+      // justify-content: center;
       list-style: none;
       padding: 0;
       margin: 25px 0 0 0;
+
+      @include desktop {
+        // justify-content: space-between;
+      }
+
+      // @include desktop {
+      //   just
+      // }
       // padding: 13px 25px;
       // background-color: lighten($gray-bg, 1%);
       // border-radius: 100px;
@@ -1826,27 +1812,42 @@ h4 {
       // }
 
       label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         // display: block;
         cursor: pointer;
-        padding: 10px 25px;
-        // width: 100%;
-        // height: 40px;
+        padding: 12px 30px;
+
+        // width: 50%;
+        // height: 45px;
         // background-color: lighten($gray-bg, 1%);
         border: 1px solid #eee;
         border-radius: 100px;
+        // border-radius: 3px;
         cursor: pointer;
         color: $light-text;
         line-height: 1;
+        font-size: 17px;
 
         &.selected {
           background-color: lighten($main-blue, 5%);
-          border: none;
+          // background-color: #ebf5ff;
+          // border: 1px solid #b3dbfe;
+          // color: #0085f9;
           color: #fff;
         }
 
         &:nth-child(1) {
           margin-right: 20px;
         }
+
+        // @include desktop {
+        //   width: 180px;
+        //   height: 45px;
+        //   // padding: 0;
+        // }
       }
 
       input {
@@ -1882,20 +1883,38 @@ h4 {
 
       .numbers {
         // display: inline-block;
+        // background-color: #ebf5ff;
         background-color: $gray-bg;
         font-family: 'faktpro-normal', sans-serif;
         line-height: 1;
         padding: 8px 15px;
         font-size: 14px;
         border-radius: 100px;
+        // border: 1px solid #b3dbfe;
         color: $light-text;
+        // color: $dark-text;
+        // color: #0085f9;
       }
     }
   }
 
-  .select-container {
+  .select-genre,
+  .select-sort {
     width: 100%;
     font-size: 18px;
+    margin-bottom: 50px;
+    display: block;
+    // hack to force firefox to overflow
+    // &:after {
+    //   content: '';
+    //   height: 100px;
+    //   display: block;
+    //   opacity: 0;
+    // }
+  }
+
+  .select-sort {
+    margin-bottom: 100px;
   }
 
   .Select-control {
@@ -1905,12 +1924,28 @@ h4 {
   }
 
   .submit-container {
+    position: fixed;
     width: 100%;
+    // width: 33%;
+    bottom: 0;
+    left: 0;
+    padding: 12px 20px 12px 0;
+    // display: absolute;
+    // bottom: 0;
+    // left: 190px;
+    // width: 40%;
     // margin-top: 28px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
     display: flex;
-    // justify-content: flex-end;
     justify-content: flex-end;
-    align-items: center;
+
+    @include desktop {
+      width: 465px;
+      left: 190px;
+      border-top: none;
+      padding: 16px 20px 16px 0;
+    }
 
     .submit {
       width: 160px;
@@ -1920,13 +1955,16 @@ h4 {
       border: none;
       // background-color: $main-blue;
       background-color: lighten($main-blue, 5%);
+      // background-color: #ed5565;
       color: white;
       font-family: 'faktpro-medium', sans-serif;
       font-size: 17px;
       box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
       transition: background-color 0.3s, box-shadow 0.2s;
+      cursor: pointer;
 
       &:hover {
+        // background-color: darken(#ed5565, 20%);
         background-color: $main-blue;
         // background-color: lighten($main-blue, 5%);
         box-shadow: none;
@@ -1934,16 +1972,15 @@ h4 {
     }
 
     .cancel {
-      // width: 70px;
-      // height: 55px;
-      // border-radius: 100px;
-      // border-radius: 3px;
       border: none;
-      // border: 1px solid #dbdbdb;
-      // margin-right: 10px;
+      background-color: transparent;
+      margin-right: 20px;
       color: #828282;
+      // color: $dark-text;
       font-size: 17px;
+      // font-family: 'faktpro-medium', sans-serif;
       transition: color 0.2s;
+      cursor: pointer;
 
       &:hover {
         color: lighten($dark-text, 50%);

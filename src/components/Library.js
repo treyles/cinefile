@@ -22,11 +22,7 @@ export default class Library extends React.Component {
   }
 
   renderLobby(content) {
-    return (
-      <div className="lobby">
-        {content}
-      </div>
-    );
+    return <div className="lobby">{content}</div>;
   }
 
   render() {
@@ -62,23 +58,23 @@ export default class Library extends React.Component {
           </MediaQuery>
         </div>
         <h1>
-          {
-            `Let's Get Started, ${currentUser.displayName && currentUser.displayName.split(' ')[0]}!`
-          }
+          {`Let's Get Started, ${currentUser.displayName &&
+            currentUser.displayName.split(' ')[0]}!`}
         </h1>
 
         <MediaQuery minWidth={768}>
           <h2>
-            Add movies or TV shows to your library by browsing Discover or by clicking the
-            <span><Icon icon="hint" width="18" height="18" /></span>
+            Add movies or TV shows to your library by browsing Discover or
+            by clicking the
+            <span>
+              <Icon icon="hint" width="18" height="18" />
+            </span>
             button at the top left corner
           </h2>
         </MediaQuery>
 
         <MediaQuery maxWidth={768}>
-          <h2>
-            Browse Discover, or search to add movies and TV shows.
-          </h2>
+          <h2>Browse Discover, or search to add movies and TV shows.</h2>
         </MediaQuery>
 
         <button onClick={() => this.props.addRecommended()}>
@@ -102,13 +98,14 @@ export default class Library extends React.Component {
           isLibraryMounted={this.mounted}
         />
         <div className="library-container">
-          {isSearchActive &&
+          {isSearchActive && (
             <Search
               addToLibrary={addToLibrary}
               toggleSearchButton={toggleSearchButton}
               removeFromLibrary={removeFromLibrary}
               library={library}
-            />}
+            />
+          )}
           <FlipMove className="library">
             {library.map(media => (
               <LibraryCard

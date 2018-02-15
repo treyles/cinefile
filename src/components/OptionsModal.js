@@ -11,6 +11,7 @@ export default class OptionsModal extends React.Component {
     super(props);
     this.currentYear = new Date().getFullYear();
     this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
+    this.scrollStyle = document.body.querySelector('*').style;
     this.state = this.lsQuery;
 
     this.handleActiveMedia = this.handleActiveMedia.bind(this);
@@ -20,6 +21,17 @@ export default class OptionsModal extends React.Component {
     this.handleSortChange = this.handleSortChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderValue = this.renderValue.bind(this);
+  }
+
+  componentDidMount() {
+    // hide parent scrolling for safari ios
+    this.scrollStyle.overflow = 'hidden';
+    this.scrollStyle.position = 'fixed';
+  }
+  componentWillUnmount() {
+    // reset defaults
+    this.scrollStyle.overflow = 'auto';
+    this.scrollStyle.position = 'static';
   }
 
   handleActiveMedia(e) {
@@ -107,33 +119,25 @@ export default class OptionsModal extends React.Component {
           {/* change name of slider-container, not only used by slider*/}
           <div className="media-container">
             <h1>Media</h1>
-            <h2>Search movies or series</h2>
+            <h2>Find movies or series</h2>
             <ul>
               <li>
-                <label
-                  className={
-                    this.state.mediaType === 'movie' ? 'selected' : ''
-                  }
-                >
+                <label className={mediaType === 'movie' ? 'selected' : ''}>
                   <input
                     type="radio"
                     value="movie"
-                    checked={this.state.mediaType === 'movie'}
+                    checked={mediaType === 'movie'}
                     onChange={this.handleActiveMedia}
                   />
                   Movies
                 </label>
               </li>
               <li>
-                <label
-                  className={
-                    this.state.mediaType === 'tv' ? 'selected' : ''
-                  }
-                >
+                <label className={mediaType === 'tv' ? 'selected' : ''}>
                   <input
                     type="radio"
                     value="tv"
-                    checked={this.state.mediaType === 'tv'}
+                    checked={mediaType === 'tv'}
                     onChange={this.handleActiveMedia}
                   />
                   Television
@@ -146,7 +150,7 @@ export default class OptionsModal extends React.Component {
               <h1>Rating</h1>
               <h1 className="numbers">{score}</h1>
             </div>
-            <h2>Find media with at least this rating</h2>
+            <h2>Find media with a minimum rating</h2>
             <Slider
               min={0}
               max={10}
@@ -176,7 +180,7 @@ export default class OptionsModal extends React.Component {
               onChange={this.handleReleaseDateValue}
             />
           </div>
-          <div className="select-container">
+          <div className="select-genre">
             <h1>Genre</h1>
             <h2>Select one or multiple genres</h2>
             <Select
@@ -187,7 +191,7 @@ export default class OptionsModal extends React.Component {
               value={genre}
             />
           </div>
-          <div className="select-container">
+          <div className="select-sort">
             <h1>Sort</h1>
             <h2>Show results with custom sorting</h2>
             <Select

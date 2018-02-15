@@ -35,6 +35,7 @@ export default class Discover extends React.Component {
     this.handleOptionsModal = this.handleOptionsModal.bind(this);
     this.handleQueryUpdate = this.handleQueryUpdate.bind(this);
     this.handleRemoveMatch = this.handleRemoveMatch.bind(this);
+    // this.handleTouchMove = this.handleTouchMove.bind(this);
   }
 
   // componentWillMount() {
@@ -61,6 +62,10 @@ export default class Discover extends React.Component {
     // this.mounted = false;
     clearTimeout(this.showMoreTimeout);
   }
+
+  // handleTouchMove(e) {
+  //   e.preventDefault();
+  // }
 
   handleRemoveMatch(media) {
     const { matches } = this.state;
@@ -183,6 +188,10 @@ export default class Discover extends React.Component {
       currentUser
     } = this.props;
 
+    // const stopScroll = {
+    //   display: 'none'
+    // };
+
     const noResults = (
       <div className="empty-message">
         <div className="illustration">
@@ -210,13 +219,13 @@ export default class Discover extends React.Component {
           {preloader && this.renderLoader()}
           {!preloader && !matches.length && noResults}
         </div>
+        <div className="options" onClick={this.handleOptionsModal}>
+          <Icon icon="menu2" width="25" height="25" />
+        </div>
         {/* FlipMove shouldnt be wrapping all the things 
             causes two errors?
         */}
         <FlipMove className="discover">
-          <div className="options" onClick={this.handleOptionsModal}>
-            <Icon icon="menu2" width="25" height="25" />
-          </div>
           {/* logic here to fix 'returned zero results' when adding all movies on discover page. */}
           {matches.map(media => (
             <DiscoverCard
