@@ -28,8 +28,9 @@ export default class OptionsModal extends React.Component {
     this.scrollStyle.overflow = 'hidden';
     this.scrollStyle.position = 'fixed';
   }
+
   componentWillUnmount() {
-    // reset defaults
+    // restore default
     this.scrollStyle.overflow = 'auto';
     this.scrollStyle.position = 'static';
   }
@@ -61,11 +62,7 @@ export default class OptionsModal extends React.Component {
   }
 
   renderValue(option) {
-    return (
-      <h2 style={{ color: '#828282', fontSize: '17px' }}>
-        {option.label}
-      </h2>
-    );
+    return <h1 style={{ color: '#828282' }}>{option.label}</h1>;
   }
 
   handleSubmit() {
@@ -105,9 +102,9 @@ export default class OptionsModal extends React.Component {
 
     const handleStyle = {
       border: '5px solid #0f96ea',
-      height: 20,
-      width: 20,
-      marginTop: -7,
+      height: 24,
+      width: 24,
+      marginTop: -9,
       backgroundColor: '#fff',
       boxShadow: 'none'
     };
@@ -118,7 +115,7 @@ export default class OptionsModal extends React.Component {
           {/* TODO: what's up with spacing in className here?  (dont know what this refers to)*/}
           {/* change name of slider-container, not only used by slider*/}
           <div className="media-container">
-            <h1>Media</h1>
+            <h1>Media Type</h1>
             <h2>Find movies or series</h2>
             <ul>
               <li>
@@ -129,7 +126,7 @@ export default class OptionsModal extends React.Component {
                     checked={mediaType === 'movie'}
                     onChange={this.handleActiveMedia}
                   />
-                  Movies
+                  <h1>Movies</h1>
                 </label>
               </li>
               <li>
@@ -140,7 +137,7 @@ export default class OptionsModal extends React.Component {
                     checked={mediaType === 'tv'}
                     onChange={this.handleActiveMedia}
                   />
-                  Television
+                  <h1>Television</h1>
                 </label>
               </li>
             </ul>
@@ -148,7 +145,7 @@ export default class OptionsModal extends React.Component {
           <div className="slider-container">
             <div className="slider-text">
               <h1>Rating</h1>
-              <h1 className="numbers">{score}</h1>
+              <h2 className="numbers">{score}</h2>
             </div>
             <h2>Find media with a minimum rating</h2>
             <Slider
@@ -164,9 +161,9 @@ export default class OptionsModal extends React.Component {
           <div className="slider-container">
             <div className="slider-text">
               <h1>Release</h1>
-              <h1 className="numbers">{`${releaseDates[0]} - ${
+              <h2 className="numbers">{`${releaseDates[0]} - ${
                 releaseDates[1]
-              }`}</h1>
+              }`}</h2>
             </div>
             <h2>Find media within a certain era</h2>
             <Range
@@ -209,10 +206,10 @@ export default class OptionsModal extends React.Component {
                 handleOptionsModal();
               }}
             >
-              Cancel
+              <h1>Cancel</h1>
             </button>
             <button className="submit" onClick={this.handleSubmit}>
-              Submit
+              <h1>Submit</h1>
             </button>
           </div>
         </div>

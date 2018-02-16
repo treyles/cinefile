@@ -1,21 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 // import ReactModal from 'react-modal';
-import DiscoverCard from './DiscoverCard';
-import Header from './Header';
-import OptionsModal from './OptionsModal';
-import { fetchDiscover } from '../utils/Api';
-import Icon from '../utils/Icon';
-import FlipMove from 'react-flip-move';
-import MediaQuery from 'react-responsive';
+import DiscoverCard from "./DiscoverCard";
+import Header from "./Header";
+import OptionsModal from "./OptionsModal";
+import { fetchDiscover } from "../utils/Api";
+import Icon from "../utils/Icon";
+import FlipMove from "react-flip-move";
+import MediaQuery from "react-responsive";
 
 const defaultQuery = {
   page: 1,
   score: 7,
-  mediaType: 'movie',
-  sort: { value: 'popularity.desc', label: 'Popularity Descending' },
+  mediaType: "movie",
+  sort: { value: "popularity.desc", label: "Popularity Descending" },
   releaseDates: [1960, new Date().getFullYear()],
-  genre: [{ value: 878, label: 'Science Fiction' }]
+  genre: [{ value: 878, label: "Science Fiction" }]
 };
 
 export default class Discover extends React.Component {
@@ -30,7 +30,7 @@ export default class Discover extends React.Component {
       preloader: true
     };
 
-    this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
+    this.lsQuery = JSON.parse(localStorage.getItem("discover-query"));
     this.handleShowMore = this.handleShowMore.bind(this);
     this.handleOptionsModal = this.handleOptionsModal.bind(this);
     this.handleQueryUpdate = this.handleQueryUpdate.bind(this);
@@ -52,10 +52,7 @@ export default class Discover extends React.Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem(
-      'discover-query',
-      JSON.stringify(nextState.query)
-    );
+    localStorage.setItem("discover-query", JSON.stringify(nextState.query));
   }
 
   componentWillUnmount() {
@@ -135,8 +132,7 @@ export default class Discover extends React.Component {
   // filter to return media not already in library
   filterMatches(results) {
     return results.filter(
-      result =>
-        this.props.library.findIndex(el => el.id === result.id) === -1
+      result => this.props.library.findIndex(el => el.id === result.id) === -1
     );
   }
 
@@ -162,7 +158,7 @@ export default class Discover extends React.Component {
 
   renderLoader(showMoreButton) {
     return (
-      <div className={`${showMoreButton ? 'load-more ' : ''}preloader`}>
+      <div className={`${showMoreButton ? "load-more " : ""}preloader`}>
         <div className="rect1" />
         <div className="rect2" />
         <div className="rect3" />
@@ -173,13 +169,7 @@ export default class Discover extends React.Component {
   }
 
   render() {
-    const {
-      matches,
-      query,
-      showModal,
-      showMoreButton,
-      preloader
-    } = this.state;
+    const { matches, query, showModal, showMoreButton, preloader } = this.state;
     const {
       library,
       addToLibrary,
@@ -238,9 +228,7 @@ export default class Discover extends React.Component {
           ))}
         </FlipMove>
         <div className="load-more-container">
-          {showMoreButton
-            ? this.renderShowButton()
-            : this.renderLoader(true)}
+          {showMoreButton ? this.renderShowButton() : this.renderLoader(true)}
         </div>
         {showModal && (
           <OptionsModal

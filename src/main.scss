@@ -40,6 +40,8 @@ html {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   font-weight: 400;
+
+  -webkit-text-size-adjust: 100%;
 }
 
 // TODO: fix order
@@ -89,28 +91,28 @@ h4 {
 }
 
 @font-face {
-  font-family: 'calibre-semibold';
-  src: url('fonts/calibre-semibold.woff') format('woff');
+  font-family: "calibre-semibold";
+  src: url("fonts/calibre-semibold.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'calibre-medium';
-  src: url('fonts/calibre-medium.woff') format('woff');
+  font-family: "calibre-medium";
+  src: url("fonts/calibre-medium.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'faktpro-semibold';
-  src: url('fonts/faktpro-semibold.woff') format('woff');
+  font-family: "faktpro-semibold";
+  src: url("fonts/faktpro-semibold.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'faktpro-normal';
-  src: url('fonts/faktpro-normal.woff') format('woff');
+  font-family: "faktpro-normal";
+  src: url("fonts/faktpro-normal.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'faktpro-medium';
-  src: url('fonts/faktpro-medium.woff') format('woff');
+  font-family: "faktpro-medium";
+  src: url("fonts/faktpro-medium.woff") format("woff");
 }
 
 // // tablets and desktop
@@ -152,7 +154,7 @@ h4 {
   padding: 7px 10px;
   position: absolute;
   border-radius: 2px;
-  font-family: 'faktpro-normal', sans-serif;
+  font-family: "faktpro-normal", sans-serif;
   font-size: 12px;
   line-height: normal;
   z-index: 1;
@@ -161,7 +163,7 @@ h4 {
   margin-left: $margin;
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 100%;
     left: 50%;
@@ -221,7 +223,7 @@ h4 {
   bottom: 20px;
   left: 20px;
   background-color: $dark-text;
-  font-family: 'faktpro-normal', sans-serif;
+  font-family: "faktpro-normal", sans-serif;
   color: #fff;
   border-radius: 3px;
   padding: 10px 0px;
@@ -294,7 +296,7 @@ h4 {
 
   .logo {
     display: none;
-    font-family: 'calibre-semibold', sans-serif;
+    font-family: "calibre-semibold", sans-serif;
     font-size: 24px;
     color: darken($dark-text, 5%);
   }
@@ -317,7 +319,7 @@ h4 {
 
   .welcome {
     display: none;
-    font-family: 'faktpro-medium', sans-serif;
+    font-family: "faktpro-medium", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     color: lighten($light-text, 5%);
@@ -351,7 +353,7 @@ h4 {
         top: -6px;
         border-radius: 10px;
         // border: 1px solid #C0E0FC;
-        font-family: 'faktpro-semibold', sans-serif;
+        font-family: "faktpro-semibold", sans-serif;
         // color: white;
         color: lighten($main-blue, 10%);
         font-size: 11px;
@@ -373,7 +375,7 @@ h4 {
     }
 
     a {
-      font-family: 'calibre-medium', sans-serif;
+      font-family: "calibre-medium", sans-serif;
       display: inline-block;
       text-decoration: none;
       color: lighten($light-text, 10%);
@@ -383,7 +385,7 @@ h4 {
       margin: 0 3px;
 
       &:after {
-        content: '';
+        content: "";
         display: block;
         visibility: hidden;
         width: 0;
@@ -669,7 +671,7 @@ h4 {
         width: 33px;
         height: 33px;
         color: white;
-        font-family: 'faktpro-semibold', sans-serif;
+        font-family: "faktpro-semibold", sans-serif;
         line-height: 1;
         border-radius: 50%;
         padding-top: 2px;
@@ -693,7 +695,7 @@ h4 {
         overflow: hidden;
         white-space: nowrap;
         // font-family: 'faktpro-semibold', sans-serif;
-        font-family: 'faktpro-normal', sans-serif;
+        font-family: "faktpro-normal", sans-serif;
         color: lighten($dark-text, 7%);
         margin-top: 20px;
         text-overflow: ellipsis;
@@ -701,7 +703,7 @@ h4 {
 
       h3 {
         margin-top: 2px;
-        font-family: 'faktpro-normal', sans-serif;
+        font-family: "faktpro-normal", sans-serif;
         color: $light-text;
       }
     }
@@ -722,13 +724,13 @@ h4 {
         cursor: default;
 
         h2 {
-          font-family: 'faktpro-semibold', sans-serif;
+          font-family: "faktpro-semibold", sans-serif;
           color: lighten($dark-text, 7%);
         }
 
         h3 {
           margin-top: 3px;
-          font-family: 'faktpro-normal', sans-serif;
+          font-family: "faktpro-normal", sans-serif;
           color: $light-text;
         }
       }
@@ -741,7 +743,7 @@ h4 {
 
         p {
           margin-top: 10px;
-          font-family: 'faktpro-normal', sans-serif;
+          font-family: "faktpro-normal", sans-serif;
           // font-size: 12px;
           line-height: 1.5;
           color: $light-text;
@@ -962,15 +964,15 @@ h4 {
 
   // what is this?
   h1 {
-    font-family: 'calibre-semibold', sans-serif;
+    font-family: "calibre-semibold", sans-serif;
     margin-top: 100px;
     color: lighten($dark-text, 7%);
   }
 
   .discover-card {
-    flex-grow: 1;
+    // flex-grow: 1;
     max-width: 450px;
-    width: 330px;
+    // width: 330px;
     margin: 30px 20px;
     background-color: #fff;
     display: flex;
@@ -1023,7 +1025,7 @@ h4 {
             width: 33px;
             height: 33px;
             color: white;
-            font-family: 'faktpro-semibold', sans-serif;
+            font-family: "faktpro-semibold", sans-serif;
             line-height: 1;
             font-size: 12px;
             border-radius: 50%;
@@ -1054,23 +1056,23 @@ h4 {
         min-height: 140px;
         margin-left: 13px;
         padding: 10px 0 5px 0;
-        font-family: 'faktpro-semibold', sans-serif;
+        font-family: "faktpro-semibold", sans-serif;
         color: $light-text;
         // background-color: lightgray;
 
         h4 {
-          font-family: 'faktpro-normal', sans-serif;
+          font-family: "faktpro-normal", sans-serif;
           color: lighten($dark-text, 7%);
         }
 
         h3 {
-          font-family: 'faktpro-normal', sans-serif;
+          font-family: "faktpro-normal", sans-serif;
           margin-top: 3px;
           // color: lighten($light-text, 7%);
 
           span {
             color: $main-blue;
-            font-family: 'faktpro-semibold', sans-serif;
+            font-family: "faktpro-semibold", sans-serif;
           }
         }
 
@@ -1086,7 +1088,7 @@ h4 {
 
         p {
           margin-top: 8px;
-          font-family: 'faktpro-normal', sans-serif;
+          font-family: "faktpro-normal", sans-serif;
           // font-size: 12px;
           line-height: 1.5;
         }
@@ -1110,12 +1112,12 @@ h4 {
       }
 
       h3 {
-        font-family: 'faktpro-normal', sans-serif;
+        font-family: "faktpro-normal", sans-serif;
         display: inline-block;
 
         span {
           color: $main-blue;
-          font-family: 'faktpro-semibold', sans-serif;
+          font-family: "faktpro-semibold", sans-serif;
         }
       }
 
@@ -1243,8 +1245,8 @@ h4 {
   background-color: $main-blue;
   // width: 54px;
   // height: 54px;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   border: none;
   outline: none;
@@ -1301,7 +1303,7 @@ h4 {
     // flex-shrink: 0;
     // display: block;
     background-color: #b2b2b2;
-    font-family: 'faktpro-medium', sans-serif;
+    font-family: "faktpro-medium", sans-serif;
     line-height: normal;
     color: #fff;
     border: none;
@@ -1376,7 +1378,7 @@ h4 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  font-family: 'calibre-semibold', sans-serif;
+  font-family: "calibre-semibold", sans-serif;
   // font-family: 'faktpro-semibold', sans-serif;
   // position: relative;
 
@@ -1501,12 +1503,12 @@ h4 {
     padding-right: 5px;
 
     h2 {
-      font-family: 'faktpro-normal', sans-serif;
+      font-family: "faktpro-normal", sans-serif;
       color: $dark-text;
     }
 
     h3 {
-      font-family: 'faktpro-normal', sans-serif;
+      font-family: "faktpro-normal", sans-serif;
       color: $light-text;
     }
 
@@ -1570,7 +1572,7 @@ h4 {
     margin-left: 20px;
 
     h2 {
-      font-family: 'faktpro-normal', sans-serif;
+      font-family: "faktpro-normal", sans-serif;
       color: lighten($main-blue, 10%);
     }
   }
@@ -1593,7 +1595,7 @@ h4 {
     }
 
     h2 {
-      font-family: 'faktpro-normal', sans-serif;
+      font-family: "faktpro-normal", sans-serif;
       color: #fff;
     }
   }
@@ -1604,7 +1606,7 @@ h4 {
     padding: 20px;
 
     h2 {
-      font-family: 'faktpro-normal', sans-serif;
+      font-family: "faktpro-normal", sans-serif;
       color: $dark-text;
     }
   }
@@ -1621,7 +1623,7 @@ h4 {
   outline: none;
   width: 80%;
   text-align: center;
-  font-family: 'faktpro-semibold', sans-serif;
+  font-family: "faktpro-semibold", sans-serif;
   font-size: 12;
   // responsive centering
   left: 50%;
@@ -1697,12 +1699,12 @@ h4 {
   height: 100%;
   // min-height: 800px;
   // border-radius: 5px;
-  font-family: 'faktpro-normal', sans-serif;
+  font-family: "faktpro-normal", sans-serif;
   line-height: normal;
   color: $dark-text;
   // font-size: 12;
   background-color: #fff;
-  padding: 50px 50px 0 50px;
+  padding: 40px 50px 0 50px;
   overflow-y: auto;
   // margin-bottom: 200px;
   // background-color: $main-blue;
@@ -1751,14 +1753,24 @@ h4 {
   }
 
   h1 {
-    font-family: 'faktpro-normal', sans-serif;
-    font-size: 18px;
+    font-family: "faktpro-normal", sans-serif;
+    font-size: 20px;
+
+    @include desktop {
+      font-size: 18px;
+    }
   }
 
   h2 {
+    font-family: "faktpro-normal", sans-serif;
     color: $light-text;
     margin-bottom: 20px;
-    font-size: 15px;
+    // font-size: 17px;
+    font-size: 17px;
+
+    @include desktop {
+      font-size: 15px;
+    }
   }
 
   .media-container,
@@ -1777,14 +1789,14 @@ h4 {
       flex-direction: row;
       // align-items: space-between;
       // align-items: center;
-      // justify-content: space-around;
+      justify-content: space-between;
       // justify-content: center;
       list-style: none;
       padding: 0;
       margin: 25px 0 0 0;
 
       @include desktop {
-        // justify-content: space-between;
+        justify-content: flex-start;
       }
 
       // @include desktop {
@@ -1818,10 +1830,11 @@ h4 {
 
         // display: block;
         cursor: pointer;
-        padding: 12px 30px;
+        // padding: 15px 36px;
+        padding: 0 22px;
 
         // width: 50%;
-        // height: 45px;
+        height: 50px;
         // background-color: lighten($gray-bg, 1%);
         border: 1px solid #eee;
         border-radius: 100px;
@@ -1829,7 +1842,7 @@ h4 {
         cursor: pointer;
         color: $light-text;
         line-height: 1;
-        font-size: 17px;
+        // font-size: 17px;
 
         &.selected {
           background-color: lighten($main-blue, 5%);
@@ -1839,8 +1852,10 @@ h4 {
           color: #fff;
         }
 
-        &:nth-child(1) {
-          margin-right: 20px;
+        @include desktop {
+          &:nth-child(1) {
+            margin-right: 20px;
+          }
         }
 
         // @include desktop {
@@ -1870,25 +1885,46 @@ h4 {
     // margin-bottom: 60px;
     list-style: none;
 
+    h2 {
+      font-family: "faktpro-normal", sans-serif;
+      color: $light-text;
+      margin-bottom: 20px;
+      // font-size: 17px;
+      font-size: 17px;
+
+      @include desktop {
+        font-size: 15px;
+      }
+    }
+
     .slider-text {
       // border-top: 1px solid #eee;
       // padding-top: 20px;
       font-family: inherit;
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      // align-items: flex-end;
+      align-items: center;
       // margin-bottom: 5px;
       // font-size: 18px;
       // color: $dark-text;
 
+      h1 {
+        font-family: "faktpro-normal", sans-serif;
+        font-size: 20px;
+
+        // @include desktop {
+        //   font-size: 18px;
+        // }
+      }
       .numbers {
         // display: inline-block;
         // background-color: #ebf5ff;
         background-color: $gray-bg;
-        font-family: 'faktpro-normal', sans-serif;
-        line-height: 1;
-        padding: 8px 15px;
-        font-size: 14px;
+        font-family: "faktpro-normal", sans-serif;
+        // line-height: 1;
+        padding: 5px 15px;
+        margin: 0;
         border-radius: 100px;
         // border: 1px solid #b3dbfe;
         color: $light-text;
@@ -1901,9 +1937,13 @@ h4 {
   .select-genre,
   .select-sort {
     width: 100%;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 50px;
     display: block;
+
+    @include desktop {
+      font-size: 18px;
+    }
     // hack to force firefox to overflow
     // &:after {
     //   content: '';
@@ -1920,7 +1960,11 @@ h4 {
   .Select-control {
     border-color: #eee;
     border-radius: 3px;
-    height: 40px;
+    height: 43px;
+
+    @include desktop {
+      height: 40px;
+    }
   }
 
   .submit-container {
@@ -1957,8 +2001,8 @@ h4 {
       background-color: lighten($main-blue, 5%);
       // background-color: #ed5565;
       color: white;
-      font-family: 'faktpro-medium', sans-serif;
-      font-size: 17px;
+      font-family: "faktpro-medium", sans-serif;
+      // font-size: 17px;
       box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
       transition: background-color 0.3s, box-shadow 0.2s;
       cursor: pointer;
@@ -1977,7 +2021,7 @@ h4 {
       margin-right: 20px;
       color: #828282;
       // color: $dark-text;
-      font-size: 17px;
+      // font-size: 17px;
       // font-family: 'faktpro-medium', sans-serif;
       transition: color 0.2s;
       cursor: pointer;
@@ -2023,7 +2067,7 @@ h4 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: 'faktpro-medium', sans-serif;
+  font-family: "faktpro-medium", sans-serif;
 
   .illustration {
     .empty-mobile {
@@ -2090,7 +2134,7 @@ h4 {
       // line-height: 0;
       margin: 0;
       padding: 5px 15px 0 15px;
-      font-family: 'faktpro-medium', sans-serif;
+      font-family: "faktpro-medium", sans-serif;
       color: #fff;
     }
 
@@ -2117,7 +2161,7 @@ h4 {
   height: 80px;
 
   h1 {
-    font-family: 'calibre-semibold', sans-serif;
+    font-family: "calibre-semibold", sans-serif;
     font-size: 26px;
     color: #fff;
     padding-left: 30px;
@@ -2129,7 +2173,7 @@ h4 {
     list-style: none;
 
     li {
-      font-family: 'faktpro-medium', sans-serif;
+      font-family: "faktpro-medium", sans-serif;
       color: #fff;
       font-size: 14px;
       display: inline;
@@ -2165,7 +2209,7 @@ h4 {
   flex-direction: row;
   justify-content: flex-end;
   background-color: lighten($main-blue, 2%);
-  background-image: url('assets/waves.svg');
+  background-image: url("assets/waves.svg");
   background-position: bottom;
   background-repeat: no-repeat;
   margin-top: 80px;
@@ -2189,7 +2233,7 @@ h4 {
   .title {
     position: relative; //
     max-width: 480px;
-    font-family: 'calibre-semibold', sans-serif;
+    font-family: "calibre-semibold", sans-serif;
     font-size: 34px;
     color: #fff;
     // margin-bottom: 15px;
@@ -2201,7 +2245,7 @@ h4 {
       // display: block;
       position: absolute;
       // background-color: #0263a5;
-      content: '';
+      content: "";
       height: 5px;
       // width: 135px;
       // width: 30%;
@@ -2218,7 +2262,7 @@ h4 {
   p {
     text-align: center;
     max-width: 460px;
-    font-family: 'faktpro-normal', sans-serif;
+    font-family: "faktpro-normal", sans-serif;
     font-size: 18px;
     color: #fff;
     padding: 0;
@@ -2228,7 +2272,7 @@ h4 {
 
   .get-started-btn {
     align-self: center;
-    font-family: 'faktpro-medium', sans-serif;
+    font-family: "faktpro-medium", sans-serif;
     color: #fff;
     font-size: 18px;
     height: 50px;
@@ -2256,7 +2300,7 @@ h4 {
   // width: 640px;
 
   .video-window {
-    background-image: url('assets/window.svg');
+    background-image: url("assets/window.svg");
     background-repeat: no-repeat;
     // display: block;
     height: 72px;
@@ -2318,14 +2362,14 @@ h4 {
     // height: 535px;
 
     .text-block-header {
-      font-family: 'calibre-semibold', sans-serif;
+      font-family: "calibre-semibold", sans-serif;
       font-size: 30px;
       color: $dark-text;
 
       &:after {
         display: block;
         background-color: $main-blue;
-        content: '';
+        content: "";
         height: 5px;
         width: 135px;
         margin-top: 10px;
@@ -2333,7 +2377,7 @@ h4 {
     }
 
     p {
-      font-family: 'faktpro-normal', sans-serif;
+      font-family: "faktpro-normal", sans-serif;
       color: $dark-text;
       font-size: 18px;
       margin-top: 20px;
@@ -2355,7 +2399,7 @@ h4 {
   height: 200px;
 
   .footer-btn {
-    font-family: 'faktpro-medium', sans-serif;
+    font-family: "faktpro-medium", sans-serif;
     color: #fff;
     font-size: 18px;
     height: 50px;
@@ -2373,7 +2417,7 @@ h4 {
   }
 
   h2 {
-    font-family: 'faktpro-normal', sans-serif;
+    font-family: "faktpro-normal", sans-serif;
     font-size: 14px;
     color: #003244;
   }
