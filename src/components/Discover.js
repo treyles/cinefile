@@ -35,13 +35,7 @@ export default class Discover extends React.Component {
     this.handleOptionsModal = this.handleOptionsModal.bind(this);
     this.handleQueryUpdate = this.handleQueryUpdate.bind(this);
     this.handleRemoveMatch = this.handleRemoveMatch.bind(this);
-    // this.handleTouchMove = this.handleTouchMove.bind(this);
   }
-
-  // componentWillMount() {
-  //   const query = this.lsQuery ? this.lsQuery : defaultQuery;
-  //   this.handleQueryUpdate(query);
-  // }
 
   componentDidMount() {
     // debugger;

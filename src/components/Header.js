@@ -1,9 +1,9 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import MediaQuery from 'react-responsive';
-import firebase from 'firebase';
-import Icon from '../utils/Icon';
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import MediaQuery from "react-responsive";
+import firebase from "firebase";
+import Icon from "../utils/Icon";
 
 // TODO: clean up onClick
 export default class Header extends React.Component {
@@ -18,8 +18,8 @@ export default class Header extends React.Component {
       .auth()
       .signOut()
       .then(() => {
-        console.log('signed out');
-        localStorage.setItem('authenticated', false);
+        console.log("signed out");
+        localStorage.setItem("authenticated", false);
       });
   }
 
@@ -48,7 +48,7 @@ export default class Header extends React.Component {
         </Link>
         {currentUser.displayName && (
           <div className="welcome">
-            {`Hi, ${currentUser.displayName.split(' ')[0]}`}
+            {`Hi, ${currentUser.displayName.split(" ")[0]}`}
           </div>
         )}
         <ul>
@@ -68,9 +68,7 @@ export default class Header extends React.Component {
             </NavLink>
             {count > 0 && (
               <span
-                className={`counter ${
-                  !isLibraryMounted ? 'inactive' : ''
-                }`}
+                className={`counter ${!isLibraryMounted ? "inactive" : ""}`}
               >
                 {count}
               </span>
@@ -78,12 +76,12 @@ export default class Header extends React.Component {
           </li>
         </ul>
         <Link to="/" onClick={() => toggleSearchButton()}>
-          <div className={`search-icon ${isSearchActive ? 'active' : ''}`}>
+          <div className={`search-icon ${isSearchActive ? "active" : ""}`}>
             <MediaQuery minWidth={768}>
               <Icon icon="plus" width="18" height="18" />
             </MediaQuery>
             <MediaQuery maxWidth={768}>
-              <Icon icon="search" width="22" height="22" />
+              <Icon icon="search" width="24" height="24" />
             </MediaQuery>
           </div>
         </Link>

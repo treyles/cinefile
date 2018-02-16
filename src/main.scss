@@ -42,6 +42,8 @@ html {
   font-weight: 400;
 
   -webkit-text-size-adjust: 100%;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 // TODO: fix order
@@ -293,6 +295,7 @@ h4 {
   justify-content: space-between;
   // border-bottom: 1px solid lightgray;
   box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.08);
+  padding: 0 20px;
 
   .logo {
     display: none;
@@ -301,15 +304,23 @@ h4 {
     color: darken($dark-text, 5%);
   }
 
+  // a {
+  //   padding: 0;
+  //   margin: 0;
+  //   width: 35px;
+  //   height: 35px;
+  // }
+
   .profile-img {
+    // display: inline-block;
     object-fit: cover;
+    vertical-align: middle;
     // object-position: center;
     width: 35px;
     height: 35px;
     border-radius: 50%;
     border: none;
     outline: 0;
-    margin: 20px;
     cursor: pointer;
 
     &.placeholder {
@@ -423,12 +434,11 @@ h4 {
 
   .search-icon {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    margin-left: 30px;
+    width: 35px;
+    // margin-right: 10px;
+    // margin-left: 30px;
     // border-radius: 100px;
     // margin: 20px;
     // background-color: #FC6E51; // orange
@@ -439,7 +449,7 @@ h4 {
     // pointer-events: none;
     // color: white;
     // font-size: 12px;
-    text-decoration: none;
+    // text-decoration: none;
 
     &.active {
       // background-color: darken($gray-bg, 10%);
@@ -447,7 +457,9 @@ h4 {
     }
 
     svg {
-      fill: lighten($main-blue, 10%);
+      // fill: lighten($main-blue, 10%);
+      stroke: lighten($main-blue, 10%);
+
       // fill: darken(#F6BB42, 10%); // yellow
       // fill: $main-blue;
       // fill: lighten($dark-text, 35%); // gray
@@ -537,6 +549,7 @@ h4 {
 
     .search-icon {
       // display: none;
+      justify-content: center;
       background-color: $main-blue;
       width: 48px;
       height: 48px;
@@ -558,6 +571,7 @@ h4 {
 
       svg {
         fill: #fff;
+        stroke: none;
       }
     }
 
@@ -1909,14 +1923,14 @@ h4 {
       // font-size: 18px;
       // color: $dark-text;
 
-      h1 {
-        font-family: "faktpro-normal", sans-serif;
-        font-size: 20px;
+      // h1 {
+      //   font-family: "faktpro-normal", sans-serif;
+      //   font-size: 20px;
 
-        // @include desktop {
-        //   font-size: 18px;
-        // }
-      }
+      //   @include desktop {
+      //     font-size: 18px;
+      //   }
+      // }
       .numbers {
         // display: inline-block;
         // background-color: #ebf5ff;
