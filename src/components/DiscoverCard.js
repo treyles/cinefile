@@ -86,9 +86,7 @@ export default class DiscoverCard extends React.Component {
     const { media } = this.props;
 
     const title = media.title ? media.title : media.name;
-    const release = media.title
-      ? media.release_date
-      : media.first_air_date;
+    const release = media.title ? media.release_date : media.first_air_date;
     const creditTypeHeader = media.title ? 'Director:' : 'Creator:';
     const creditTypeFooter = media.title ? 'Lead:' : 'Seasons:';
 
@@ -112,14 +110,14 @@ export default class DiscoverCard extends React.Component {
               <span>{creditTypeHeader}</span> {credits.header}
             </h3>
             <h3>{release.substring(0, 4)}</h3>
-            <p>
-              {truncate(media.overview, { length: 125, separator: ' ' })}
-            </p>
+            <p>{truncate(media.overview, { length: 125, separator: ' ' })}</p>
           </div>
         </div>
         {/* TODO: make these divs buttons? */}
         <div className="discover-footer">
-          <h3><span>{creditTypeFooter}</span> {credits.footer}</h3>
+          <h3>
+            <span>{creditTypeFooter}</span> {credits.footer}
+          </h3>
           <div className="buttons">
             <a
               className="imdb"
@@ -129,12 +127,12 @@ export default class DiscoverCard extends React.Component {
               <Icon icon="text" width="18" height="18" />
               <span className="imdb-tooltip">Imdb</span>
             </a>
-            {trailerKey !== null
-              ? <div className="trailer" onClick={this.handleTrailerModal}>
-                  <Icon icon="preview" width="21" height="21" />
-                  <span className="trailer-tooltip">Trailer</span>
-                </div>
-              : null}
+            {trailerKey !== null ? (
+              <div className="trailer" onClick={this.handleTrailerModal}>
+                <Icon icon="preview" width="21" height="21" />
+                <span className="trailer-tooltip">Trailer</span>
+              </div>
+            ) : null}
             <div className="add" onClick={this.handleAddToLibrary}>
               <Icon icon="archive" width="18" height="18" />
               <span className="add-tooltip">Add to library</span>

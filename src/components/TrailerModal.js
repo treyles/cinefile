@@ -7,15 +7,12 @@ export default function TrailerModal({ trailerKey }) {
       <div className="video-wrapper">
         <iframe
           title="trailer"
-          src={
-            `https://www.youtube.com/embed/${trailerKey}?controls=1&showinfo=0&autoplay=1`
-          }
+          src={`https://www.youtube.com/embed/${trailerKey}?controls=1&showinfo=0&autoplay=1`}
           style={{ height: '100%' }}
           frameBorder="0"
           allowFullScreen
         />
       </div>
-
     </div>
   );
 }

@@ -64,8 +64,8 @@ export default class Library extends React.Component {
 
         <MediaQuery minWidth={768}>
           <h2>
-            Add movies or TV shows to your library by browsing Discover or
-            by clicking the
+            Add movies or TV shows to your library by browsing Discover or by
+            clicking the
             <span>
               <Icon icon="hint" width="18" height="18" />
             </span>

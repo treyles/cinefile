@@ -1,14 +1,43 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import ReactModal from 'react-modal';
 import base from '../utils/base';
 import firebase from 'firebase';
 import heroPreview from '../assets/hero-preview.mp4';
 import heroPoster from '../assets/hero-preview-poster.jpg';
-import mobile from '../assets/mobile.png';
+import mobilePreview from '../assets/mobile-preview.png';
+import mobilePoster from '../assets/mobile-preview-poster.jpg';
+import SignIn from './SignIn';
+// import mobilePoster from '../assets/mobile-preview-poster.jpg';
+// import mobile from '../assets/mobile.png';
 // import { Link } from 'react-router-dom';
 
 export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showSignIn: false
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentWillMount() {
+    document.body.style.backgroundColor = '#0883df';
+  }
+
+  componentWillUnmount() {
+    document.body.style.backgroundColor = null;
+  }
+
+  handleClick() {
+    this.setState({
+      showSignIn: !this.state.showSignIn
+    });
+  }
+
   render() {
+    const { showSignIn } = this.state;
     const { handleAuthorization } = this.props;
     const about = 'https://github.com/treyles/cinefile';
 
@@ -23,7 +52,9 @@ export default class Home extends React.Component {
               </a>
             </li>
             <li>
-              <button className="signin-btn">Sign In</button>
+              <button className="signin-btn" onClick={this.handleClick}>
+                Sign In
+              </button>
             </li>
           </ul>
         </div>
@@ -38,10 +69,7 @@ export default class Home extends React.Component {
               your radar with Cinefile — a minimal bookmarking and
               discovery app
             </p>
-            <button
-              className="get-started-btn"
-              onClick={() => handleAuthorization()}
-            >
+            <button className="get-started-btn" onClick={this.handleClick}>
               Get Started, It's Free!
             </button>
           </div>
@@ -60,8 +88,8 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div className="mobile-section">
-          <div className="image-block">
-            <img className="mobile-image" src={mobile} />
+          <div className="mobile-content-container">
+            <img src={mobilePreview} />
           </div>
           <div className="text-block">
             <h1 className="text-block-header">Mobile Friendly</h1>
@@ -79,13 +107,31 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div className="footer">
-          <button className="footer-btn">Get Started!</button>
+          <button className="footer-btn" onClick={this.handleClick}>
+            Get Started!
+          </button>
           <h2>MADE BY @TREYLES</h2>
         </div>
+        <ReactModal
+          isOpen={showSignIn}
+          onRequestClose={this.handleClick}
+          className="sign-in-modal"
+          overlayClassName="sign-in-overlay"
+          ariaHideApp={false}
+        >
+          <SignIn handleAuthorization={handleAuthorization} />
+        </ReactModal>
       </div>
     );
   }
 }
+
+/*
+            <button
+              className="get-started-btn"
+              onClick={() => handleAuthorization()}
+            >
+*/
 
 /*
 export default class Home extends React.Component {

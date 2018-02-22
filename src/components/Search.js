@@ -110,7 +110,8 @@ export default class Search extends React.Component {
 
   searchApi(value) {
     fetchMediaSearch(value).then(result =>
-      this.setState({ matches: this.filterMatches(result).slice(0, 5) }));
+      this.setState({ matches: this.filterMatches(result).slice(0, 5) })
+    );
   }
 
   filterMatches(data) {
@@ -171,11 +172,12 @@ export default class Search extends React.Component {
             this.searchInput = input;
           }}
         />
-        {matches !== null &&
+        {matches !== null && (
           <SearchResultList
             matches={matches}
             handleSelect={this.handleSelect}
-          />}
+          />
+        )}
       </div>
     );
   }

@@ -46,18 +46,19 @@ export default class LibraryCard extends React.Component {
 
     return (
       <div className="library-card-container">
-
         {/* mobile -- view card back conditionally with click event */}
         <MediaQuery maxWidth={768}>
           <div className="library-card" onClick={this.handleClick}>
-            {clicked
-              ? <LibraryCardBack
-                  media={media}
-                  removeFromLibrary={removeFromLibrary}
-                  trailerKey={trailerKey}
-                  handleTrailerModal={this.handleTrailerModal}
-                />
-              : <LibraryCardFront media={media} />}
+            {clicked ? (
+              <LibraryCardBack
+                media={media}
+                removeFromLibrary={removeFromLibrary}
+                trailerKey={trailerKey}
+                handleTrailerModal={this.handleTrailerModal}
+              />
+            ) : (
+              <LibraryCardFront media={media} />
+            )}
           </div>
         </MediaQuery>
 

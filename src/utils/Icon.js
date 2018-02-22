@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // TODO: remove width and height, being set in CSS  //////
 // has been set in css (for mobile), but desktop needs to be explicitly set

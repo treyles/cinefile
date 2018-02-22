@@ -22,9 +22,7 @@ export default class SearchResultList extends React.Component {
 
     const inLibraryTag = (
       <div className="inlibrary-tag">
-        <h2>
-          {media.inLibrary && 'Delete from library'}
-        </h2>
+        <h2>{media.inLibrary && 'Delete from library'}</h2>
       </div>
     );
 
@@ -66,11 +64,13 @@ export default class SearchResultList extends React.Component {
     return (
       <div className="search-results">
         <ul>
-          {matches.length
-            ? matches.map(media => this.renderMatchLi(media))
-            : <li className="zero-results">
-                <h2>Your search returned zero results</h2>
-              </li>}
+          {matches.length ? (
+            matches.map(media => this.renderMatchLi(media))
+          ) : (
+            <li className="zero-results">
+              <h2>Your search returned zero results</h2>
+            </li>
+          )}
         </ul>
       </div>
     );

@@ -29,9 +29,7 @@ export default class LibraryCardBack extends React.Component {
   render() {
     const { media, trailerKey } = this.props;
 
-    const imdbId = media.imdb_id
-      ? media.imdb_id
-      : media.external_ids.imdb_id;
+    const imdbId = media.imdb_id ? media.imdb_id : media.external_ids.imdb_id;
 
     return (
       <div className="card-back">
@@ -49,9 +47,7 @@ export default class LibraryCardBack extends React.Component {
           </h3>
         </div>
         <div className="synopsis">
-          <p>
-            {truncate(media.overview, { length: 240, separator: ' ' })}
-          </p>
+          <p>{truncate(media.overview, { length: 240, separator: ' ' })}</p>
         </div>
         <div className="buttons">
           <a
@@ -63,18 +59,17 @@ export default class LibraryCardBack extends React.Component {
             <Icon icon="text" width="18" height="18" />
             <span className="imdb-tooltip">Imdb</span>
           </a>
-          {trailerKey !== null
-            ? <div className="trailer" onClick={this.handleClick}>
-                <Icon icon="preview" width="21" height="21" />
-                <span className="trailer-tooltip">Trailer</span>
-              </div>
-            : null}
+          {trailerKey !== null ? (
+            <div className="trailer" onClick={this.handleClick}>
+              <Icon icon="preview" width="21" height="21" />
+              <span className="trailer-tooltip">Trailer</span>
+            </div>
+          ) : null}
           <div className="delete" onClick={this.handleClick}>
             <Icon icon="trash" width="18" height="18" />
             <span className="delete-tooltip">Delete</span>
           </div>
         </div>
-
       </div>
     );
   }

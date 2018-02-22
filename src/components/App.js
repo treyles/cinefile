@@ -108,13 +108,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const {
-      library,
-      alert,
-      isSearchActive,
-      currentUser,
-      loading
-    } = this.state;
+    const { library, alert, isSearchActive, currentUser, loading } = this.state;
 
     return (
       <BrowserRouter>
