@@ -6,7 +6,7 @@ import firebase from 'firebase';
 import heroPreview from '../assets/hero-preview.mp4';
 import heroPoster from '../assets/hero-preview-poster.jpg';
 import mobilePreview from '../assets/mobile-preview.png';
-import mobilePoster from '../assets/mobile-preview-poster.jpg';
+// import mobilePoster from '../assets/mobile-preview-poster.jpg';
 import SignIn from './SignIn';
 // import mobilePoster from '../assets/mobile-preview-poster.jpg';
 // import mobile from '../assets/mobile.png';
@@ -19,7 +19,7 @@ export default class Home extends React.Component {
       showSignIn: false
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSignInModal = this.handleSignInModal.bind(this);
   }
 
   componentWillMount() {
@@ -30,7 +30,7 @@ export default class Home extends React.Component {
     document.body.style.backgroundColor = null;
   }
 
-  handleClick() {
+  handleSignInModal() {
     this.setState({
       showSignIn: !this.state.showSignIn
     });
@@ -52,7 +52,10 @@ export default class Home extends React.Component {
               </a>
             </li>
             <li>
-              <button className="signin-btn" onClick={this.handleClick}>
+              <button
+                className="signin-btn"
+                onClick={this.handleSignInModal}
+              >
                 Sign In
               </button>
             </li>
@@ -69,7 +72,10 @@ export default class Home extends React.Component {
               your radar with Cinefile — a minimal bookmarking and
               discovery app
             </p>
-            <button className="get-started-btn" onClick={this.handleClick}>
+            <button
+              className="get-started-btn"
+              onClick={this.handleSignInModal}
+            >
               Get Started, It's Free!
             </button>
           </div>
@@ -107,19 +113,22 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div className="footer">
-          <button className="footer-btn" onClick={this.handleClick}>
+          <button className="footer-btn" onClick={this.handleSignInModal}>
             Get Started!
           </button>
           <h2>MADE BY @TREYLES</h2>
         </div>
         <ReactModal
           isOpen={showSignIn}
-          onRequestClose={this.handleClick}
+          onRequestClose={this.handleSignInModal}
           className="sign-in-modal"
           overlayClassName="sign-in-overlay"
           ariaHideApp={false}
         >
-          <SignIn handleAuthorization={handleAuthorization} />
+          <SignIn
+            handleAuthorization={handleAuthorization}
+            handleSignInModal={this.handleSignInModal}
+          />
         </ReactModal>
       </div>
     );
