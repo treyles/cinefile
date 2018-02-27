@@ -20,6 +20,7 @@ export default class LibraryCard extends React.Component {
   }
 
   // TODO: bug 'Party' movie, 'results' undefined? same as imdb etc.
+  // discover cards without trailer breaks.
   componentDidMount() {
     const trailer = this.props.media.videos.results;
 

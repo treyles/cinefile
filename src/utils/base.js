@@ -11,6 +11,8 @@ const app = firebase.initializeApp({
 });
 
 const db = firebase.database(app);
-const rebase = Rebase.createClass(db);
 
-export default rebase;
+export const rebase = Rebase.createClass(db);
+export const auth = firebase.auth();
+export const googleAuth = new firebase.auth.GoogleAuthProvider();
+export const facebookAuth = new firebase.auth.FacebookAuthProvider();

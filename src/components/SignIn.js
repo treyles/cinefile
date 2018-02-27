@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../utils/Icon';
+import { auth, googleAuth, facebookAuth } from '../utils/base';
 
 export default class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.scrollStyle = document.body.querySelector('*').style;
+
+    // this.handleClickProvider = this.handleClickProvider.bind(this);
   }
 
   // componentDidMount() {
@@ -20,8 +23,12 @@ export default class SignIn extends React.Component {
   //   // this.scrollStyle.position = 'static';
   // }
 
+  // handleClickProvider(e) {
+  //   this.props.handleAuthorization(e.target.className);
+  // }
+
   render() {
-    const { handleAuthorization, handleSignInModal } = this.props;
+    const { handleSignInModal } = this.props;
 
     return (
       <div className="sign-in-modal">
@@ -33,12 +40,18 @@ export default class SignIn extends React.Component {
             <Icon icon="exit" width="16" height="16" />
           </button>
         </div>
-        <a className="facebook-btn" onClick={() => handleAuthorization()}>
+        <a
+          className="facebook-btn"
+          onClick={() => auth.signInWithPopup(facebookAuth)}
+        >
           <span>
             <Icon icon="facebook" width="18" height="18" />
           </span>Connect with Facebook
         </a>
-        <a className="google-btn" onClick={() => handleAuthorization()}>
+        <a
+          className="google-btn"
+          onClick={() => auth.signInWithPopup(googleAuth)}
+        >
           <span>
             <Icon icon="google" width="18" height="18" />
           </span>Connect with Google

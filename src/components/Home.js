@@ -38,7 +38,6 @@ export default class Home extends React.Component {
 
   render() {
     const { showSignIn } = this.state;
-    const { handleAuthorization } = this.props;
     const about = 'https://github.com/treyles/cinefile';
 
     return (
@@ -125,10 +124,7 @@ export default class Home extends React.Component {
           overlayClassName="sign-in-overlay"
           ariaHideApp={false}
         >
-          <SignIn
-            handleAuthorization={handleAuthorization}
-            handleSignInModal={this.handleSignInModal}
-          />
+          <SignIn handleSignInModal={this.handleSignInModal} />
         </ReactModal>
       </div>
     );

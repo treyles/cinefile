@@ -16,7 +16,7 @@ export default class LibraryCardBack extends React.Component {
     const { media, removeFromLibrary, handleTrailerModal } = this.props;
 
     // TODO: no dom selectors?
-    // use currentTarget?
+    // use currentTarget? or use onClick directly?
     if (e.target.className === 'delete') {
       removeFromLibrary(media);
     }
@@ -29,7 +29,9 @@ export default class LibraryCardBack extends React.Component {
   render() {
     const { media, trailerKey } = this.props;
 
-    const imdbId = media.imdb_id ? media.imdb_id : media.external_ids.imdb_id;
+    const imdbId = media.imdb_id
+      ? media.imdb_id
+      : media.external_ids.imdb_id;
 
     return (
       <div className="card-back">
@@ -47,7 +49,9 @@ export default class LibraryCardBack extends React.Component {
           </h3>
         </div>
         <div className="synopsis">
-          <p>{truncate(media.overview, { length: 240, separator: ' ' })}</p>
+          <p>
+            {truncate(media.overview, { length: 240, separator: ' ' })}
+          </p>
         </div>
         <div className="buttons">
           <a

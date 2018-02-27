@@ -1158,7 +1158,7 @@ c0,2.2,1.8,4,4,4S50,57.3,50,55.1z M49.5,71.7c0.9-0.9,1.5-2.2,1.5-3.5c0-1.3-0.5-2
             y2="23.85"
             fill="none"
             stroke="#3f3f3f"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
           />
           <line
             x1="23.85"
@@ -1167,7 +1167,7 @@ c0,2.2,1.8,4,4,4S50,57.3,50,55.1z M49.5,71.7c0.9-0.9,1.5-2.2,1.5-3.5c0-1.3-0.5-2
             y2="23.85"
             fill="none"
             stroke="#3f3f3f"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
           />
         </svg>
       )

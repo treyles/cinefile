@@ -1,11 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import firebase from 'firebase';
 import Library from './Library';
 import Discover from './Discover';
 import Home from './Home';
 import NotFound from './NotFound';
-import rebase from '../utils/base';
+import { rebase, auth } from '../utils/base';
 import data from '../data/recommendations.json';
 
 export default class App extends React.Component {
@@ -24,7 +23,6 @@ export default class App extends React.Component {
     this.addToLibrary = this.addToLibrary.bind(this);
     this.removeFromLibrary = this.removeFromLibrary.bind(this);
     this.toggleSearchButton = this.toggleSearchButton.bind(this);
-    this.handleAuthorization = this.handleAuthorization.bind(this);
     this.addRecommended = this.addRecommended.bind(this);
   }
 
@@ -36,7 +34,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(currentUser => {
+    auth.onAuthStateChanged(currentUser => {
       this.setState({ currentUser });
 
       // if logged in
@@ -45,12 +43,6 @@ export default class App extends React.Component {
         localStorage.setItem('authenticated', true);
       }
     });
-  }
-
-  // TODO: handle in base.js and set directly onClick
-  handleAuthorization() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider);
   }
 
   syncRebase() {
@@ -108,7 +100,13 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { library, alert, isSearchActive, currentUser, loading } = this.state;
+    const {
+      library,
+      alert,
+      isSearchActive,
+      currentUser,
+      loading
+    } = this.state;
 
     return (
       <BrowserRouter>
@@ -119,7 +117,7 @@ export default class App extends React.Component {
               path="/"
               render={() =>
                 !currentUser ? (
-                  <Home handleAuthorization={this.handleAuthorization} />
+                  <Home />
                 ) : (
                   <Library
                     library={library}
@@ -139,7 +137,7 @@ export default class App extends React.Component {
               path="/discover"
               render={() =>
                 !currentUser ? (
-                  <Home handleAuthorization={this.handleAuthorization} />
+                  <Home />
                 ) : (
                   <Discover
                     library={library}
