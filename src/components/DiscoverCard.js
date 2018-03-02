@@ -41,15 +41,22 @@ export default class DiscoverCard extends React.Component {
         ? response.imdb_id
         : response.external_ids.imdb_id;
 
+      // arrays
       const getDirector = credit.crew.filter(el => el.job === 'Director');
-      const getLead = credit.cast.filter(el => el.order < 3);
+
+      // find smallest 'order' number then get object
+      const findLead = Math.min(...credit.cast.map(el => el.order));
+      const getLead = credit.cast.filter(el => el.order === findLead);
+
       // response.title is unique to movies
       if (response.title) {
         mediaCredits = {
-          header: credit.crew.length ? getDirector[0].name : 'n/a',
+          header: getDirector.length ? getDirector[0].name : 'n/a',
+          // header: credit.crew.length ? getDirector[0].name : 'n/a',
           // TODO: get smallest order #, cant rely on < 3
-          footer: credit.cast.length ? getLead[0].name : 'n/a'
+          footer: getLead.length ? getLead[0].name : 'n/a'
         };
+        // if television
       } else {
         mediaCredits = {
           header: response.created_by.length
@@ -86,7 +93,9 @@ export default class DiscoverCard extends React.Component {
     const { media } = this.props;
 
     const title = media.title ? media.title : media.name;
-    const release = media.title ? media.release_date : media.first_air_date;
+    const release = media.title
+      ? media.release_date
+      : media.first_air_date;
     const creditTypeHeader = media.title ? 'Director:' : 'Creator:';
     const creditTypeFooter = media.title ? 'Lead:' : 'Seasons:';
 
@@ -110,7 +119,11 @@ export default class DiscoverCard extends React.Component {
               <span>{creditTypeHeader}</span> {credits.header}
             </h3>
             <h3>{release.substring(0, 4)}</h3>
-            <p>{truncate(media.overview, { length: 125, separator: ' ' })}</p>
+            <p>
+              {media.id}
+
+              {truncate(media.overview, { length: 125, separator: ' ' })}
+            </p>
           </div>
         </div>
         {/* TODO: make these divs buttons? */}

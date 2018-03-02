@@ -47,9 +47,9 @@ export default class Header extends React.Component {
           )}
         </Link>
         {currentUser.displayName && (
-          <div className="welcome">
+          <Link className="welcome" to="/" onClick={this.handleClick}>
             {`Hi, ${currentUser.displayName.split(' ')[0]}`}
-          </div>
+          </Link>
         )}
         <ul>
           <li>
@@ -68,7 +68,9 @@ export default class Header extends React.Component {
             </NavLink>
             {count > 0 && (
               <span
-                className={`counter ${!isLibraryMounted ? 'inactive' : ''}`}
+                className={`counter ${
+                  !isLibraryMounted ? 'inactive' : ''
+                }`}
               >
                 {count}
               </span>

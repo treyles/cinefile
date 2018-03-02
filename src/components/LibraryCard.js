@@ -19,13 +19,17 @@ export default class LibraryCard extends React.Component {
     this.handleTrailerModal = this.handleTrailerModal.bind(this);
   }
 
+  // (FIXED? test and refactor)
   // TODO: bug 'Party' movie, 'results' undefined? same as imdb etc.
   // discover cards without trailer breaks.
   componentDidMount() {
-    const trailer = this.props.media.videos.results;
+    // abstract this out to api component?
+    const trailer = this.props.media.videos
+      ? this.props.media.videos.results
+      : null;
 
     this.setState({
-      trailerKey: trailer.length ? trailer[0].key : null
+      trailerKey: trailer !== null ? trailer[0].key : null
     });
   }
 
