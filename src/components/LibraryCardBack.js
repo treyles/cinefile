@@ -33,6 +33,8 @@ export default class LibraryCardBack extends React.Component {
       ? media.imdb_id
       : media.external_ids.imdb_id;
 
+    console.log(media);
+
     return (
       <div className="card-back">
         <div className="title">
@@ -56,7 +58,7 @@ export default class LibraryCardBack extends React.Component {
         <div className="buttons">
           <a
             className="imdb"
-            href={`http://www.imdb.com/title/${imdbId}`}
+            // href={`http://www.imdb.com/title/${imdbId}`}
             target="blank"
             onClick={this.handleClick}
           >

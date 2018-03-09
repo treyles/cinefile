@@ -29,7 +29,7 @@ export default class LibraryCard extends React.Component {
       : null;
 
     this.setState({
-      trailerKey: trailer !== null ? trailer[0].key : null
+      trailerKey: trailer ? trailer[0].key : null
     });
   }
 

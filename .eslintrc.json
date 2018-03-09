@@ -1,12 +1,6 @@
 {
-  "extends": [
-    "airbnb",
-    "prettier",
-    "prettier/react"
-  ],
-  "plugins": [
-    "prettier"
-  ],
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["prettier"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2016,
@@ -24,8 +18,11 @@
     "react/jsx-filename-extension": "off",
     "consistent-return": "off",
     "import/no-extraneous-dependencies": "off",
-    "jsx-a11y/anchor-is-valid": [ "error", {
-        "specialLink": [ "hrefLeft", "hrefRight", "to" ]
-    }]
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "specialLink": ["hrefLeft", "hrefRight", "to"]
+      }
+    ]
   }
 }

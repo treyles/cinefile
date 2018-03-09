@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+// how should structure api: https://www.youtube.com/watch?v=3G_yyE5GeIk @:43
+// add error: console.log(error)?
+
 export function fetchMediaSearch(title) {
   const key = '?api_key=529e1b3a6041a4b14bb6b7e328aad991';
   const tmdbAPI = 'https://api.themoviedb.org/3/';
