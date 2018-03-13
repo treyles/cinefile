@@ -123,7 +123,9 @@ export default class Search extends React.Component {
     );
 
     return filteredArray.map(match => {
+      // check if media is already in library
       const inLibrary = library.findIndex(el => el.id === match.id) > -1;
+
       if (inLibrary) {
         match.inLibrary = true;
       }

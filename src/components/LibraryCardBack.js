@@ -33,8 +33,6 @@ export default class LibraryCardBack extends React.Component {
       ? media.imdb_id
       : media.external_ids.imdb_id;
 
-    console.log(media);
-
     return (
       <div className="card-back">
         <div className="title">

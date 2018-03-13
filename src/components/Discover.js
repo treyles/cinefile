@@ -46,7 +46,10 @@ export default class Discover extends React.Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem('discover-query', JSON.stringify(nextState.query));
+    localStorage.setItem(
+      'discover-query',
+      JSON.stringify(nextState.query)
+    );
   }
 
   componentWillUnmount() {
@@ -126,7 +129,8 @@ export default class Discover extends React.Component {
   // filter to return media not already in library
   filterMatches(results) {
     return results.filter(
-      result => this.props.library.findIndex(el => el.id === result.id) === -1
+      result =>
+        this.props.library.findIndex(el => el.id === result.id) === -1
     );
   }
 
@@ -163,7 +167,13 @@ export default class Discover extends React.Component {
   }
 
   render() {
-    const { matches, query, showModal, showMoreButton, preloader } = this.state;
+    const {
+      matches,
+      query,
+      showModal,
+      showMoreButton,
+      preloader
+    } = this.state;
     const {
       library,
       addToLibrary,
@@ -222,7 +232,9 @@ export default class Discover extends React.Component {
           ))}
         </FlipMove>
         <div className="load-more-container">
-          {showMoreButton ? this.renderShowButton() : this.renderLoader(true)}
+          {showMoreButton
+            ? this.renderShowButton()
+            : this.renderLoader(true)}
         </div>
         {showModal && (
           <OptionsModal

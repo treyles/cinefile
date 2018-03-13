@@ -44,7 +44,7 @@ export default class DiscoverCard extends React.Component {
       // arrays
       const getDirector = credit.crew.filter(el => el.job === 'Director');
 
-      console.log(credit.cast);
+      // console.log(credit.cast);
       // find smallest 'order' number then get object
       const findLead = Math.min(...credit.cast.map(el => el.order));
       const getLead = credit.cast.filter(el => el.order === findLead);

@@ -8,12 +8,12 @@ import Home from '../components/Home';
 //   expect(component).toEqual(3);
 // });
 
-// describe('testing', () => {
-//   it('should do stuff', () => {
-//     const wrapper = renderer.create(<Home />).toJSON();
-//     expect(wrapper).toMatchSnapshot();
-//   });
-// });
+describe('testing', () => {
+  it('should do stuff', () => {
+    const wrapper = renderer.create(<Home />).toJSON();
+    expect(wrapper).toMatchSnapshot();
+  });
+});
 // describe('testing', () => {
 //   it('showSignIn should default to false', () => {
 //     const wrapper = shallow(<DiscoverCard />);

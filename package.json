@@ -4,20 +4,20 @@
   "main": "./src/index.js",
   "author": "treyles",
   "license": "MIT",
-  "browserslist": [
-    "last 2 versions",
-    "ie > 10"
-  ],
+  "browserslist": ["last 2 versions", "ie > 10"],
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server",
-    "format": "prettier --write --single-quote --parser=flow --tab-width=2 \"src/**/*.{js,jsx}\"",
-    "lint": "eslint **/*.{js,jsx} --quiet"
+    "format":
+      "prettier --write --single-quote --parser=flow --tab-width=2 \"src/**/*.{js,jsx}\"",
+    "lint": "eslint **/*.{js,jsx} --quiet",
+    "test": "jest"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/src/tests/setupTests.js",
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/mocks/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/src/tests/mocks/fileMock.js",
       "\\.(css|less)$": "<rootDir>/src/tests/mocks/styleMock.js"
     },
     "transform": {
