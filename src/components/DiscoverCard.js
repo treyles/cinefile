@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import truncate from 'lodash/truncate';
-import { fetchMediaDetails } from '../utils/Api';
+import { fetchMediaDetails, getCardDetails } from '../utils/Api';
 import Icon from '../utils/Icon';
 import TrailerModal from './TrailerModal';
 
@@ -25,54 +25,16 @@ export default class DiscoverCard extends React.Component {
   }
 
   componentDidMount() {
+    const { media } = this.props;
+
     // scroll to top if new query (or if on first page)
     if (this.props.currentPage === 1) {
       window.scrollTo(0, 0);
     }
 
-    fetchMediaDetails(this.props.media).then(response => {
-      // TODO: REFACTOR THIS MESS
-      // abstract out to new component above? (return obj)
-      let mediaCredits;
-      const credit = response.credits;
-      const trailer = response.videos.results;
-
-      const imdb = response.imdb_id
-        ? response.imdb_id
-        : response.external_ids.imdb_id;
-
-      // arrays
-      const getDirector = credit.crew.filter(el => el.job === 'Director');
-
-      // console.log(credit.cast);
-      // find smallest 'order' number then get object
-      const findLead = Math.min(...credit.cast.map(el => el.order));
-      const getLead = credit.cast.filter(el => el.order === findLead);
-
-      // response.title is unique to movies
-      if (response.title) {
-        mediaCredits = {
-          header: getDirector.length ? getDirector[0].name : 'n/a',
-          // header: credit.crew.length ? getDirector[0].name : 'n/a',
-          // TODO: get smallest order #, cant rely on < 3
-          footer: getLead.length ? getLead[0].name : 'n/a'
-        };
-        // if television
-      } else {
-        mediaCredits = {
-          header: response.created_by.length
-            ? response.created_by[0].name
-            : 'n/a',
-          footer: response.number_of_seasons
-        };
-      }
-
-      this.setState({
-        data: response,
-        imdbId: imdb,
-        credits: mediaCredits,
-        trailerKey: trailer.length ? trailer[0].key : null
-      });
+    fetchMediaDetails(media).then(res => {
+      const details = getCardDetails(res);
+      this.setState(details);
     });
   }
 
@@ -114,15 +76,13 @@ export default class DiscoverCard extends React.Component {
               </span>
             </div>
           </div>
-          <div className="discover-info">
+          <div className="discover-header">
             <h4>{truncate(title, { length: 50, separator: ' ' })}</h4>
             <h3>
               <span>{creditTypeHeader}</span> {credits.header}
             </h3>
             <h3>{release.substring(0, 4)}</h3>
             <p>
-              {media.id}
-
               {truncate(media.overview, { length: 125, separator: ' ' })}
             </p>
           </div>
@@ -175,3 +135,46 @@ DiscoverCard.propTypes = {
   currentPage: PropTypes.number.isRequired,
   handleRemoveMatch: PropTypes.func.isRequired
 };
+
+// // TODO: REFACTOR THIS MESS
+// // abstract out to new component above? (return obj)
+// let mediaCredits;
+// const credit = response.credits;
+// const trailer = response.videos.results;
+
+// const imdb = response.imdb_id
+//   ? response.imdb_id
+//   : response.external_ids.imdb_id;
+
+// // arrays
+// const getDirector = credit.crew.filter(el => el.job === 'Director');
+
+// // console.log(credit.cast);
+// // find smallest 'order' number then get object
+// const findLead = Math.min(...credit.cast.map(el => el.order));
+// const getLead = credit.cast.filter(el => el.order === findLead);
+
+// // response.title is unique to movies
+// if (response.title) {
+//   mediaCredits = {
+//     header: getDirector.length ? getDirector[0].name : 'n/a',
+//     // header: credit.crew.length ? getDirector[0].name : 'n/a',
+//     // TODO: get smallest order #, cant rely on < 3
+//     footer: getLead.length ? getLead[0].name : 'n/a'
+//   };
+//   // if television
+// } else {
+//   mediaCredits = {
+//     header: response.created_by.length
+//       ? response.created_by[0].name
+//       : 'n/a',
+//     footer: response.number_of_seasons
+//   };
+// }
+
+// this.setState({
+//         data: response,
+//         imdbId: imdb,
+//         credits: mediaCredits,
+//         trailerKey: trailer.length ? trailer[0].key : null
+//       });

@@ -1,0 +1,2899 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiscoverCard given a movie object should render correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <DiscoverCard
+    addToLibrary={[MockFunction]}
+    currentPage={1}
+    handleRemoveMatch={[MockFunction]}
+    media={
+      Object {
+        "adult": false,
+        "backdrop_path": "/wVTYlkKPKrljJfugXN7UlLNjtuJ.jpg",
+        "belongs_to_collection": Object {
+          "backdrop_path": "/6VcVl48kNKvdXOZfJPdarlUGOsk.jpg",
+          "id": 645,
+          "name": "James Bond Collection",
+          "poster_path": "/HORpg5CSkmeQlAolx3bKMrKgfi.jpg",
+        },
+        "budget": 245000000,
+        "credits": Object {
+          "cast": Array [
+            Object {
+              "cast_id": 1,
+              "character": "James Bond",
+              "credit_id": "52fe4d22c3a368484e1d8d6b",
+              "gender": 2,
+              "id": 8784,
+              "name": "Daniel Craig",
+              "order": 0,
+              "profile_path": "/mr6cdu6lLRscfFUv8onVWZqaRdZ.jpg",
+            },
+            Object {
+              "cast_id": 14,
+              "character": "Blofeld",
+              "credit_id": "54805866c3a36829ab002592",
+              "gender": 2,
+              "id": 27319,
+              "name": "Christoph Waltz",
+              "order": 1,
+              "profile_path": "/2Hhztd4mUEV9Y25rfkXDwzL9QI9.jpg",
+            },
+          ],
+          "crew": Array [
+            Object {
+              "credit_id": "52fe4d22c3a368484e1d8d71",
+              "department": "Writing",
+              "gender": 2,
+              "id": 9856,
+              "job": "Characters",
+              "name": "Ian Fleming",
+              "profile_path": "/3Pld5n7f5AAVjP0HdsAkgSvrlJg.jpg",
+            },
+            Object {
+              "credit_id": "52fe4d22c3a368484e1d8d77",
+              "department": "Directing",
+              "gender": 2,
+              "id": 39,
+              "job": "Director",
+              "name": "Sam Mendes",
+              "profile_path": "/5z89X9rB76JDblqMQ52fviwXxAN.jpg",
+            },
+          ],
+        },
+        "genres": Array [
+          Object {
+            "id": 28,
+            "name": "Action",
+          },
+          Object {
+            "id": 12,
+            "name": "Adventure",
+          },
+          Object {
+            "id": 80,
+            "name": "Crime",
+          },
+        ],
+        "homepage": "http://www.sonypictures.com/movies/spectre/",
+        "id": 206647,
+        "imdb_id": "tt2379713",
+        "original_language": "en",
+        "original_title": "Spectre",
+        "overview": "A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political forces to keep the secret service alive, Bond peels back the layers of deceit to reveal the terrible truth behind SPECTRE.",
+        "popularity": 43.516503,
+        "poster_path": "/hE24GYddaxB9MVZl1CaiI86M3kp.jpg",
+        "production_companies": Array [
+          Object {
+            "id": 10761,
+            "logo_path": null,
+            "name": "Danjaq",
+            "origin_country": "",
+          },
+          Object {
+            "id": 69434,
+            "logo_path": null,
+            "name": "B24",
+            "origin_country": "",
+          },
+          Object {
+            "id": 5,
+            "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+            "name": "Columbia Pictures",
+            "origin_country": "US",
+          },
+        ],
+        "production_countries": Array [
+          Object {
+            "iso_3166_1": "GB",
+            "name": "United Kingdom",
+          },
+          Object {
+            "iso_3166_1": "US",
+            "name": "United States of America",
+          },
+        ],
+        "release_date": "2015-10-26",
+        "revenue": 880674609,
+        "runtime": 148,
+        "spoken_languages": Array [
+          Object {
+            "iso_639_1": "fr",
+            "name": "Français",
+          },
+          Object {
+            "iso_639_1": "en",
+            "name": "English",
+          },
+          Object {
+            "iso_639_1": "es",
+            "name": "Español",
+          },
+          Object {
+            "iso_639_1": "it",
+            "name": "Italiano",
+          },
+          Object {
+            "iso_639_1": "de",
+            "name": "Deutsch",
+          },
+        ],
+        "status": "Released",
+        "tagline": "A Plan No One Escapes",
+        "title": "Spectre",
+        "video": false,
+        "videos": Object {
+          "results": Array [
+            Object {
+              "id": "571ce0aac3a36865240049c6",
+              "iso_3166_1": "US",
+              "iso_639_1": "en",
+              "key": "ujmoYyEyDP8",
+              "name": "Official Trailer",
+              "site": "YouTube",
+              "size": 1080,
+              "type": "Trailer",
+            },
+            Object {
+              "id": "56437756c3a36870ec0023f7",
+              "iso_3166_1": "US",
+              "iso_639_1": "en",
+              "key": "xf8wVezS3JY",
+              "name": "#1 Movie in the world!",
+              "site": "YouTube",
+              "size": 1080,
+              "type": "Teaser",
+            },
+            Object {
+              "id": "571ce0e592514128eb00002d",
+              "iso_3166_1": "US",
+              "iso_639_1": "en",
+              "key": "z4UDNzXD3qA",
+              "name": "Official Final Trailer",
+              "site": "YouTube",
+              "size": 1080,
+              "type": "Trailer",
+            },
+            Object {
+              "id": "571ce10392514126f700008b",
+              "iso_3166_1": "US",
+              "iso_639_1": "en",
+              "key": "kQx_SrKS1sQ",
+              "name": "Official Teaser Trailer",
+              "site": "YouTube",
+              "size": 1080,
+              "type": "Teaser",
+            },
+          ],
+        },
+        "vote_average": 6.3,
+        "vote_count": 5317,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="poster-info-container"
+        >
+          <div
+            className="discover-poster"
+          >
+            <div
+              className="img-container"
+            >
+              <img
+                alt="Spectre poster"
+                src="https://image.tmdb.org/t/p/w154/hE24GYddaxB9MVZl1CaiI86M3kp.jpg"
+              />
+              <span
+                className="rating-tag"
+              >
+                <h3>
+                  6.3
+                </h3>
+              </span>
+            </div>
+          </div>
+          <div
+            className="discover-header"
+          >
+            <h4>
+              Spectre
+            </h4>
+            <h3>
+              <span>
+                Director:
+              </span>
+               
+              
+            </h3>
+            <h3>
+              2015
+            </h3>
+            <p>
+              A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political...
+            </p>
+          </div>
+        </div>,
+        <div
+          className="discover-footer"
+        >
+          <h3>
+            <span>
+              Lead:
+            </span>
+             
+            
+          </h3>
+          <div
+            className="buttons"
+          >
+            <a
+              className="imdb"
+              href="http://www.imdb.com/title/#"
+              target="blank"
+            >
+              <Icon
+                height="18"
+                icon="text"
+                width="18"
+              />
+              <span
+                className="imdb-tooltip"
+              >
+                Imdb
+              </span>
+            </a>
+            <div
+              className="add"
+              onClick={[Function]}
+            >
+              <Icon
+                height="18"
+                icon="archive"
+                width="18"
+              />
+              <span
+                className="add-tooltip"
+              >
+                Add to library
+              </span>
+            </div>
+          </div>
+        </div>,
+        <Modal
+          ariaHideApp={true}
+          bodyOpenClassName="ReactModal__Body--open"
+          className="trailer-modal"
+          closeTimeoutMS={0}
+          isOpen={false}
+          onRequestClose={[Function]}
+          overlayClassName="trailer-modal-overlay"
+          parentSelector={[Function]}
+          portalClassName="ReactModalPortal"
+          shouldCloseOnEsc={true}
+          shouldCloseOnOverlayClick={true}
+          shouldFocusAfterRender={true}
+          shouldReturnFocusAfterClose={true}
+        >
+          <TrailerModal
+            trailerKey={null}
+          />
+        </Modal>,
+      ],
+      "className": "discover-card",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="discover-poster"
+            >
+              <div
+                className="img-container"
+              >
+                <img
+                  alt="Spectre poster"
+                  src="https://image.tmdb.org/t/p/w154/hE24GYddaxB9MVZl1CaiI86M3kp.jpg"
+                />
+                <span
+                  className="rating-tag"
+                >
+                  <h3>
+                    6.3
+                  </h3>
+                </span>
+              </div>
+            </div>,
+            <div
+              className="discover-header"
+            >
+              <h4>
+                Spectre
+              </h4>
+              <h3>
+                <span>
+                  Director:
+                </span>
+                 
+                
+              </h3>
+              <h3>
+                2015
+              </h3>
+              <p>
+                A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political...
+              </p>
+            </div>,
+          ],
+          "className": "poster-info-container",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <div
+                className="img-container"
+              >
+                <img
+                  alt="Spectre poster"
+                  src="https://image.tmdb.org/t/p/w154/hE24GYddaxB9MVZl1CaiI86M3kp.jpg"
+                />
+                <span
+                  className="rating-tag"
+                >
+                  <h3>
+                    6.3
+                  </h3>
+                </span>
+              </div>,
+              "className": "discover-poster",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <img
+                    alt="Spectre poster"
+                    src="https://image.tmdb.org/t/p/w154/hE24GYddaxB9MVZl1CaiI86M3kp.jpg"
+                  />,
+                  <span
+                    className="rating-tag"
+                  >
+                    <h3>
+                      6.3
+                    </h3>
+                  </span>,
+                ],
+                "className": "img-container",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "Spectre poster",
+                    "src": "https://image.tmdb.org/t/p/w154/hE24GYddaxB9MVZl1CaiI86M3kp.jpg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <h3>
+                      6.3
+                    </h3>,
+                    "className": "rating-tag",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "6.3",
+                    },
+                    "ref": null,
+                    "rendered": "6.3",
+                    "type": "h3",
+                  },
+                  "type": "span",
+                },
+              ],
+              "type": "div",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <h4>
+                  Spectre
+                </h4>,
+                <h3>
+                  <span>
+                    Director:
+                  </span>
+                   
+                  
+                </h3>,
+                <h3>
+                  2015
+                </h3>,
+                <p>
+                  A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political...
+                </p>,
+              ],
+              "className": "discover-header",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Spectre",
+                },
+                "ref": null,
+                "rendered": "Spectre",
+                "type": "h4",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <span>
+                      Director:
+                    </span>,
+                    " ",
+                    "",
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Director:",
+                    },
+                    "ref": null,
+                    "rendered": "Director:",
+                    "type": "span",
+                  },
+                  " ",
+                  "",
+                ],
+                "type": "h3",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "2015",
+                },
+                "ref": null,
+                "rendered": "2015",
+                "type": "h3",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political...",
+                },
+                "ref": null,
+                "rendered": "A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political...",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h3>
+              <span>
+                Lead:
+              </span>
+               
+              
+            </h3>,
+            <div
+              className="buttons"
+            >
+              <a
+                className="imdb"
+                href="http://www.imdb.com/title/#"
+                target="blank"
+              >
+                <Icon
+                  height="18"
+                  icon="text"
+                  width="18"
+                />
+                <span
+                  className="imdb-tooltip"
+                >
+                  Imdb
+                </span>
+              </a>
+              <div
+                className="add"
+                onClick={[Function]}
+              >
+                <Icon
+                  height="18"
+                  icon="archive"
+                  width="18"
+                />
+                <span
+                  className="add-tooltip"
+                >
+                  Add to library
+                </span>
+              </div>
+            </div>,
+          ],
+          "className": "discover-footer",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <span>
+                  Lead:
+                </span>,
+                " ",
+                "",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Lead:",
+                },
+                "ref": null,
+                "rendered": "Lead:",
+                "type": "span",
+              },
+              " ",
+              "",
+            ],
+            "type": "h3",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <a
+                  className="imdb"
+                  href="http://www.imdb.com/title/#"
+                  target="blank"
+                >
+                  <Icon
+                    height="18"
+                    icon="text"
+                    width="18"
+                  />
+                  <span
+                    className="imdb-tooltip"
+                  >
+                    Imdb
+                  </span>
+                </a>,
+                null,
+                <div
+                  className="add"
+                  onClick={[Function]}
+                >
+                  <Icon
+                    height="18"
+                    icon="archive"
+                    width="18"
+                  />
+                  <span
+                    className="add-tooltip"
+                  >
+                    Add to library
+                  </span>
+                </div>,
+              ],
+              "className": "buttons",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <Icon
+                      height="18"
+                      icon="text"
+                      width="18"
+                    />,
+                    <span
+                      className="imdb-tooltip"
+                    >
+                      Imdb
+                    </span>,
+                  ],
+                  "className": "imdb",
+                  "href": "http://www.imdb.com/title/#",
+                  "target": "blank",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "height": "18",
+                      "icon": "text",
+                      "width": "18",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Imdb",
+                      "className": "imdb-tooltip",
+                    },
+                    "ref": null,
+                    "rendered": "Imdb",
+                    "type": "span",
+                  },
+                ],
+                "type": "a",
+              },
+              null,
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <Icon
+                      height="18"
+                      icon="archive"
+                      width="18"
+                    />,
+                    <span
+                      className="add-tooltip"
+                    >
+                      Add to library
+                    </span>,
+                  ],
+                  "className": "add",
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "height": "18",
+                      "icon": "archive",
+                      "width": "18",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Add to library",
+                      "className": "add-tooltip",
+                    },
+                    "ref": null,
+                    "rendered": "Add to library",
+                    "type": "span",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "ariaHideApp": true,
+          "bodyOpenClassName": "ReactModal__Body--open",
+          "children": <TrailerModal
+            trailerKey={null}
+          />,
+          "className": "trailer-modal",
+          "closeTimeoutMS": 0,
+          "isOpen": false,
+          "onRequestClose": [Function],
+          "overlayClassName": "trailer-modal-overlay",
+          "parentSelector": [Function],
+          "portalClassName": "ReactModalPortal",
+          "shouldCloseOnEsc": true,
+          "shouldCloseOnOverlayClick": true,
+          "shouldFocusAfterRender": true,
+          "shouldReturnFocusAfterClose": true,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "trailerKey": null,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="poster-info-container"
+          >
+            <div
+              className="discover-poster"
+            >
+              <div
+                className="img-container"
+              >
+                <img
+                  alt="Spectre poster"
+                  src="https://image.tmdb.org/t/p/w154/hE24GYddaxB9MVZl1CaiI86M3kp.jpg"
+                />
+                <span
+                  className="rating-tag"
+                >
+                  <h3>
+                    6.3
+                  </h3>
+                </span>
+              </div>
+            </div>
+            <div
+              className="discover-header"
+            >
+              <h4>
+                Spectre
+              </h4>
+              <h3>
+                <span>
+                  Director:
+                </span>
+                 
+                
+              </h3>
+              <h3>
+                2015
+              </h3>
+              <p>
+                A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political...
+              </p>
+            </div>
+          </div>,
+          <div
+            className="discover-footer"
+          >
+            <h3>
+              <span>
+                Lead:
+              </span>
+               
+              
+            </h3>
+            <div
+              className="buttons"
+            >
+              <a
+                className="imdb"
+                href="http://www.imdb.com/title/#"
+                target="blank"
+              >
+                <Icon
+                  height="18"
+                  icon="text"
+                  width="18"
+                />
+                <span
+                  className="imdb-tooltip"
+                >
+                  Imdb
+                </span>
+              </a>
+              <div
+                className="add"
+                onClick={[Function]}
+              >
+                <Icon
+                  height="18"
+                  icon="archive"
+                  width="18"
+                />
+                <span
+                  className="add-tooltip"
+                >
+                  Add to library
+                </span>
+              </div>
+            </div>
+          </div>,
+          <Modal
+            ariaHideApp={true}
+            bodyOpenClassName="ReactModal__Body--open"
+            className="trailer-modal"
+            closeTimeoutMS={0}
+            isOpen={false}
+            onRequestClose={[Function]}
+            overlayClassName="trailer-modal-overlay"
+            parentSelector={[Function]}
+            portalClassName="ReactModalPortal"
+            shouldCloseOnEsc={true}
+            shouldCloseOnOverlayClick={true}
+            shouldFocusAfterRender={true}
+            shouldReturnFocusAfterClose={true}
+          >
+            <TrailerModal
+              trailerKey={null}
+            />
+          </Modal>,
+        ],
+        "className": "discover-card",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="discover-poster"
+              >
+                <div
+                  className="img-container"
+                >
+                  <img
+                    alt="Spectre poster"
+                    src="https://image.tmdb.org/t/p/w154/hE24GYddaxB9MVZl1CaiI86M3kp.jpg"
+                  />
+                  <span
+                    className="rating-tag"
+                  >
+                    <h3>
+                      6.3
+                    </h3>
+                  </span>
+                </div>
+              </div>,
+              <div
+                className="discover-header"
+              >
+                <h4>
+                  Spectre
+                </h4>
+                <h3>
+                  <span>
+                    Director:
+                  </span>
+                   
+                  
+                </h3>
+                <h3>
+                  2015
+                </h3>
+                <p>
+                  A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political...
+                </p>
+              </div>,
+            ],
+            "className": "poster-info-container",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <div
+                  className="img-container"
+                >
+                  <img
+                    alt="Spectre poster"
+                    src="https://image.tmdb.org/t/p/w154/hE24GYddaxB9MVZl1CaiI86M3kp.jpg"
+                  />
+                  <span
+                    className="rating-tag"
+                  >
+                    <h3>
+                      6.3
+                    </h3>
+                  </span>
+                </div>,
+                "className": "discover-poster",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <img
+                      alt="Spectre poster"
+                      src="https://image.tmdb.org/t/p/w154/hE24GYddaxB9MVZl1CaiI86M3kp.jpg"
+                    />,
+                    <span
+                      className="rating-tag"
+                    >
+                      <h3>
+                        6.3
+                      </h3>
+                    </span>,
+                  ],
+                  "className": "img-container",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "alt": "Spectre poster",
+                      "src": "https://image.tmdb.org/t/p/w154/hE24GYddaxB9MVZl1CaiI86M3kp.jpg",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "img",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": <h3>
+                        6.3
+                      </h3>,
+                      "className": "rating-tag",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "6.3",
+                      },
+                      "ref": null,
+                      "rendered": "6.3",
+                      "type": "h3",
+                    },
+                    "type": "span",
+                  },
+                ],
+                "type": "div",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <h4>
+                    Spectre
+                  </h4>,
+                  <h3>
+                    <span>
+                      Director:
+                    </span>
+                     
+                    
+                  </h3>,
+                  <h3>
+                    2015
+                  </h3>,
+                  <p>
+                    A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political...
+                  </p>,
+                ],
+                "className": "discover-header",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Spectre",
+                  },
+                  "ref": null,
+                  "rendered": "Spectre",
+                  "type": "h4",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <span>
+                        Director:
+                      </span>,
+                      " ",
+                      "",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Director:",
+                      },
+                      "ref": null,
+                      "rendered": "Director:",
+                      "type": "span",
+                    },
+                    " ",
+                    "",
+                  ],
+                  "type": "h3",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "2015",
+                  },
+                  "ref": null,
+                  "rendered": "2015",
+                  "type": "h3",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political...",
+                  },
+                  "ref": null,
+                  "rendered": "A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political...",
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h3>
+                <span>
+                  Lead:
+                </span>
+                 
+                
+              </h3>,
+              <div
+                className="buttons"
+              >
+                <a
+                  className="imdb"
+                  href="http://www.imdb.com/title/#"
+                  target="blank"
+                >
+                  <Icon
+                    height="18"
+                    icon="text"
+                    width="18"
+                  />
+                  <span
+                    className="imdb-tooltip"
+                  >
+                    Imdb
+                  </span>
+                </a>
+                <div
+                  className="add"
+                  onClick={[Function]}
+                >
+                  <Icon
+                    height="18"
+                    icon="archive"
+                    width="18"
+                  />
+                  <span
+                    className="add-tooltip"
+                  >
+                    Add to library
+                  </span>
+                </div>
+              </div>,
+            ],
+            "className": "discover-footer",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <span>
+                    Lead:
+                  </span>,
+                  " ",
+                  "",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Lead:",
+                  },
+                  "ref": null,
+                  "rendered": "Lead:",
+                  "type": "span",
+                },
+                " ",
+                "",
+              ],
+              "type": "h3",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <a
+                    className="imdb"
+                    href="http://www.imdb.com/title/#"
+                    target="blank"
+                  >
+                    <Icon
+                      height="18"
+                      icon="text"
+                      width="18"
+                    />
+                    <span
+                      className="imdb-tooltip"
+                    >
+                      Imdb
+                    </span>
+                  </a>,
+                  null,
+                  <div
+                    className="add"
+                    onClick={[Function]}
+                  >
+                    <Icon
+                      height="18"
+                      icon="archive"
+                      width="18"
+                    />
+                    <span
+                      className="add-tooltip"
+                    >
+                      Add to library
+                    </span>
+                  </div>,
+                ],
+                "className": "buttons",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <Icon
+                        height="18"
+                        icon="text"
+                        width="18"
+                      />,
+                      <span
+                        className="imdb-tooltip"
+                      >
+                        Imdb
+                      </span>,
+                    ],
+                    "className": "imdb",
+                    "href": "http://www.imdb.com/title/#",
+                    "target": "blank",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "height": "18",
+                        "icon": "text",
+                        "width": "18",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Imdb",
+                        "className": "imdb-tooltip",
+                      },
+                      "ref": null,
+                      "rendered": "Imdb",
+                      "type": "span",
+                    },
+                  ],
+                  "type": "a",
+                },
+                null,
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <Icon
+                        height="18"
+                        icon="archive"
+                        width="18"
+                      />,
+                      <span
+                        className="add-tooltip"
+                      >
+                        Add to library
+                      </span>,
+                    ],
+                    "className": "add",
+                    "onClick": [Function],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "height": "18",
+                        "icon": "archive",
+                        "width": "18",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Add to library",
+                        "className": "add-tooltip",
+                      },
+                      "ref": null,
+                      "rendered": "Add to library",
+                      "type": "span",
+                    },
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "ariaHideApp": true,
+            "bodyOpenClassName": "ReactModal__Body--open",
+            "children": <TrailerModal
+              trailerKey={null}
+            />,
+            "className": "trailer-modal",
+            "closeTimeoutMS": 0,
+            "isOpen": false,
+            "onRequestClose": [Function],
+            "overlayClassName": "trailer-modal-overlay",
+            "parentSelector": [Function],
+            "portalClassName": "ReactModalPortal",
+            "shouldCloseOnEsc": true,
+            "shouldCloseOnOverlayClick": true,
+            "shouldFocusAfterRender": true,
+            "shouldReturnFocusAfterClose": true,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "trailerKey": null,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`DiscoverCard given a tv object should render correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <DiscoverCard
+    addToLibrary={[MockFunction]}
+    currentPage={1}
+    handleRemoveMatch={[MockFunction]}
+    media={
+      Object {
+        "backdrop_path": "/a906PH7CDmSOdS7kmnAgdWk5mhv.jpg",
+        "created_by": Array [
+          Object {
+            "gender": 2,
+            "id": 57573,
+            "name": "Joe Penhall",
+            "profile_path": "/9dXtvOKfFyeAp8jNBxM0OAqosWv.jpg",
+          },
+        ],
+        "credits": Object {
+          "cast": Array [
+            Object {
+              "character": "Holden Ford",
+              "credit_id": "57d154af9251417f72006764",
+              "gender": 2,
+              "id": 221611,
+              "name": "Jonathan Groff",
+              "order": 0,
+              "profile_path": "/xkFr1vd1pO2Ls2gQxxuMd1mgrfL.jpg",
+            },
+            Object {
+              "character": "Debbie Mitford",
+              "credit_id": "57d154b8c3a3684b9d00658b",
+              "gender": 1,
+              "id": 1049916,
+              "name": "Hannah Gross",
+              "order": 2,
+              "profile_path": "/2gsQ1btcduamJzvdmDE3XEdnhXl.jpg",
+            },
+          ],
+          "crew": Array [
+            Object {
+              "credit_id": "58ba5a559251416084019e85",
+              "department": "Production",
+              "gender": 2,
+              "id": 7467,
+              "job": "Executive Producer",
+              "name": "David Fincher",
+              "profile_path": "/dcBHejOsKvzVZVozWJAPzYthb8X.jpg",
+            },
+            Object {
+              "credit_id": "58ba5a70925141607b019714",
+              "department": "Production",
+              "gender": 1,
+              "id": 6885,
+              "job": "Executive Producer",
+              "name": "Charlize Theron",
+              "profile_path": "/k5Xt2mNlraX7yHYaPy9gvayCaKV.jpg",
+            },
+          ],
+        },
+        "episode_run_time": Array [
+          60,
+        ],
+        "external_ids": Object {
+          "facebook_id": "MINDHUNTER",
+          "freebase_id": null,
+          "freebase_mid": null,
+          "imdb_id": "tt5290382",
+          "instagram_id": "MINDHUNTER",
+          "tvdb_id": 328708,
+          "tvrage_id": null,
+          "twitter_id": "MINDHUNTER_",
+        },
+        "first_air_date": "2017-10-13",
+        "genres": Array [
+          Object {
+            "id": 18,
+            "name": "Drama",
+          },
+          Object {
+            "id": 80,
+            "name": "Crime",
+          },
+        ],
+        "homepage": "https://www.netflix.com/title/80114855",
+        "id": 67744,
+        "in_production": true,
+        "languages": Array [
+          "en",
+        ],
+        "last_air_date": "2017-10-13",
+        "name": "Mindhunter",
+        "networks": Array [
+          Object {
+            "id": 213,
+            "logo_path": "/wwemzKWzjKYJFfCeiB57q3r4Bcm.png",
+            "name": "Netflix",
+            "origin_country": "US",
+          },
+        ],
+        "number_of_episodes": 10,
+        "number_of_seasons": 1,
+        "origin_country": Array [
+          "US",
+        ],
+        "original_language": "en",
+        "original_name": "Mindhunter",
+        "overview": "An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and rapists.",
+        "popularity": 115.050456,
+        "poster_path": "/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg",
+        "production_companies": Array [
+          Object {
+            "id": 94281,
+            "logo_path": null,
+            "name": "Jen X Productions, Inc.",
+            "origin_country": "",
+          },
+          Object {
+            "id": 3574,
+            "logo_path": null,
+            "name": "Denver and Delilah Productions",
+            "origin_country": "",
+          },
+          Object {
+            "id": 94282,
+            "logo_path": null,
+            "name": "Panic Pictures / No. 13",
+            "origin_country": "",
+          },
+        ],
+        "seasons": Array [
+          Object {
+            "air_date": "2017-10-13",
+            "episode_count": 10,
+            "id": 79990,
+            "name": "Season 1",
+            "overview": "",
+            "poster_path": "/ltrUhXJBG7ef1AiFy0wDwQwyHxU.jpg",
+            "season_number": 1,
+          },
+        ],
+        "status": "Returning Series",
+        "type": "Scripted",
+        "videos": Object {
+          "results": Array [
+            Object {
+              "id": "5980ac54925141492e014d88",
+              "iso_3166_1": "US",
+              "iso_639_1": "en",
+              "key": "407GVB88b60",
+              "name": "Official Trailer",
+              "site": "YouTube",
+              "size": 1080,
+              "type": "Trailer",
+            },
+          ],
+        },
+        "vote_average": 7.5,
+        "vote_count": 286,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="poster-info-container"
+        >
+          <div
+            className="discover-poster"
+          >
+            <div
+              className="img-container"
+            >
+              <img
+                alt="Mindhunter poster"
+                src="https://image.tmdb.org/t/p/w154/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg"
+              />
+              <span
+                className="rating-tag"
+              >
+                <h3>
+                  7.5
+                </h3>
+              </span>
+            </div>
+          </div>
+          <div
+            className="discover-header"
+          >
+            <h4>
+              Mindhunter
+            </h4>
+            <h3>
+              <span>
+                Creator:
+              </span>
+               
+              
+            </h3>
+            <h3>
+              2017
+            </h3>
+            <p>
+              An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and...
+            </p>
+          </div>
+        </div>,
+        <div
+          className="discover-footer"
+        >
+          <h3>
+            <span>
+              Seasons:
+            </span>
+             
+            
+          </h3>
+          <div
+            className="buttons"
+          >
+            <a
+              className="imdb"
+              href="http://www.imdb.com/title/#"
+              target="blank"
+            >
+              <Icon
+                height="18"
+                icon="text"
+                width="18"
+              />
+              <span
+                className="imdb-tooltip"
+              >
+                Imdb
+              </span>
+            </a>
+            <div
+              className="add"
+              onClick={[Function]}
+            >
+              <Icon
+                height="18"
+                icon="archive"
+                width="18"
+              />
+              <span
+                className="add-tooltip"
+              >
+                Add to library
+              </span>
+            </div>
+          </div>
+        </div>,
+        <Modal
+          ariaHideApp={true}
+          bodyOpenClassName="ReactModal__Body--open"
+          className="trailer-modal"
+          closeTimeoutMS={0}
+          isOpen={false}
+          onRequestClose={[Function]}
+          overlayClassName="trailer-modal-overlay"
+          parentSelector={[Function]}
+          portalClassName="ReactModalPortal"
+          shouldCloseOnEsc={true}
+          shouldCloseOnOverlayClick={true}
+          shouldFocusAfterRender={true}
+          shouldReturnFocusAfterClose={true}
+        >
+          <TrailerModal
+            trailerKey={null}
+          />
+        </Modal>,
+      ],
+      "className": "discover-card",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="discover-poster"
+            >
+              <div
+                className="img-container"
+              >
+                <img
+                  alt="Mindhunter poster"
+                  src="https://image.tmdb.org/t/p/w154/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg"
+                />
+                <span
+                  className="rating-tag"
+                >
+                  <h3>
+                    7.5
+                  </h3>
+                </span>
+              </div>
+            </div>,
+            <div
+              className="discover-header"
+            >
+              <h4>
+                Mindhunter
+              </h4>
+              <h3>
+                <span>
+                  Creator:
+                </span>
+                 
+                
+              </h3>
+              <h3>
+                2017
+              </h3>
+              <p>
+                An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and...
+              </p>
+            </div>,
+          ],
+          "className": "poster-info-container",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <div
+                className="img-container"
+              >
+                <img
+                  alt="Mindhunter poster"
+                  src="https://image.tmdb.org/t/p/w154/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg"
+                />
+                <span
+                  className="rating-tag"
+                >
+                  <h3>
+                    7.5
+                  </h3>
+                </span>
+              </div>,
+              "className": "discover-poster",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <img
+                    alt="Mindhunter poster"
+                    src="https://image.tmdb.org/t/p/w154/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg"
+                  />,
+                  <span
+                    className="rating-tag"
+                  >
+                    <h3>
+                      7.5
+                    </h3>
+                  </span>,
+                ],
+                "className": "img-container",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "Mindhunter poster",
+                    "src": "https://image.tmdb.org/t/p/w154/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <h3>
+                      7.5
+                    </h3>,
+                    "className": "rating-tag",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "7.5",
+                    },
+                    "ref": null,
+                    "rendered": "7.5",
+                    "type": "h3",
+                  },
+                  "type": "span",
+                },
+              ],
+              "type": "div",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <h4>
+                  Mindhunter
+                </h4>,
+                <h3>
+                  <span>
+                    Creator:
+                  </span>
+                   
+                  
+                </h3>,
+                <h3>
+                  2017
+                </h3>,
+                <p>
+                  An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and...
+                </p>,
+              ],
+              "className": "discover-header",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Mindhunter",
+                },
+                "ref": null,
+                "rendered": "Mindhunter",
+                "type": "h4",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <span>
+                      Creator:
+                    </span>,
+                    " ",
+                    "",
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Creator:",
+                    },
+                    "ref": null,
+                    "rendered": "Creator:",
+                    "type": "span",
+                  },
+                  " ",
+                  "",
+                ],
+                "type": "h3",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "2017",
+                },
+                "ref": null,
+                "rendered": "2017",
+                "type": "h3",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and...",
+                },
+                "ref": null,
+                "rendered": "An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and...",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h3>
+              <span>
+                Seasons:
+              </span>
+               
+              
+            </h3>,
+            <div
+              className="buttons"
+            >
+              <a
+                className="imdb"
+                href="http://www.imdb.com/title/#"
+                target="blank"
+              >
+                <Icon
+                  height="18"
+                  icon="text"
+                  width="18"
+                />
+                <span
+                  className="imdb-tooltip"
+                >
+                  Imdb
+                </span>
+              </a>
+              <div
+                className="add"
+                onClick={[Function]}
+              >
+                <Icon
+                  height="18"
+                  icon="archive"
+                  width="18"
+                />
+                <span
+                  className="add-tooltip"
+                >
+                  Add to library
+                </span>
+              </div>
+            </div>,
+          ],
+          "className": "discover-footer",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <span>
+                  Seasons:
+                </span>,
+                " ",
+                "",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Seasons:",
+                },
+                "ref": null,
+                "rendered": "Seasons:",
+                "type": "span",
+              },
+              " ",
+              "",
+            ],
+            "type": "h3",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <a
+                  className="imdb"
+                  href="http://www.imdb.com/title/#"
+                  target="blank"
+                >
+                  <Icon
+                    height="18"
+                    icon="text"
+                    width="18"
+                  />
+                  <span
+                    className="imdb-tooltip"
+                  >
+                    Imdb
+                  </span>
+                </a>,
+                null,
+                <div
+                  className="add"
+                  onClick={[Function]}
+                >
+                  <Icon
+                    height="18"
+                    icon="archive"
+                    width="18"
+                  />
+                  <span
+                    className="add-tooltip"
+                  >
+                    Add to library
+                  </span>
+                </div>,
+              ],
+              "className": "buttons",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <Icon
+                      height="18"
+                      icon="text"
+                      width="18"
+                    />,
+                    <span
+                      className="imdb-tooltip"
+                    >
+                      Imdb
+                    </span>,
+                  ],
+                  "className": "imdb",
+                  "href": "http://www.imdb.com/title/#",
+                  "target": "blank",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "height": "18",
+                      "icon": "text",
+                      "width": "18",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Imdb",
+                      "className": "imdb-tooltip",
+                    },
+                    "ref": null,
+                    "rendered": "Imdb",
+                    "type": "span",
+                  },
+                ],
+                "type": "a",
+              },
+              null,
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <Icon
+                      height="18"
+                      icon="archive"
+                      width="18"
+                    />,
+                    <span
+                      className="add-tooltip"
+                    >
+                      Add to library
+                    </span>,
+                  ],
+                  "className": "add",
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "height": "18",
+                      "icon": "archive",
+                      "width": "18",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Add to library",
+                      "className": "add-tooltip",
+                    },
+                    "ref": null,
+                    "rendered": "Add to library",
+                    "type": "span",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "ariaHideApp": true,
+          "bodyOpenClassName": "ReactModal__Body--open",
+          "children": <TrailerModal
+            trailerKey={null}
+          />,
+          "className": "trailer-modal",
+          "closeTimeoutMS": 0,
+          "isOpen": false,
+          "onRequestClose": [Function],
+          "overlayClassName": "trailer-modal-overlay",
+          "parentSelector": [Function],
+          "portalClassName": "ReactModalPortal",
+          "shouldCloseOnEsc": true,
+          "shouldCloseOnOverlayClick": true,
+          "shouldFocusAfterRender": true,
+          "shouldReturnFocusAfterClose": true,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "trailerKey": null,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="poster-info-container"
+          >
+            <div
+              className="discover-poster"
+            >
+              <div
+                className="img-container"
+              >
+                <img
+                  alt="Mindhunter poster"
+                  src="https://image.tmdb.org/t/p/w154/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg"
+                />
+                <span
+                  className="rating-tag"
+                >
+                  <h3>
+                    7.5
+                  </h3>
+                </span>
+              </div>
+            </div>
+            <div
+              className="discover-header"
+            >
+              <h4>
+                Mindhunter
+              </h4>
+              <h3>
+                <span>
+                  Creator:
+                </span>
+                 
+                
+              </h3>
+              <h3>
+                2017
+              </h3>
+              <p>
+                An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and...
+              </p>
+            </div>
+          </div>,
+          <div
+            className="discover-footer"
+          >
+            <h3>
+              <span>
+                Seasons:
+              </span>
+               
+              
+            </h3>
+            <div
+              className="buttons"
+            >
+              <a
+                className="imdb"
+                href="http://www.imdb.com/title/#"
+                target="blank"
+              >
+                <Icon
+                  height="18"
+                  icon="text"
+                  width="18"
+                />
+                <span
+                  className="imdb-tooltip"
+                >
+                  Imdb
+                </span>
+              </a>
+              <div
+                className="add"
+                onClick={[Function]}
+              >
+                <Icon
+                  height="18"
+                  icon="archive"
+                  width="18"
+                />
+                <span
+                  className="add-tooltip"
+                >
+                  Add to library
+                </span>
+              </div>
+            </div>
+          </div>,
+          <Modal
+            ariaHideApp={true}
+            bodyOpenClassName="ReactModal__Body--open"
+            className="trailer-modal"
+            closeTimeoutMS={0}
+            isOpen={false}
+            onRequestClose={[Function]}
+            overlayClassName="trailer-modal-overlay"
+            parentSelector={[Function]}
+            portalClassName="ReactModalPortal"
+            shouldCloseOnEsc={true}
+            shouldCloseOnOverlayClick={true}
+            shouldFocusAfterRender={true}
+            shouldReturnFocusAfterClose={true}
+          >
+            <TrailerModal
+              trailerKey={null}
+            />
+          </Modal>,
+        ],
+        "className": "discover-card",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="discover-poster"
+              >
+                <div
+                  className="img-container"
+                >
+                  <img
+                    alt="Mindhunter poster"
+                    src="https://image.tmdb.org/t/p/w154/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg"
+                  />
+                  <span
+                    className="rating-tag"
+                  >
+                    <h3>
+                      7.5
+                    </h3>
+                  </span>
+                </div>
+              </div>,
+              <div
+                className="discover-header"
+              >
+                <h4>
+                  Mindhunter
+                </h4>
+                <h3>
+                  <span>
+                    Creator:
+                  </span>
+                   
+                  
+                </h3>
+                <h3>
+                  2017
+                </h3>
+                <p>
+                  An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and...
+                </p>
+              </div>,
+            ],
+            "className": "poster-info-container",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <div
+                  className="img-container"
+                >
+                  <img
+                    alt="Mindhunter poster"
+                    src="https://image.tmdb.org/t/p/w154/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg"
+                  />
+                  <span
+                    className="rating-tag"
+                  >
+                    <h3>
+                      7.5
+                    </h3>
+                  </span>
+                </div>,
+                "className": "discover-poster",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <img
+                      alt="Mindhunter poster"
+                      src="https://image.tmdb.org/t/p/w154/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg"
+                    />,
+                    <span
+                      className="rating-tag"
+                    >
+                      <h3>
+                        7.5
+                      </h3>
+                    </span>,
+                  ],
+                  "className": "img-container",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "alt": "Mindhunter poster",
+                      "src": "https://image.tmdb.org/t/p/w154/zVuc3Sfs6gyJm6M6Iq52jqdavw4.jpg",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "img",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": <h3>
+                        7.5
+                      </h3>,
+                      "className": "rating-tag",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "7.5",
+                      },
+                      "ref": null,
+                      "rendered": "7.5",
+                      "type": "h3",
+                    },
+                    "type": "span",
+                  },
+                ],
+                "type": "div",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <h4>
+                    Mindhunter
+                  </h4>,
+                  <h3>
+                    <span>
+                      Creator:
+                    </span>
+                     
+                    
+                  </h3>,
+                  <h3>
+                    2017
+                  </h3>,
+                  <p>
+                    An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and...
+                  </p>,
+                ],
+                "className": "discover-header",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Mindhunter",
+                  },
+                  "ref": null,
+                  "rendered": "Mindhunter",
+                  "type": "h4",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <span>
+                        Creator:
+                      </span>,
+                      " ",
+                      "",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Creator:",
+                      },
+                      "ref": null,
+                      "rendered": "Creator:",
+                      "type": "span",
+                    },
+                    " ",
+                    "",
+                  ],
+                  "type": "h3",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "2017",
+                  },
+                  "ref": null,
+                  "rendered": "2017",
+                  "type": "h3",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and...",
+                  },
+                  "ref": null,
+                  "rendered": "An agent in the FBI's Elite Serial Crime Unit develops profiling techniques as he pursues notorious serial killers and...",
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h3>
+                <span>
+                  Seasons:
+                </span>
+                 
+                
+              </h3>,
+              <div
+                className="buttons"
+              >
+                <a
+                  className="imdb"
+                  href="http://www.imdb.com/title/#"
+                  target="blank"
+                >
+                  <Icon
+                    height="18"
+                    icon="text"
+                    width="18"
+                  />
+                  <span
+                    className="imdb-tooltip"
+                  >
+                    Imdb
+                  </span>
+                </a>
+                <div
+                  className="add"
+                  onClick={[Function]}
+                >
+                  <Icon
+                    height="18"
+                    icon="archive"
+                    width="18"
+                  />
+                  <span
+                    className="add-tooltip"
+                  >
+                    Add to library
+                  </span>
+                </div>
+              </div>,
+            ],
+            "className": "discover-footer",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <span>
+                    Seasons:
+                  </span>,
+                  " ",
+                  "",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Seasons:",
+                  },
+                  "ref": null,
+                  "rendered": "Seasons:",
+                  "type": "span",
+                },
+                " ",
+                "",
+              ],
+              "type": "h3",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <a
+                    className="imdb"
+                    href="http://www.imdb.com/title/#"
+                    target="blank"
+                  >
+                    <Icon
+                      height="18"
+                      icon="text"
+                      width="18"
+                    />
+                    <span
+                      className="imdb-tooltip"
+                    >
+                      Imdb
+                    </span>
+                  </a>,
+                  null,
+                  <div
+                    className="add"
+                    onClick={[Function]}
+                  >
+                    <Icon
+                      height="18"
+                      icon="archive"
+                      width="18"
+                    />
+                    <span
+                      className="add-tooltip"
+                    >
+                      Add to library
+                    </span>
+                  </div>,
+                ],
+                "className": "buttons",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <Icon
+                        height="18"
+                        icon="text"
+                        width="18"
+                      />,
+                      <span
+                        className="imdb-tooltip"
+                      >
+                        Imdb
+                      </span>,
+                    ],
+                    "className": "imdb",
+                    "href": "http://www.imdb.com/title/#",
+                    "target": "blank",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "height": "18",
+                        "icon": "text",
+                        "width": "18",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Imdb",
+                        "className": "imdb-tooltip",
+                      },
+                      "ref": null,
+                      "rendered": "Imdb",
+                      "type": "span",
+                    },
+                  ],
+                  "type": "a",
+                },
+                null,
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <Icon
+                        height="18"
+                        icon="archive"
+                        width="18"
+                      />,
+                      <span
+                        className="add-tooltip"
+                      >
+                        Add to library
+                      </span>,
+                    ],
+                    "className": "add",
+                    "onClick": [Function],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "height": "18",
+                        "icon": "archive",
+                        "width": "18",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Add to library",
+                        "className": "add-tooltip",
+                      },
+                      "ref": null,
+                      "rendered": "Add to library",
+                      "type": "span",
+                    },
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "ariaHideApp": true,
+            "bodyOpenClassName": "ReactModal__Body--open",
+            "children": <TrailerModal
+              trailerKey={null}
+            />,
+            "className": "trailer-modal",
+            "closeTimeoutMS": 0,
+            "isOpen": false,
+            "onRequestClose": [Function],
+            "overlayClassName": "trailer-modal-overlay",
+            "parentSelector": [Function],
+            "portalClassName": "ReactModalPortal",
+            "shouldCloseOnEsc": true,
+            "shouldCloseOnOverlayClick": true,
+            "shouldFocusAfterRender": true,
+            "shouldReturnFocusAfterClose": true,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "trailerKey": null,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
