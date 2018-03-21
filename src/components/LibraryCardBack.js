@@ -56,7 +56,7 @@ export default class LibraryCardBack extends React.Component {
         <div className="buttons">
           <a
             className="imdb"
-            // href={`http://www.imdb.com/title/${imdbId}`}
+            href={`http://www.imdb.com/title/${imdbId}`}
             target="blank"
             onClick={this.handleClick}
           >

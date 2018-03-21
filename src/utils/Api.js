@@ -49,6 +49,7 @@ export function fetchMediaDetails(media) {
 
 export function fetchDiscover(obj) {
   let toEncode;
+  // console.log(obj.genre)
   const genres = obj.genre.map(g => g.value).toString();
 
   const uriParams = {

@@ -94,6 +94,8 @@ export default class Discover extends React.Component {
     this.toggleShowMoreButton();
 
     // copy object without mutating
+    // TODO: change so not shallow copy? if leaving it as is, use
+    // a spread operator
     const newQuery = Object.assign({}, query, {
       page: query.page + 1
     });
@@ -167,6 +169,7 @@ export default class Discover extends React.Component {
   }
 
   render() {
+    // TODO: only destructure variables used multiple times?
     const {
       matches,
       query,
@@ -217,7 +220,7 @@ export default class Discover extends React.Component {
           <Icon icon="menu2" width="25" height="25" />
         </div>
         {/* FlipMove shouldnt be wrapping all the things 
-            causes two errors?
+            causes two errors? this looks done?
         */}
         <FlipMove className="discover">
           {/* logic here to fix 'returned zero results' when adding all movies on discover page. */}

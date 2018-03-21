@@ -1,10 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import DiscoverCard from '../components/DiscoverCard';
-import { movies, tv } from './mocks/mediaMock.json';
+import ReactModal from 'react-modal';
+import DiscoverCard from '../../components/DiscoverCard';
+import { movies, tv } from '../mock/media.json';
 
 global.scrollTo = jest.fn();
-
+ 
 describe('DiscoverCard', () => {
   describe('given a movie object', () => {
     let component;
@@ -48,6 +49,15 @@ describe('DiscoverCard', () => {
       });
 
       expect(component.find('.trailer').length).toEqual(1);
+    });
+
+    it('should open trailer when trailer icon clicked', () => {
+      component.setState({
+        trailerKey: 'ujmoYyEyDP8'
+      });
+
+      component.find('.trailer').simulate('click')
+      expect(component.find(ReactModal).prop('isOpen')).toEqual(true)
     });
   });
 
