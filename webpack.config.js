@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
@@ -35,15 +34,25 @@ const config = {
         })
       },
       {
+        // TODO: delete this and combine below
         test: /\.woff$/,
-        loader: 'url-loader',
-        options: {
-          name: './fonts/[name].[ext]'
-        }
+        loader: 'url-loader'
+        // options: {
+        //   name: './fonts/[name].[ext]'
+        // }
       },
       {
         test: /\.(png|jpg|svg|mp4)$/,
-        loader: 'url-loader'
+        // loader: 'url-loader'
+        // TODO: make path for folder
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },
@@ -58,6 +67,7 @@ const config = {
   ]
 };
 
+// remove source maps when building for production
 if (process.env.NODE_ENV === 'production') {
   config.devtool = false;
 }

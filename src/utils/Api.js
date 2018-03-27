@@ -112,3 +112,10 @@ export function getCardDetails(media) {
     trailerKey: results.length ? results[0].key : null
   };
 }
+
+// prettier-ignore
+export function buildDiscoverData(newQuery) {
+  return Promise.all(newQuery.map(el => fetchMediaDetails(el)))
+    .then(res => res.map(el => getCardDetails(el))
+  );
+}

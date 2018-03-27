@@ -9,33 +9,17 @@ import TrailerModal from './TrailerModal';
 export default class DiscoverCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: {},
-      imdbId: '#',
-      trailerKey: null,
-      showModal: false,
-      credits: {
-        header: '',
-        footer: ''
-      }
-    };
+    this.state = { ...props.media, showModal: false };
 
     this.handleTrailerModal = this.handleTrailerModal.bind(this);
     this.handleAddToLibrary = this.handleAddToLibrary.bind(this);
   }
 
   componentDidMount() {
-    const { media } = this.props;
-
     // scroll to top if new query (or if on first page)
     if (this.props.currentPage === 1) {
       window.scrollTo(0, 0);
     }
-
-    fetchMediaDetails(media).then(res => {
-      const details = getCardDetails(res);
-      this.setState(details);
-    });
   }
 
   handleTrailerModal() {
@@ -52,15 +36,12 @@ export default class DiscoverCard extends React.Component {
   }
 
   render() {
-    const { showModal, trailerKey, credits, imdbId } = this.state;
-    const { media } = this.props;
+    const { data, showModal, trailerKey, credits, imdbId } = this.state;
 
-    const title = media.title ? media.title : media.name;
-    const release = media.title
-      ? media.release_date
-      : media.first_air_date;
-    const creditTypeHeader = media.title ? 'Director:' : 'Creator:';
-    const creditTypeFooter = media.title ? 'Lead:' : 'Seasons:';
+    const title = data.title ? data.title : data.name;
+    const release = data.title ? data.release_date : data.first_air_date;
+    const creditTypeHeader = data.title ? 'Director:' : 'Creator:';
+    const creditTypeFooter = data.title ? 'Lead:' : 'Seasons:';
 
     return (
       <div className="discover-card">
@@ -68,11 +49,11 @@ export default class DiscoverCard extends React.Component {
           <div className="discover-poster">
             <div className="img-container">
               <img
-                src={`https://image.tmdb.org/t/p/w154${media.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w154${data.poster_path}`}
                 alt={`${title} poster`}
               />
               <span className="rating-tag">
-                <h3>{media.vote_average.toFixed(1)}</h3>
+                <h3>{data.vote_average.toFixed(1)}</h3>
               </span>
             </div>
           </div>
@@ -83,7 +64,7 @@ export default class DiscoverCard extends React.Component {
             </h3>
             <h3>{release.substring(0, 4)}</h3>
             <p>
-              {truncate(media.overview, { length: 125, separator: ' ' })}
+              {truncate(data.overview, { length: 125, separator: ' ' })}
             </p>
           </div>
         </div>
@@ -127,10 +108,10 @@ export default class DiscoverCard extends React.Component {
 }
 
 DiscoverCard.propTypes = {
-  media: PropTypes.shape({
-    title: PropTypes.string,
-    release_date: PropTypes.string
-  }).isRequired,
+  // data: PropTypes.shape({
+  //   title: PropTypes.string,
+  //   release_date: PropTypes.string
+  // }).isRequired,
   addToLibrary: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
   handleRemoveMatch: PropTypes.func.isRequired

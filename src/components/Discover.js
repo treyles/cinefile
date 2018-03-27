@@ -1,13 +1,14 @@
+// TODO: add timer after each fetch, default to false?
+
 import React from 'react';
 import PropTypes from 'prop-types';
-// import ReactModal from 'react-modal';
+import FlipMove from 'react-flip-move';
+import MediaQuery from 'react-responsive';
 import DiscoverCard from './DiscoverCard';
 import Header from './Header';
 import OptionsModal from './OptionsModal';
-import { fetchDiscover } from '../utils/Api';
+import { fetchDiscover, buildDiscoverData } from '../utils/Api';
 import Icon from '../utils/Icon';
-import FlipMove from 'react-flip-move';
-import MediaQuery from 'react-responsive';
 
 const defaultQuery = {
   page: 1,
@@ -21,16 +22,19 @@ const defaultQuery = {
 export default class Discover extends React.Component {
   constructor(props) {
     super(props);
+
+    this.lsData = JSON.parse(localStorage.getItem('discover-data'));
+    this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
+
     this.state = {
       matches: [],
       pages: null,
       showModal: false,
       showMoreButton: true,
-      query: {},
+      query: this.lsQuery || defaultQuery,
       preloader: true
     };
 
-    this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
     this.handleShowMore = this.handleShowMore.bind(this);
     this.handleOptionsModal = this.handleOptionsModal.bind(this);
     this.handleQueryUpdate = this.handleQueryUpdate.bind(this);
@@ -38,14 +42,17 @@ export default class Discover extends React.Component {
   }
 
   componentDidMount() {
-    // debugger;
-    // this.mounted = true;
     window.scrollTo(0, 0);
-    const query = this.lsQuery ? this.lsQuery : defaultQuery;
-    this.handleQueryUpdate(query);
+
+    if (this.lsData) {
+      this.loadPersistMatchesAndPages();
+    } else {
+      this.handleQueryUpdate(this.state.query);
+    }
   }
 
   componentWillUpdate(nextProps, nextState) {
+    // save query settings
     localStorage.setItem(
       'discover-query',
       JSON.stringify(nextState.query)
@@ -53,14 +60,34 @@ export default class Discover extends React.Component {
   }
 
   componentWillUnmount() {
-    // this.mounted = false;
     clearTimeout(this.showMoreTimeout);
+    this.persistMatcheAndPages();
   }
 
-  // handleTouchMove(e) {
-  //   e.preventDefault();
-  // }
+  // TODO: rename
+  persistMatcheAndPages() {
+    const { matches, pages } = this.state;
 
+    localStorage.setItem(
+      'discover-data',
+      JSON.stringify({
+        matches: matches.slice(-20),
+        pages
+      })
+    );
+  }
+
+  // TODO: rename
+  loadPersistMatchesAndPages() {
+    const { matches, pages } = this.lsData;
+    this.setState({
+      matches,
+      pages,
+      preloader: false
+    });
+  }
+
+  // TODO: just use this.filterMatches?
   handleRemoveMatch(media) {
     const { matches } = this.state;
     const mediaIndex = matches.indexOf(media);
@@ -74,17 +101,22 @@ export default class Discover extends React.Component {
     }
   }
 
+  // TODO: rename
   handleQueryUpdate(newQuery) {
-    fetchDiscover(newQuery).then(response => {
-      const newMatches = this.filterMatches(response.results);
-
-      this.setState({
-        matches: newMatches,
-        pages: response.total_pages,
-        query: newQuery,
-        preloader: false
-      });
-    });
+    fetchDiscover(newQuery)
+      .then(res => {
+        this.setState({ pages: res.total_pages });
+        return this.filterMatches(res.results);
+      })
+      .then(res =>
+        buildDiscoverData(res).then(response =>
+          this.setState({
+            matches: response,
+            query: newQuery,
+            preloader: false
+          })
+        )
+      );
   }
 
   handleShowMore() {
@@ -93,27 +125,27 @@ export default class Discover extends React.Component {
     // hide button and render preloader
     this.toggleShowMoreButton();
 
-    // copy object without mutating
-    // TODO: change so not shallow copy? if leaving it as is, use
-    // a spread operator
-    const newQuery = Object.assign({}, query, {
-      page: query.page + 1
-    });
+    // copy query object, and increment page key
+    const newQuery = { ...query, page: query.page + 1 };
 
-    fetchDiscover(newQuery).then(response => {
-      const newMatches = this.filterMatches(response.results);
-      this.setState({
-        matches: matches.concat(newMatches),
-        query: newQuery
-      });
+    fetchDiscover(newQuery)
+      .then(res => this.filterMatches(res.results))
+      .then(res =>
+        buildDiscoverData(res).then(res => {
+          this.setState({
+            matches: matches.concat(res),
+            query: newQuery
+          });
 
-      // bring back button after 8 seconds
-      // due to api request limits we need to slow down consecutive calls
-      this.showMoreTimeout = setTimeout(
-        () => this.toggleShowMoreButton(),
-        8000
+          // bring back button after 8 seconds.
+          // due to api limitations and request limits
+          // we need to slow down consecutive calls
+          this.showMoreTimeout = setTimeout(
+            () => this.toggleShowMoreButton(),
+            8000
+          );
+        })
       );
-    });
   }
 
   handleOptionsModal() {
@@ -185,10 +217,6 @@ export default class Discover extends React.Component {
       currentUser
     } = this.props;
 
-    // const stopScroll = {
-    //   display: 'none'
-    // };
-
     const noResults = (
       <div className="empty-message">
         <div className="illustration">
@@ -226,7 +254,7 @@ export default class Discover extends React.Component {
           {/* logic here to fix 'returned zero results' when adding all movies on discover page. */}
           {matches.map(media => (
             <DiscoverCard
-              key={media.id}
+              key={media.data.id}
               media={media}
               addToLibrary={addToLibrary}
               currentPage={query.page}
@@ -249,20 +277,6 @@ export default class Discover extends React.Component {
     );
   }
 }
-
-/*
-<ReactModal
-            isOpen={showModal}
-            onRequestClose={this.handleOptionsModal}
-            className="options-modal"
-            overlayClassName="options-modal-overlay"
-          >
-            <OptionsModal
-              handleOptionsModal={this.handleOptionsModal}
-              handleQueryUpdate={this.handleQueryUpdate}
-            />
-          </ReactModal>
-*/
 
 Discover.propTypes = {
   library: PropTypes.arrayOf(PropTypes.object),
