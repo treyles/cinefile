@@ -2408,6 +2408,7 @@ h4 {
     img {
       max-width: 300px;
       min-width: 250px;
+      border-radius: 50px;
 
       @include desktop {
         max-width: 350px;

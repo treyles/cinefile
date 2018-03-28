@@ -16,3 +16,4 @@ export const rebase = Rebase.createClass(db);
 export const auth = firebase.auth();
 export const googleAuth = new firebase.auth.GoogleAuthProvider();
 export const facebookAuth = new firebase.auth.FacebookAuthProvider();
+export const database = firebase.database();

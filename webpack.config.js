@@ -34,22 +34,17 @@ const config = {
         })
       },
       {
-        // TODO: delete this and combine below
         test: /\.woff$/,
         loader: 'url-loader'
-        // options: {
-        //   name: './fonts/[name].[ext]'
-        // }
       },
       {
         test: /\.(png|jpg|svg|mp4)$/,
-        // loader: 'url-loader'
-        // TODO: make path for folder
         use: [
           {
             loader: 'url-loader',
             options: {
-              limit: 8192
+              limit: 8192,
+              outputPath: 'assets/'
             }
           }
         ]

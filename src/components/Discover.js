@@ -45,7 +45,7 @@ export default class Discover extends React.Component {
     window.scrollTo(0, 0);
 
     if (this.lsData) {
-      this.loadPersistMatchesAndPages();
+      this.loadCachedMatchesAndPages();
     } else {
       this.handleQueryUpdate(this.state.query);
     }
@@ -61,11 +61,11 @@ export default class Discover extends React.Component {
 
   componentWillUnmount() {
     clearTimeout(this.showMoreTimeout);
-    this.persistMatcheAndPages();
+    this.cacheMatchesAndPages();
   }
 
   // TODO: rename
-  persistMatcheAndPages() {
+  cacheMatchesAndPages() {
     const { matches, pages } = this.state;
 
     localStorage.setItem(
@@ -78,7 +78,7 @@ export default class Discover extends React.Component {
   }
 
   // TODO: rename
-  loadPersistMatchesAndPages() {
+  loadCachedMatchesAndPages() {
     const { matches, pages } = this.lsData;
     this.setState({
       matches,
@@ -121,12 +121,11 @@ export default class Discover extends React.Component {
 
   handleShowMore() {
     const { matches, query } = this.state;
+    // copy query object, and increment page
+    const newQuery = { ...query, page: query.page + 1 };
 
     // hide button and render preloader
     this.toggleShowMoreButton();
-
-    // copy query object, and increment page key
-    const newQuery = { ...query, page: query.page + 1 };
 
     fetchDiscover(newQuery)
       .then(res => this.filterMatches(res.results))
@@ -188,6 +187,7 @@ export default class Discover extends React.Component {
     }
   }
 
+  // TODO: abstract out to component
   renderLoader(showMoreButton) {
     return (
       <div className={`${showMoreButton ? 'load-more ' : ''}preloader`}>

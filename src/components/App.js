@@ -4,8 +4,7 @@ import Library from './Library';
 import Discover from './Discover';
 import Home from './Home';
 import NotFound from './NotFound';
-import { rebase, auth } from '../utils/base';
-import data from '../data/recommendations.json';
+import { rebase, auth, database } from '../utils/base';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -57,9 +56,14 @@ export default class App extends React.Component {
   }
 
   addRecommended() {
-    this.setState({
-      library: data.recs
-    });
+    database
+      .ref('recommended/')
+      .once('value')
+      .then(snapshot =>
+        this.setState({
+          library: snapshot.val()
+        })
+      );
   }
 
   // TODO: rename 'handle'
@@ -130,8 +134,7 @@ export default class App extends React.Component {
                     loading={loading}
                     addRecommended={this.addRecommended}
                   />
-                )
-              }
+                )}
             />
             <Route
               path="/discover"
@@ -147,8 +150,7 @@ export default class App extends React.Component {
                     isSearchActive={isSearchActive}
                     currentUser={currentUser}
                   />
-                )
-              }
+                )}
             />
             <Route render={() => <NotFound />} />
           </Switch>
