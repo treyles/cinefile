@@ -45,7 +45,9 @@ export default class App extends React.Component {
   }
 
   syncRebase() {
-    rebase.syncState(this.state.currentUser.uid, {
+    const { currentUser } = this.state;
+
+    rebase.syncState(`users/${currentUser.uid}`, {
       context: this,
       state: 'library',
       asArray: true,

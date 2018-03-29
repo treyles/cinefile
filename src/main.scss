@@ -657,6 +657,8 @@ h4 {
 
     .img-container {
       position: relative;
+      border-radius: 3px;
+      background-color: darken($gray-bg, 7%);
 
       img {
         // flex-shrink: 0;
@@ -666,6 +668,8 @@ h4 {
         // height: 240px;
         // width: 175px;
         // height: 262.5px;
+        // remove space bottom of image
+        display: block;
         width: 195px;
         height: 292.5px;
         // width: 154px; // "w154", "w185",
@@ -975,6 +979,8 @@ h4 {
   justify-content: center;
   // margin-top: 75px;
   margin-top: 80px;
+  // fixes weird scroll bar after searching discover
+  overflow: hidden;
   // margin-bottom: 30px;
   // -webkit-filter: blur(2px);
 
@@ -1011,10 +1017,11 @@ h4 {
         width: 100px;
 
         .img-container {
-          background-color: #fff;
           width: 100px;
           height: 150px;
           position: absolute;
+          border-radius: 3px;
+          background-color: darken($gray-bg, 7%);
           // TODO: media query fill space
           // top: -25px;
           // bottom: 27px;
@@ -2029,6 +2036,11 @@ h4 {
         // background-color: lighten($main-blue, 5%);
         box-shadow: none;
       }
+
+      &.disabled {
+        background-color: darken($gray-bg, 7%);
+        box-shadow: none;
+      }
     }
 
     .cancel {
@@ -2566,7 +2578,6 @@ h4 {
       background-color: $gray-bg;
       top: 15px;
       left: 15px;
-      padding: 10px;
       width: 40px;
       height: 40px;
       border: 0;

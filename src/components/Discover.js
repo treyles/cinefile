@@ -30,7 +30,7 @@ export default class Discover extends React.Component {
       matches: [],
       pages: null,
       showModal: false,
-      showMoreButton: true,
+      apiReady: true,
       query: this.lsQuery || defaultQuery,
       preloader: true
     };
@@ -51,7 +51,19 @@ export default class Discover extends React.Component {
     }
   }
 
+  // TODO: consolidate ls elements
   componentWillUpdate(nextProps, nextState) {
+    const { pages } = this.state;
+
+    // save matches and pages
+    localStorage.setItem(
+      'discover-data',
+      JSON.stringify({
+        matches: nextState.matches.slice(-20),
+        pages
+      })
+    );
+
     // save query settings
     localStorage.setItem(
       'discover-query',
@@ -61,20 +73,6 @@ export default class Discover extends React.Component {
 
   componentWillUnmount() {
     clearTimeout(this.showMoreTimeout);
-    this.cacheMatchesAndPages();
-  }
-
-  // TODO: rename
-  cacheMatchesAndPages() {
-    const { matches, pages } = this.state;
-
-    localStorage.setItem(
-      'discover-data',
-      JSON.stringify({
-        matches: matches.slice(-20),
-        pages
-      })
-    );
   }
 
   // TODO: rename
@@ -109,13 +107,14 @@ export default class Discover extends React.Component {
         return this.filterMatches(res.results);
       })
       .then(res =>
-        buildDiscoverData(res).then(response =>
+        buildDiscoverData(res).then(response => {
           this.setState({
             matches: response,
             query: newQuery,
             preloader: false
-          })
-        )
+          });
+          this.apiTimer();
+        })
       );
   }
 
@@ -124,26 +123,17 @@ export default class Discover extends React.Component {
     // copy query object, and increment page
     const newQuery = { ...query, page: query.page + 1 };
 
-    // hide button and render preloader
-    this.toggleShowMoreButton();
+    this.apiTimer();
 
     fetchDiscover(newQuery)
       .then(res => this.filterMatches(res.results))
       .then(res =>
-        buildDiscoverData(res).then(res => {
+        buildDiscoverData(res).then(response =>
           this.setState({
-            matches: matches.concat(res),
+            matches: matches.concat(response),
             query: newQuery
-          });
-
-          // bring back button after 8 seconds.
-          // due to api limitations and request limits
-          // we need to slow down consecutive calls
-          this.showMoreTimeout = setTimeout(
-            () => this.toggleShowMoreButton(),
-            8000
-          );
-        })
+          })
+        )
       );
   }
 
@@ -153,10 +143,20 @@ export default class Discover extends React.Component {
     });
   }
 
-  toggleShowMoreButton() {
-    this.setState({
-      showMoreButton: !this.state.showMoreButton
-    });
+  /**
+   * set boolean to disable/enable buttons
+   * that make api calls to The Movie Database.
+   * due to api limitations and request limits
+   * we need to slow down consecutive calls
+   * with an 8 second delay
+   */
+  apiTimer() {
+    this.setState({ apiReady: false });
+
+    this.showMoreTimeout = setTimeout(
+      () => this.setState({ apiReady: true }),
+      8000
+    );
   }
 
   // filter to return media not already in library
@@ -202,13 +202,7 @@ export default class Discover extends React.Component {
 
   render() {
     // TODO: only destructure variables used multiple times?
-    const {
-      matches,
-      query,
-      showModal,
-      showMoreButton,
-      preloader
-    } = this.state;
+    const { matches, query, showModal, apiReady, preloader } = this.state;
     const {
       library,
       addToLibrary,
@@ -263,14 +257,13 @@ export default class Discover extends React.Component {
           ))}
         </FlipMove>
         <div className="load-more-container">
-          {showMoreButton
-            ? this.renderShowButton()
-            : this.renderLoader(true)}
+          {apiReady ? this.renderShowButton() : this.renderLoader(true)}
         </div>
         {showModal && (
           <OptionsModal
             handleOptionsModal={this.handleOptionsModal}
             handleQueryUpdate={this.handleQueryUpdate}
+            apiReady={apiReady}
           />
         )}
       </div>

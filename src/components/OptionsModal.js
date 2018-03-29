@@ -81,10 +81,11 @@ export default class OptionsModal extends React.Component {
 
   render() {
     const { mediaType, score, releaseDates, genre, sort } = this.state;
-    const { handleOptionsModal } = this.props;
+    const { handleOptionsModal, apiReady } = this.props;
 
     // data for select dropdowns
-    const genreData = mediaType === 'movie' ? data.moviesGenres : data.tvGenres;
+    const genreData =
+      mediaType === 'movie' ? data.moviesGenres : data.tvGenres;
     const sortData = mediaType === 'movie' ? data.moviesSort : data.tvSort;
 
     // rc-slider styles
@@ -160,9 +161,7 @@ export default class OptionsModal extends React.Component {
           <div className="slider-container">
             <div className="slider-text">
               <h1>Release</h1>
-              <h2 className="numbers">{`${releaseDates[0]} - ${
-                releaseDates[1]
-              }`}</h2>
+              <h2 className="numbers">{`${releaseDates[0]} - ${releaseDates[1]}`}</h2>
             </div>
             <h2>Find media within a certain era</h2>
             <Range
@@ -207,7 +206,11 @@ export default class OptionsModal extends React.Component {
             >
               <h1>Cancel</h1>
             </button>
-            <button className="submit" onClick={this.handleSubmit}>
+            <button
+              disabled={!apiReady}
+              className={`submit ${!apiReady && 'disabled'}`}
+              onClick={this.handleSubmit}
+            >
               <h1>Submit</h1>
             </button>
           </div>

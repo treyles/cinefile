@@ -1147,7 +1147,7 @@ c0,2.2,1.8,4,4,4S50,57.3,50,55.1z M49.5,71.7c0.9-0.9,1.5-2.2,1.5-3.5c0-1.3-0.5-2
       exit: () => (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24.21 24.21"
+          viewBox="0 0 24 24"
           width={width}
           height={height}
         >

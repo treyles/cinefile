@@ -1,4 +1,5 @@
 const path = require('path');
+// const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
@@ -52,6 +53,7 @@ const config = {
     ]
   },
   plugins: [
+    // new CommonsChunkPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),

@@ -37,7 +37,7 @@ export default class SignIn extends React.Component {
             className="exit"
             onClick={() => handleSignInModal()}
           >
-            <Icon icon="exit" width="16" height="16" />
+            <Icon icon="exit" width="17" height="17" />
           </button>
         </div>
         <a
