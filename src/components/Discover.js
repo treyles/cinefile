@@ -28,10 +28,10 @@ export default class Discover extends React.Component {
 
     this.state = {
       matches: [],
-      pages: null,
       showModal: false,
       apiReady: true,
       query: this.lsQuery || defaultQuery,
+      pages: this.lsData ? this.lsData.pages : null,
       preloader: true
     };
 
@@ -54,7 +54,6 @@ export default class Discover extends React.Component {
   // TODO: consolidate ls elements
   componentWillUpdate(nextProps, nextState) {
     const { pages } = this.state;
-
     // save matches and pages
     localStorage.setItem(
       'discover-data',
@@ -75,9 +74,11 @@ export default class Discover extends React.Component {
     clearTimeout(this.showMoreTimeout);
   }
 
+  // TODO: even necessary if default state is ls?
   // TODO: rename
   loadCachedMatchesAndPages() {
     const { matches, pages } = this.lsData;
+
     this.setState({
       matches,
       pages,
@@ -99,8 +100,13 @@ export default class Discover extends React.Component {
     }
   }
 
-  // TODO: rename
   handleQueryUpdate(newQuery) {
+    // clear previous cards
+    this.setState({
+      matches: [],
+      preloader: true
+    });
+
     fetchDiscover(newQuery)
       .then(res => {
         this.setState({ pages: res.total_pages });
@@ -202,7 +208,15 @@ export default class Discover extends React.Component {
 
   render() {
     // TODO: only destructure variables used multiple times?
-    const { matches, query, showModal, apiReady, preloader } = this.state;
+    const {
+      matches,
+      query,
+      showModal,
+      apiReady,
+      preloader,
+      pages
+    } = this.state;
+
     const {
       library,
       addToLibrary,
@@ -238,14 +252,10 @@ export default class Discover extends React.Component {
           {preloader && this.renderLoader()}
           {!preloader && !matches.length && noResults}
         </div>
-        <div className="options" onClick={this.handleOptionsModal}>
+        <button className="options" onClick={this.handleOptionsModal}>
           <Icon icon="menu2" width="25" height="25" />
-        </div>
-        {/* FlipMove shouldnt be wrapping all the things 
-            causes two errors? this looks done?
-        */}
-        <FlipMove className="discover">
-          {/* logic here to fix 'returned zero results' when adding all movies on discover page. */}
+        </button>
+        <FlipMove className="discover" leaveAnimation="none">
           {matches.map(media => (
             <DiscoverCard
               key={media.data.id}
@@ -257,7 +267,9 @@ export default class Discover extends React.Component {
           ))}
         </FlipMove>
         <div className="load-more-container">
-          {apiReady ? this.renderShowButton() : this.renderLoader(true)}
+          {apiReady || (!apiReady && query.page === pages)
+            ? this.renderShowButton()
+            : this.renderLoader(true)}
         </div>
         {showModal && (
           <OptionsModal

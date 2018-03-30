@@ -106,7 +106,7 @@ export default class Library extends React.Component {
               library={library}
             />
           )}
-          <FlipMove className="library">
+          <FlipMove className="library" leaveAnimation="none">
             {library.map(media => (
               <LibraryCard
                 key={media.id}
