@@ -321,6 +321,8 @@ h4 {
     border-radius: 50%;
     border: none;
     outline: 0;
+    color: #fff;
+    text-decoration: none;
     cursor: pointer;
 
     &.placeholder {
@@ -659,6 +661,7 @@ h4 {
       position: relative;
       border-radius: 3px;
       background-color: darken($gray-bg, 7%);
+      color: darken($gray-bg, 7%);
 
       img {
         // flex-shrink: 0;

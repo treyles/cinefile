@@ -67,9 +67,4 @@ describe('App', () => {
     expect(component.state().library).toHaveLength(1);
     expect(component.state().library[0]).toEqual(mediaTwo);
   });
-
-  it('should load recommended media on user request', () => {
-    component.instance().addRecommended();
-    expect(component.state().library).toHaveLength(14);
-  });
 });

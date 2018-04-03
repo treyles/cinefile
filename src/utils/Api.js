@@ -74,7 +74,14 @@ export function fetchDiscover(obj) {
   }
 
   const encodedURI = window.encodeURI(toEncode);
-  return axios.get(encodedURI).then(response => response.data);
+  return axios.get(encodedURI).then(response => {
+    // because of inconsistency with api results, we need to
+    // explicity set `total_pages: 1` if there are no results.
+    if (response.data.total_results === 0) {
+      return { ...response.data, total_pages: 1 };
+    }
+    return response.data;
+  });
 }
 
 export function getCardDetails(media) {

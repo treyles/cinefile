@@ -7,22 +7,20 @@ import rebase from '../utils/base';
 import FlipMove from 'react-flip-move';
 import Icon from '../utils/Icon';
 import MediaQuery from 'react-responsive';
+import Loader from '../utils/Loader';
 
 export default class Library extends React.Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
-
   componentWillMount() {
     // TODO: rename mount to isCounterActive...?
     this.mounted = true;
   }
-  componentWillUnmount() {
-    this.mounted = false;
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
-  renderLobby(content) {
-    return <div className="lobby">{content}</div>;
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   render() {
@@ -85,11 +83,10 @@ export default class Library extends React.Component {
 
     return (
       <div>
-        {loading && this.renderLobby(preloader)}
-        {!loading &&
-          !library.length &&
-          !isSearchActive &&
-          this.renderLobby(isEmpty)}
+        <div className="lobby">
+          {loading && <Loader />}
+          {!loading && !library.length && !isSearchActive && isEmpty}
+        </div>
         <Header
           count={library.length}
           toggleSearchButton={toggleSearchButton}

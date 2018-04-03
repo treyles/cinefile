@@ -1,5 +1,5 @@
 import { getCardDetails } from '../../utils/Api';
-import data from '../mock/media.json';
+import data from '../mock/details.json';
 
 describe('getCardDetails', () => {
   describe('given a movie object', () => {

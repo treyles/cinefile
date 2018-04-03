@@ -5,7 +5,7 @@ import DiscoverCard from '../../components/DiscoverCard';
 import { movies, tv } from '../mock/media.json';
 
 global.scrollTo = jest.fn();
- 
+
 describe('DiscoverCard', () => {
   describe('given a movie object', () => {
     let component;
@@ -40,24 +40,20 @@ describe('DiscoverCard', () => {
     });
 
     it('should not render trailer icon if no trailerKey', () => {
+      component.setState({
+        trailerKey: null
+      });
+
       expect(component.find('.trailer').length).toEqual(0);
     });
 
     it('should render trailer icon if trailerKey exists', () => {
-      component.setState({
-        trailerKey: 'ujmoYyEyDP8'
-      });
-
       expect(component.find('.trailer').length).toEqual(1);
     });
 
     it('should open trailer when trailer icon clicked', () => {
-      component.setState({
-        trailerKey: 'ujmoYyEyDP8'
-      });
-
-      component.find('.trailer').simulate('click')
-      expect(component.find(ReactModal).prop('isOpen')).toEqual(true)
+      component.find('.trailer').simulate('click');
+      expect(component.find(ReactModal).prop('isOpen')).toEqual(true);
     });
   });
 
@@ -95,14 +91,14 @@ describe('DiscoverCard', () => {
     });
 
     it('should not render trailer icon if no trailerKey', () => {
+      component.setState({
+        trailerKey: null
+      });
+
       expect(component.find('.trailer').length).toEqual(0);
     });
 
     it('should render trailer icon if trailerKey exists', () => {
-      component.setState({
-        trailerKey: 'ujmoYyEyDP8'
-      });
-
       expect(component.find('.trailer').length).toEqual(1);
     });
   });

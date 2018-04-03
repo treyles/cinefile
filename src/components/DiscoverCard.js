@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import truncate from 'lodash/truncate';
-import { fetchMediaDetails, getCardDetails } from '../utils/Api';
 import Icon from '../utils/Icon';
 import TrailerModal from './TrailerModal';
 

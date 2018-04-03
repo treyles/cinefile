@@ -1,5 +1,3 @@
-// TODO: add timer after each fetch, default to false?
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import FlipMove from 'react-flip-move';
@@ -9,6 +7,7 @@ import Header from './Header';
 import OptionsModal from './OptionsModal';
 import { fetchDiscover, buildDiscoverData } from '../utils/Api';
 import Icon from '../utils/Icon';
+import Loader from '../utils/Loader';
 
 const defaultQuery = {
   page: 1,
@@ -19,20 +18,24 @@ const defaultQuery = {
   genre: [{ value: 878, label: 'Science Fiction' }]
 };
 
+function store(key, data) {
+  if (arguments.length > 1) {
+    return localStorage.setItem(key, JSON.stringify(data));
+  }
+  return JSON.parse(localStorage.getItem(key));
+}
+
 export default class Discover extends React.Component {
   constructor(props) {
     super(props);
 
-    this.lsData = JSON.parse(localStorage.getItem('discover-data'));
-    this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
-
     this.state = {
-      matches: [],
       showModal: false,
       apiReady: true,
-      query: this.lsQuery || defaultQuery,
-      pages: this.lsData ? this.lsData.pages : null,
-      preloader: true
+      preloader: false,
+      matches: store('discover-matches') || [],
+      query: store('discover-query') || defaultQuery,
+      pages: store('discover-pages') || null
     };
 
     this.handleShowMore = this.handleShowMore.bind(this);
@@ -43,47 +46,21 @@ export default class Discover extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    const storeMatches = store('discover-matches');
 
-    if (this.lsData) {
-      this.loadCachedMatchesAndPages();
-    } else {
+    if (!storeMatches) {
       this.handleQueryUpdate(this.state.query);
     }
   }
 
-  // TODO: consolidate ls elements
   componentWillUpdate(nextProps, nextState) {
-    const { pages } = this.state;
-    // save matches and pages
-    localStorage.setItem(
-      'discover-data',
-      JSON.stringify({
-        matches: nextState.matches.slice(-20),
-        pages
-      })
-    );
-
-    // save query settings
-    localStorage.setItem(
-      'discover-query',
-      JSON.stringify(nextState.query)
-    );
+    store('discover-matches', nextState.matches.slice(-20));
+    store('discover-query', nextState.query);
+    store('discover-pages', nextState.pages);
   }
 
   componentWillUnmount() {
     clearTimeout(this.showMoreTimeout);
-  }
-
-  // TODO: even necessary if default state is ls?
-  // TODO: rename
-  loadCachedMatchesAndPages() {
-    const { matches, pages } = this.lsData;
-
-    this.setState({
-      matches,
-      pages,
-      preloader: false
-    });
   }
 
   // TODO: just use this.filterMatches?
@@ -193,19 +170,6 @@ export default class Discover extends React.Component {
     }
   }
 
-  // TODO: abstract out to component
-  renderLoader(showMoreButton) {
-    return (
-      <div className={`${showMoreButton ? 'load-more ' : ''}preloader`}>
-        <div className="rect1" />
-        <div className="rect2" />
-        <div className="rect3" />
-        <div className="rect4" />
-        <div className="rect5" />
-      </div>
-    );
-  }
-
   render() {
     // TODO: only destructure variables used multiple times?
     const {
@@ -249,7 +213,7 @@ export default class Discover extends React.Component {
           currentUser={currentUser}
         />
         <div className="lobby">
-          {preloader && this.renderLoader()}
+          {preloader && <Loader />}
           {!preloader && !matches.length && noResults}
         </div>
         <button className="options" onClick={this.handleOptionsModal}>
@@ -267,9 +231,11 @@ export default class Discover extends React.Component {
           ))}
         </FlipMove>
         <div className="load-more-container">
-          {apiReady || (!apiReady && query.page === pages)
-            ? this.renderShowButton()
-            : this.renderLoader(true)}
+          {apiReady || (!apiReady && query.page === pages) ? (
+            this.renderShowButton()
+          ) : (
+            <Loader showMoreButton />
+          )}
         </div>
         {showModal && (
           <OptionsModal
@@ -285,7 +251,11 @@ export default class Discover extends React.Component {
 
 Discover.propTypes = {
   library: PropTypes.arrayOf(PropTypes.object),
-  addToLibrary: PropTypes.func.isRequired
+  addToLibrary: PropTypes.func.isRequired,
+  toggleSearchButton: PropTypes.func.isRequired,
+  isSearchActive: PropTypes.bool.isRequired,
+  currentUser: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
+    .isRequired
 };
 
 Discover.defaultProps = {
