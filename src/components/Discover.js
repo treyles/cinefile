@@ -200,7 +200,7 @@ export default class Discover extends React.Component {
           </MediaQuery>
         </div>
         <h1>No Results Found!</h1>
-        <h2>We can't find media matching your query</h2>
+        <h2>We can&apos;t find media matching your query</h2>
       </div>
     );
 
