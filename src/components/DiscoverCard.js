@@ -82,15 +82,18 @@ export default class DiscoverCard extends React.Component {
               <span className="imdb-tooltip">Imdb</span>
             </a>
             {trailerKey !== null ? (
-              <div className="trailer" onClick={this.handleTrailerModal}>
+              <button
+                className="trailer"
+                onClick={this.handleTrailerModal}
+              >
                 <Icon icon="preview" width="21" height="21" />
                 <span className="trailer-tooltip">Trailer</span>
-              </div>
+              </button>
             ) : null}
-            <div className="add" onClick={this.handleAddToLibrary}>
+            <button className="add" onClick={this.handleAddToLibrary}>
               <Icon icon="archive" width="18" height="18" />
               <span className="add-tooltip">Add to library</span>
-            </div>
+            </button>
           </div>
         </div>
         <ReactModal

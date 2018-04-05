@@ -252,9 +252,9 @@ h4 {
   box-sizing: border-box;
   position: absolute;
 
-  &:empty {
-    display: none;
-  }
+  // &:empty {
+  //   display: none;
+  // }
 
   @include desktop {
     padding-top: 100px;
@@ -650,7 +650,8 @@ h4 {
     // width: 200px;
     // height: 341.6px;
     width: 220px;
-    height: 375.78px;
+    // height: 375.78px;
+    height: 380px;
     margin: 18px 5px;
 
     // .library-card {
@@ -783,19 +784,20 @@ h4 {
         display: flex;
         justify-content: center;
         align-items: center;
-        // background-color: blue;
         border-top: 1px solid darken($gray-bg, 5%);
 
         .imdb,
         .delete,
         .trailer {
           position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          // display: flex;
+          // justify-content: center;
+          // align-items: center;
+          background-color: transparent;
+          line-height: 0;
           width: 38px;
           height: 38px;
-          border-radius: 50%;
+          // border-radius: 50%;
           margin: 4px 10px;
           border: none;
           outline: none;
@@ -816,25 +818,27 @@ h4 {
             }
           }
 
-          &:nth-child(2) svg {
-            width: 26px;
-            height: 26px;
+          // &:nth-child(2) svg {
+          //   width: 26px;
+          //   height: 26px;
 
-            @include desktop {
-              width: auto;
-              height: auto;
-            }
-          }
+          //   @include desktop {
+          //     width: auto;
+          //     height: auto;
+          //   }
+          // }
 
           &:hover > svg {
             fill: lighten($light-text, 20%);
             // fill: $main-blue;
           }
         }
-
+        // 110%, 50%, -47px)
+        // 110%, 50%, -25px)
+        // 110%, 50%, -23px)
         .delete {
           .delete-tooltip {
-            @include tooltip(100%, 50%, -25px);
+            @include tooltip(100%, 50%, -27px);
           }
 
           @include desktop {
@@ -854,11 +858,25 @@ h4 {
               visibility: visible;
             }
           }
+
+          svg {
+            width: 26px;
+            height: 26px;
+
+            @include desktop {
+              width: auto;
+              height: auto;
+            }
+          }
         }
 
         .imdb {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
           .imdb-tooltip {
-            @include tooltip(100%, 50%, -25px);
+            @include tooltip(100%, 50%, -24px);
           }
 
           @include desktop {
@@ -1177,18 +1195,21 @@ h4 {
         .add,
         .trailer {
           position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          // display: flex;
+          // justify-content: center;
+          // align-items: center;
+
           height: 38px;
           width: 38px;
-          border-radius: 50%;
+          // border-radius: 50%;
+          background-color: transparent;
+          line-height: 0;
           margin: 0 10px;
           border: none;
           outline: none;
           cursor: pointer;
           @include desktop {
-            margin: 0 4px;
+            margin: 0 5px;
           }
 
           svg {
@@ -1205,15 +1226,15 @@ h4 {
             }
           }
 
-          &:nth-child(2) svg {
-            width: 26px;
-            height: 26px;
+          // &:nth-child(2) svg {
+          //   width: 26px;
+          //   height: 26px;
 
-            @include desktop {
-              width: auto;
-              height: auto;
-            }
-          }
+          //   @include desktop {
+          //     width: auto;
+          //     height: auto;
+          //   }
+          // }
 
           @include desktop {
             &:hover > svg {
@@ -1246,9 +1267,23 @@ h4 {
               visibility: visible;
             }
           }
+
+          svg {
+            width: 26px;
+            height: 26px;
+
+            @include desktop {
+              width: auto;
+              height: auto;
+            }
+          }
         }
 
         .imdb {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
           .imdb-tooltip {
             @include tooltip(110%, 50%, -23px);
           }
@@ -1265,9 +1300,9 @@ h4 {
 }
 
 .options {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
   z-index: 1;
   position: fixed;
   bottom: 40px;
@@ -1279,7 +1314,7 @@ h4 {
   border: none;
   outline: none;
   // delete?
-  padding-top: 2px;
+  padding-top: 5px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;

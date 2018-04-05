@@ -12,7 +12,11 @@ export default class OptionsModal extends React.Component {
     this.currentYear = new Date().getFullYear();
     this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
     this.scrollStyle = document.body.querySelector('*').style;
-    this.state = this.lsQuery;
+    // this.state = this.lsQuery;
+    this.state = {
+      ...this.lsQuery,
+      width: window.innerWidth
+    };
 
     this.handleActiveMedia = this.handleActiveMedia.bind(this);
     this.handleRatingValue = this.handleRatingValue.bind(this);
@@ -21,18 +25,32 @@ export default class OptionsModal extends React.Component {
     this.handleSortChange = this.handleSortChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderValue = this.renderValue.bind(this);
+    this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
+  }
+
+  componentWillMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
   componentDidMount() {
-    // hide parent scrolling for safari ios
-    this.scrollStyle.overflow = 'hidden';
-    this.scrollStyle.position = 'fixed';
+    // prevent parent (background) from scrolling in safari ios
+    if (this.state.width < 768) {
+      this.scrollStyle.overflow = 'hidden';
+      this.scrollStyle.position = 'fixed';
+    }
   }
 
   componentWillUnmount() {
-    // restore default
-    this.scrollStyle.overflow = 'auto';
+    window.removeEventListener('resize', this.handleWindowSizeChange);
+    // restore defaults
+    this.scrollStyle.overflow = 'visible';
     this.scrollStyle.position = 'static';
+  }
+
+  handleWindowSizeChange() {
+    this.setState({
+      width: window.innerWidth
+    });
   }
 
   handleActiveMedia(e) {
