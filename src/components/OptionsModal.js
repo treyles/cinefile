@@ -11,12 +11,7 @@ export default class OptionsModal extends React.Component {
     super(props);
     this.currentYear = new Date().getFullYear();
     this.lsQuery = JSON.parse(localStorage.getItem('discover-query'));
-    this.scrollStyle = document.body.querySelector('*').style;
-    // this.state = this.lsQuery;
-    this.state = {
-      ...this.lsQuery,
-      width: window.innerWidth
-    };
+    this.state = this.lsQuery;
 
     this.handleActiveMedia = this.handleActiveMedia.bind(this);
     this.handleRatingValue = this.handleRatingValue.bind(this);
@@ -25,31 +20,24 @@ export default class OptionsModal extends React.Component {
     this.handleSortChange = this.handleSortChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderValue = this.renderValue.bind(this);
-    this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
-  }
-
-  componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
   componentDidMount() {
-    // prevent parent (background) from scrolling in safari ios
-    if (this.state.width < 768) {
-      this.scrollStyle.overflow = 'hidden';
-      this.scrollStyle.position = 'fixed';
-    }
+    // hides scrollbar when mounted
+    // disables background content from scrolling on ios safari
+    Object.assign(document.body.style, {
+      overflow: 'hidden',
+      position: 'fixed',
+      width: '100%'
+    });
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
     // restore defaults
-    this.scrollStyle.overflow = 'visible';
-    this.scrollStyle.position = 'static';
-  }
-
-  handleWindowSizeChange() {
-    this.setState({
-      width: window.innerWidth
+    Object.assign(document.body.style, {
+      overflow: 'visible',
+      position: 'static',
+      width: 'auto'
     });
   }
 
