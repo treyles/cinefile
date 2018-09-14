@@ -16,7 +16,8 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showSignIn: false
+      showSignIn: false,
+      showVideo: true
     };
 
     this.handleSignInModal = this.handleSignInModal.bind(this);
@@ -24,10 +25,19 @@ export default class Home extends React.Component {
 
   componentWillMount() {
     document.body.style.backgroundColor = '#0883df';
+    this.hideMobileVideo();
   }
 
   componentWillUnmount() {
     document.body.style.backgroundColor = null;
+  }
+
+  hideMobileVideo() {
+    if (window.innerWidth < 768) {
+      this.setState({
+        showVideo: false
+      });
+    }
   }
 
   handleSignInModal() {
@@ -37,8 +47,9 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { showSignIn } = this.state;
+    const { showSignIn, showVideo } = this.state;
     const about = 'https://github.com/treyles/cinefile';
+    const videoSource = <source src={heroPreview} type="video/mp4" />;
 
     return (
       <div className="home">
@@ -75,7 +86,7 @@ export default class Home extends React.Component {
               className="get-started-btn"
               onClick={this.handleSignInModal}
             >
-              Get Started, It's Free!
+              Get Started, Its Free!
             </button>
           </div>
           <div className="hero-video-container">
@@ -85,16 +96,17 @@ export default class Home extends React.Component {
                 className="hero-preview"
                 poster={heroPoster}
                 autoPlay
+                muted
                 loop
               >
-                <source src={heroPreview} type="video/mp4" />
+                {showVideo && videoSource}
               </video>
             </div>
           </div>
         </div>
         <div className="mobile-section">
           <div className="mobile-content-container">
-            <img src={mobilePreview} />
+            <img src={mobilePreview} alt="" />
           </div>
           <div className="text-block">
             <h1 className="text-block-header">Mobile Friendly</h1>
@@ -130,25 +142,3 @@ export default class Home extends React.Component {
     );
   }
 }
-
-/*
-            <button
-              className="get-started-btn"
-              onClick={() => handleAuthorization()}
-            >
-*/
-
-/*
-export default class Home extends React.Component {
-  render() {
-    const { handleAuthorization } = this.props;
-    return (
-      <div className="home">
-        <button onClick={() => handleAuthorization()}>
-          <h3>Connect with Google</h3>
-        </button>
-      </div>
-    );
-  }
-}
-*/

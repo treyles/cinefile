@@ -1,8 +1,3 @@
-// TODO:
-// add error: console.log(error) catch?
-// how to hide api key?
-// add back slider logic?
-
 import axios from 'axios';
 
 const apiKey = '?api_key=529e1b3a6041a4b14bb6b7e328aad991';
@@ -49,7 +44,6 @@ export function fetchMediaDetails(media) {
 
 export function fetchDiscover(obj) {
   let toEncode;
-  // console.log(obj.genre)
   const genres = obj.genre.map(g => g.value).toString();
 
   const uriParams = {

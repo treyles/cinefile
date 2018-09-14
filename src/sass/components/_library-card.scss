@@ -1,0 +1,199 @@
+.library-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 380px;
+  margin: 18px 5px;
+
+  .img-container {
+    position: relative;
+    border-radius: 3px;
+    background-color: darken($gray-bg, 7%);
+    color: darken($gray-bg, 7%);
+
+    img {
+      display: block;
+      width: 195px;
+      height: 292.5px;
+      object-fit: cover;
+      border-radius: 3px;
+      box-shadow: 8px 8px 30px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    .rating-tag {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: -13px;
+      background-color: $main-blue;
+      width: 33px;
+      height: 33px;
+      color: white;
+      font-family: 'faktpro-semibold', sans-serif;
+      line-height: 1;
+      border-radius: 50%;
+      padding-top: 2px;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+    @include desktop {
+      .rating-tag {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+
+  .library-info {
+    width: 190px;
+
+    h2 {
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: 'faktpro-normal', sans-serif;
+      color: lighten($dark-text, 7%);
+      margin-top: 20px;
+      text-overflow: ellipsis;
+    }
+
+    h3 {
+      margin-top: 2px;
+      font-family: 'faktpro-normal', sans-serif;
+      color: $light-text;
+    }
+  }
+}
+
+.card-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 220px;
+  height: 375.78px;
+  background-color: white;
+  padding: 22px 13px 12px 13px;
+
+  .title {
+    flex-grow: 0;
+    cursor: default;
+
+    h2 {
+      font-family: 'faktpro-semibold', sans-serif;
+      color: lighten($dark-text, 7%);
+    }
+
+    h3 {
+      margin-top: 3px;
+      font-family: 'faktpro-normal', sans-serif;
+      color: $light-text;
+    }
+  }
+
+  .synopsis {
+    flex-grow: 1;
+    overflow: hidden;
+
+    p {
+      margin-top: 10px;
+      font-family: 'faktpro-normal', sans-serif;
+      line-height: 1.5;
+      color: $light-text;
+      cursor: default;
+    }
+  }
+
+  .buttons {
+    flex-grow: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid darken($gray-bg, 5%);
+
+    .imdb,
+    .delete,
+    .trailer {
+      position: relative;
+      background-color: transparent;
+      line-height: 0;
+      width: 38px;
+      height: 38px;
+      margin: 4px 10px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      @include desktop {
+        margin: 4px;
+      }
+
+      svg {
+        width: 23px;
+        height: 23px;
+        fill: lighten($main-blue, 10%);
+        transition: fill 0.3s;
+
+        @include desktop {
+          width: auto;
+          height: auto;
+        }
+      }
+
+      &:hover > svg {
+        fill: lighten($light-text, 20%);
+      }
+    }
+
+    .delete {
+      .delete-tooltip {
+        @include tooltip(100%, 50%, -27px);
+      }
+
+      @include desktop {
+        &:hover .delete-tooltip {
+          visibility: visible;
+        }
+      }
+    }
+
+    .trailer {
+      .trailer-tooltip {
+        @include tooltip(100%, 50%, -25px);
+      }
+
+      @include desktop {
+        &:hover .trailer-tooltip {
+          visibility: visible;
+        }
+      }
+
+      svg {
+        width: 26px;
+        height: 26px;
+
+        @include desktop {
+          width: auto;
+          height: auto;
+        }
+      }
+    }
+
+    .imdb {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .imdb-tooltip {
+        @include tooltip(100%, 50%, -24px);
+      }
+
+      @include desktop {
+        &:hover .imdb-tooltip {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}

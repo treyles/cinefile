@@ -11,16 +11,13 @@
   .search-input {
     appearance: none;
     background-color: #eaeaea;
-    // background-color: #eee;
     width: 95%;
     border: none;
     font-family: inherit;
     border-radius: 3px;
     font-size: 35px;
     caret-color: gray;
-    // color: #262626;
     color: $dark-text;
-    // margin-top: 5px;
     padding: 0 7px 4px 10px;
     transition: background-color 0.5s;
 

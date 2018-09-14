@@ -14,13 +14,6 @@ export default class DiscoverCard extends React.Component {
     this.handleAddToLibrary = this.handleAddToLibrary.bind(this);
   }
 
-  // componentDidMount() {
-  //   // scroll to top if new query (or if on first page)
-  //   if (this.props.currentPage === 1) {
-  //     window.scrollTo(0, 0);
-  //   }
-  // }
-
   handleTrailerModal() {
     this.setState({
       showModal: !this.state.showModal
@@ -110,12 +103,13 @@ export default class DiscoverCard extends React.Component {
 }
 
 DiscoverCard.propTypes = {
-  // data: PropTypes.shape({
-  //   title: PropTypes.string,
-  //   release_date: PropTypes.string
-  // }).isRequired,
+  media: PropTypes.shape({
+    credits: PropTypes.object,
+    data: PropTypes.object,
+    imdbId: PropTypes.string,
+    trailerKeya: PropTypes.string
+  }).isRequired,
   addToLibrary: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired,
   handleRemoveMatch: PropTypes.func.isRequired
 };
 

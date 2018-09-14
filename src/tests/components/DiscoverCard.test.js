@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ReactModal from 'react-modal';
 import DiscoverCard from '../../components/DiscoverCard';
-import { movies, tv } from '../mock/media.json';
+import { movies, tv } from '../__mocks__/media.json';
 
 global.scrollTo = jest.fn();
 

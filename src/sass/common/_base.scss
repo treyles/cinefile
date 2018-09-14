@@ -3,18 +3,6 @@ $gray-bg: #f4f4f4;
 $light-text: #828282;
 $dark-text: #3f3f3f;
 
-@mixin desktop {
-  @media only screen and (min-width: 768px) {
-    @content;
-  }
-}
-
-@mixin mobile {
-  @media only screen and (max-width: 768px) {
-    @content;
-  }
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -30,61 +18,11 @@ body {
 html {
   font-family: sans-serif;
   font-size: 13px;
-
-  // remove bold text
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
-
   -webkit-text-size-adjust: 100%;
-
   -webkit-tap-highlight-color: transparent;
-}
-
-// TODO: fix order
-h1 {
-  font-size: 17px;
-}
-h2 {
-  font-size: 14px;
-}
-h3 {
-  font-size: 12px;
-}
-h4 {
-  font-size: 15px;
-}
-p {
-  font-size: 12px;
-}
-
-@include mobile {
-  h1 {
-    font-size: 19px;
-  }
-  h2 {
-    font-size: 16px;
-  }
-  h3 {
-    font-size: 14px;
-  }
-  h4 {
-    font-size: 17px;
-  }
-  p {
-    font-size: 14px;
-  }
-}
-
-h1,
-h2,
-h3,
-h4 {
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
-  font-style: normal;
-  // line-height: 0.5;
 }
 
 @font-face {
@@ -112,26 +50,17 @@ h4 {
   src: url('../fonts/faktpro-medium.woff') format('woff');
 }
 
-// // tablets and desktop
-// @media only screen and (min-width: 768px) {
-//   html {  font-size: 20px; }
-// }
+@mixin desktop {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
 
-// // phone
-// @media only screen and (max-width: 767px) {
-//   html {  font-size: 12px; }
-// }
-
-// // portrait phones
-// @media only screen and (max-width: 767px) and (orientation: portrait) {
-//   html {  font-size: 12px; }
-// }
-
-// @mixin mq {
-//   @media only screen and (min-width: 666px) {
-//     @content;
-//   }
-// }
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
 
 @mixin grid-break($width, $columns) {
   @media only screen and (min-width: $width) {
@@ -141,11 +70,7 @@ h4 {
 
 @mixin tooltip($bottom, $left, $margin) {
   visibility: hidden;
-  // background-color: darken($gray-bg, 5%);
-  // background-color: $gray-bg;
   background-color: $dark-text;
-  // color: $dark-text;
-  // color: $light-text;
   color: #fff;
   text-align: center;
   padding: 7px 10px;
@@ -167,8 +92,6 @@ h4 {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    // border-color: darken($gray-bg, 5%) transparent transparent transparent;
-    // border-color: $gray-bg transparent transparent transparent;
     border-color: $dark-text transparent transparent transparent;
   }
 }
@@ -239,7 +162,6 @@ h4 {
 }
 
 .lobby {
-  // height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -247,11 +169,52 @@ h4 {
   box-sizing: border-box;
   position: absolute;
 
-  // &:empty {
-  //   display: none;
-  // }
-
   @include desktop {
     padding-top: 100px;
   }
+}
+
+// TODO: fix order
+h1 {
+  font-size: 17px;
+}
+h2 {
+  font-size: 14px;
+}
+h3 {
+  font-size: 12px;
+}
+h4 {
+  font-size: 15px;
+}
+p {
+  font-size: 12px;
+}
+
+@include mobile {
+  h1 {
+    font-size: 19px;
+  }
+  h2 {
+    font-size: 16px;
+  }
+  h3 {
+    font-size: 14px;
+  }
+  h4 {
+    font-size: 17px;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
 }

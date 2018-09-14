@@ -756,25 +756,22 @@ ShallowWrapper {
           <div
             className="buttons"
           >
-            <button
+            <a
               className="imdb"
+              href="http://www.imdb.com/title/tt1074638"
+              target="blank"
             >
-              <a
-                href="http://www.imdb.com/title/tt1074638"
-                target="blank"
+              <Icon
+                height="18"
+                icon="text"
+                width="18"
+              />
+              <span
+                className="imdb-tooltip"
               >
-                <Icon
-                  height="18"
-                  icon="text"
-                  width="18"
-                />
-                <span
-                  className="imdb-tooltip"
-                >
-                  Imdb
-                </span>
-              </a>
-            </button>
+                Imdb
+              </span>
+            </a>
             <button
               className="trailer"
               onClick={[Function]}
@@ -1080,25 +1077,22 @@ ShallowWrapper {
             <div
               className="buttons"
             >
-              <button
+              <a
                 className="imdb"
+                href="http://www.imdb.com/title/tt1074638"
+                target="blank"
               >
-                <a
-                  href="http://www.imdb.com/title/tt1074638"
-                  target="blank"
+                <Icon
+                  height="18"
+                  icon="text"
+                  width="18"
+                />
+                <span
+                  className="imdb-tooltip"
                 >
-                  <Icon
-                    height="18"
-                    icon="text"
-                    width="18"
-                  />
-                  <span
-                    className="imdb-tooltip"
-                  >
-                    Imdb
-                  </span>
-                </a>
-              </button>
+                  Imdb
+                </span>
+              </a>
               <button
                 className="trailer"
                 onClick={[Function]}
@@ -1172,25 +1166,22 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                <button
+                <a
                   className="imdb"
+                  href="http://www.imdb.com/title/tt1074638"
+                  target="blank"
                 >
-                  <a
-                    href="http://www.imdb.com/title/tt1074638"
-                    target="blank"
+                  <Icon
+                    height="18"
+                    icon="text"
+                    width="18"
+                  />
+                  <span
+                    className="imdb-tooltip"
                   >
-                    <Icon
-                      height="18"
-                      icon="text"
-                      width="18"
-                    />
-                    <span
-                      className="imdb-tooltip"
-                    >
-                      Imdb
-                    </span>
-                  </a>
-                </button>,
+                    Imdb
+                  </span>
+                </a>,
                 <button
                   className="trailer"
                   onClick={[Function]}
@@ -1231,75 +1222,51 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": <a
-                    href="http://www.imdb.com/title/tt1074638"
-                    target="blank"
-                  >
+                  "children": Array [
                     <Icon
                       height="18"
                       icon="text"
                       width="18"
-                    />
+                    />,
                     <span
                       className="imdb-tooltip"
                     >
                       Imdb
-                    </span>
-                  </a>,
+                    </span>,
+                  ],
                   "className": "imdb",
+                  "href": "http://www.imdb.com/title/tt1074638",
+                  "target": "blank",
                 },
                 "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": Array [
-                      <Icon
-                        height="18"
-                        icon="text"
-                        width="18"
-                      />,
-                      <span
-                        className="imdb-tooltip"
-                      >
-                        Imdb
-                      </span>,
-                    ],
-                    "href": "http://www.imdb.com/title/tt1074638",
-                    "target": "blank",
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "height": "18",
+                      "icon": "text",
+                      "width": "18",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
                   },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "height": "18",
-                        "icon": "text",
-                        "width": "18",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Imdb",
+                      "className": "imdb-tooltip",
                     },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": "Imdb",
-                        "className": "imdb-tooltip",
-                      },
-                      "ref": null,
-                      "rendered": "Imdb",
-                      "type": "span",
-                    },
-                  ],
-                  "type": "a",
-                },
-                "type": "button",
+                    "ref": null,
+                    "rendered": "Imdb",
+                    "type": "span",
+                  },
+                ],
+                "type": "a",
               },
               Object {
                 "instance": null,
@@ -1509,25 +1476,22 @@ ShallowWrapper {
             <div
               className="buttons"
             >
-              <button
+              <a
                 className="imdb"
+                href="http://www.imdb.com/title/tt1074638"
+                target="blank"
               >
-                <a
-                  href="http://www.imdb.com/title/tt1074638"
-                  target="blank"
+                <Icon
+                  height="18"
+                  icon="text"
+                  width="18"
+                />
+                <span
+                  className="imdb-tooltip"
                 >
-                  <Icon
-                    height="18"
-                    icon="text"
-                    width="18"
-                  />
-                  <span
-                    className="imdb-tooltip"
-                  >
-                    Imdb
-                  </span>
-                </a>
-              </button>
+                  Imdb
+                </span>
+              </a>
               <button
                 className="trailer"
                 onClick={[Function]}
@@ -1833,25 +1797,22 @@ ShallowWrapper {
               <div
                 className="buttons"
               >
-                <button
+                <a
                   className="imdb"
+                  href="http://www.imdb.com/title/tt1074638"
+                  target="blank"
                 >
-                  <a
-                    href="http://www.imdb.com/title/tt1074638"
-                    target="blank"
+                  <Icon
+                    height="18"
+                    icon="text"
+                    width="18"
+                  />
+                  <span
+                    className="imdb-tooltip"
                   >
-                    <Icon
-                      height="18"
-                      icon="text"
-                      width="18"
-                    />
-                    <span
-                      className="imdb-tooltip"
-                    >
-                      Imdb
-                    </span>
-                  </a>
-                </button>
+                    Imdb
+                  </span>
+                </a>
                 <button
                   className="trailer"
                   onClick={[Function]}
@@ -1925,25 +1886,22 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  <button
+                  <a
                     className="imdb"
+                    href="http://www.imdb.com/title/tt1074638"
+                    target="blank"
                   >
-                    <a
-                      href="http://www.imdb.com/title/tt1074638"
-                      target="blank"
+                    <Icon
+                      height="18"
+                      icon="text"
+                      width="18"
+                    />
+                    <span
+                      className="imdb-tooltip"
                     >
-                      <Icon
-                        height="18"
-                        icon="text"
-                        width="18"
-                      />
-                      <span
-                        className="imdb-tooltip"
-                      >
-                        Imdb
-                      </span>
-                    </a>
-                  </button>,
+                      Imdb
+                    </span>
+                  </a>,
                   <button
                     className="trailer"
                     onClick={[Function]}
@@ -1984,75 +1942,51 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": <a
-                      href="http://www.imdb.com/title/tt1074638"
-                      target="blank"
-                    >
+                    "children": Array [
                       <Icon
                         height="18"
                         icon="text"
                         width="18"
-                      />
+                      />,
                       <span
                         className="imdb-tooltip"
                       >
                         Imdb
-                      </span>
-                    </a>,
+                      </span>,
+                    ],
                     "className": "imdb",
+                    "href": "http://www.imdb.com/title/tt1074638",
+                    "target": "blank",
                   },
                   "ref": null,
-                  "rendered": Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": Array [
-                        <Icon
-                          height="18"
-                          icon="text"
-                          width="18"
-                        />,
-                        <span
-                          className="imdb-tooltip"
-                        >
-                          Imdb
-                        </span>,
-                      ],
-                      "href": "http://www.imdb.com/title/tt1074638",
-                      "target": "blank",
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "height": "18",
+                        "icon": "text",
+                        "width": "18",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
                     },
-                    "ref": null,
-                    "rendered": Array [
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "class",
-                        "props": Object {
-                          "height": "18",
-                          "icon": "text",
-                          "width": "18",
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": [Function],
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Imdb",
+                        "className": "imdb-tooltip",
                       },
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": "Imdb",
-                          "className": "imdb-tooltip",
-                        },
-                        "ref": null,
-                        "rendered": "Imdb",
-                        "type": "span",
-                      },
-                    ],
-                    "type": "a",
-                  },
-                  "type": "button",
+                      "ref": null,
+                      "rendered": "Imdb",
+                      "type": "span",
+                    },
+                  ],
+                  "type": "a",
                 },
                 Object {
                   "instance": null,
@@ -2594,25 +2528,22 @@ ShallowWrapper {
           <div
             className="buttons"
           >
-            <button
+            <a
               className="imdb"
+              href="http://www.imdb.com/title/tt5290382"
+              target="blank"
             >
-              <a
-                href="http://www.imdb.com/title/tt5290382"
-                target="blank"
+              <Icon
+                height="18"
+                icon="text"
+                width="18"
+              />
+              <span
+                className="imdb-tooltip"
               >
-                <Icon
-                  height="18"
-                  icon="text"
-                  width="18"
-                />
-                <span
-                  className="imdb-tooltip"
-                >
-                  Imdb
-                </span>
-              </a>
-            </button>
+                Imdb
+              </span>
+            </a>
             <button
               className="trailer"
               onClick={[Function]}
@@ -2918,25 +2849,22 @@ ShallowWrapper {
             <div
               className="buttons"
             >
-              <button
+              <a
                 className="imdb"
+                href="http://www.imdb.com/title/tt5290382"
+                target="blank"
               >
-                <a
-                  href="http://www.imdb.com/title/tt5290382"
-                  target="blank"
+                <Icon
+                  height="18"
+                  icon="text"
+                  width="18"
+                />
+                <span
+                  className="imdb-tooltip"
                 >
-                  <Icon
-                    height="18"
-                    icon="text"
-                    width="18"
-                  />
-                  <span
-                    className="imdb-tooltip"
-                  >
-                    Imdb
-                  </span>
-                </a>
-              </button>
+                  Imdb
+                </span>
+              </a>
               <button
                 className="trailer"
                 onClick={[Function]}
@@ -3010,25 +2938,22 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                <button
+                <a
                   className="imdb"
+                  href="http://www.imdb.com/title/tt5290382"
+                  target="blank"
                 >
-                  <a
-                    href="http://www.imdb.com/title/tt5290382"
-                    target="blank"
+                  <Icon
+                    height="18"
+                    icon="text"
+                    width="18"
+                  />
+                  <span
+                    className="imdb-tooltip"
                   >
-                    <Icon
-                      height="18"
-                      icon="text"
-                      width="18"
-                    />
-                    <span
-                      className="imdb-tooltip"
-                    >
-                      Imdb
-                    </span>
-                  </a>
-                </button>,
+                    Imdb
+                  </span>
+                </a>,
                 <button
                   className="trailer"
                   onClick={[Function]}
@@ -3069,75 +2994,51 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": <a
-                    href="http://www.imdb.com/title/tt5290382"
-                    target="blank"
-                  >
+                  "children": Array [
                     <Icon
                       height="18"
                       icon="text"
                       width="18"
-                    />
+                    />,
                     <span
                       className="imdb-tooltip"
                     >
                       Imdb
-                    </span>
-                  </a>,
+                    </span>,
+                  ],
                   "className": "imdb",
+                  "href": "http://www.imdb.com/title/tt5290382",
+                  "target": "blank",
                 },
                 "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": Array [
-                      <Icon
-                        height="18"
-                        icon="text"
-                        width="18"
-                      />,
-                      <span
-                        className="imdb-tooltip"
-                      >
-                        Imdb
-                      </span>,
-                    ],
-                    "href": "http://www.imdb.com/title/tt5290382",
-                    "target": "blank",
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "height": "18",
+                      "icon": "text",
+                      "width": "18",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
                   },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "height": "18",
-                        "icon": "text",
-                        "width": "18",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Imdb",
+                      "className": "imdb-tooltip",
                     },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": "Imdb",
-                        "className": "imdb-tooltip",
-                      },
-                      "ref": null,
-                      "rendered": "Imdb",
-                      "type": "span",
-                    },
-                  ],
-                  "type": "a",
-                },
-                "type": "button",
+                    "ref": null,
+                    "rendered": "Imdb",
+                    "type": "span",
+                  },
+                ],
+                "type": "a",
               },
               Object {
                 "instance": null,
@@ -3347,25 +3248,22 @@ ShallowWrapper {
             <div
               className="buttons"
             >
-              <button
+              <a
                 className="imdb"
+                href="http://www.imdb.com/title/tt5290382"
+                target="blank"
               >
-                <a
-                  href="http://www.imdb.com/title/tt5290382"
-                  target="blank"
+                <Icon
+                  height="18"
+                  icon="text"
+                  width="18"
+                />
+                <span
+                  className="imdb-tooltip"
                 >
-                  <Icon
-                    height="18"
-                    icon="text"
-                    width="18"
-                  />
-                  <span
-                    className="imdb-tooltip"
-                  >
-                    Imdb
-                  </span>
-                </a>
-              </button>
+                  Imdb
+                </span>
+              </a>
               <button
                 className="trailer"
                 onClick={[Function]}
@@ -3671,25 +3569,22 @@ ShallowWrapper {
               <div
                 className="buttons"
               >
-                <button
+                <a
                   className="imdb"
+                  href="http://www.imdb.com/title/tt5290382"
+                  target="blank"
                 >
-                  <a
-                    href="http://www.imdb.com/title/tt5290382"
-                    target="blank"
+                  <Icon
+                    height="18"
+                    icon="text"
+                    width="18"
+                  />
+                  <span
+                    className="imdb-tooltip"
                   >
-                    <Icon
-                      height="18"
-                      icon="text"
-                      width="18"
-                    />
-                    <span
-                      className="imdb-tooltip"
-                    >
-                      Imdb
-                    </span>
-                  </a>
-                </button>
+                    Imdb
+                  </span>
+                </a>
                 <button
                   className="trailer"
                   onClick={[Function]}
@@ -3763,25 +3658,22 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  <button
+                  <a
                     className="imdb"
+                    href="http://www.imdb.com/title/tt5290382"
+                    target="blank"
                   >
-                    <a
-                      href="http://www.imdb.com/title/tt5290382"
-                      target="blank"
+                    <Icon
+                      height="18"
+                      icon="text"
+                      width="18"
+                    />
+                    <span
+                      className="imdb-tooltip"
                     >
-                      <Icon
-                        height="18"
-                        icon="text"
-                        width="18"
-                      />
-                      <span
-                        className="imdb-tooltip"
-                      >
-                        Imdb
-                      </span>
-                    </a>
-                  </button>,
+                      Imdb
+                    </span>
+                  </a>,
                   <button
                     className="trailer"
                     onClick={[Function]}
@@ -3822,75 +3714,51 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": <a
-                      href="http://www.imdb.com/title/tt5290382"
-                      target="blank"
-                    >
+                    "children": Array [
                       <Icon
                         height="18"
                         icon="text"
                         width="18"
-                      />
+                      />,
                       <span
                         className="imdb-tooltip"
                       >
                         Imdb
-                      </span>
-                    </a>,
+                      </span>,
+                    ],
                     "className": "imdb",
+                    "href": "http://www.imdb.com/title/tt5290382",
+                    "target": "blank",
                   },
                   "ref": null,
-                  "rendered": Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": Array [
-                        <Icon
-                          height="18"
-                          icon="text"
-                          width="18"
-                        />,
-                        <span
-                          className="imdb-tooltip"
-                        >
-                          Imdb
-                        </span>,
-                      ],
-                      "href": "http://www.imdb.com/title/tt5290382",
-                      "target": "blank",
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "height": "18",
+                        "icon": "text",
+                        "width": "18",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
                     },
-                    "ref": null,
-                    "rendered": Array [
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "class",
-                        "props": Object {
-                          "height": "18",
-                          "icon": "text",
-                          "width": "18",
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": [Function],
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Imdb",
+                        "className": "imdb-tooltip",
                       },
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "host",
-                        "props": Object {
-                          "children": "Imdb",
-                          "className": "imdb-tooltip",
-                        },
-                        "ref": null,
-                        "rendered": "Imdb",
-                        "type": "span",
-                      },
-                    ],
-                    "type": "a",
-                  },
-                  "type": "button",
+                      "ref": null,
+                      "rendered": "Imdb",
+                      "type": "span",
+                    },
+                  ],
+                  "type": "a",
                 },
                 Object {
                   "instance": null,

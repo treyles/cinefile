@@ -19,6 +19,7 @@
     "react/jsx-filename-extension": "off",
     "consistent-return": "off",
     "import/no-extraneous-dependencies": "off",
+    "jsx-a11y/media-has-caption": "off",
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

@@ -68,9 +68,9 @@ export default class Header extends React.Component {
             </NavLink>
             {count > 0 && (
               <span
-                className={`counter ${
-                  !isLibraryMounted ? 'inactive' : ''
-                }`}
+                className={`counter ${!isLibraryMounted
+                  ? 'inactive'
+                  : ''}`}
               >
                 {count}
               </span>
