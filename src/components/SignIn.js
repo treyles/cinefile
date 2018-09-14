@@ -6,7 +6,7 @@ import { auth, googleAuth, facebookAuth } from '../utils/base';
 export default class SignIn extends React.Component {
   constructor(props) {
     super(props);
-    this.scrollStyle = document.body.querySelector('*').style;
+    // this.scrollStyle = document.body.querySelector('*').style;
 
     // this.handleClickProvider = this.handleClickProvider.bind(this);
   }

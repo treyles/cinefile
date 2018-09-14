@@ -1,0 +1,448 @@
+.library-container {
+  margin-top: 80px;
+  position: relative;
+}
+
+.library {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  // margin-top: 80px;
+  margin-bottom: 30px;
+
+  .library-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // width: 200px;
+    // height: 341.6px;
+    width: 220px;
+    // height: 375.78px;
+    height: 380px;
+    margin: 18px 5px;
+
+    // .library-card {
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   width: 185px;
+    //   height: 316px;
+    //   margin: 10px 5px;
+
+    .img-container {
+      position: relative;
+      border-radius: 3px;
+      background-color: darken($gray-bg, 7%);
+      color: darken($gray-bg, 7%);
+
+      img {
+        // flex-shrink: 0;
+        // width: 165px; // "w154", "w185",
+        // height: 247.5px;
+        // width: 160px; // "w154", "w185",
+        // height: 240px;
+        // width: 175px;
+        // height: 262.5px;
+        // remove space bottom of image
+        display: block;
+        width: 195px;
+        height: 292.5px;
+        // width: 154px; // "w154", "w185",
+        // height: 231px;
+        object-fit: cover;
+        border-radius: 3px;
+        // image-rendering: pixelated;
+        box-shadow: 8px 8px 30px 0px rgba(0, 0, 0, 0.4);
+      }
+
+      .rating-tag {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: -13px;
+        background-color: $main-blue;
+        width: 33px;
+        height: 33px;
+        color: white;
+        font-family: 'faktpro-semibold', sans-serif;
+        line-height: 1;
+        border-radius: 50%;
+        padding-top: 2px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+      }
+      @include desktop {
+        .rating-tag {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+
+    .library-info {
+      // width: 154px;
+      width: 190px;
+
+      h2 {
+        overflow: hidden;
+        white-space: nowrap;
+        // font-family: 'faktpro-semibold', sans-serif;
+        font-family: 'faktpro-normal', sans-serif;
+        color: lighten($dark-text, 7%);
+        margin-top: 20px;
+        text-overflow: ellipsis;
+      }
+
+      h3 {
+        margin-top: 2px;
+        font-family: 'faktpro-normal', sans-serif;
+        color: $light-text;
+      }
+    }
+
+    .card-back {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // width: 200px;
+      // height: 341.6px;
+      width: 220px;
+      height: 375.78px;
+      background-color: white;
+      padding: 22px 13px 12px 13px;
+
+      .title {
+        flex-grow: 0;
+        cursor: default;
+
+        h2 {
+          font-family: 'faktpro-semibold', sans-serif;
+          color: lighten($dark-text, 7%);
+        }
+
+        h3 {
+          margin-top: 3px;
+          font-family: 'faktpro-normal', sans-serif;
+          color: $light-text;
+        }
+      }
+
+      .synopsis {
+        flex-grow: 1;
+        // max-height: 50%;
+        overflow: hidden;
+        // background-color: yellow;
+
+        p {
+          margin-top: 10px;
+          font-family: 'faktpro-normal', sans-serif;
+          // font-size: 12px;
+          line-height: 1.5;
+          color: $light-text;
+          cursor: default;
+        }
+      }
+
+      .buttons {
+        flex-grow: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid darken($gray-bg, 5%);
+
+        .imdb,
+        .delete,
+        .trailer {
+          position: relative;
+          // display: flex;
+          // justify-content: center;
+          // align-items: center;
+          background-color: transparent;
+          line-height: 0;
+          width: 38px;
+          height: 38px;
+          // border-radius: 50%;
+          margin: 4px 10px;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          @include desktop {
+            margin: 4px;
+          }
+
+          svg {
+            width: 23px;
+            height: 23px;
+            fill: lighten($main-blue, 10%);
+            transition: fill 0.3s;
+
+            @include desktop {
+              width: auto;
+              height: auto;
+            }
+          }
+
+          // &:nth-child(2) svg {
+          //   width: 26px;
+          //   height: 26px;
+
+          //   @include desktop {
+          //     width: auto;
+          //     height: auto;
+          //   }
+          // }
+
+          &:hover > svg {
+            fill: lighten($light-text, 20%);
+            // fill: $main-blue;
+          }
+        }
+        // 110%, 50%, -47px)
+        // 110%, 50%, -25px)
+        // 110%, 50%, -23px)
+        .delete {
+          .delete-tooltip {
+            @include tooltip(100%, 50%, -27px);
+          }
+
+          @include desktop {
+            &:hover .delete-tooltip {
+              visibility: visible;
+            }
+          }
+        }
+
+        .trailer {
+          .trailer-tooltip {
+            @include tooltip(100%, 50%, -25px);
+          }
+
+          @include desktop {
+            &:hover .trailer-tooltip {
+              visibility: visible;
+            }
+          }
+
+          svg {
+            width: 26px;
+            height: 26px;
+
+            @include desktop {
+              width: auto;
+              height: auto;
+            }
+          }
+        }
+
+        .imdb {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .imdb-tooltip {
+            @include tooltip(100%, 50%, -24px);
+          }
+
+          @include desktop {
+            &:hover .imdb-tooltip {
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Media Queries 768px
+@include desktop {
+  .lobby {
+    padding-left: 200px;
+
+    &.not-found {
+      padding-left: 0;
+    }
+  }
+
+  .library-container {
+    margin-top: 15px;
+    margin-left: 210px;
+
+    // hover to show library card back
+    .library-card {
+      width: 185px;
+      height: 316px;
+      margin: 10px 5px;
+
+      .img-container {
+        img {
+          width: 160px; // "w154", "w185",
+          height: 240px;
+          box-shadow: 8px 8px 30px 0px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .library-info {
+        width: 154px;
+      }
+
+      .card-back {
+        width: 185px;
+        height: 316px;
+        // hack using absolute positioning so that element doesn't occupy
+        // space using visibility. All for the sake of pretty fade in transitions.
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.6s, visibility 0s;
+      }
+
+      .card-front {
+        transition: opacity 0.3s, visibility 0s;
+      }
+
+      &:hover {
+        .card-front {
+          position: absolute;
+          visibility: hidden;
+          opacity: 0;
+          transition-delay: 0.3s;
+        }
+        .card-back {
+          position: auto;
+          visibility: visible;
+          opacity: 1;
+          transition-delay: 0.3s;
+        }
+      }
+    }
+  }
+
+  .library {
+    margin-right: 20px;
+    justify-content: flex-start;
+  }
+
+  @supports (display: grid) {
+    .library {
+      display: grid;
+      @include grid-break(768px, 2);
+      @include grid-break(800px, 3);
+      @include grid-break(1000px, 4);
+      @include grid-break(1200px, 5);
+      @include grid-break(1400px, 6);
+      @include grid-break(1675px, 7);
+    }
+
+    .library-card-container {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+/// ?
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 400ms, height 400ms;
+}
+
+.empty-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'faktpro-medium', sans-serif;
+
+  .illustration {
+    .empty-mobile {
+      width: 138px;
+      margin-right: 10px;
+    }
+
+    .sad-mobile {
+      width: 137px;
+    }
+
+    .empty {
+      width: 229px;
+      margin-right: 18px;
+    }
+
+    .sad {
+      width: 218px;
+      margin-right: 5px;
+    }
+  }
+
+  h1 {
+    margin-top: 20px;
+    color: #5e6c77;
+
+    @include desktop {
+      margin-top: 40px;
+    }
+  }
+
+  h2 {
+    margin-top: 15px;
+    color: lighten(#5e6c77, 20%); // blue tint
+    text-align: center;
+    max-width: 300px;
+    // max-width: 400px;
+    line-height: 30px;
+
+    span {
+      vertical-align: -5px;
+      margin: 0 7px;
+    }
+
+    @include desktop {
+      max-width: 400px;
+    }
+  }
+
+  button {
+    margin-top: 20px;
+    background-color: $main-blue;
+    height: 40px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    // outline: 0;
+    &:hover {
+      background-color: darken($main-blue, 5%);
+    }
+
+    h2 {
+      // line-height: 0;
+      margin: 0;
+      padding: 5px 15px 0 15px;
+      font-family: 'faktpro-medium', sans-serif;
+      color: #fff;
+    }
+
+    @include desktop {
+      margin-top: 30px;
+    }
+  }
+}

@@ -14,12 +14,12 @@ export default class DiscoverCard extends React.Component {
     this.handleAddToLibrary = this.handleAddToLibrary.bind(this);
   }
 
-  componentDidMount() {
-    // scroll to top if new query (or if on first page)
-    if (this.props.currentPage === 1) {
-      window.scrollTo(0, 0);
-    }
-  }
+  // componentDidMount() {
+  //   // scroll to top if new query (or if on first page)
+  //   if (this.props.currentPage === 1) {
+  //     window.scrollTo(0, 0);
+  //   }
+  // }
 
   handleTrailerModal() {
     this.setState({

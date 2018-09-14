@@ -1,0 +1,257 @@
+$main-blue: #007cd9;
+$gray-bg: #f4f4f4;
+$light-text: #828282;
+$dark-text: #3f3f3f;
+
+@mixin desktop {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $gray-bg;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 13px;
+
+  // remove bold text
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+
+  -webkit-text-size-adjust: 100%;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+// TODO: fix order
+h1 {
+  font-size: 17px;
+}
+h2 {
+  font-size: 14px;
+}
+h3 {
+  font-size: 12px;
+}
+h4 {
+  font-size: 15px;
+}
+p {
+  font-size: 12px;
+}
+
+@include mobile {
+  h1 {
+    font-size: 19px;
+  }
+  h2 {
+    font-size: 16px;
+  }
+  h3 {
+    font-size: 14px;
+  }
+  h4 {
+    font-size: 17px;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
+  // line-height: 0.5;
+}
+
+@font-face {
+  font-family: 'calibre-semibold';
+  src: url('../fonts/calibre-semibold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'calibre-medium';
+  src: url('../fonts/calibre-medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'faktpro-semibold';
+  src: url('../fonts/faktpro-semibold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'faktpro-normal';
+  src: url('../fonts/faktpro-normal.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'faktpro-medium';
+  src: url('../fonts/faktpro-medium.woff') format('woff');
+}
+
+// // tablets and desktop
+// @media only screen and (min-width: 768px) {
+//   html {  font-size: 20px; }
+// }
+
+// // phone
+// @media only screen and (max-width: 767px) {
+//   html {  font-size: 12px; }
+// }
+
+// // portrait phones
+// @media only screen and (max-width: 767px) and (orientation: portrait) {
+//   html {  font-size: 12px; }
+// }
+
+// @mixin mq {
+//   @media only screen and (min-width: 666px) {
+//     @content;
+//   }
+// }
+
+@mixin grid-break($width, $columns) {
+  @media only screen and (min-width: $width) {
+    grid-template-columns: repeat($columns, 1fr);
+  }
+}
+
+@mixin tooltip($bottom, $left, $margin) {
+  visibility: hidden;
+  // background-color: darken($gray-bg, 5%);
+  // background-color: $gray-bg;
+  background-color: $dark-text;
+  // color: $dark-text;
+  // color: $light-text;
+  color: #fff;
+  text-align: center;
+  padding: 7px 10px;
+  position: absolute;
+  border-radius: 2px;
+  font-family: 'faktpro-normal', sans-serif;
+  font-size: 12px;
+  line-height: normal;
+  z-index: 1;
+  bottom: $bottom;
+  left: $left;
+  margin-left: $margin;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    // border-color: darken($gray-bg, 5%) transparent transparent transparent;
+    // border-color: $gray-bg transparent transparent transparent;
+    border-color: $dark-text transparent transparent transparent;
+  }
+}
+
+@mixin preloader() {
+  div {
+    background-color: lightgray;
+    height: 100%;
+    width: 6px;
+    height: 40px;
+    margin: 0 1px;
+    display: inline-block;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  }
+
+  .rect2 {
+    animation-delay: -1.1s;
+  }
+  .rect3 {
+    animation-delay: -1s;
+  }
+  .rect4 {
+    animation-delay: -0.9s;
+  }
+  .rect5 {
+    animation-delay: -0.8s;
+  }
+
+  @keyframes sk-stretchdelay {
+    0%,
+    40%,
+    100% {
+      transform: scaleY(0.4);
+    }
+    20% {
+      transform: scaleY(1);
+    }
+  }
+}
+
+.alert {
+  z-index: 2;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 180px;
+  bottom: 20px;
+  left: 20px;
+  background-color: $dark-text;
+  font-family: 'faktpro-normal', sans-serif;
+  color: #fff;
+  border-radius: 3px;
+  padding: 10px 0px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.preloader {
+  @include preloader();
+}
+
+.lobby {
+  // height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  box-sizing: border-box;
+  position: absolute;
+
+  // &:empty {
+  //   display: none;
+  // }
+
+  @include desktop {
+    padding-top: 100px;
+  }
+}

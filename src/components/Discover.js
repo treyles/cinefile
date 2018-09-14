@@ -45,7 +45,7 @@ export default class Discover extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     const storeMatches = store('discover-matches');
 
     if (!storeMatches) {

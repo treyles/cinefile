@@ -64,7 +64,7 @@ export default class Home extends React.Component {
           <div className="hero-content">
             <h1 className="title">
               When you see something you want to watch later, put it in
-              Cinefile.
+              Cinefile
             </h1>
             <p>
               Keep movies, tv shows, and documentaries from slipping off
