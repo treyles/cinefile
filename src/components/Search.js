@@ -13,7 +13,6 @@ export default class Search extends React.Component {
       value: ''
     };
 
-    // this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
@@ -186,6 +185,7 @@ export default class Search extends React.Component {
 }
 
 Search.propTypes = {
+  library: PropTypes.arrayOf(PropTypes.object).isRequired,
   addToLibrary: PropTypes.func.isRequired,
   removeFromLibrary: PropTypes.func.isRequired,
   toggleSearchButton: PropTypes.func.isRequired

@@ -1,20 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../utils/Icon';
-// import { fetchMediaDetails } from '../utils/Api';
 
 export default class SearchResultList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    // this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  // handleSelect(media) {
-  //   fetchMediaDetails(media).then(response =>
-  //     this.props.addToLibrary(response));
-  // }
-
   renderMatchLi(media) {
     const { handleSelect } = this.props;
 
@@ -77,8 +64,6 @@ export default class SearchResultList extends React.Component {
   }
 }
 
-// use shape?
 SearchResultList.propTypes = {
   matches: PropTypes.arrayOf(PropTypes.object).isRequired
-  // addToLibrary: PropTypes.func.isRequired
 };

@@ -20,6 +20,7 @@
     "consistent-return": "off",
     "import/no-extraneous-dependencies": "off",
     "jsx-a11y/media-has-caption": "off",
+    "class-methods-use-this": "off",
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

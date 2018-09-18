@@ -22,7 +22,6 @@ export default class DiscoverCard extends React.Component {
 
   handleAddToLibrary() {
     const { media, addToLibrary, handleRemoveMatch } = this.props;
-
     addToLibrary(this.state.data);
     handleRemoveMatch(media);
   }
@@ -60,7 +59,6 @@ export default class DiscoverCard extends React.Component {
             </p>
           </div>
         </div>
-        {/* TODO: make these divs buttons? */}
         <div className="discover-footer">
           <h3>
             <span>{creditTypeFooter}</span> {credits.footer}
@@ -112,46 +110,3 @@ DiscoverCard.propTypes = {
   addToLibrary: PropTypes.func.isRequired,
   handleRemoveMatch: PropTypes.func.isRequired
 };
-
-// // TODO: REFACTOR THIS MESS
-// // abstract out to new component above? (return obj)
-// let mediaCredits;
-// const credit = response.credits;
-// const trailer = response.videos.results;
-
-// const imdb = response.imdb_id
-//   ? response.imdb_id
-//   : response.external_ids.imdb_id;
-
-// // arrays
-// const getDirector = credit.crew.filter(el => el.job === 'Director');
-
-// // console.log(credit.cast);
-// // find smallest 'order' number then get object
-// const findLead = Math.min(...credit.cast.map(el => el.order));
-// const getLead = credit.cast.filter(el => el.order === findLead);
-
-// // response.title is unique to movies
-// if (response.title) {
-//   mediaCredits = {
-//     header: getDirector.length ? getDirector[0].name : 'n/a',
-//     // header: credit.crew.length ? getDirector[0].name : 'n/a',
-//     // TODO: get smallest order #, cant rely on < 3
-//     footer: getLead.length ? getLead[0].name : 'n/a'
-//   };
-//   // if television
-// } else {
-//   mediaCredits = {
-//     header: response.created_by.length
-//       ? response.created_by[0].name
-//       : 'n/a',
-//     footer: response.number_of_seasons
-//   };
-// }
-
-// this.setState({
-//         data: response,
-//         imdbId: imdb,
-//         credits: mediaCredits,
-//         trailerKey: trailer.length ? trailer[0].key : null
-//       });

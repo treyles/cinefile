@@ -12,22 +12,26 @@ export default function SignIn({ handleSignInModal }) {
           <Icon icon="exit" width="17" height="17" />
         </button>
       </div>
-      <a
+      <button
         className="facebook-btn"
         onClick={() => auth.signInWithPopup(facebookAuth)}
       >
         <span>
           <Icon icon="facebook" width="18" height="18" />
         </span>Connect with Facebook
-      </a>
-      <a
+      </button>
+      <button
         className="google-btn"
         onClick={() => auth.signInWithPopup(googleAuth)}
       >
         <span>
           <Icon icon="google" width="18" height="18" />
         </span>Connect with Google
-      </a>
+      </button>
     </div>
   );
 }
+
+SignIn.propTypes = {
+  handleSignInModal: PropTypes.func.isRequired
+};

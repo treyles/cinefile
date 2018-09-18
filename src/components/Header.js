@@ -5,7 +5,6 @@ import MediaQuery from 'react-responsive';
 import firebase from 'firebase';
 import Icon from '../utils/Icon';
 
-// TODO: clean up onClick
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,6 @@ export default class Header extends React.Component {
       .auth()
       .signOut()
       .then(() => {
-        console.log('signed out');
         localStorage.setItem('authenticated', false);
       });
   }
@@ -95,5 +93,8 @@ export default class Header extends React.Component {
 Header.propTypes = {
   count: PropTypes.number.isRequired,
   toggleSearchButton: PropTypes.func.isRequired,
-  isSearchActive: PropTypes.bool.isRequired
+  isSearchActive: PropTypes.bool.isRequired,
+  isLibraryMounted: PropTypes.bool.isRequired,
+  currentUser: PropTypes.oneOfType([PropTypes.object, PropTypes.bool])
+    .isRequired
 };

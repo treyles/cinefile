@@ -12,26 +12,30 @@ export default class LibraryCard extends React.Component {
     this.state = {
       clicked: false,
       showModal: false,
-      trailerKey: null
+      trailerKey: props.media.videos
+        ? props.media.videos.results[0].key
+        : null
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleTrailerModal = this.handleTrailerModal.bind(this);
   }
 
-  // (FIXED? test and refactor)
-  // TODO: bug 'Party' movie, 'results' undefined? same as imdb etc.
-  // discover cards without trailer breaks.
-  componentDidMount() {
-    // abstract this out to api component?
-    const trailer = this.props.media.videos
-      ? this.props.media.videos.results
-      : null;
+  // componentDidMount() {
+  //   const tester = this.props.media.videos
+  //     ? this.props.media.videos.results[0].key
+  //     : null;
+  //   console.log(tester);
 
-    this.setState({
-      trailerKey: trailer ? trailer[0].key : null
-    });
-  }
+  //   // TODO: abstract this out to api component?
+  //   const trailer = this.props.media.videos
+  //     ? this.props.media.videos.results
+  //     : null;
+
+  //   this.setState({
+  //     trailerKey: trailer ? trailer[0].key : null
+  //   });
+  // }
 
   handleClick() {
     this.setState({
@@ -53,7 +57,13 @@ export default class LibraryCard extends React.Component {
       <div className="library-card-container">
         {/* mobile -- view card back conditionally with click event */}
         <MediaQuery maxWidth={768}>
-          <div className="library-card" onClick={this.handleClick}>
+          <div
+            className="library-card"
+            onClick={this.handleClick}
+            onKeyDown={this.handleClick}
+            role="button"
+            tabIndex={0}
+          >
             {clicked ? (
               <LibraryCardBack
                 media={media}
@@ -96,6 +106,6 @@ export default class LibraryCard extends React.Component {
 }
 
 LibraryCard.propTypes = {
-  media: PropTypes.object.isRequired,
+  media: PropTypes.object.isRequired, // eslint-disable-line
   removeFromLibrary: PropTypes.func.isRequired
 };

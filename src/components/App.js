@@ -68,7 +68,6 @@ export default class App extends React.Component {
       );
   }
 
-  // TODO: rename 'handle'
   addToLibrary(media) {
     this.setState({
       library: [media].concat(this.state.library),

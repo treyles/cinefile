@@ -1,16 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import ReactModal from 'react-modal';
-import base from '../utils/base';
-import firebase from 'firebase';
 import heroPreview from '../assets/hero-preview.mp4';
 import heroPoster from '../assets/hero-preview-poster.jpg';
 import mobilePreview from '../assets/mobile-preview.jpg';
-// import mobilePoster from '../assets/mobile-preview-poster.jpg';
 import SignIn from './SignIn';
-// import mobilePoster from '../assets/mobile-preview-poster.jpg';
-// import mobile from '../assets/mobile.png';
-// import { Link } from 'react-router-dom';
 
 export default class Home extends React.Component {
   constructor(props) {

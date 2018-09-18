@@ -48,7 +48,6 @@ export default class OptionsModal extends React.Component {
       genre: [],
       sort: { value: 'popularity.desc', label: 'Popularity Descending' }
     });
-    // console.log(e.target.value);
   }
 
   handleRatingValue(value) {
@@ -67,10 +66,6 @@ export default class OptionsModal extends React.Component {
     this.setState({ sort: value });
   }
 
-  renderValue(option) {
-    return <h1 style={{ color: '#828282' }}>{option.label}</h1>;
-  }
-
   handleSubmit() {
     const { sort } = this.state;
     const { handleQueryUpdate, handleOptionsModal } = this.props;
@@ -83,6 +78,10 @@ export default class OptionsModal extends React.Component {
     });
 
     handleQueryUpdate(newQuery);
+  }
+
+  renderValue(option) {
+    return <h1 style={{ color: '#828282' }}>{option.label}</h1>;
   }
 
   render() {
@@ -100,7 +99,7 @@ export default class OptionsModal extends React.Component {
         backgroundColor: '#0f96ea',
         height: 6
       }
-    ]; // #0f96ea #007cd9
+    ];
     const railStyle = {
       backgroundColor: '#eee',
       height: 6
@@ -118,15 +117,17 @@ export default class OptionsModal extends React.Component {
     return (
       <div className="test-options">
         <div className="options-modal">
-          {/* TODO: what's up with spacing in className here?  (dont know what this refers to)*/}
-          {/* change name of slider-container, not only used by slider*/}
           <div className="media-container">
             <h1>Media Type</h1>
             <h2>Find movies or series</h2>
             <ul>
               <li>
-                <label className={mediaType === 'movie' ? 'selected' : ''}>
+                <label
+                  className={mediaType === 'movie' ? 'selected' : ''}
+                  htmlFor="type-movie"
+                >
                   <input
+                    id="type-movie"
                     type="radio"
                     value="movie"
                     checked={mediaType === 'movie'}
@@ -136,8 +137,12 @@ export default class OptionsModal extends React.Component {
                 </label>
               </li>
               <li>
-                <label className={mediaType === 'tv' ? 'selected' : ''}>
+                <label
+                  className={mediaType === 'tv' ? 'selected' : ''}
+                  htmlFor="type-tv"
+                >
                   <input
+                    id="type-tv"
                     type="radio"
                     value="tv"
                     checked={mediaType === 'tv'}
@@ -228,25 +233,6 @@ export default class OptionsModal extends React.Component {
 
 OptionsModal.propTypes = {
   handleOptionsModal: PropTypes.func.isRequired,
-  handleQueryUpdate: PropTypes.func.isRequired
+  handleQueryUpdate: PropTypes.func.isRequired,
+  apiReady: PropTypes.bool.isRequired
 };
-
-/*
-
-        <button
-          className={`movie${mediaType === 'movie' ? ' active' : ''}`}
-          onClick={this.handleActiveMedia}
-        >
-          Movies
-        </button>
-        <button
-          className={`tv${mediaType === 'tv' ? ' active' : ''}`}
-          onClick={this.handleActiveMedia}
-        >
-          Shows
-        </button>
-*/
-
-// OptionsModal.defaultProps = {
-//   trailerLink: null
-// };

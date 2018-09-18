@@ -1,6 +1,6 @@
 import React from 'react';
-import Icon from '../utils/Icon';
 import MediaQuery from 'react-responsive';
+import Icon from '../utils/Icon';
 
 export default function NotFound() {
   return (

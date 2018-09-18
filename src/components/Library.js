@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FlipMove from 'react-flip-move';
+import MediaQuery from 'react-responsive';
 import Header from './Header';
 import LibraryCard from './LibraryCard';
 import Search from './Search';
-import rebase from '../utils/base';
-import FlipMove from 'react-flip-move';
 import Icon from '../utils/Icon';
-import MediaQuery from 'react-responsive';
 import Loader from '../utils/Loader';
 
 function EmptyLibrary({ currentUser, addRecommended }) {
@@ -55,7 +54,6 @@ EmptyLibrary.propTypes = {
 
 export default class Library extends React.Component {
   componentWillMount() {
-    // TODO: rename mount to isCounterActive...?
     this.mounted = true;
   }
 

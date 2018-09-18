@@ -170,7 +170,6 @@ export default class Discover extends React.Component {
   }
 
   render() {
-    // TODO: only destructure variables used multiple times?
     const {
       matches,
       query,
