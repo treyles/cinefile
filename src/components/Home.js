@@ -71,7 +71,7 @@ export default class Home extends React.Component {
               Cinefile
             </h1>
             <p>
-              Keep movies, tv shows, and documentaries from slipping off
+              Keep movies, tv shows, and documentaries from falling off
               your radar with Cinefile — a minimal bookmarking and
               discovery app
             </p>
@@ -109,10 +109,9 @@ export default class Home extends React.Component {
             </p>
             <h1 className="text-block-header">Minimal Design</h1>
             <p>
-              When we say minimal, we mean it. Cinefile provides a rating,
-              year, short synopsis, director, lead actor, and trailer. It
-              also links to it’s corresponding IMDB page if that doesn’t
-              satisfy you.
+              When we say minimal, we mean it — Cinefile presents you with
+              cards that display only the essential details you need about
+              a movie or tv show.
             </p>
           </div>
         </div>
