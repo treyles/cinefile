@@ -1,6 +1,6 @@
 # Cinefile
 
-[cinefile.io](http://cinefile.io)
+[cinefile.cc](http://cinefile.cc)
 
 A bookmarking and discovery app for movies.
 
